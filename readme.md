@@ -17,33 +17,9 @@
 
 ## Branch Structure
 
-branches: `deploy` | `development` | `front` | `back`
+main branches: `deploy` | `development` 
 
-- `deploy` - stable branch
-- `development` - working branch
-- `front` - workspace for front-end division
-- `back` - workspace for back-end division
-
-### pull request
-All the pull requests are sent to `development` branch. 
-When creating new branch, always use the structure of the branch anatomy.
-
-branch anatomy: `division`/`type`/`title`
-
-divisions: `front` | `back`
-
-<br/>
-<img alt="Unilab" src="https://img.shields.io/badge/Unilab-2021-orange?style=for-the-badge"/>
-<img alt="Python" src="https://img.shields.io/badge/python%20-%2314354C.svg?&style=for-the-badge&logo=python&logoColor=white"/>
-<img alt="Flask" src="https://img.shields.io/badge/flask%20-%23000.svg?&style=for-the-badge&logo=flask&logoColor=white"/>
-<br/>
-<img alt="contributors" src="https://img.shields.io/github/contributors/temurchichua/QartNLPWebService?style=for-the-badge"/>
-<img alt="commits" src="https://img.shields.io/github/commit-activity/w/temurchichua/QartNLPWebService?style=for-the-badge"/>
-</p>
-
-## Branch Structure
-
-branches: `deploy` | `development` | `front` | `back`
+temporary branches: `front` | `back` [ from `development`]
 
 - `deploy` - stable branch
 - `development` - working branch
