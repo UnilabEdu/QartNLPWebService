@@ -24,13 +24,14 @@ branches: `deploy` | `development` | `front` | `back`
 - `back` - workspace for back-end division
 
 ### pull request
-All the pull requests are sent to `development` branch. 
+All the pull requests are sent to your `division` branch.  
 When creating new branch, always use the structure of the branch anatomy.
 
 branch anatomy: `division`/`type`/`title`
 
 divisions: `front` | `back`
 
+`division` branch is synced to the `development` branch once a week.
 
 ## Setup & Run
 To make the project run on your device you need have [Python 3.x installed](https://realpython.com/installing-python/).
