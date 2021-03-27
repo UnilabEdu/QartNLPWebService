@@ -1,0 +1,33 @@
+[33mcommit b3c00bfa32dd04d123727ad42a8aef626009b26f[m[33m ([m[1;36mHEAD -> [m[1;32mdevelopment[m[33m, [m[1;31morigin/development[m[33m, [m[1;31morigin/HEAD[m[33m, [m[1;32mcontent[m[33m)[m
+Author: Temur Chichua <69351709+temurchichua@users.noreply.github.com>
+Date:   Wed Mar 24 22:52:24 2021 +0400
+
+    readme hotfix (#3) (#4)
+
+[33mcommit c1269c286e7652e6705e3d9e5bdd8e42d74c9dcf[m
+Author: Temur Chichua <69351709+temurchichua@users.noreply.github.com>
+Date:   Wed Mar 24 22:50:49 2021 +0400
+
+    readme hotfix
+
+[33mcommit 67190978882cca5c1c38efe5790c8db5d4422181[m
+Author: Temur Chichua <69351709+temurchichua@users.noreply.github.com>
+Date:   Wed Mar 24 22:44:44 2021 +0400
+
+    Hotfix/restructure (#2)
+    
+    * updated the readme file
+    
+    * final fix to readme
+
+[33mcommit ab4bf1da53712f682eeddf9f098167943f90968d[m
+Author: Temur Chichua <69351709+temurchichua@users.noreply.github.com>
+Date:   Wed Mar 24 22:26:55 2021 +0400
+
+    updated the readme file (#1)
+
+[33mcommit a89b8ba6eb702d44035360dc4f3266e4faba8e79[m
+Author: “Temur <temur.chichua@iliauni.edu.ge>
+Date:   Wed Mar 24 17:40:45 2021 +0400
+
+    initial commit
