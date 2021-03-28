@@ -1,0 +1,44 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+.navigation{
+    background-color: #172224;
+    color: white;
+    display: flex;
+    padding: 10px 20px;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.nav-right ul{
+    list-style: none;
+    font-size: 27px;
+    display: flex;
+    align-items: center;
+}
+
+.list-item a{
+    text-decoration: none;
+    color: white;
+}
+
+.nav-left{
+    color: white;
+    font-size: 42px;
+}
+
+.icon {
+    font-size: 20px;
+}
+
+.list-item:after{
+    content: '';
+    display: inline-block;
+    width: 1px;
+    height: 20px;
+    background-color: white;
+    margin: 0 50px;
+}
