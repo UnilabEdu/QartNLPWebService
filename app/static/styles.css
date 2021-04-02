@@ -95,6 +95,7 @@ body {
 }
 
 .clear-icon{
+    display: none;
     position: absolute;
     left: 4px;
 }
