@@ -1,37 +1,59 @@
 <!DOCTYPE html>
 <html lang="en">
-
-<head>
-    <meta charset="UTF-8">
+  <head>
+    <meta charset="UTF-8" />
     <title>QartNLP</title>
-    <link rel="stylesheet" href="../static/styles.css">
-</head>
+    <link rel="stylesheet" href="../static/styles.css" />
+  </head>
 
-<body>
-
+  <body>
     <header id="header">
-        <nav class="navigation">
-            <div class="nav-left">
-                <h2>QARTNLP</h2>
-            </div>
-            <div class="nav-right">
-                <ul>
-                    <li class="list-item"><a href="#">მთავარი</a></li>
-                    <li class="list-item"><a href="">დოკუმენტაცია</a></li>
-                    <li class="list-item"><a href="">ჩვენს შესახებ</a></li>
-                    <li class="icon">icon</li>
-                </ul>
-            </div>
-        </nav>
-    </header>
-  
-      <section class="processing-lang">
-        <h2>ქართული ენის ციფრული დამუშავება</h2>
-        <textarea class="prtext" name="text" id="prtext" placeholder="ჩააკოპირე ქართული ტექსტი, ნახე როგორ მუშაობს სისტემა."></textarea>
-        <div class="btn-block">
-            <button class="btn-analyze">გაანალიზე</button>
+      <nav class="navigation">
+        <div class="nav-left">
+          <h2>QARTNLP</h2>
         </div>
+        <div class="nav-right">
+          <ul>
+            <li class="list-item"><a href="#">მთავარი</a></li>
+            <li class="list-item"><a href="">დოკუმენტაცია</a></li>
+            <li class="list-item"><a href="">ჩვენს შესახებ</a></li>
+            <li class="icon">icon</li>
+          </ul>
+        </div>
+      </nav>
+    </header>
+
+    <section class="processing-lang">
+      <h2>ქართული ენის ციფრული დამუშავება</h2>
+      <textarea
+        class="prtext"
+        name="text"
+        id="prtext"
+        placeholder="ჩააკოპირე ქართული ტექსტი, ნახე როგორ მუშაობს სისტემა."
+      ></textarea>
+      <div class="btn-block">
+        <button class="btn-analyze">გაანალიზე</button>
+      </div>
     </section>
 
-</body>
+    <!-- footer -->
+    <footer>
+      <div class="footer-container">
+        <div class="footer-l__block">
+          <div class="github-logo__img"></div>
+          <div class="created-by__title">
+            შექმნილია ილიას სახელმწიფო უნივერსიტეტის მორფოლოგიური ანალიზაატორის
+            ბაზაზე Unilab-ის ციფრული ლაბორატორიის Python Development გუნდის
+            მიერ.
+          </div>
+        </div>
+        <div class="footer-r__block">
+          <div class="university-logo__img"></div>
+          <div class="university-name__title">
+            ილიას სახელმწიფო უნივერსიტეტი
+          </div>
+        </div>
+      </div>
+    </footer>
+  </body>
 </html>
