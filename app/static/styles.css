@@ -1,103 +1,104 @@
-*{
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: "Sandro", sans-serif;
 }
 
-.navigation{
-    background-color: #172224;
-    color: white;
-    display: flex;
-    padding: 10px 20px;
-    justify-content: space-between;
-    align-items: center;
+.navigation {
+  background-color: #172224;
+  color: white;
+  display: flex;
+  padding: 10px 20px;
+  justify-content: space-between;
+  align-items: center;
 }
 
-.nav-right ul{
-    list-style: none;
-    font-size: 27px;
-    display: flex;
-    align-items: center;
+.nav-right ul {
+  list-style: none;
+  font-size: 27px;
+  display: flex;
+  align-items: center;
 }
 
-.list-item a{
-    text-decoration: none;
-    color: white;
+.list-item a {
+  text-decoration: none;
+  color: white;
 }
 
-.nav-left{
-    color: white;
-    font-size: 42px;
+.nav-left {
+  color: white;
+  font-size: 42px;
 }
 
 .icon {
-    font-size: 20px;
+  font-size: 20px;
 }
 
-.list-item:after{
-    content: '';
-    display: inline-block;
-    width: 1px;
-    height: 20px;
-    background-color: white;
-    margin: 0 50px;
+.list-item:after {
+  content: "";
+  display: inline-block;
+  width: 1px;
+  height: 20px;
+  background-color: white;
+  margin: 0 50px;
 }
 
 body {
-    padding: 0;
-    margin: 0;
-    background-color: #ebebeb;
-    box-sizing: border-box;
+  padding: 0;
+  margin: 0;
+  background-color: #ebebeb;
+  box-sizing: border-box;
 }
 
 .processing-lang {
-    max-width: 960px;
-    width: 100%;
-    margin: auto;
-    margin-top: 64px;
-    /* margin-bottom: 433px; */
-    display: flex;
-    justify-content: center;
-    flex-direction: column;
+  max-width: 960px;
+  width: 100%;
+  margin: auto;
+  margin-top: 64px;
+  /* margin-bottom: 433px; */
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
 }
 
 .processing-lang h2 {
-    text-align: center;
-    margin-bottom: 87px;
+  text-align: center;
+  margin-bottom: 87px;
 }
 
 .prtext {
-    width: 960px;
-    height: 288px;
-    padding: 5px;
-    background-color: #fff;
-    border: 1px solid#172224;
-    font-size: 22px;
-    resize: none;
+  width: 960px;
+  height: 288px;
+  padding: 5px;
+  background-color: #fff;
+  border: 1px solid#172224;
+  font-size: 22px;
+  resize: none;
 }
 
 .prtext:focus {
-    outline: none;
+  outline: none;
 }
 
 .prtext::placeholder {
-    font-size: 22px;
-    color: #172224;
-    opacity: 0.5;
+  font-size: 22px;
+  color: #172224;
+  opacity: 0.5;
 }
 
 .btn-block {
-    margin: auto;
-    margin-top: 32px;
+  margin: auto;
+  margin-top: 32px;
 }
 
 .btn-analyze {
-    padding: 8px 46px;
-    font-size: 34px;
-    text-align: center;
-    background-color: #172224;
-    color: #ffffff;
-    cursor: pointer;
-    outline: none;
-    border: none;
+  padding: 8px 46px;
+  font-size: 34px;
+  text-align: center;
+  background-color: #172224;
+  color: #ffffff;
+  cursor: pointer;
+  outline: none;
+  border: none;
 }
