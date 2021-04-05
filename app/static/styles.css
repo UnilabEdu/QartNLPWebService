@@ -2,6 +2,10 @@
   margin: 0;
   padding: 0;
   box-sizing: border-box;
+
+=======
+  font-family: "Sandro", sans-serif;
+
 }
 
 .navigation {
@@ -100,6 +104,7 @@ body {
   cursor: pointer;
   outline: none;
   border: none;
+
 }
 
 /* footer */
@@ -140,4 +145,5 @@ footer {
   font-size: 12px;
   display: flex;
   align-items: center;
+
 }
