@@ -1,14 +1,13 @@
 <!DOCTYPE html>
 <html lang="en">
-
-<head>
-    <meta charset="UTF-8">
+  <head>
+    <meta charset="UTF-8" />
     <title>QartNLP</title>
-    <link rel="stylesheet" href="../static/styles.css">
-</head>
+    <link rel="stylesheet" href="../static/styles.css" />
+    <link rel="stylesheet" href="../static/fonts.css" />
+  </head>
 
-<body>
-
+  <body>
     <header id="header">
         <nav class="navigation">
             <div class="nav-left">
@@ -32,8 +31,29 @@
             <img src="../assets/clear.svg" alt="reload" id="clear-icon" class="clear-icon">
             <button id="analyze-button" class="btn-analyze">გაანალიზე</button>
         </div>
+        <div class="nav-right">
+          <ul>
+            <li class="list-item"><a href="#">მთავარი</a></li>
+            <li class="list-item"><a href="">დოკუმენტაცია</a></li>
+            <li class="list-item"><a href="">ჩვენს შესახებ</a></li>
+            <li class="icon">
+              <img src="../assets/header-logo.svg" alt="logo" />
+            </li>
+          </ul>
+        </div>
+      </nav>
+    </header>
+    <section class="processing-lang">
+      <h2>ქართული ენის ციფრული დამუშავება</h2>
+      <textarea
+        class="prtext"
+        name="text"
+        id="prtext"
+        placeholder="ჩააკოპირე ქართული ტექსტი, ნახე როგორ მუშაობს სისტემა."></textarea>
+        <div class="btn-block">
+          <button class="btn-analyze">გაანალიზე</button>
+        </div>
     </section>
-
     <section id="analyze-section" class="analyze-section">
         <div class="parts">
             <p class="analyze-part">ნაწილები</p>
