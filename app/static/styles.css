@@ -91,8 +91,18 @@ body {
 }
 
 .btn-block {
+    margin: auto;
+    margin-top: 32px;
+    position: relative;
+    display: flex;
+    align-items: center;
+}
+
+.clear-icon{
+    display: none;
+    position: absolute;
+    left: 4px;
   margin: auto;
-  margin-top: 32px;
 }
 
 .btn-analyze {
@@ -146,4 +156,116 @@ footer {
   display: flex;
   align-items: center;
 
+}
+
+.analyze-section {
+    max-width: 960px;
+    width: 100%;
+    margin: auto;
+    margin-top: 64px;
+    display: none;
+    justify-content: center;
+    flex-direction: column;
+}
+
+.display-flex{
+    display: flex;
+}
+
+.parts{
+    display: flex;
+}
+
+.analyze-part{
+    width: 50%;
+    text-align: center;
+    font-size: 18px;
+    border: 1px solid #707070;
+}
+
+.grammar-blocks{
+    display: flex;
+    justify-content: space-around;
+    flex-wrap: wrap;
+    border: 1px solid #707070;
+    border-top: none;
+}
+
+.grammar-block{
+    width: 44%;
+    border: 1px solid #707070;
+    margin-top: 32px;
+    min-height: 128px;
+    display: flex;
+    flex-direction: column;
+}
+
+.grammar-block-header{
+    font-size: 22px;
+    padding-left: 22px;
+    font-weight: bold;
+    color: white;
+}
+
+.gram-textarea{
+    min-width: 100%;
+    resize: none;
+    border: none;
+    outline: none;
+    height: auto;
+    flex: 1;
+    font-size: 18px;
+    padding-left: 5px;
+}
+
+.hidden{
+    opacity: 0;
+}
+
+.block-last{
+    margin-bottom: 32px;
+}
+
+.block-1>.grammar-block-header{
+    background-color: #3BC18E;
+}
+
+.block-2>.grammar-block-header{
+    background-color: #D1BF33;
+}
+
+.block-3>.grammar-block-header{
+    background-color: #3B83C1;
+}
+
+.block-4>.grammar-block-header{
+    background-color: #E68989;
+}
+
+.block-5>.grammar-block-header{
+    background-color: #238463;
+}
+
+.block-6>.grammar-block-header{
+    background-color: #D69822;
+}
+
+.block-7>.grammar-block-header{
+    background-color: #BC1E9E;
+}
+
+.block-8>.grammar-block-header{
+    background-color: #4DB44D;
+}
+
+.block-9>.grammar-block-header{
+    background-color: #9DC13B;
+}
+
+.block-10{
+    background-color: #E31313;
+}
+
+.block-11{
+    background-color: #567188;
 }

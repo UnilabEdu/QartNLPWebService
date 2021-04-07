@@ -5,15 +5,12 @@
     <title>QartNLP</title>
     <link rel="stylesheet" href="../static/styles.css" />
     <link rel="stylesheet" href="../static/fonts.css" />
-
   </head>
-
   <body>
     <header id="header">
       <nav class="navigation">
         <div class="nav-left">
           <h2>QARTNLP</h2>
-
         </div>
         <div class="nav-right">
           <ul>
@@ -27,20 +24,89 @@
         </div>
       </nav>
     </header>
-
     <section class="processing-lang">
-      <h2>ქართული ენის ციფრული დამუშავება</h2>
-      <textarea
-        class="prtext"
-        name="text"
-        id="prtext"
-        placeholder="ჩააკოპირე ქართული ტექსტი, ნახე როგორ მუშაობს სისტემა."
-      ></textarea>
-      <div class="btn-block">
-        <button class="btn-analyze">გაანალიზე</button>
-      </div>
+        <h2>ქართული ენის ციფრული დამუშავება</h2>
+        <textarea class="prtext" name="text" id="prtext" placeholder="ჩააკოპირე ქართული ტექსტი, ნახე როგორ მუშაობს სისტემა."></textarea>
+        <div class="btn-block">
+            <img src="../assets/clear.svg" alt="reload" id="clear-icon" class="clear-icon">
+            <button id="analyze-button" class="btn-analyze">გაანალიზე</button>
+        </div>
     </section>
-
+    <section id="analyze-section" class="analyze-section">
+        <div class="parts">
+            <p class="analyze-part">ნაწილები</p>
+            <p class="analyze-part">ნაწილები</p>
+        </div>
+        <div class="grammar-blocks">
+            <div class="grammar-block block-1">
+                <h6 class="grammar-block-header">
+                    არსებითი სახელი
+                </h6>
+                <textarea readonly name="gram" class="gram-textarea" id=""></textarea>
+            </div>
+            <div class="grammar-block block-2">
+                <h6 class="grammar-block-header">
+                    ზედსართავი სახელი
+                </h6>
+                <textarea readonly name="gram" class="gram-textarea" id=""></textarea>
+            </div>
+            <div class="grammar-block block-3">
+                <h6 class="grammar-block-header">
+                    რიცხვითი სახელი
+                </h6>
+                <textarea readonly name="gram" class="gram-textarea" id=""></textarea>
+            </div>
+            <div class="grammar-block block-4">
+                <h6 class="grammar-block-header">
+                    ნაცვალსახელი
+                </h6>
+                <textarea readonly name="gram" class="gram-textarea" id=""></textarea>
+            </div>
+            <div class="grammar-block block-5">
+                <h6 class="grammar-block-header">
+                    კავშირი
+                </h6>
+                <textarea readonly name="gram" class="gram-textarea" id=""></textarea>
+            </div>
+            <div class="grammar-block block-6">
+                <h6 class="grammar-block-header">
+                    ნაწილაკი
+                </h6>
+                <textarea readonly name="gram" class="gram-textarea" id=""></textarea>
+            </div>
+            <div class="grammar-block block-7">
+                <h6 class="grammar-block-header">
+                    ზმნიზედა
+                </h6>
+                <textarea readonly name="gram" class="gram-textarea" id=""></textarea>
+            </div>
+            <div class="grammar-block block-8">
+                <h6 class="grammar-block-header">
+                    თანდებული
+                </h6>
+                <textarea readonly name="gram" class="gram-textarea" id=""></textarea>
+            </div>
+            <div class="grammar-block block-9">
+                <h6 class="grammar-block-header">
+                    შორისდებული
+                </h6>
+                <textarea readonly name="gram" class="gram-textarea" id=""></textarea>
+            </div>
+            <div class="grammar-block block-10">
+                <h6 class="grammar-block-header">
+                    ზმნა
+                </h6>
+                <textarea readonly name="gram" class="gram-textarea" id=""></textarea>
+            </div>
+            <div class="grammar-block block-last block-11">
+                <h6 class="grammar-block-header">
+                    მიმღეობა
+                </h6>
+                <textarea readonly name="gram" class="gram-textarea" id=""></textarea>
+            </div>
+            <i aria-hidden="true" class="grammar-block hidden"></i>
+        </div>
+    </section>
     <footer>
       <div class="footer-container">
         <div class="footer-l__block">
@@ -66,31 +132,6 @@
       </div>
     </footer>
 
-        </div>
-        <div class="nav-right">
-          <ul>
-            <li class="list-item"><a href="#">მთავარი</a></li>
-            <li class="list-item"><a href="">დოკუმენტაცია</a></li>
-            <li class="list-item"><a href="">ჩვენს შესახებ</a></li>
-            <li class="icon">
-              <img src="../assets/header-logo.svg" alt="logo" />
-            </li>
-          </ul>
-        </div>
-      </nav>
-    </header>
-
-    <section class="processing-lang">
-      <h2>ქართული ენის ციფრული დამუშავება</h2>
-      <textarea
-        class="prtext"
-        name="text"
-        id="prtext"
-        placeholder="ჩააკოპირე ქართული ტექსტი, ნახე როგორ მუშაობს სისტემა."
-      ></textarea>
-      <div class="btn-block">
-        <button class="btn-analyze">გაანალიზე</button>
-      </div>
-    </section>
-  </body>
+    <script src="../static/scripts.js"></script>
+</body>
 </html>
