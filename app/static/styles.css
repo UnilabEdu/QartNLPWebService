@@ -275,6 +275,58 @@ footer {
     background-color: #567188;
 }
 
+.hidden{
+    opacity: 0;
+}
+
+.block-last{
+    margin-bottom: 32px;
+}
+
+.block-1>.grammar-block-header{
+    background-color: #3BC18E;
+}
+
+.block-2>.grammar-block-header{
+    background-color: #D1BF33;
+}
+
+.block-3>.grammar-block-header{
+    background-color: #3B83C1;
+}
+
+.block-4>.grammar-block-header{
+    background-color: #E68989;
+}
+
+.block-5>.grammar-block-header{
+    background-color: #238463;
+}
+
+.block-6>.grammar-block-header{
+    background-color: #D69822;
+}
+
+.block-7>.grammar-block-header{
+    background-color: #BC1E9E;
+}
+
+.block-8>.grammar-block-header{
+    background-color: #4DB44D;
+}
+
+.block-9>.grammar-block-header{
+    background-color: #9DC13B;
+}
+
+.block-10{
+    background-color: #E31313;
+}
+
+.block-11{
+    background-color: #567188;
+}
+
 .login-bg{
   position: fixed;
   width:100%;

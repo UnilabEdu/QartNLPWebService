@@ -28,3 +28,4 @@ window.onclick = (event) => {
     if (event.target == loginContent) 
         loginContent.classList.remove("active-login");
 };
+
