@@ -16,3 +16,16 @@ function analyzeButton(){
 }
 
 analyzeButton();
+
+const loginBtn = document.querySelector('.login');
+const loginContent = document.querySelector('.login-bg');
+
+loginBtn.addEventListener('click',()=>{
+    loginContent.classList.add('active-login');
+})
+
+window.onclick = (event) => {
+    if (event.target == loginContent) 
+        loginContent.classList.remove("active-login");
+};
+
