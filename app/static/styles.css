@@ -213,14 +213,10 @@ footer {
 }
 
 .gram-textarea{
-    min-width: 100%;
-    resize: none;
-    border: none;
-    outline: none;
-    height: auto;
     flex: 1;
     font-size: 18px;
     padding-left: 5px;
+    background-color: white;
 }
 
 .hidden{
