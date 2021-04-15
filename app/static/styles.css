@@ -2,10 +2,10 @@
   margin: 0;
   padding: 0;
   box-sizing: border-box;
-}
 
-body{
+=======
   font-family: "Sandro", sans-serif;
+
 }
 
 .navigation {
@@ -213,14 +213,10 @@ footer {
 }
 
 .gram-textarea{
-    min-width: 100%;
-    resize: none;
-    border: none;
-    outline: none;
-    height: auto;
     flex: 1;
     font-size: 18px;
     padding-left: 5px;
+    background-color: white;
 }
 
 .hidden{
@@ -401,7 +397,6 @@ footer {
   border:1px solid#707070;
   cursor: pointer;
 }
-
 .registration-button{
   position: absolute;
   bottom:0px;
@@ -415,36 +410,4 @@ footer {
   border:none;
   outline:none;
   cursor:pointer;
-}
-
-.people{
-  display: flex;
-  width: 90%;
-  max-width: 1792px;
-  margin: auto;
-  margin-top: 64px;
-  flex-wrap: wrap;
-  justify-content: space-between;
-  margin: auto;
-}
-
-.person{
-  display: flex;
-  width: 45%;
-  margin-top: 64px;
-}
-
-.person-info{
-  margin-left: 32px;
-  overflow-y: auto;
-}
-
-.person-description{
-  font-size: 18px;
-}
-
-.person>img{
-  width: 256px;
-  height: 256px;
-  object-fit: cover;
 }
