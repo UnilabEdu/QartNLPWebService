@@ -1,0 +1,423 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+.navigation {
+  position: relative;
+  background-color: #172224;
+  color: white;
+  display: flex;
+  padding: 10px 20px;
+  justify-content: space-between;
+  align-items: center;
+  z-index:3;
+}
+
+.nav-right ul {
+  list-style: none;
+  font-size: 27px;
+  display: flex;
+  align-items: center;
+}
+
+.list-item a {
+  font-family: "Sandro";
+  text-decoration: none;
+  color: white;
+}
+
+.nav-left {
+  color: white;
+  font-size: 42px;
+}
+
+.icon {
+  font-size: 20px;
+  cursor:pointer;
+}
+
+.list-item:after {
+  content: "";
+  display: inline-block;
+  width: 1px;
+  height: 20px;
+  background-color: white;
+  margin: 0 50px;
+}
+
+body {
+  padding: 0;
+  margin: 0;
+  background-color: #ebebeb;
+  box-sizing: border-box;
+}
+
+.processing-lang {
+  max-width: 960px;
+  width: 100%;
+  margin: auto;
+  margin-top: 64px;
+  /* margin-bottom: 433px; */
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+}
+
+.processing-lang h2 {
+  font-size:34px;
+  font-family: "Sandro";
+  text-align: center;
+  margin-bottom: 87px;
+}
+
+.prtext {
+  width: 960px;
+  height: 288px;
+  padding: 4px 35px;
+  background-color: #fff;
+  border: 1px solid#172224;
+  font-size: 22px;
+  font-family: "Sandro";
+  resize: none;
+}
+
+.prtext:focus {
+  outline: none;
+}
+
+.prtext::placeholder {
+  font-size: 22px;
+  color: #172224;
+  opacity: 0.5;
+}
+
+.btn-block {
+    margin: auto;
+    margin-top: 32px;
+    position: relative;
+    display: flex;
+    align-items: center;
+}
+
+.clear-icon{
+    display: none;
+    position: absolute;
+    left: 7px;
+    margin: auto;
+}
+.clear-bt:last-child{
+  padding-left: 58px; /*იგივეა რაც ღილაკიდან 20px*/
+  padding-right: 7px;
+}
+
+.btn-analyze {
+  padding: 2px 46px 8px;
+  font-size: 34px;
+  text-align: center;
+  background-color: #172224;
+  font-family: "Sandro";
+  color: #ffffff;
+  cursor: pointer;
+  outline: none;
+  border: none;
+
+}
+
+/* footer */
+
+footer {
+  position:relative;
+  z-index: 3;
+  margin-top: 18rem;
+}
+
+.footer-container {
+  width: 100%;
+  padding: 20px;
+  background-color: #2c3532;
+  display: flex;
+  justify-content: space-between;
+}
+.footer-l__block {
+  display: flex;
+  align-items: center;
+}
+
+.github-logo {
+  margin-right: 32px;
+}
+.created-by__title {
+  font-family: "Sandro";
+  color: #ffffff;
+  font-size: 12px;
+  width: 571px;
+}
+.footer-r__block {
+  display: flex;
+}
+.univeristy-logo {
+  margin-right: 11px;
+}
+
+.university-name__title {
+  font-family: "Sandro";
+  color: #ffffff;
+  font-size: 12px;
+  display: flex;
+  align-items: center;
+
+}
+
+.analyze-section {
+    max-width: 960px;
+    width: 100%;
+    margin: auto;
+    margin-top: 15px;
+    display: none;
+    justify-content: center;
+    flex-direction: column;
+}
+
+.display-flex{
+    display: flex;
+}
+
+.parts{
+    display: flex;
+}
+
+.analyze-part{
+    width: 50%;
+    text-align: center;
+    font-family: "Sandro";
+    padding:7px 0 4px;
+    font-size: 18px;
+    border: 1px solid #707070;
+}
+
+.grammar-blocks{
+    display: flex;
+    justify-content: space-around;
+    flex-wrap: wrap;
+    border: 1px solid #707070;
+    border-top: none;
+    font-family: "Sandro";
+}
+
+.grammar-block{
+    width: 44%;
+    border: 1px solid #707070;
+    margin-top: 32px;
+    min-height: 128px;
+    display: flex;
+    flex-direction: column;
+}
+
+.grammar-block-header{
+    font-size: 22px;
+    padding:3px 22px 5px;
+    font-weight: bold;
+    color: white;
+}
+
+.gram-textarea{
+    flex: 1;
+    font-size: 18px;
+    padding-left: 5px;
+    background-color: white;
+}
+
+.hidden{
+    opacity: 0;
+}
+
+.block-last{
+    margin-bottom: 32px;
+}
+
+.block-1>.grammar-block-header{
+    background-color: #3BC18E;
+}
+
+.block-2>.grammar-block-header{
+    background-color: #D1BF33;
+}
+
+.block-3>.grammar-block-header{
+    background-color: #3B83C1;
+}
+
+.block-4>.grammar-block-header{
+    background-color: #E68989;
+}
+
+.block-5>.grammar-block-header{
+    background-color: #238463;
+}
+
+.block-6>.grammar-block-header{
+    background-color: #D69822;
+}
+
+.block-7>.grammar-block-header{
+    background-color: #BC1E9E;
+}
+
+.block-8>.grammar-block-header{
+    background-color: #4DB44D;
+}
+
+.block-9>.grammar-block-header{
+    background-color: #9DC13B;
+}
+
+.block-10{
+    background-color: #E31313;
+}
+
+.block-11{
+    background-color: #567188;
+}
+
+.hidden{
+    opacity: 0;
+}
+
+.block-last{
+    margin-bottom: 32px;
+}
+
+.block-1>.grammar-block-header{
+    background-color: #3BC18E;
+}
+
+.block-2>.grammar-block-header{
+    background-color: #D1BF33;
+}
+
+.block-3>.grammar-block-header{
+    background-color: #3B83C1;
+}
+
+.block-4>.grammar-block-header{
+    background-color: #E68989;
+}
+
+.block-5>.grammar-block-header{
+    background-color: #238463;
+}
+
+.block-6>.grammar-block-header{
+    background-color: #D69822;
+}
+
+.block-7>.grammar-block-header{
+    background-color: #BC1E9E;
+}
+
+.block-8>.grammar-block-header{
+    background-color: #4DB44D;
+}
+
+.block-9>.grammar-block-header{
+    background-color: #9DC13B;
+}
+
+.block-10{
+    background-color: #E31313;
+}
+
+.block-11{
+    background-color: #567188;
+}
+
+.login-bg{
+  position: fixed;
+  width:100%;
+  height:100%;
+  top:0;
+  left:0;
+  display: none;
+  justify-content: center;
+  align-items: center;
+  z-index: 2;
+  background-color: rgba(23, 34, 36, 0.38);
+}
+
+.active-login {
+  display:flex;
+}
+
+.login-content{
+  position:relative;
+  width:512px;
+  height:480px;
+  background-color: #172224;
+  border:1px solid#707070;
+}
+.login-content h2 {
+  margin-top:22px;
+  margin-bottom:33px;
+  font-size:34px;
+  font-family:Sandro;
+  text-align:center;
+  color:#fff;
+}
+.addit-login{
+  display:flex;
+  justify-content: center;
+  margin-bottom:32.88px;
+}
+.img-additional:first-child {
+  margin-right:64.74px;
+}
+.login-inputs{
+  display: flex;
+  justify-content: center;
+}
+.login-input {
+  display: flex;
+  justify-content: center;
+  width: 256px;
+  height:32px;
+  margin-bottom:32px;
+  padding:3px 8px 7px;
+  background-color: #FFFFFF;
+  font-size:18px;
+  font-family:Sandro;
+  color:#707070;
+  border:1px solid#707070;
+  outline:none;
+}
+.login-input::placeholder {
+  font-size:18px;
+  font-family:Sandro;
+  color:#707070;
+}
+.login-btn{
+  margin:auto;
+  display:flex;
+  padding:2px 41px 7px;
+  background-color:#707070;
+  font-size:18px;
+  font-family:Sandro;
+  color:#FFFFFF;
+  border:1px solid#707070;
+  cursor: pointer;
+}
+.registration-button{
+  position: absolute;
+  bottom:0px;
+  left:50%;
+  transform: translateX(-50%);
+  margin-bottom:37px;
+  font-size:18px;
+  font-family:Sandro;
+  color:#FFF;
+  background-color:transparent;
+  border:none;
+  outline:none;
+  cursor:pointer;
+}
