@@ -1,7 +1,7 @@
-function analyzeButton(){
-    const btn = document.getElementById('analyze-button');
-    const grammarSection = document.getElementById('analyze-section');
-    const clearBtn = document.getElementById('clear-icon');
+const btn = document.getElementById('analyze-button');
+const grammarSection = document.getElementById('analyze-section');
+const clearBtn = document.getElementById('clear-icon');
+if (btn){
     btn.addEventListener('click', ()=>{
         grammarSection.classList.toggle("display-flex");
         clearBtn.classList.toggle("display-flex");
@@ -15,8 +15,6 @@ function analyzeButton(){
     });
 }
 
-analyzeButton();
-
 const loginBtn = document.querySelector('.login');
 const loginContent = document.querySelector('.login-bg');
 
@@ -28,4 +26,3 @@ window.onclick = (event) => {
     if (event.target == loginContent) 
         loginContent.classList.remove("active-login");
 };
-
