@@ -94,18 +94,16 @@ body {
 }
 
 .btn-block {
-    margin: auto;
-    margin-top: 32px;
-    position: relative;
-    display: flex;
-    align-items: center;
+  margin: auto;
+  margin-top: 32px;
+  position: relative;
+  display: flex;
+  align-items: center;
 }
 
 .clear-icon{
-    display: none;
-    position: absolute;
-    left: 4px;
-  margin: auto;
+  display: none;
+  margin-right: 10px;
 }
 
 .btn-analyze {
@@ -117,7 +115,8 @@ body {
   cursor: pointer;
   outline: none;
   border: none;
-
+  display: flex;
+  align-items: center;
 }
 
 /* footer */
@@ -430,7 +429,6 @@ footer {
 
 .person-info{
   margin-left: 32px;
-  overflow-y: auto;
 }
 
 .person-description{
