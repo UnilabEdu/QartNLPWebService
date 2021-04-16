@@ -80,6 +80,8 @@ body {
   border: 1px solid#172224;
   font-size: 22px;
   font-family: "Sandro";
+  background-color: #fff;
+  border: 1px solid#172224;
   resize: none;
 }
 
@@ -102,10 +104,10 @@ body {
 }
 
 .clear-icon{
-    display: none;
-    position: absolute;
-    left: 7px;
-    margin: auto;
+  display: none;
+  position: absolute;
+  left: 7px;
+  margin: auto;
 }
 .clear-bt:last-child{
   padding-left: 58px; /*იგივეა რაც ღილაკიდან 20px*/
@@ -118,6 +120,15 @@ body {
   text-align: center;
   background-color: #172224;
   font-family: "Sandro";
+  left: 4px;
+  margin: auto;
+}
+
+.btn-analyze {
+  padding: 8px 46px;
+  font-size: 34px;
+  text-align: center;
+  background-color: #172224;
   color: #ffffff;
   cursor: pointer;
   outline: none;
@@ -391,10 +402,11 @@ footer {
   border:1px solid#707070;
   outline:none;
 }
-.login-input::placeholder {
+
+.login-input::placeholder { 
   font-size:18px;
   font-family:Sandro;
-  color:#707070;
+  color:#707070; 
 }
 .login-btn{
   margin:auto;

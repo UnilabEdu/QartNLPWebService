@@ -12,7 +12,7 @@ function analyzeButton(){
         }else{
             btn.innerHTML = 'გაანალიზე';
             btn.classList.remove('clear-bt');
-            btn.style.background = '#172224';
+            btn.style.background = '#707070';
         }
     });
 }
@@ -27,6 +27,6 @@ loginBtn.addEventListener('click',()=>{
 })
 
 window.onclick = (event) => {
-    if (event.target == loginContent)
+    if (event.target == loginContent) 
         loginContent.classList.remove("active-login");
 };
