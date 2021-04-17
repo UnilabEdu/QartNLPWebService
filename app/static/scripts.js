@@ -7,10 +7,12 @@ function analyzeButton(){
         clearBtn.classList.toggle("display-flex");
         if(btn.innerHTML == 'გაანალიზე'){
             btn.innerHTML = 'გაასუფთავე';
+            btn.classList.add('clear-bt');
             btn.style.background = '#707070';
         }else{
             btn.innerHTML = 'გაანალიზე';
-            btn.style.background = '#172224';
+            btn.classList.remove('clear-bt');
+            btn.style.background = '#707070';
         }
     });
 }
@@ -28,4 +30,3 @@ window.onclick = (event) => {
     if (event.target == loginContent) 
         loginContent.classList.remove("active-login");
 };
-
