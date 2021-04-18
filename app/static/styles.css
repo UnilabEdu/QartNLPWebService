@@ -4,6 +4,10 @@
   box-sizing: border-box;
 }
 
+body{
+  font-family: "Sandro", sans-serif;
+}
+
 .navigation {
   position: relative;
   background-color: #172224;
@@ -96,15 +100,16 @@ body {
 }
 
 .btn-block {
-    margin: auto;
-    margin-top: 32px;
-    position: relative;
-    display: flex;
-    align-items: center;
+  margin: auto;
+  margin-top: 32px;
+  position: relative;
+  display: flex;
+  align-items: center;
 }
 
 .clear-icon{
   display: none;
+  margin-right: 10px;
   position: absolute;
   left: 7px;
   margin: auto;
@@ -133,7 +138,8 @@ body {
   cursor: pointer;
   outline: none;
   border: none;
-
+  display: flex;
+  align-items: center;
 }
 
 /* footer */
@@ -432,4 +438,39 @@ footer {
   border:none;
   outline:none;
   cursor:pointer;
+}
+.people{
+  display: flex;
+  width: 90%;
+  max-width: 1792px;
+  margin: auto;
+  margin-top: 64px;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  margin: auto;
+}
+
+.person{
+  display: flex;
+  width: 45%;
+  margin-top: 64px;
+}
+
+.person-info{
+  margin-left: 32px;
+}
+
+.person-description{
+  font-size: 18px;
+  margin-top: 20px;
+}
+
+.person-job{
+  margin-top: 15px;
+}
+
+.person>img{
+  width: 256px;
+  height: 256px;
+  object-fit: cover;
 }

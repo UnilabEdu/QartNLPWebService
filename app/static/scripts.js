@@ -1,23 +1,22 @@
-function analyzeButton(){
-    const btn = document.getElementById('analyze-button');
-    const grammarSection = document.getElementById('analyze-section');
-    const clearBtn = document.getElementById('clear-icon');
+const btn = document.getElementById('analyze-button');
+const grammarSection = document.getElementById('analyze-section');
+const clearIcon = document.getElementById('clear-icon');
+const clearText = document.getElementById('analyze-text');
+if (btn){
     btn.addEventListener('click', ()=>{
         grammarSection.classList.toggle("display-flex");
-        clearBtn.classList.toggle("display-flex");
-        if(btn.innerHTML == 'გაანალიზე'){
-            btn.innerHTML = 'გაასუფთავე';
-            btn.classList.add('clear-bt');
+        clearIcon.classList.toggle("display-flex");
+        if(clearText.innerText == 'გაანალიზე'){
+            clearText.innerText = 'გაასუფთავე';
             btn.style.background = '#707070';
+            btn.style.padding = "8px";
         }else{
-            btn.innerHTML = 'გაანალიზე';
-            btn.classList.remove('clear-bt');
-            btn.style.background = '#707070';
+            clearText.innerText = 'გაანალიზე';
+            btn.style.background = '#172224';
+            btn.style.padding = "8px 46px";
         }
     });
 }
-
-analyzeButton();
 
 const loginBtn = document.querySelector('.login');
 const loginContent = document.querySelector('.login-bg');
