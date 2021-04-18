@@ -462,6 +462,11 @@ footer {
 
 .person-description{
   font-size: 18px;
+  margin-top: 20px;
+}
+
+.person-job{
+  margin-top: 15px;
 }
 
 .person>img{
