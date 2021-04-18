@@ -16,7 +16,7 @@
           <ul>
             <li class="list-item"><a href="#">მთავარი</a></li>
             <li class="list-item"><a href="">დოკუმენტაცია</a></li>
-            <li class="list-item"><a href="">ჩვენს შესახებ</a></li>
+            <li class="list-item"><a href="about.html">ჩვენს შესახებ</a></li>
             <li class="icon login">
               <img src="../assets/header-logo.svg" alt="logo" />
             </li>
@@ -26,31 +26,31 @@
     </header>
 
     <div class="login-bg">
-        <div class="login-content">
-            <h2>ავტორიზაცია</h2>
-            <div class="addit-login">
-                    <img class="img-additional" src="../assets/Path3452.svg" alt="Github"/>
-                    <img class="img-additional" src="../assets/RepeatGrid1.svg" alt="Gmail"/>
-            </div>
-            <div class="login-inputs">
-                <form action="" method="POST">
-                    <input type="email" name="email" id="email" class="login-input" placeholder="ელფოსტა">
-                    <input type="password" name="password" id="password" class="login-input" placeholder="პაროლი">
-                    <button class="login-btn">შესვლა</button>
-                </form>
-            </div>
-            <a href="#">
-                <button class="registration-button">რეგისტრაცია</button>
-            </a>
-        </div>
+      <div class="login-content">
+          <h2>ავტორიზაცია</h2>
+          <div class="addit-login">
+                  <img class="img-additional" src="../assets/Path3452.svg" alt="Github"/>
+                  <img class="img-additional" src="../assets/RepeatGrid1.svg" alt="Gmail"/>
+          </div>
+          <div class="login-inputs">
+              <form action="" method="POST">
+                  <input type="email" name="email" id="email" class="login-input" placeholder="ელფოსტა">
+                  <input type="password" name="password" id="password" class="login-input" placeholder="პაროლი">
+                  <button class="login-btn">შესვლა</button>
+              </form>
+          </div>
+            <button class="registration-button">რეგისტრაცია</button>
+      </div>
     </div>
 
     <section class="processing-lang">
         <h2>ქართული ენის ციფრული დამუშავება</h2>
         <textarea class="prtext" name="text" id="prtext" placeholder="ჩააკოპირე ქართული ტექსტი, ნახე როგორ მუშაობს სისტემა."></textarea>
         <div class="btn-block">
-            <img src="../assets/clear.svg" alt="reload" id="clear-icon" class="clear-icon">
-            <button id="analyze-button" class="btn-analyze">გაანალიზე</button>
+            <button id="analyze-button" class="btn-analyze">
+              <img src="../assets/clear.svg" alt="reload" id="clear-icon" class="clear-icon">
+              <span id="analyze-text">გაანალიზე</span>
+            </button>
         </div>
     </section>
     <section id="analyze-section" class="analyze-section">
@@ -144,7 +144,7 @@
         </div>
         <div class="footer-r__block">
           <div class="univeristy-logo">
-            <img src="../assets/univeristy-logo.svg" alt="uny-logo" />
+            <img src="../assets/university-logo.svg" alt="uny-logo" />
           </div>
           <div class="university-name__title">
             ილიას სახელმწიფო უნივერსიტეტი

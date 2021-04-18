@@ -2,10 +2,10 @@
   margin: 0;
   padding: 0;
   box-sizing: border-box;
+}
 
-=======
+body{
   font-family: "Sandro", sans-serif;
-
 }
 
 .navigation {
@@ -27,6 +27,7 @@
 }
 
 .list-item a {
+  font-family: "Sandro";
   text-decoration: none;
   color: white;
 }
@@ -69,6 +70,8 @@ body {
 }
 
 .processing-lang h2 {
+  font-size:34px;
+  font-family: "Sandro";
   text-align: center;
   margin-bottom: 87px;
 }
@@ -76,10 +79,13 @@ body {
 .prtext {
   width: 960px;
   height: 288px;
-  padding: 5px;
+  padding: 4px 35px;
   background-color: #fff;
   border: 1px solid#172224;
   font-size: 22px;
+  font-family: "Sandro";
+  background-color: #fff;
+  border: 1px solid#172224;
   resize: none;
 }
 
@@ -94,17 +100,32 @@ body {
 }
 
 .btn-block {
-    margin: auto;
-    margin-top: 32px;
-    position: relative;
-    display: flex;
-    align-items: center;
+  margin: auto;
+  margin-top: 32px;
+  position: relative;
+  display: flex;
+  align-items: center;
 }
 
 .clear-icon{
-    display: none;
-    position: absolute;
-    left: 4px;
+  display: none;
+  margin-right: 10px;
+  position: absolute;
+  left: 7px;
+  margin: auto;
+}
+.clear-bt:last-child{
+  padding-left: 58px; /*იგივეა რაც ღილაკიდან 20px*/
+  padding-right: 7px;
+}
+
+.btn-analyze {
+  padding: 2px 46px 8px;
+  font-size: 34px;
+  text-align: center;
+  background-color: #172224;
+  font-family: "Sandro";
+  left: 4px;
   margin: auto;
 }
 
@@ -117,7 +138,8 @@ body {
   cursor: pointer;
   outline: none;
   border: none;
-
+  display: flex;
+  align-items: center;
 }
 
 /* footer */
@@ -144,6 +166,7 @@ footer {
   margin-right: 32px;
 }
 .created-by__title {
+  font-family: "Sandro";
   color: #ffffff;
   font-size: 12px;
   width: 571px;
@@ -156,6 +179,7 @@ footer {
 }
 
 .university-name__title {
+  font-family: "Sandro";
   color: #ffffff;
   font-size: 12px;
   display: flex;
@@ -167,7 +191,7 @@ footer {
     max-width: 960px;
     width: 100%;
     margin: auto;
-    margin-top: 64px;
+    margin-top: 15px;
     display: none;
     justify-content: center;
     flex-direction: column;
@@ -184,6 +208,8 @@ footer {
 .analyze-part{
     width: 50%;
     text-align: center;
+    font-family: "Sandro";
+    padding:7px 0 4px;
     font-size: 18px;
     border: 1px solid #707070;
 }
@@ -194,6 +220,7 @@ footer {
     flex-wrap: wrap;
     border: 1px solid #707070;
     border-top: none;
+    font-family: "Sandro";
 }
 
 .grammar-block{
@@ -207,7 +234,7 @@ footer {
 
 .grammar-block-header{
     font-size: 22px;
-    padding-left: 22px;
+    padding:3px 22px 5px;
     font-weight: bold;
     color: white;
 }
@@ -381,6 +408,7 @@ footer {
   border:1px solid#707070;
   outline:none;
 }
+
 .login-input::placeholder { 
   font-size:18px;
   font-family:Sandro;
@@ -410,4 +438,39 @@ footer {
   border:none;
   outline:none;
   cursor:pointer;
+}
+.people{
+  display: flex;
+  width: 90%;
+  max-width: 1792px;
+  margin: auto;
+  margin-top: 64px;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  margin: auto;
+}
+
+.person{
+  display: flex;
+  width: 45%;
+  margin-top: 64px;
+}
+
+.person-info{
+  margin-left: 32px;
+}
+
+.person-description{
+  font-size: 18px;
+  margin-top: 20px;
+}
+
+.person-job{
+  margin-top: 15px;
+}
+
+.person>img{
+  width: 256px;
+  height: 256px;
+  object-fit: cover;
 }
