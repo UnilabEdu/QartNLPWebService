@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <title>QartNLP</title>
+    <link rel="stylesheet" href="../static/styles.css" />
+    <link rel="stylesheet" href="../static/fonts.css" />
+  </head>
+  <body>
+    <header id="header">
+      <nav class="navigation">
+        <div class="nav-left">
+          <h2>QARTNLP</h2>
+        </div>
+        <div class="nav-right">
+          <ul>
+            <li class="list-item"><a href="home.html">მთავარი</a></li>
+            <li class="list-item"><a href="">დოკუმენტაცია</a></li>
+            <li class="list-item"><a href="#">ჩვენს შესახებ</a></li>
+            <li class="icon login">
+              <img src="../assets/header-logo.svg" alt="logo" />
+            </li>
+          </ul>
+        </div>
+      </nav>
+    </header>
+
+    <div class="login-bg">
+      <div class="login-content">
+          <h2>ავტორიზაცია</h2>
+          <div class="addit-login">
+                  <img class="img-additional" src="../assets/Path3452.svg" alt="Github"/>
+                  <img class="img-additional" src="../assets/RepeatGrid1.svg" alt="Gmail"/>
+          </div>
+          <div class="login-inputs">
+            <form onsubmit="return validation()" name="login" method="POST">
+                  <input type="email" name="email" id="email" class="login-input" placeholder="ელფოსტა" required>
+                  <input type="password" name="password" id="password" class="login-input" placeholder="პაროლი" required>
+                  <button class="login-btn">შესვლა</button>
+              </form>
+          </div>
+            <button class="registration-button">რეგისტრაცია</button>
+      </div>
+  </div>
+
+    <section id="about-section">
+        <div class="people">
+            <div class="person">
+                <img src="../assets/temur-chichua.png" alt="ფოტო">
+                <div class="person-info">
+                    <h2 class="person-name">თემურ ჩიჩუა</h2>
+                    <h2 class="person-job">ინსტრუქტორი</h2>
+                    <p class="person-description">AnimaChatbotics-ის მოქმედი Python დეველოპერი. მუშაობს სხვადასხვა კომპიუტერული მეცნიერების მიმართულებაზე. ასწავლის Python Development-ს ილიას სახელმწიფო უნივერსიტეტის ტექნოლოგიების ლაბორატორია “უნილაბსა” და “ექსპლორიუმში”</p>
+                </div>
+            </div>
+            <div class="person">
+                <img src="../assets/temuri-qitsohvili.png" alt="ფოტო">
+                <div class="person-info">
+                    <h2 class="person-name">თემური ქიტოშვილი</h2>
+                    <h2 class="person-job">
+                      ვებ-გვერდის ფუნქციონალი
+                      </h2>
+                    <p class="person-description">დამწყები დეველოპერი, პროგრამირება მისთვის საინტერესო და გამოწვევებით აღსავსე პროფესიაა. ის დაინტერესებულია ინოვაციური და კვლევითი პროექტებით. პროექტის ფარგლებში ჩართული იყო ქართული ენის დამუშავების ხელსაწყოების და მისი ვებ-გვერდზე ვიზუალური დემონსტრაციის შექმნაში/გამართვაში</p>
+                </div>
+            </div>
+            <div class="person">
+                <img src="../assets/mariam-kvantaliani.png" alt="ფოტო">
+                <div class="person-info">
+                    <h2 class="person-name">მარიამ კვანტალიანი</h2>
+                    <h2 class="person-job">მომხმარებლის ავტორიზაცია/რეგისტრაცია</h2>
+                    <p class="person-description">შეისწავლის ვებ დეველოპმენტს. დაინტერესებულია dig data
+                      მონაცემებთან მუშაობით და მათი ვიზუალიზაციით. მოსწონს ახალ და საინტერესო პროექტებზე მუშაობა.</p>
+                </div>
+            </div>
+            <div class="person">
+                <img src="../assets/alisa-sanakoevi.png" alt="ფოტო">
+                <div class="person-info">
+                    <h2 class="person-name">ალისა სანაკოევი</h2>
+                    <h2 class="person-job">მონაცემთა ბაზები</h2>
+                    <p class="person-description">ალისა არის ეკოლოგიის სტუდენტი და გველების ენთუზიასტი, თუმცა გველების შესწავლისას ნამდვილი პითონების გარდა ციფრულიც შემოესწავლა. ამიტომ ახლა QartNLP-ის გუნდის წევრიცაა. ძირითადად მუშაობს მონაცემთა ბაზებთან და შიგადაშიგ სხვის კოდშიც ჰყოფს ცხვირს.</p>
+                </div>
+            </div>
+            <div class="person">
+                <img src="../assets/nina-darsavelidze.png" alt="ფოტო">
+                <div class="person-info">
+                    <h2 class="person-name">ნინა დარსაველიძე</h2>
+                    <h2 class="person-job">დოკუმენტაცია და ვიზუალური მასალა</h2>
+                    <p class="person-description">ნინა ხელოვნებათმცოდნეა. პროგრამირებით სწავლის მიწურულს დაინტერესდა და UniLab-ში python-ის კურსის გავლის შემდეგ მიხვდა, რომ ამ ორი სფეროს გაერთიანება და არტისტებისთვის კიბერ სამყაროში ახალი შესაძლებლობების მიცემა მისთვის ყველაზე საინტერესო საქმიანობა მალე გახდებოდა. პროექტის ფარგლებში მუშაობდა დოკუმენტაციასა და ვიზუალურ მასალაზე. ასევე, ჩართული იყო ხელსაწყოთა ნაკრების შექმნაზე.</p>
+                </div>
+            </div>
+            <div class="person">
+                <img src="../assets/tengiz-ptaraia.png" alt="ფოტო">
+                <div class="person-info">
+                    <h2 class="person-name">თენგიზ პატარაია</h2>
+                    <h2 class="person-job">backend, celery</h2>
+                    <p class="person-description">თენგიზი კომპიუტერული ინჟინერიის მესამე კურსის სტუდენტი და gaziardi.ge ს ერთერთი დამფუძნებელია. ოცდამესამე მულტიმეტრის გადაწვის და რამოდენიმე ელეკტროშოკის შემდეგ მიხვდა რომ ელექტროობისგან შორს იყო და გადაწყვიტა პროგრამირებისთვის მიეყო ხელი. კურსის ფარგლებში ძირითადად მუშაობდა მონაცემთა პარალელური დამუშავების სისტემის გამართვაზე</p>
+                </div>
+            </div>
+        </div>
+    </section>
+    <footer>
+      <div class="footer-container">
+        <div class="footer-l__block">
+          <div class="github-logo">
+            <img src="../assets/github-logo.svg" alt="guthub-logo" />
+          </div>
+          <div class="created-by__title">
+            <p>
+              შექმნილია ილიას სახელმწიფო უნივერსიტეტის მორფოლოგიური
+              ანალიზაატორის ბაზაზე Unilab-ის ციფრული ლაბორატორიის Python
+              Development გუნდის მიერ.
+            </p>
+          </div>
+        </div>
+        <div class="footer-r__block">
+          <div class="univeristy-logo">
+            <img src="../assets/university-logo.svg" alt="uny-logo" />
+          </div>
+          <div class="university-name__title">
+            ილიას სახელმწიფო უნივერსიტეტი
+          </div>
+        </div>
+      </div>
+    </footer>
+
+    <script src="../static/scripts.js"></script>
+</body>
+</html>
