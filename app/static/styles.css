@@ -405,10 +405,10 @@ footer {
   outline:none;
 }
 
-.login-input::placeholder {
+.login-input::placeholder { 
   font-size:18px;
   font-family:Sandro;
-  color:#707070;
+  color:#707070; 
 }
 .login-btn{
   margin:auto;
@@ -461,9 +461,9 @@ footer {
 }
 
 .person-description{
-  font-family:Sandro;
-  font-size: 18px;
   margin-top: 20px;
+  font-size: 18px;
+  font-family:Sandro;
 }
 
 .person-job{
