@@ -102,7 +102,6 @@ body {
 .btn-block {
   margin: auto;
   margin-top: 32px;
-  position: relative;
   display: flex;
   align-items: center;
 }
@@ -110,7 +109,6 @@ body {
 .clear-icon{
   display: none;
   margin-right: 10px;
-  position: absolute;
   left: 7px;
   margin: auto;
 }
