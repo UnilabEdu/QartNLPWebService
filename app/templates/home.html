@@ -33,9 +33,13 @@
                   <img class="img-additional" src="../assets/RepeatGrid1.svg" alt="Gmail"/>
           </div>
           <div class="login-inputs">
-              <form action="" method="POST">
+              <form onsubmit="return validation()" name="login" method="POST">
+                <div class="email-input">
                   <input type="email" name="email" id="email" class="login-input" placeholder="ელფოსტა">
+                </div>
+                <div class="password-input">
                   <input type="password" name="password" id="password" class="login-input" placeholder="პაროლი">
+                </div>
                   <button class="login-btn">შესვლა</button>
               </form>
           </div>
