@@ -110,6 +110,7 @@ body {
 .clear-icon{
   display: none;
   margin-right: 10px;
+  position: absolute;
   left: 7px;
   margin: auto;
 }
