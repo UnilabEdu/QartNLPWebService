@@ -6,7 +6,7 @@ const grammarText = document.getElementById('prtext');
 if (btn){
     btn.addEventListener('click', ()=>{
         if(clearText.innerText == 'გაანალიზე'){
-            if (prtext.value == '') {
+            if (prtext.value.trim().length == 0) {
                 alert('გთხოვთ, შეიყვანეთ ტექსტი.');
             }else{
                 grammarSection.classList.toggle("display-flex");
