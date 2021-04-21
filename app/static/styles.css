@@ -3,7 +3,6 @@
   padding: 0;
   box-sizing: border-box;
 }
-
 .navigation {
   position: relative;
   background-color: #172224;
@@ -406,19 +405,16 @@ footer {
   border:1px solid#707070;
   outline:none;
 }
-
 .login-input::placeholder {
   font-size:18px;
   font-family:Sandro;
   color:#707070;
 }
-
 .emailwarning, .passwordvalidation{
   margin-top:3px;
   font-family:'Sandro';
   color:red;
 }
-
 .login-btn{
   margin:auto;
   display:flex;
@@ -460,11 +456,9 @@ footer {
   width: 45%;
   margin-top: 64px;
 }
-
 .person-name {
   font-family:Sandro;
 }
-
 .person-info{
   margin-left: 32px;
 }
