@@ -31,13 +31,41 @@ window.onclick = (event) => {
 };
 
 const validation = () => {
+  const divEmail = document.querySelector('.email-input');
+  const divPassword = document.querySelector('.password-input');
   let inputEmail = document.forms["login"]["email"].value;
   let inputPassword = document.forms["login"]["password"].value;
-  if (inputEmail == "") {
-    alert("Please enter your email");
+  const emailContext = () => {
+    if(divEmail.childNodes[3]===undefined){
+      const validEdiv = document.createElement('span');
+      validEdiv.classList.add('emailwarning');
+      validEdiv.textContent = 'გთხოვთ შეიყვანეთ მეილი';
+      divEmail.append(validEdiv);
+    }
+  }
+  const passwordContext = () => {
+    if(divPassword.childNodes[3]===undefined){
+      const validPdiv = document.createElement('span');
+      validPdiv.classList.add('passwordvalidation');
+      validPdiv.textContent = 'გთხოვთ შეიყვანეთ პაროლი';
+      divPassword.append(validPdiv);
+    }
+  }
+  if (inputEmail == "" && inputPassword == "") {
+    emailContext();
+    passwordContext();
     return false;
-  }else if(inputPassword ==""){
-    alert("Please enter your password");
+  }else if(inputPassword == "" && inputEmail !== ""){
+    if(divEmail.childNodes[3] !== undefined){
+      divEmail.childNodes[3].remove();
+    }
+    passwordContext();
+    return false;
+  }else if (inputPassword !== "" && inputEmail == ""){
+    emailContext()
+    if(divPassword.childNodes[3] !== undefined) {
+      divPassword.childNodes[3].remove();
+    }
     return false;
   }
 }

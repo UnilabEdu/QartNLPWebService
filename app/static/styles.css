@@ -390,12 +390,14 @@ footer {
   display: flex;
   justify-content: center;
 }
+.email-input,.password-input {
+  margin-bottom:32px;
+}
 .login-input {
   display: flex;
   justify-content: center;
   width: 256px;
   height:32px;
-  margin-bottom:32px;
   padding:3px 8px 7px;
   background-color: #FFFFFF;
   font-size:18px;
@@ -410,6 +412,13 @@ footer {
   font-family:Sandro;
   color:#707070;
 }
+
+.emailwarning, .passwordvalidation{
+  margin-top:3px;
+  font-family:'Sandro';
+  color:red;
+}
+
 .login-btn{
   margin:auto;
   display:flex;
