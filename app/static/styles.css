@@ -3,11 +3,6 @@
   padding: 0;
   box-sizing: border-box;
 }
-
-body{
-  font-family: "Sandro", sans-serif;
-}
-
 .navigation {
   position: relative;
   background-color: #172224;
@@ -109,7 +104,6 @@ body {
 .clear-icon{
   display: none;
   margin-right: 10px;
-  left: 7px;
   margin: auto;
 }
 .clear-bt:last-child{
@@ -392,12 +386,14 @@ footer {
   display: flex;
   justify-content: center;
 }
+.email-input,.password-input {
+  margin-bottom:32px;
+}
 .login-input {
   display: flex;
   justify-content: center;
   width: 256px;
   height:32px;
-  margin-bottom:32px;
   padding:3px 8px 7px;
   background-color: #FFFFFF;
   font-size:18px;
@@ -406,11 +402,15 @@ footer {
   border:1px solid#707070;
   outline:none;
 }
-
-.login-input::placeholder { 
+.login-input::placeholder {
   font-size:18px;
   font-family:Sandro;
-  color:#707070; 
+  color:#707070;
+}
+.emailwarning, .passwordvalidation{
+  margin-top:3px;
+  font-family:'Sandro';
+  color:red;
 }
 .login-btn{
   margin:auto;
@@ -453,22 +453,98 @@ footer {
   width: 45%;
   margin-top: 64px;
 }
-
+.person-name {
+  font-family:Sandro;
+}
 .person-info{
   margin-left: 32px;
 }
 
 .person-description{
+  font-family:Sandro;
   font-size: 18px;
   margin-top: 20px;
 }
 
 .person-job{
   margin-top: 15px;
+  font-family:Sandro;
 }
 
 .person>img{
   width: 256px;
   height: 256px;
   object-fit: cover;
+}
+
+.file-block {
+  margin-bottom:32px;
+}
+
+.files_page_content{
+  max-width:1537px;
+  width:100%;
+  margin:auto;
+  margin-top:41.9px;
+}
+
+.file_content_heading {
+  margin-bottom:32px;
+}
+
+.file_content_heading h2{
+  font-size:24px;
+  font-family: 'ArialCaps';
+  font-weight: normal;
+  color:#172224;
+}
+
+.files-flex-content{
+  display:flex;
+  justify-content: space-between;
+}
+
+.file-data{
+  margin-bottom:10px;
+}
+
+.file-data span {
+  position:relative;
+  color:#172224;
+  font-size:18px;
+  font-family:Sandro;
+}
+
+.file-data span:first-child {
+  padding-right:60px;
+}
+.file-data span:first-child:after {
+  content:'';
+  position:absolute;
+  top:50%;
+  transform: translateY(-50%);
+  width:1px;
+  height:65%;
+  margin-left:30px;
+  background-color: #172224;
+}
+
+.file-content{
+  width:1472px;
+  background-color:#FFFFFF;
+  border:1px solid#707070;
+}
+
+.file-content h2 {
+  padding: 14px 15px 12px;
+  font-size:24px;
+  font-family:Sandro;
+  color:#172224;
+}
+
+.file-content p {
+  padding: 0 15px 25px;
+  font-family:Sandro;
+  font-size:18px;
+  color:#172224;
 }
