@@ -481,6 +481,23 @@ footer {
   margin-bottom:32px;
 }
 
+.file-tools{
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.tool-container{
+  cursor: pointer;
+  width: 32px;
+  height: 32px;
+  background-color: white;
+  border: 1px solid black;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
 .files_page_content{
   max-width:1537px;
   width:100%;
@@ -547,4 +564,22 @@ footer {
   font-family:Sandro;
   font-size:18px;
   color:#172224;
+}
+
+.file-btn-container{
+  margin: auto;
+  margin-top: 32px;
+  display: flex;
+  justify-content: center;
+}
+
+.btn-file{
+  padding: 2px 46px 8px;
+  font-size: 34px;
+  text-align: center;
+  background-color: #172224;
+  font-family: "Sandro";
+  left: 4px;
+  color: white;
+  cursor: pointer;
 }
