@@ -22,6 +22,7 @@ if (btn){
             btn.style.background = '#172224';
             btn.style.padding = "8px 42px";
             btn.classList.remove('clear-bt');
+            grammarText.value= "";
         }
     });
 }
@@ -75,5 +76,10 @@ const validation = () => {
       divPassword.childNodes[3].remove();
     }
     return false;
+  }else{
+    localStorage.setItem('loginInfo', JSON.stringify({email:inputEmail,password:inputPassword }));
   }
 }
+// const variable = JSON.parse(localStorage.getItem('loginInfo'))
+// variable.email & variable.password
+// ასე დაასელექთებ მეილს ან პაროლს
