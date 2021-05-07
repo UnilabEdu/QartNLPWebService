@@ -7,7 +7,6 @@
   position: relative;
   background-color: #172224;
   color: white;
-  display: flex;
   padding: 10px 20px;
   justify-content: space-between;
   align-items: center;
@@ -482,7 +481,6 @@ footer {
 }
 
 .file-tools{
-  display: flex;
   flex-direction: column;
   justify-content: space-between;
 }
@@ -493,7 +491,6 @@ footer {
   height: 32px;
   background-color: white;
   border: 1px solid black;
-  display: flex;
   justify-content: center;
   align-items: center;
 }
@@ -569,7 +566,6 @@ footer {
 .file-btn-container{
   margin: auto;
   margin-top: 32px;
-  display: flex;
   justify-content: center;
 }
 
