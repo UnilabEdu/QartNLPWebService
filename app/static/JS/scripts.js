@@ -80,6 +80,10 @@ const validation = () => {
     localStorage.setItem('loginInfo', JSON.stringify({email:inputEmail,password:inputPassword }));
   }
 }
+const localInfo = JSON.parse(localStorage.getItem('loginInfo'));
+const localEmail = localInfo.email;
+const localPass = localInfo.password;
+console.log(localEmail, localPass);
 // const variable = JSON.parse(localStorage.getItem('loginInfo'))
 // variable.email & variable.password
 // ასე დაასელექთებ მეილს ან პაროლს
