@@ -88,17 +88,20 @@ const validation = () => {
   }
 }
 
-const dropDown = () =>{
-  
+const dropDown = name =>{
+  const dropdown = document.querySelector('#dropdown');
+  const userInfo = document.querySelector('#user-name');
+  userInfo.innerText = name;
+  dropdown.classList.toggle('active-dropdown');
+  loginBtn.style.marginLeft = '60px';
 }
 
 const userLogged = () => {
-  const userEmail = JSON.parse(localStorage.getItem('loginInfo')).email;
-  const userPass = JSON.parse(localStorage.getItem('loginInfo')).password;
+  const userName = JSON.parse(localStorage.getItem('loginInfo')).email.split('@')[0];
   const loginLogo = document.querySelector('.user-logo');
   loginLogo.src = '../assets/dif-head-logo.svg';
   loginBtn.removeEventListener('click', loginEvent);
-  loginBtn.addEventListener('click', dropDown);
+  loginBtn.addEventListener('click', dropDown(userName));
 }
 
 if (localStorage.loginInfo) {

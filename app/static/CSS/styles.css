@@ -33,7 +33,6 @@
 
 .icon {
   font-size: 20px;
-  cursor:pointer;
 }
 
 .list-item:after {
@@ -578,4 +577,26 @@ footer {
   left: 4px;
   color: white;
   cursor: pointer;
+}
+
+.user-logo{
+  cursor:pointer;
+}
+
+.user-logo path{ /* არ მუშაობს */ 
+  fill: #238463;
+}
+
+.login{
+  position: relative;
+}
+
+#dropdown{
+  display: none;
+  position: absolute;
+  right: 50%;
+}
+
+.active-dropdown{
+  display: block !important;
 }
