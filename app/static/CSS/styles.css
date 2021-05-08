@@ -591,12 +591,34 @@ footer {
   position: relative;
 }
 
-#dropdown{
+.my-files{
+  text-decoration: none;
   color: #172224;
+}
+
+.my-files::after{
+  content: '';
+  display: block;
+  width: 100%;
+  height: 1px;
+  background-color: #707070;
+  margin-top: 21px;
+}
+
+.user-info{
+  margin-top: 21px;
+  margin-bottom: 21px;
+}
+
+#dropdown{
+  color: #172224;;
+  background-color: white;
   display: none;
   position: absolute;
   right: 60px;
   top: 0;
+  font-size: 18px;
+  padding: 20px 10px;
 }
 
 .active-dropdown{
