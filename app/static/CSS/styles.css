@@ -592,11 +592,17 @@ footer {
 }
 
 #dropdown{
+  color: #172224;
   display: none;
   position: absolute;
-  right: 50%;
+  right: 60px;
+  top: 0;
 }
 
 .active-dropdown{
   display: block !important;
+}
+
+.margin-dropdown{
+  margin-left: 100px;
 }
