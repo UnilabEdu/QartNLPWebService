@@ -30,9 +30,10 @@ if (btn){
 const loginBtn = document.querySelector('.login');
 const loginContent = document.querySelector('.login-bg');
 
-loginBtn.addEventListener('click',()=>{
-    loginContent.classList.add('active-login');
-})
+const loginEvent = () =>{
+  loginContent.classList.add('active-login');
+}
+loginBtn.addEventListener('click', loginEvent);
 
 window.onclick = (event) => {
     if (event.target == loginContent)
@@ -87,18 +88,21 @@ const validation = () => {
   }
 }
 
+const dropDown = () =>{
+  
+}
+
 const userLogged = () => {
   const userEmail = JSON.parse(localStorage.getItem('loginInfo')).email;
   const userPass = JSON.parse(localStorage.getItem('loginInfo')).password;
   const loginLogo = document.querySelector('.user-logo');
   loginLogo.src = '../assets/dif-head-logo.svg';
+  loginBtn.removeEventListener('click', loginEvent);
+  loginBtn.addEventListener('click', dropDown);
 }
 
 if (localStorage.loginInfo) {
   userLogged();
-  loginBtn.addEventListener('click', () => {
-    alert('ok');
-  });
 }
 
 // const variable = JSON.parse(localStorage.getItem('loginInfo'))
