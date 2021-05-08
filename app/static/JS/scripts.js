@@ -39,6 +39,11 @@ window.onclick = (event) => {
         loginContent.classList.remove("active-login");
 };
 
+// const submitBtn = document.querySelector('.login-btn');
+// submitBtn.addEventListener('submit', event => {
+//   event.preventDefault();
+// });
+
 const validation = () => {
   const divEmail = document.querySelector('.email-input');
   const divPassword = document.querySelector('.password-input');
@@ -71,19 +76,31 @@ const validation = () => {
     passwordContext();
     return false;
   }else if (inputPassword !== "" && inputEmail == ""){
-    emailContext()
+    emailContext();
     if(divPassword.childNodes[3] !== undefined) {
       divPassword.childNodes[3].remove();
     }
     return false;
   }else{
     localStorage.setItem('loginInfo', JSON.stringify({email:inputEmail,password:inputPassword }));
+    location.reload();
   }
 }
-const localInfo = JSON.parse(localStorage.getItem('loginInfo'));
-const localEmail = localInfo.email;
-const localPass = localInfo.password;
-console.log(localEmail, localPass);
+
+const userLogged = () => {
+  const userEmail = JSON.parse(localStorage.getItem('loginInfo')).email;
+  const userPass = JSON.parse(localStorage.getItem('loginInfo')).password;
+  const loginLogo = document.querySelector('.user-logo');
+  loginLogo.src = '../assets/dif-head-logo.svg';
+}
+
+if (localStorage.loginInfo) {
+  userLogged();
+  loginBtn.addEventListener('click', () => {
+    alert('ok');
+  });
+}
+
 // const variable = JSON.parse(localStorage.getItem('loginInfo'))
 // variable.email & variable.password
 // ასე დაასელექთებ მეილს ან პაროლს

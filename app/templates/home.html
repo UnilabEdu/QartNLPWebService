@@ -18,7 +18,7 @@
             <li class="list-item"><a href="files.html">დოკუმენტაცია</a></li>
             <li class="list-item"><a href="about.html">ჩვენს შესახებ</a></li>
             <li class="icon login">
-              <img src="../assets/header-logo.svg" alt="logo" />
+              <img src="../assets/header-logo.svg" alt="logo" class="user-logo" />
             </li>
           </ul>
         </div>
@@ -33,14 +33,14 @@
                   <img class="img-additional" src="../assets/RepeatGrid1.svg" alt="Gmail"/>
           </div>
           <div class="login-inputs">
-              <form onsubmit="return validation()" name="login" method="POST">
+              <form onsubmit="return validation(event.preventDefault())" name="login" method="POST">
                 <div class="email-input">
                   <input type="email" name="email" id="email" class="login-input" placeholder="ელფოსტა">
                 </div>
                 <div class="password-input">
                   <input type="password" name="password" id="password" class="login-input" placeholder="პაროლი">
                 </div>
-                  <button class="login-btn">შესვლა</button>
+                 <input type="submit" value="შესვლა" class="login-btn">
               </form>
           </div>
             <button class="registration-button">რეგისტრაცია</button>
