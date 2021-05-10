@@ -3,6 +3,7 @@
   padding: 0;
   box-sizing: border-box;
 }
+
 .navigation {
   position: relative;
   background-color: #172224;
@@ -580,15 +581,12 @@ footer {
 }
 
 .user-logo{
-  cursor:pointer;
-}
-
-.user-logo path{ /* არ მუშაობს */ 
-  fill: #238463;
+  cursor: pointer;
 }
 
 .login{
   position: relative;
+  height: 41.82px;
 }
 
 .my-files{
@@ -615,16 +613,24 @@ footer {
   background-color: white;
   display: none;
   position: absolute;
-  right: 60px;
+  right: 0;
   top: 0;
   font-size: 18px;
   padding: 20px 10px;
+  width: 208px;
 }
 
 .active-dropdown{
   display: block !important;
 }
 
-.margin-dropdown{
+.invertedLogo{
+  filter: invert(1);
+  position: absolute;
+  right: 0;
+  z-index: 2;
+}
+
+.dropdownMargin{
   margin-left: 100px;
 }
