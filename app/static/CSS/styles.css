@@ -582,11 +582,14 @@ footer {
 
 .user-logo{
   cursor: pointer;
+  margin-top: 10px;
+  margin-right: 6px;
 }
 
 .login{
   position: relative;
   height: 41.82px;
+  margin-bottom: 20px;
 }
 
 .my-files{
@@ -632,5 +635,5 @@ footer {
 }
 
 .dropdownMargin{
-  margin-left: 100px;
+  margin-left: 200px;
 }
