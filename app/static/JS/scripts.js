@@ -40,11 +40,6 @@ window.onclick = (event) => {
         loginContent.classList.remove("active-login");
 };
 
-// const submitBtn = document.querySelector('.login-btn');
-// submitBtn.addEventListener('submit', event => {
-//   event.preventDefault();
-// });
-
 loginForm = document.getElementById('login-form');
 loginForm.addEventListener('submit', e => {
   e.preventDefault();
