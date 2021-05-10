@@ -98,7 +98,6 @@ const dropDown = () =>{
   dropdown.classList.toggle('active-dropdown');
   loginLogo.classList.toggle('invertedLogo');
   loginBtn.classList.toggle('dropdownMargin');
-  //dropdownMargin
 }
 
 const userLogged = () => {
@@ -110,7 +109,3 @@ const userLogged = () => {
 if (localStorage.loginInfo) {
   userLogged();
 }
-
-// const variable = JSON.parse(localStorage.getItem('loginInfo'))
-// variable.email & variable.password
-// ასე დაასელექთებ მეილს ან პაროლს

@@ -621,6 +621,7 @@ footer {
   font-size: 18px;
   padding: 20px 10px;
   width: 208px;
+  border: 1px solid #707070;
 }
 
 .active-dropdown{
@@ -636,4 +637,12 @@ footer {
 
 .dropdownMargin{
   margin-left: 200px;
+}
+
+#log-out{
+  border: 0;
+  background-color: transparent;
+  font-size: 18px;
+  cursor: pointer;
+  color: #172224;
 }
