@@ -45,7 +45,9 @@ window.onclick = (event) => {
 //   event.preventDefault();
 // });
 
-const validation = () => {
+loginForm = document.getElementById('login-form');
+loginForm.addEventListener('submit', e => {
+  e.preventDefault();
   const divEmail = document.querySelector('.email-input');
   const divPassword = document.querySelector('.password-input');
   let inputEmail = document.forms["login"]["email"].value;
@@ -86,7 +88,7 @@ const validation = () => {
     localStorage.setItem('loginInfo', JSON.stringify({email:inputEmail,password:inputPassword }));
     location.reload();
   }
-}
+})
 
 const loginLogo = document.querySelector('.user-logo');
 
