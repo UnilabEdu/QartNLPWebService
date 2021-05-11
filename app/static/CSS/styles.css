@@ -3,6 +3,7 @@
   padding: 0;
   box-sizing: border-box;
 }
+
 .navigation {
   position: relative;
   background-color: #172224;
@@ -33,7 +34,6 @@
 
 .icon {
   font-size: 20px;
-  cursor:pointer;
 }
 
 .list-item:after {
@@ -578,4 +578,72 @@ footer {
   left: 4px;
   color: white;
   cursor: pointer;
+}
+
+.user-logo{
+  cursor: pointer;
+  margin-top: 10px;
+  margin-right: 6px;
+}
+
+.login{
+  position: relative;
+  height: 41.82px;
+  margin-bottom: 20px;
+}
+
+.my-files{
+  text-decoration: none;
+  color: #172224;
+}
+
+.my-files::after{
+  content: '';
+  display: block;
+  width: 100%;
+  height: 1px;
+  background-color: #707070;
+  margin-top: 21px;
+  width: 150px;
+}
+
+.user-info{
+  margin-top: 21px;
+  margin-bottom: 21px;
+}
+
+#dropdown{
+  color: #172224;;
+  background-color: white;
+  display: none;
+  position: absolute;
+  right: 0;
+  top: 0;
+  font-size: 18px;
+  padding: 20px 10px;
+  width: 208px;
+  border: 1px solid #707070;
+}
+
+.active-dropdown{
+  display: block !important;
+}
+
+.invertedLogo{
+  filter: invert(1);
+  position: absolute;
+  right: 0;
+  z-index: 2;
+}
+
+.dropdownMargin{
+  margin-left: 200px;
+}
+
+#log-out{
+  border: 0;
+  background-color: transparent;
+  font-size: 18px;
+  cursor: pointer;
+  color: #172224;
 }

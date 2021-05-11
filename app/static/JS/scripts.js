@@ -30,16 +30,19 @@ if (btn){
 const loginBtn = document.querySelector('.login');
 const loginContent = document.querySelector('.login-bg');
 
-loginBtn.addEventListener('click',()=>{
-    loginContent.classList.add('active-login');
-})
+const loginEvent = () =>{
+  loginContent.classList.add('active-login');
+}
+loginBtn.addEventListener('click', loginEvent);
 
 window.onclick = (event) => {
     if (event.target == loginContent)
         loginContent.classList.remove("active-login");
 };
 
-const validation = () => {
+loginForm = document.getElementById('login-form');
+loginForm.addEventListener('submit', e => {
+  e.preventDefault();
   const divEmail = document.querySelector('.email-input');
   const divPassword = document.querySelector('.password-input');
   let inputEmail = document.forms["login"]["email"].value;
@@ -71,15 +74,35 @@ const validation = () => {
     passwordContext();
     return false;
   }else if (inputPassword !== "" && inputEmail == ""){
-    emailContext()
+    emailContext();
     if(divPassword.childNodes[3] !== undefined) {
       divPassword.childNodes[3].remove();
     }
     return false;
   }else{
     localStorage.setItem('loginInfo', JSON.stringify({email:inputEmail,password:inputPassword }));
+    location.reload();
   }
+})
+
+const loginLogo = document.querySelector('.user-logo');
+
+const dropDown = () =>{
+  const userName = JSON.parse(localStorage.getItem('loginInfo')).email.split('@')[0];
+  const dropdown = document.querySelector('#dropdown');
+  const userInfo = document.querySelector('#user-name');
+  userInfo.innerText = userName;
+  dropdown.classList.toggle('active-dropdown');
+  loginLogo.classList.toggle('invertedLogo');
+  loginBtn.classList.toggle('dropdownMargin');
 }
-// const variable = JSON.parse(localStorage.getItem('loginInfo'))
-// variable.email & variable.password
-// ასე დაასელექთებ მეილს ან პაროლს
+
+const userLogged = () => {
+  loginLogo.src = '../assets/dif-head-logo.svg';
+  loginBtn.removeEventListener('click', loginEvent);
+  loginLogo.addEventListener('click', dropDown);
+}
+
+if (localStorage.loginInfo) {
+  userLogged();
+}
