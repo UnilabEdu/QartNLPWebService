@@ -544,9 +544,9 @@ footer {
 }
 
 .file-content{
-  width:1472px;
   background-color:#FFFFFF;
   border:1px solid#707070;
+  margin-right:32px;
 }
 
 .file-content h2 {
