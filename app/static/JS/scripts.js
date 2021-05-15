@@ -106,3 +106,10 @@ const userLogged = () => {
 if (localStorage.loginInfo) {
   userLogged();
 }
+
+const logout = document.querySelector('#log-out');
+
+logout.addEventListener('click', ()=>{
+  localStorage.removeItem('loginInfo');
+  location.reload();
+})
