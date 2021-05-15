@@ -8,7 +8,7 @@
   position: relative;
   background-color: #172224;
   color: white;
-  padding: 10px 20px;
+  padding: 6px 20px;
   justify-content: space-between;
   align-items: center;
   z-index:3;
@@ -16,7 +16,7 @@
 
 .nav-right ul {
   list-style: none;
-  font-size: 27px;
+  font-size: 34px;
   display: flex;
   align-items: center;
 }
@@ -30,6 +30,12 @@
 .nav-left {
   color: white;
   font-size: 42px;
+}
+
+.nav-left>h2{
+  font-family: Courier;
+  font-weight: normal;
+  font-size: 82px;
 }
 
 .icon {
@@ -595,21 +601,30 @@ footer {
 .my-files{
   text-decoration: none;
   color: #172224;
+  transition: all 0.3s ease;
+  border-radius: 2%;
+  padding: 3px;
 }
 
-.my-files::after{
+.my-files:hover{
+  background-color: #707070;
+  color: #EBEBEB;
+  box-shadow: 0 0 11px rgba(33,33,33,.2);
+}
+
+.user-info:before{
   content: '';
   display: block;
   width: 100%;
   height: 1px;
   background-color: #707070;
-  margin-top: 21px;
+  margin: 21px 1px;
   width: 150px;
 }
 
 .user-info{
-  margin-top: 21px;
   margin-bottom: 21px;
+  padding: 3px;
 }
 
 #dropdown{
@@ -645,5 +660,14 @@ footer {
   background-color: transparent;
   font-size: 18px;
   cursor: pointer;
-  color: #172224;
+  padding: 3px;
+  color: #707070;
+  transition: all 0.2s ease;
+  border-radius: 2%;
+}
+
+#log-out:hover{
+  background-color: #707070;
+  color: #EBEBEB;
+  box-shadow: 0 0 11px rgba(33,33,33,.2); 
 }
