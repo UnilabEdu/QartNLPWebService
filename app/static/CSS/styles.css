@@ -550,7 +550,7 @@ footer {
 }
 
 .file-content{
-  width:1472px;
+  margin-right:32px;
   background-color:#FFFFFF;
   border:1px solid#707070;
 }
