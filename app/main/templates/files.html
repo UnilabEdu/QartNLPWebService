@@ -1,0 +1,28 @@
+{% from "macros.html" import file_block with context %}
+{% extends "base.html" %}
+
+{% block content %}
+    <div class="files_page_content">
+      <div class="file_content_heading">
+        <h2>ჩემი ფაილები</h2>
+      </div>
+
+      {% for f in block_files %}
+        {{ 
+            file_block(
+                title=f.get("title"), 
+                description=f.get("description"), 
+                c_date=f.get("c_date"), 
+                m_date=f.get("m_date")
+              ) 
+          }}
+      {% endfor %}
+
+    <div class="file-btn-container display-flex">
+      <button id="add-file" class="btn-file">
+        დამატება
+      </button>
+    </div>
+{% endblock %}
+
+
