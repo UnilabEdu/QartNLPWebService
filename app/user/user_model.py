@@ -14,11 +14,6 @@ class User(db.Model, UserMixin):
     roles = db.relationship('Role', secondary='user_roles',
                             backref=db.backref('users', lazy='dynamic'))
 
-    def has_role(self, status):
-        for role in self.roles:
-            if role.name == status:
-                return True
-
 class Role(db.Model):
     id = db.Column(db.Integer(), primary_key=True)
     name = db.Column(db.String(50), unique=True)

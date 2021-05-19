@@ -12,7 +12,7 @@ class AdminModelView(ModelView):
         return current_user.has_role("Admin")
 
     def inaccessible_callback(self, name, **kwargs):
-        return redirect(url_for('login_logout.login'))
+        return redirect(url_for('user.login'))
 
 class IndexView(AdminIndexView):
     column_exclude_list = ['password', ]
@@ -21,7 +21,7 @@ class IndexView(AdminIndexView):
         return current_user.has_role("Admin")
 
     def inaccessible_callback(self, name, **kwargs):
-        return redirect(url_for('login_logout.login'))
+        return redirect(url_for('user.login'))
 
 admin = Admin(name="Main", template_mode='bootstrap4', index_view=IndexView())
 admin.add_view(AdminModelView(User, db.sesion, name="Users"))
