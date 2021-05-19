@@ -1,20 +1,27 @@
-from flask import Flask, render_template
-from app.temp_data import people, block_files
-app = Flask(__name__, static_url_path='/static')
-# app = Flask(__name__)
+from flask import Flask
+from flask_migrate import Migrate
 
-@app.route('/')
-@app.route('/home')
-def home():
-    return render_template('home.html')
+from app.settings import Config
+from app.models import db
 
 
-@app.route('/about')
-def about():
-    return render_template('about.html', people=people)
+migrate = Migrate()
 
 
-@app.route('/files')
-def files():
-    return render_template('files.html', block_files=block_files)
+def create_app():
+    app = Flask(__name__)
 
+    # inserting configurations from settings
+    app.config.from_object(Config)
+
+    # Setup Flask-SQLAlchemy
+    db.init_app(app)
+
+    # Setup Flask-Migrate
+    migrate.init_app(app, db, render_as_batch=True)
+
+    # Blueprint registrations
+    from app.main.views import main_blueprint
+    app.register_blueprint(main_blueprint, url_prefix="/main")
+
+    return app
