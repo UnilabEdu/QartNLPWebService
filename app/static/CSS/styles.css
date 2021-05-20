@@ -8,8 +8,7 @@
   position: relative;
   background-color: #172224;
   color: white;
-  display: flex;
-  padding: 10px 20px;
+  padding: 6px 20px;
   justify-content: space-between;
   align-items: center;
   z-index:3;
@@ -17,7 +16,7 @@
 
 .nav-right ul {
   list-style: none;
-  font-size: 27px;
+  font-size: 34px;
   display: flex;
   align-items: center;
 }
@@ -33,9 +32,14 @@
   font-size: 42px;
 }
 
+.nav-left>h2{
+  font-family: Courier;
+  font-weight: normal;
+  font-size: 82px;
+}
+
 .icon {
   font-size: 20px;
-  cursor:pointer;
 }
 
 .list-item:after {
@@ -80,6 +84,8 @@ body {
   border: 1px solid#172224;
   font-size: 22px;
   font-family: "Sandro";
+  background-color: #fff;
+  border: 1px solid#172224;
   resize: none;
 }
 
@@ -94,18 +100,16 @@ body {
 }
 
 .btn-block {
-    margin: auto;
-    margin-top: 32px;
-    position: relative;
-    display: flex;
-    align-items: center;
+  margin: auto;
+  margin-top: 32px;
+  display: flex;
+  align-items: center;
 }
 
 .clear-icon{
-    display: none;
-    position: absolute;
-    left: 7px;
-    margin: auto;
+  display: none;
+  margin-right: 10px;
+  margin: auto;
 }
 .clear-bt:last-child{
   padding-left: 58px; /*იგივეა რაც ღილაკიდან 20px*/
@@ -118,11 +122,21 @@ body {
   text-align: center;
   background-color: #172224;
   font-family: "Sandro";
+  left: 4px;
+  margin: auto;
+}
+
+.btn-analyze {
+  padding: 8px 46px;
+  font-size: 34px;
+  text-align: center;
+  background-color: #172224;
   color: #ffffff;
   cursor: pointer;
   outline: none;
   border: none;
-
+  display: flex;
+  align-items: center;
 }
 
 /* footer */
@@ -377,12 +391,14 @@ footer {
   display: flex;
   justify-content: center;
 }
+.email-input,.password-input {
+  margin-bottom:32px;
+}
 .login-input {
   display: flex;
   justify-content: center;
   width: 256px;
   height:32px;
-  margin-bottom:32px;
   padding:3px 8px 7px;
   background-color: #FFFFFF;
   font-size:18px;
@@ -395,6 +411,11 @@ footer {
   font-size:18px;
   font-family:Sandro;
   color:#707070;
+}
+.emailwarning, .passwordvalidation{
+  margin-top:3px;
+  font-family:'Sandro';
+  color:red;
 }
 .login-btn{
   margin:auto;
@@ -420,4 +441,233 @@ footer {
   border:none;
   outline:none;
   cursor:pointer;
+}
+.people{
+  display: flex;
+  width: 90%;
+  max-width: 1792px;
+  margin: auto;
+  margin-top: 64px;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  margin: auto;
+}
+
+.person{
+  display: flex;
+  width: 45%;
+  margin-top: 64px;
+}
+.person-name {
+  font-family:Sandro;
+}
+.person-info{
+  margin-left: 32px;
+}
+
+.person-description{
+  font-family:Sandro;
+  font-size: 18px;
+  margin-top: 20px;
+}
+
+.person-job{
+  margin-top: 15px;
+  font-family:Sandro;
+}
+
+.person>img{
+  width: 256px;
+  height: 256px;
+  object-fit: cover;
+}
+
+.file-block {
+  margin-bottom:32px;
+}
+
+.file-tools{
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.tool-container{
+  cursor: pointer;
+  width: 32px;
+  height: 32px;
+  background-color: white;
+  border: 1px solid black;
+  justify-content: center;
+  align-items: center;
+}
+
+.files_page_content{
+  max-width:1537px;
+  width:100%;
+  margin:auto;
+  margin-top:41.9px;
+}
+
+.file_content_heading {
+  margin-bottom:32px;
+}
+
+.file_content_heading h2{
+  font-size:24px;
+  font-family: 'ArialCaps';
+  font-weight: normal;
+  color:#172224;
+}
+
+.files-flex-content{
+  display:flex;
+  justify-content: space-between;
+}
+
+.file-data{
+  margin-bottom:10px;
+}
+
+.file-data span {
+  position:relative;
+  color:#172224;
+  font-size:18px;
+  font-family:Sandro;
+}
+
+.file-data span:first-child {
+  padding-right:60px;
+}
+.file-data span:first-child:after {
+  content:'';
+  position:absolute;
+  top:50%;
+  transform: translateY(-50%);
+  width:1px;
+  height:65%;
+  margin-left:30px;
+  background-color: #172224;
+}
+
+.file-content{
+  width:1472px;
+  background-color:#FFFFFF;
+  border:1px solid#707070;
+}
+
+.file-content h2 {
+  padding: 14px 15px 12px;
+  font-size:24px;
+  font-family:Sandro;
+  color:#172224;
+}
+
+.file-content p {
+  padding: 0 15px 25px;
+  font-family:Sandro;
+  font-size:18px;
+  color:#172224;
+}
+
+.file-btn-container{
+  margin: auto;
+  margin-top: 32px;
+  justify-content: center;
+}
+
+.btn-file{
+  padding: 2px 46px 8px;
+  font-size: 34px;
+  text-align: center;
+  background-color: #172224;
+  font-family: "Sandro";
+  left: 4px;
+  color: white;
+  cursor: pointer;
+}
+
+.user-logo{
+  cursor: pointer;
+  margin-top: 10px;
+  margin-right: 6px;
+}
+
+.login{
+  position: relative;
+  height: 41.82px;
+  margin-bottom: 20px;
+}
+
+.my-files{
+  text-decoration: none;
+  color: #172224;
+  transition: all 0.3s ease;
+  border-radius: 2%;
+  padding: 3px;
+}
+
+.my-files:hover{
+  background-color: #707070;
+  color: #EBEBEB;
+  box-shadow: 0 0 11px rgba(33,33,33,.2);
+}
+
+.user-info:before{
+  content: '';
+  display: block;
+  width: 100%;
+  height: 1px;
+  background-color: #707070;
+  margin: 21px 1px;
+  width: 150px;
+}
+
+.user-info{
+  margin-bottom: 21px;
+  padding: 3px;
+}
+
+#dropdown{
+  color: #172224;;
+  background-color: white;
+  display: none;
+  position: absolute;
+  right: 0;
+  top: 0;
+  font-size: 18px;
+  padding: 20px 10px;
+  width: 208px;
+  border: 1px solid #707070;
+}
+
+.active-dropdown{
+  display: block !important;
+}
+
+.invertedLogo{
+  filter: invert(1);
+  position: absolute;
+  right: 0;
+  z-index: 2;
+}
+
+.dropdownMargin{
+  margin-left: 200px;
+}
+
+#log-out{
+  border: 0;
+  background-color: transparent;
+  font-size: 18px;
+  cursor: pointer;
+  padding: 3px;
+  color: #707070;
+  transition: all 0.2s ease;
+  border-radius: 2%;
+}
+
+#log-out:hover{
+  background-color: #707070;
+  color: #EBEBEB;
+  box-shadow: 0 0 11px rgba(33,33,33,.2); 
 }

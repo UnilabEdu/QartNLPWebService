@@ -1,0 +1,46 @@
+{% macro nav_link(endpoint, text) %}
+{% if request.endpoint.endswith(endpoint) %}
+    <li class="active list-item"><a href="{{ url_for(endpoint) }}">{{text}}</a></li>
+{% else %}
+    <li class="list-item"><a href="{{ url_for(endpoint) }}">{{text}}</a></li>
+{% endif %}
+{% endmacro %}
+
+{% macro person(name, job, description, image) %}
+    <div class="person">
+        <img src="{{ url_for("static", filename="assets/"+image) }}" alt="{{name}}ს სურათი">
+        <div class="person-info">
+            <h2 class="person-name">{{ name }}</h2>
+            <h2 class="person-job">{{ job }}</h2>
+            <p class="person-description">{{ description }}</p>
+        </div>
+    </div>
+{% endmacro %}
+
+{% macro file_block(title, description, m_date, c_date) %}
+<div class="file-block">
+    <div class="file-data">
+        <span>შექმნის თარიღი: {{c_date}}</span>
+        <span>ბოლო მოდიფიცირების თარიღი: {{m_date}}</span>
+    </div>
+    <div class="files-flex-content">
+      <div class="file-content">
+          <h2>{{title}}</h2>
+          <p>
+            {{description}}
+          </p>
+      </div>
+      <div class="file-tools display-flex">
+        <div class="tool-container display-flex">
+          <i class="fas fa-pen"></i>
+        </div>
+        <div class="tool-container display-flex">
+          <i class="fas fa-arrow-down"></i>
+        </div>
+        <div class="tool-container display-flex">
+          <i class="far fa-trash-alt"></i>
+        </div>
+      </div>
+    </div>
+  </div>
+{% endmacro %}

@@ -22,6 +22,6 @@ def create_app():
 
     # Blueprint registrations
     from app.main.views import main_blueprint
-    app.register_blueprint(main_blueprint, url_prefix="/main")
+    app.register_blueprint(main_blueprint, url_prefix="/")
 
     return app

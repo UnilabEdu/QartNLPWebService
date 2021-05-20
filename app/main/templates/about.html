@@ -1,0 +1,20 @@
+{% from "macros.html" import person with context %}
+{% extends "base.html" %}
+{% block content %}
+    <section id="about-section">
+        <div class="people">
+            
+            {% for p in people %}
+            {{
+                    person(
+                        name=p.get("name"),
+                        job=p.get("job"),
+                        description=p.get("description"),
+                        image=p.get("image")
+                    )
+            }}
+            {% endfor %}
+
+        </div>
+    </section>
+{% endblock %}
