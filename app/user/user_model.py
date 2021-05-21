@@ -1,7 +1,7 @@
-from models.app import db
+from app.models import db
 from flask_user import UserMixin, UserManager
 
-user_manager = UserManager()
+# user_manager = UserManager()
 
 class User(db.Model, UserMixin):
     id = db.Column(db.Integer, primary_key=True)
@@ -18,7 +18,14 @@ class Role(db.Model):
     id = db.Column(db.Integer(), primary_key=True)
     name = db.Column(db.String(50), unique=True)
 
+    def __init__(self, name):
+        self.name = name
+
 class UserRoles(db.Model):
     id = db.Column(db.Integer(), primary_key=True)
     user_id = db.Column(db.Integer(), db.ForeignKey('user.id', ondelete='CASCADE'))
     role_id = db.Column(db.Integer(), db.ForeignKey('role.id', ondelete='CASCADE'))
+
+    def __init__(self, user_id, role_id):
+        self.user_id = user_id
+        self.role_id = role_id
