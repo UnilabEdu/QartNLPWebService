@@ -12,6 +12,9 @@ class Config(object):
     SECRET_KEY = os.environ.get('SECRET_KEY', 'appsecretkey')
     SQLALCHEMY_DATABASE_URI = os.environ.get('SQLALCHEMY_DATABASE_URI', f'sqlite:///{os.path.join(basedir, "data.db")}')
     SQLALCHEMY_TRACK_MODIFICATIONS = False
+    UPLOAD_FOLDER = "app/uploads/"
+    CELERY_BROKER_URL = "redis://localhost"
+    CELERY_RESULT_BACKEND = "redis://localhost"
 
     # Flask-User settings
     USER_ENABLE_EMAIL = True
