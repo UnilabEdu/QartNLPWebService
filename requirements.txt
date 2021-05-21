@@ -27,4 +27,11 @@ Mako==1.1.4
 MarkupSafe==1.1.1
 MyApplication==0.1.0
 passlib==1.7.4
-pycparser==2
+pycparser==2.20
+pycryptodome==3.10.1
+python-dateutil==2.8.1
+python-editor==1.0.4
+six==1.15.0
+SQLAlchemy==1.4.5
+Werkzeug==1.0.1
+WTForms==2.3.3
