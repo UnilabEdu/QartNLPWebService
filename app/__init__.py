@@ -59,7 +59,7 @@ def create_app():
     app.register_blueprint(main_blueprint, url_prefix="/")
 
     from app.file_processing.views import file_processor_blueprint
-    app.register_blueprint(file_processor_blueprint, url_prefix="/main")
+    app.register_blueprint(file_processor_blueprint, url_prefix="/")
 
     return app
 
