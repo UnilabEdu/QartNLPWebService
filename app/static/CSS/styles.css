@@ -697,16 +697,18 @@ footer {
 }
 
 .file-name-inp{
-  padding: 3px;
+  padding: 3px 18px;
   font-size: 18px;
   width: 100%;
   margin-bottom: 36px;
+  font-family: Sandro;
 }
 
 .copy-inp{
-  padding: 21px 18px;
+  padding: 21px 47px 21px 18px;
   font-size: 18px;
   width: 100%;
+  font-family: Sandro;
 }
 
 .file-upload-content{
