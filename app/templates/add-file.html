@@ -61,39 +61,47 @@
         <h2>ჩემი ფაილები/ფაილის სახელი</h2>
       </div>
       <div class="file-block file-add-block display-flex">
-          <div class="create-file-inputs">
-            <h2>ფაილის სახელი</h2>
-            <input type="text">
-            <h2>ტექსტი</h2>
-            <input placeholder="ჩააკოპირე" type="text">
+          <div class="create-file-inputs display-flex">
+            <div class="file-info">
+              <h2>ფაილის სახელი</h2>
+              <input class="file-name-inp" type="text">
+              <h2>ტექსტი</h2>
+              <input class="copy-inp" placeholder="ჩააკოპირე ტექსტი" type="text">
+            </div>
+            <div class="upload-file">
+              <h2>ატვირთეთ ფაილი</h2>
+              <button class="btn-upload">
+                upload
+              </button>
+            </div>
           </div>
           <div class="create-file-checks display-flex">
-            <h2 class="checks-header"></h2>
+            <h2 class="checks-header">მონიშნეთ ხელსაწყოები, რომლითაც გსურთ ტექსტის/დოკუმენტის დამუშავება:</h2>
             <div class="file-options">
                 <input type="checkbox">
-                <label> ტექსტის ლემატიზაცია</label>
+                <label>ტექსტის ლემატიზაცია</label>
             </div>
             <div class="file-options">
                 <input type="checkbox">
-                <label> ტექსტის ტაოკენიზაცია</label>
+                <label>ტექსტის ტოკენიზაცია</label>
             </div>
             <div class="file-options">
                 <input type="checkbox">
-                <label> ტექსტის ატეგირება</label>
+                <label>ტექსტის თეგირება</label>
             </div>
             <div class="file-options">
                 <input type="checkbox">
-                <label> Stop word-ებისგან გასუფთავება</label>
+                <label>Stop word-ებისგან გასუფთავება</label>
             </div>
             <div class="file-options">
                 <input type="checkbox">
-                <label> სიტყვების სიხშირის განაწილება</label>
+                <label>სიტყვების სიხშირის განაწილება</label>
             </div>
           </div>
       </div>
     </div>
     <div class="file-btn-container display-flex">
-      <button id="add-file" class="btn-file">
+      <button class="btn-file">
         დამატება
       </button>
     </div>
