@@ -669,5 +669,19 @@ footer {
 #log-out:hover{
   background-color: #707070;
   color: #EBEBEB;
-  box-shadow: 0 0 11px rgba(33,33,33,.2); 
+  box-shadow: 0 0 11px rgba(33,33,33,.2);
+}
+
+.file-add-block{
+  justify-content: space-between;
+  padding: 32px;
+  border: 1px solid;
+}
+
+.file-add-block h2{
+  font-weight: normal;
+}
+
+.create-file-checks{
+  flex-direction: column;
 }
