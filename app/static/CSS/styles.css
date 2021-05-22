@@ -740,3 +740,14 @@ footer {
   color: white;
   cursor: pointer;
 }
+
+.copy-container{
+  position: relative;
+}
+
+.copy-container>img{
+  position: absolute;
+  color: #707070;
+  right: 32px;
+  top: 25%;
+}
