@@ -709,6 +709,9 @@ footer {
   font-size: 18px;
   width: 100%;
   font-family: Sandro;
+  resize: vertical;
+  height: 70px;
+  min-height: 70px;
 }
 
 .file-upload-content{
@@ -751,5 +754,5 @@ footer {
   position: absolute;
   color: #707070;
   right: 32px;
-  top: 25%;
+  top: 21px;
 }
