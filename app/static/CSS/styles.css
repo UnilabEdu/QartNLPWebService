@@ -754,7 +754,8 @@ footer {
   position: absolute;
   color: #707070;
   right: 32px;
-  top: 21px;
+  bottom: 21px;
+  cursor:pointer;
 }
 
 .content-navbar {

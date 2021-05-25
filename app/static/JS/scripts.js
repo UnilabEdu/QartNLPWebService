@@ -120,3 +120,43 @@ if (addButton) {
     window.location.href = 'add-file.html';
   });
 }
+
+
+const copyInp = document.querySelector('.copy-inp');
+const arrowInc = document.querySelector('.arrow-increase')
+const up = document.querySelector('.cont-up');
+const uploadFile = document.querySelector('.upload-file');
+
+arrowInc.addEventListener('click', ()=>{
+  if(!copyInp.classList.contains('active-textarea')){
+    copyInp.style.height = '352px';
+    arrowInc.style.transform = 'rotate(270deg)';
+    up.remove();
+    uploadFile.innerHTML = ``;
+    copyInp.classList.add('active-textarea');
+  }else{
+    copyInp.classList.remove('active-textarea');
+    copyInp.style.height = '70px';
+    arrowInc.style.transform = 'rotate(0deg)';
+    uploadFile.innerHTML = `<div class="cont-up">
+                              <h2>ატვირთეთ ფაილი</h2>
+                              <button class="btn-upload">
+                                upload
+                              </button>
+                            </div>`
+    }
+})
+
+copyInp.addEventListener('click', ()=>{
+  copyInp.style.height = '352px';
+  arrowInc.style.transform = 'rotate(270deg)';
+  up.remove();
+  uploadFile.innerHTML = ``;
+  copyInp.classList.add('active-textarea');
+})
+
+// ტექსტარეაზე დაჭერის დროსაც ჩამოიშლება ტექსტის ველი
+// მეორე გზა არის, რომ დავბლოკოთ ტექსტარეაში ტექსის ჩაწერე
+// როცა ტექსტარეა სტანდარტული ინფუთის ზომა იქნება
+// და მხოლოდ ისარზე დაჭერისას ჩამოიშლება ველი
+// copyInp.disabled = true;
