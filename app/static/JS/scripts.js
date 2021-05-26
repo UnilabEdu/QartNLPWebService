@@ -121,7 +121,6 @@ if (addButton) {
   });
 }
 
-
 const copyInp = document.querySelector('.copy-inp');
 const arrowInc = document.querySelector('.arrow-increase')
 const up = document.querySelector('.cont-up');
@@ -156,8 +155,7 @@ copyInp.addEventListener('click', ()=>{
 })
 
 // ტექსტარეაზე დაჭერის დროსაც ჩამოიშლება ტექსტის ველი
-// მეორე გზა არის, რომ დავბლოკოთ ტექსტარეაში ტექსის ჩაწერე
+// მეორე გზა არის, რომ დავბლოკოთ ტექსტარეაში ტექსტის ჩაწერა
 // როცა ტექსტარეა სტანდარტული ინფუთის ზომა იქნება
 // და მხოლოდ ისარზე დაჭერისას ჩამოიშლება ველი
 // copyInp.disabled = true;
-
