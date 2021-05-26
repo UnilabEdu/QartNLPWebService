@@ -118,5 +118,5 @@ const addButton = document.querySelector('#add-file');
 if (addButton) {
   addButton.addEventListener('click', () => {
     window.location.href = 'add-file.html';
-  }); 
+  });
 }
