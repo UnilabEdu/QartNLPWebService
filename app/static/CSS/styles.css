@@ -754,7 +754,8 @@ footer {
   position: absolute;
   color: #707070;
   right: 32px;
-  top: 21px;
+  bottom: 21px;
+  cursor:pointer;
 }
 
 .content-navbar {
@@ -843,11 +844,10 @@ footer {
 
 .search-btn img {
   width: 30.59px;
-  height:32.24px;
+  height: 32.24px;
 }
 
 .search-input-block{
   display: flex;
   justify-content: flex-start;
 }
-
