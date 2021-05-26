@@ -1,3 +1,23 @@
+#hiddenLogin {
+  position: fixed;
+  display: none;
+  top: 25%;
+  left: 40%;
+  background-color: #090926;
+  border-radius: 20px;
+  box-shadow: 2px 4px 10px darkgray;
+}
+
+#hiddenLogin * {
+  font-size: 22px;
+  color: white;
+}
+
+#hiddenLogin input {
+  color: black;
+}
+
+
 * {
   margin: 0 !important;
   padding: 0 !important;
