@@ -1,11 +1,11 @@
 @font-face {
   font-family: "Sandro";
-  src: url("../../fonts/Sandro-Bold.eot");
-  src: url("../../fonts/Sandro-Bold.eot?#iefix") format("embedded-opentype"),
-    url("../../fonts/Sandro-Bold.woff2") format("woff2"),
-    url("../../fonts/Sandro-Bold.woff") format("woff"),
-    url("../../fonts/Sandro-Bold.ttf") format("truetype"),
-    url("../../fonts/Sandro-Bold.svg#Sandro-Bold") format("svg");
+  src: url("../fonts/Sandro-Bold.eot");
+  src: url("../fonts/Sandro-Bold.eot?#iefix") format("embedded-opentype"),
+    url("../fonts/Sandro-Bold.woff2") format("woff2"),
+    url("../fonts/Sandro-Bold.woff") format("woff"),
+    url("../fonts/Sandro-Bold.ttf") format("truetype"),
+    url("../fonts/Sandro-Bold.svg#Sandro-Bold") format("svg");
   font-weight: bold;
   font-style: normal;
   font-display: swap;
@@ -13,10 +13,10 @@
 
 @font-face {
     font-family: 'ArialCaps';
-    src: url('../../fonts/bpg-arial-caps-webfont.eot');
-    src: url('../../fonts/bpg-arial-caps-webfont.eot?#iefix') format('embedded-opentype'),
-         url('../../fonts/bpg-arial-caps-webfont.woff2') format('woff2'),
-         url('../../fonts/bpg-arial-caps-webfont.woff') format('woff'),
-         url('../../fonts/bpg-arial-caps-webfont.ttf') format('truetype'),
-         url('../../fonts/bpg-arial-caps-webfont.svg#bpg_arial_capsregular') format('svg');
+    src: url('../fonts/bpg-arial-caps-webfont.eot');
+    src: url('../fonts/bpg-arial-caps-webfont.eot?#iefix') format('embedded-opentype'),
+         url('../fonts/bpg-arial-caps-webfont.woff2') format('woff2'),
+         url('../fonts/bpg-arial-caps-webfont.woff') format('woff'),
+         url('../fonts/bpg-arial-caps-webfont.ttf') format('truetype'),
+         url('../fonts/bpg-arial-caps-webfont.svg#bpg_arial_capsregular') format('svg');
 }
