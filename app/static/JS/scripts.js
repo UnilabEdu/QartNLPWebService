@@ -156,3 +156,21 @@ if(arrowInc){
     copyInp.classList.add('active-textarea');
   })
 }
+
+const regButton = document.querySelector('.registration-button');
+const login = document.querySelector('.login-content');
+const registration = document.querySelector('.registration-content');
+const logBtn = document.querySelector('.avtorization-button');
+
+regButton.addEventListener('click', ()=>{
+  login.classList.add('invisible');
+  registration.classList.remove('invisible');
+  registration.classList.add('visible');
+})
+
+logBtn.addEventListener('click', ()=>{
+  registration.classList.remove('visible');
+  registration.classList.add('invisible');
+  login.classList.remove('invisible');
+  login.classList.add('visible');
+})
