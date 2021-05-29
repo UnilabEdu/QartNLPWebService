@@ -851,3 +851,7 @@ footer {
   display: flex;
   justify-content: flex-start;
 }
+
+.concrete-words ul li span {
+  color:#FF0000;
+}
