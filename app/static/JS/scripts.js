@@ -126,7 +126,6 @@ const arrowInc = document.querySelector('.arrow-increase')
 const up = document.querySelector('.cont-up');
 const uploadFile = document.querySelector('.upload-file');
 
-
 if(arrowInc){
   arrowInc.addEventListener('click', ()=>{
     if(!copyInp.classList.contains('active-textarea')){
