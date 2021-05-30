@@ -2,7 +2,7 @@ from flask import Blueprint, render_template
 from app.main.temp_data import people, block_files  # TODO: მონაცემების წამოღება ბაზიდან
 main_blueprint = Blueprint('main',
                            __name__,
-                           template_folder='templates'
+                           template_folder='templates/jinja'
                            )
 
 
