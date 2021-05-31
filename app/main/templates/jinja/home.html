@@ -1,61 +1,5 @@
-<!DOCTYPE html>
-<html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <title>QartNLP</title>
-    <link rel="stylesheet" href="../static/CSS/styles.css" />
-    <link rel="stylesheet" href="../static/CSS/fonts.css" />
-  </head>
-  <body>
-    <header id="header">
-      <nav class="navigation display-flex">
-        <div class="nav-left">
-          <h2>QARTNLP</h2>
-        </div>
-        <div class="nav-right">
-          <ul>
-            <li class="list-item"><a href="home.html">მთავარი</a></li>
-            <li class="list-item"><a href="">დოკუმენტაცია</a></li>
-            <li class="list-item"><a href="about.html">ჩვენს შესახებ</a></li>
-            <li class="icon login">
-              <img src="../assets/header-logo.svg" alt="logo" class="user-logo" />
-              <div id="dropdown">
-                <a class="my-files" href="files.html">ჩემი ფაილები</a>
-                <p class="user-info">
-                  <span id="user-name">
-                    სახელი გვარი
-                  </span>
-                </p>
-                <button id="log-out">გამოსვლა</button>
-              </div>
-            </li>
-          </ul>
-        </div>
-      </nav>
-    </header>
-
-    <div class="login-bg">
-      <div class="login-content">
-          <h2>ავტორიზაცია</h2>
-          <div class="addit-login">
-                  <img class="img-additional" src="../assets/Path3452.svg" alt="Github"/>
-                  <img class="img-additional" src="../assets/RepeatGrid1.svg" alt="Gmail"/>
-          </div>
-          <div class="login-inputs">
-              <form name="login" method="POST" id="login-form">
-                <div class="email-input">
-                  <input type="email" name="email" id="email" class="login-input" placeholder="ელფოსტა">
-                </div>
-                <div class="password-input">
-                  <input type="password" name="password" id="password" class="login-input" placeholder="პაროლი">
-                </div>
-                 <input type="submit" value="შესვლა" class="login-btn">
-              </form>
-          </div>
-            <button class="registration-button">რეგისტრაცია</button>
-      </div>
-    </div>
-
+{% extends "base1.html" %}
+{% block content %}
     <section class="processing-lang">
         <h2>ქართული ენის ციფრული დამუშავება</h2>
         <textarea class="prtext" name="text" id="prtext" placeholder="ჩააკოპირე ქართული ტექსტი, ნახე როგორ მუშაობს სისტემა."></textarea>
@@ -141,31 +85,4 @@
             <i aria-hidden="true" class="grammar-block hidden"></i>
         </div>
     </section>
-    <footer>
-      <div class="footer-container">
-        <div class="footer-l__block">
-          <div class="github-logo">
-            <img src="../assets/github-logo.svg" alt="guthub-logo" />
-          </div>
-          <div class="created-by__title">
-            <p>
-              შექმნილია ილიას სახელმწიფო უნივერსიტეტის მორფოლოგიური
-              ანალიზაატორის ბაზაზე Unilab-ის ციფრული ლაბორატორიის Python
-              Development გუნდის მიერ.
-            </p>
-          </div>
-        </div>
-        <div class="footer-r__block">
-          <div class="univeristy-logo">
-            <img src="../assets/university-logo.svg" alt="uny-logo" />
-          </div>
-          <div class="university-name__title">
-            ილიას სახელმწიფო უნივერსიტეტი
-          </div>
-        </div>
-      </div>
-    </footer>
-
-    <script src="../static/JS/scripts.js"></script>
-</body>
-</html>
+{% endblock %}
