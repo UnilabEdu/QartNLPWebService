@@ -4,6 +4,7 @@ from app.user.user_model import User, Role
 from flask import current_app
 from datetime import datetime
 
+
 class InitDbCommand(Command):
 
     def run(self):

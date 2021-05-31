@@ -1,4 +1,4 @@
-from app.models import db
+from app.database import db
 from flask_user import UserMixin, UserManager
 
 # user_manager = UserManager()
