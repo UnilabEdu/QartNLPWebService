@@ -113,3 +113,45 @@ logout.addEventListener('click', ()=>{
   localStorage.removeItem('loginInfo');
   location.reload();
 })
+
+const addButton = document.querySelector('#add-file');
+if (addButton) {
+  addButton.addEventListener('click', () => {
+    window.location.href = 'add-file.html';
+  });
+}
+
+const copyInp = document.querySelector('.copy-inp');
+const arrowInc = document.querySelector('.arrow-increase')
+const up = document.querySelector('.cont-up');
+const uploadFile = document.querySelector('.upload-file');
+
+if(arrowInc){
+  arrowInc.addEventListener('click', ()=>{
+    if(!copyInp.classList.contains('active-textarea')){
+      copyInp.style.height = '352px';
+      arrowInc.style.transform = 'rotate(270deg)';
+      up.remove();
+      uploadFile.innerHTML = ``;
+      copyInp.classList.add('active-textarea');
+    }else{
+      copyInp.classList.remove('active-textarea');
+      copyInp.style.height = '70px';
+      arrowInc.style.transform = 'rotate(0deg)';
+      uploadFile.innerHTML = `<div class="cont-up">
+      <h2>ატვირთეთ ფაილი</h2>
+      <button class="btn-upload">
+      upload
+      </button>
+      </div>`
+    }
+  })
+
+  copyInp.addEventListener('click', ()=>{
+    copyInp.style.height = '352px';
+    arrowInc.style.transform = 'rotate(270deg)';
+    up.remove();
+    uploadFile.innerHTML = ``;
+    copyInp.classList.add('active-textarea');
+  })
+}
