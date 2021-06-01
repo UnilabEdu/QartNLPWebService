@@ -155,3 +155,11 @@ if(arrowInc){
     copyInp.classList.add('active-textarea');
   })
 }
+
+const uploadBtn = document.querySelector('#btn-upload');
+if (uploadBtn) {
+  const inputFile = document.querySelector('#file-input');
+  uploadBtn.addEventListener('click', () => {
+    inputFile.classList.toggle('display-block');
+  })
+}
