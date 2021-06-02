@@ -391,7 +391,7 @@ footer {
   display: flex;
   justify-content: center;
 }
-.email-input,.password-input {
+.email-input,.forgot-password{
   margin-bottom:32px;
 }
 .login-input {
@@ -862,7 +862,13 @@ footer {
   display: block;
 }
 
-.upload-container{
-  margin-left: 10px;
-  align-items: center;
+.forgot-password{
+  font-size:18px;
+  font-family:Sandro;
+  color:#FFF;
+  background-color:transparent;
+  border:none;
+  outline:none;
+  cursor:pointer;
+  text-decoration: underline;
 }

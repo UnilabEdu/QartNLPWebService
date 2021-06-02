@@ -159,7 +159,13 @@ if(arrowInc){
 const uploadBtn = document.querySelector('#btn-upload');
 if (uploadBtn) {
   const inputFile = document.querySelector('#file-input');
+  const copyHead = document.querySelector('#copy-text-head');
+  const copyCont = document.querySelector('.copy-container');
   uploadBtn.addEventListener('click', () => {
     inputFile.classList.toggle('display-block');
-  })
+  });
+  inputFile.onchange = () =>{
+    copyHead.style.display = 'none';
+    copyCont.style.display = 'none';
+  }
 }
