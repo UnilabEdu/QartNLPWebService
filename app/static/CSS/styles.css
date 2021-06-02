@@ -391,7 +391,7 @@ footer {
   display: flex;
   justify-content: center;
 }
-.email-input,.password-input {
+.email-input,.forgot-password{
   margin-bottom:32px;
 }
 .login-input {
@@ -676,7 +676,6 @@ footer {
   justify-content: space-between;
   padding: 36px 125px 32px 32px;
   border: 1px solid #707070;
-  min-height: 544px;
 }
 
 .file-add-block h2{
@@ -852,6 +851,32 @@ footer {
   justify-content: flex-start;
 }
 
+.file-input{
+  display: none;
+  font-size: 15px;
+  margin-left: 10px;
+  padding-top: 5px;
+}
+
+.display-block{
+  display: block;
+}
+
+.forgot-password{
+  font-size:18px;
+  font-family:Sandro;
+  color:#FFF;
+  background-color:transparent;
+  border:none;
+  outline:none;
+  cursor:pointer;
+  text-decoration: underline;
+}
+
+.log-inp-rec{
+  margin-bottom: 32px;
+}
+
 .concrete-words ul li span {
   color:#FF0000;
 }
@@ -864,14 +889,14 @@ footer {
   display:none;
 }
 
-.registration-content{
+.registration-content, .pas-rec-bg{
   position:relative;
   width:512px;
   height:480px;
   background-color: #172224;
   border:1px solid#707070;
 }
-.registration-content h2 {
+.registration-content h2, .pas-rec-bg h2 {
   margin-top:22px;
   margin-bottom:33px;
   font-size:34px;
