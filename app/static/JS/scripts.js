@@ -43,7 +43,7 @@ forgotBtn.addEventListener('click', e => {
   window.onclick = (event) => {
     if (event.target == recovPas)
     recovPas.classList.remove("active-login");
-};
+  };
   loginContent.classList.remove('active-login');
 })
 
