@@ -29,11 +29,18 @@ if (btn){
 
 const loginBtn = document.querySelector('.login');
 const loginContent = document.querySelector('.login-bg');
+const recovPas = document.querySelector('.pas-rec-bg');
+const forgotBtn = document.querySelector('.forgot-password');
 
 const loginEvent = () =>{
   loginContent.classList.add('active-login');
+  recovPas.classList.remove('active-login')
 }
 loginBtn.addEventListener('click', loginEvent);
+forgotBtn.addEventListener('click', () => {
+  recovPas.classList.add('active-login');
+  loginContent.classList.remove('active-login');
+})
 
 window.onclick = (event) => {
     if (event.target == loginContent)

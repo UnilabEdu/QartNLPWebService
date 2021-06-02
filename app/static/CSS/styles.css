@@ -872,3 +872,7 @@ footer {
   cursor:pointer;
   text-decoration: underline;
 }
+
+.log-inp-rec{
+  margin-bottom: 32px;
+}
