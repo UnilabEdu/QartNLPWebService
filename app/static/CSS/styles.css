@@ -428,7 +428,7 @@ footer {
   border:1px solid#707070;
   cursor: pointer;
 }
-.registration-button{
+.registration-button, .avtorization-button{
   position: absolute;
   bottom:0px;
   left:50%;
@@ -850,4 +850,32 @@ footer {
 .search-input-block{
   display: flex;
   justify-content: flex-start;
+}
+
+.concrete-words ul li span {
+  color:#FF0000;
+}
+
+.visible {
+  display:block;
+}
+
+.invisible{
+  display:none;
+}
+
+.registration-content{
+  position:relative;
+  width:512px;
+  height:480px;
+  background-color: #172224;
+  border:1px solid#707070;
+}
+.registration-content h2 {
+  margin-top:22px;
+  margin-bottom:33px;
+  font-size:34px;
+  font-family:Sandro;
+  text-align:center;
+  color:#fff;
 }
