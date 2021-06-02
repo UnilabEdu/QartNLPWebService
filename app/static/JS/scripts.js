@@ -37,8 +37,13 @@ const loginEvent = () =>{
   recovPas.classList.remove('active-login')
 }
 loginBtn.addEventListener('click', loginEvent);
-forgotBtn.addEventListener('click', () => {
+forgotBtn.addEventListener('click', e => {
+  e.preventDefault();
   recovPas.classList.add('active-login');
+  window.onclick = (event) => {
+    if (event.target == recovPas)
+    recovPas.classList.remove("active-login");
+};
   loginContent.classList.remove('active-login');
 })
 
