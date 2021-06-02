@@ -29,28 +29,12 @@ if (btn){
 
 const loginBtn = document.querySelector('.login');
 const loginContent = document.querySelector('.login-bg');
-const recovPas = document.querySelector('.pas-rec-bg');
-const forgotBtn = document.querySelector('.forgot-password');
 
 const loginEvent = () =>{
   loginContent.classList.add('active-login');
   recovPas.classList.remove('active-login')
 }
 loginBtn.addEventListener('click', loginEvent);
-forgotBtn.addEventListener('click', e => {
-  e.preventDefault();
-  recovPas.classList.add('active-login');
-  window.onclick = (event) => {
-    if (event.target == recovPas)
-    recovPas.classList.remove("active-login");
-  };
-  loginContent.classList.remove('active-login');
-})
-
-window.onclick = (event) => {
-    if (event.target == loginContent)
-        loginContent.classList.remove("active-login");
-};
 
 loginForm = document.getElementById('login-form');
 loginForm.addEventListener('submit', e => {
@@ -181,3 +165,42 @@ if (uploadBtn) {
     copyCont.style.display = 'none';
   }
 }
+const regButton = document.querySelector('.registration-button');
+const login = document.querySelector('.login-content');
+const registration = document.querySelector('.registration-content');
+const logBtn = document.querySelector('.avtorization-button');
+
+regButton.addEventListener('click', ()=>{
+  login.classList.add('invisible');
+  registration.classList.remove('invisible');
+  registration.classList.add('visible');
+})
+
+logBtn.addEventListener('click', ()=>{
+  registration.classList.remove('visible');
+  registration.classList.add('invisible');
+  login.classList.remove('invisible');
+  login.classList.add('visible');
+})
+
+const recovPas = document.querySelector('.pas-rec-bg');
+const forgotBtn = document.querySelector('.forgot-password');
+
+forgotBtn.addEventListener('click', e => {
+  e.preventDefault();
+  recovPas.classList.remove('invisible');
+  recovPas.classList.add('visible');
+  login.classList.add('invisible');
+})
+
+window.onclick = (event) => {
+  if (event.target == loginContent){
+    loginContent.classList.remove("active-login");
+    recovPas.classList.add('invisible');
+    recovPas.classList.remove('visible');
+    login.classList.remove('invisible');
+    login.classList.add('visible');
+    registration.classList.add('invisible');
+    registration.classList.remove('visible');
+  }
+};
