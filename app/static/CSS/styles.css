@@ -904,3 +904,29 @@ footer {
   text-align:center;
   color:#fff;
 }
+
+.uploading-procces {
+  position: relative;
+  user-select:none;
+  opacity:0.5;
+}
+
+.uploading-text{
+  position: relative;
+}
+
+.uploading-text:after {
+  content:'ფაილი მუშავდება';
+  position: absolute;
+  left:50%;
+  top:30%;
+  transform:translate(-50%);
+  font-size:53px;
+  font-family: 'ArialCaps';
+  color:#172224;
+  z-index:4;
+}
+
+.uploading-icons > .tool-container {
+  cursor:default;
+}
