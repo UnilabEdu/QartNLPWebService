@@ -1,0 +1,932 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+.navigation {
+  position: relative;
+  background-color: #172224;
+  color: white;
+  padding: 6px 20px;
+  justify-content: space-between;
+  align-items: center;
+  z-index:3;
+}
+
+.nav-right ul {
+  list-style: none;
+  font-size: 34px;
+  display: flex;
+  align-items: center;
+}
+
+.list-item a {
+  font-family: "Sandro";
+  text-decoration: none;
+  color: white;
+}
+
+.nav-left {
+  color: white;
+  font-size: 42px;
+}
+
+.nav-left>h2{
+  font-family: Courier;
+  font-weight: normal;
+  font-size: 82px;
+}
+
+.icon {
+  font-size: 20px;
+}
+
+.list-item:after {
+  content: "";
+  display: inline-block;
+  width: 1px;
+  height: 20px;
+  background-color: white;
+  margin: 0 50px;
+}
+
+body {
+  padding: 0;
+  margin: 0;
+  background-color: #ebebeb;
+  box-sizing: border-box;
+}
+
+.processing-lang {
+  max-width: 960px;
+  width: 100%;
+  margin: auto;
+  margin-top: 64px;
+  /* margin-bottom: 433px; */
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+}
+
+.processing-lang h2 {
+  font-size:34px;
+  font-family: "Sandro";
+  text-align: center;
+  margin-bottom: 87px;
+}
+
+.prtext {
+  width: 960px;
+  height: 288px;
+  padding: 4px 35px;
+  background-color: #fff;
+  border: 1px solid#172224;
+  font-size: 22px;
+  font-family: "Sandro";
+  background-color: #fff;
+  border: 1px solid#172224;
+  resize: none;
+}
+
+.prtext:focus {
+  outline: none;
+}
+
+.prtext::placeholder {
+  font-size: 22px;
+  color: #172224;
+  opacity: 0.5;
+}
+
+.btn-block {
+  margin: auto;
+  margin-top: 32px;
+  display: flex;
+  align-items: center;
+}
+
+.clear-icon{
+  display: none;
+  margin-right: 10px;
+  margin: auto;
+}
+.clear-bt:last-child{
+  padding-left: 58px; /*იგივეა რაც ღილაკიდან 20px*/
+  padding-right: 7px;
+}
+
+.btn-analyze {
+  padding: 2px 46px 8px;
+  font-size: 34px;
+  text-align: center;
+  background-color: #172224;
+  font-family: "Sandro";
+  left: 4px;
+  margin: auto;
+}
+
+.btn-analyze {
+  padding: 8px 46px;
+  font-size: 34px;
+  text-align: center;
+  background-color: #172224;
+  color: #ffffff;
+  cursor: pointer;
+  outline: none;
+  border: none;
+  display: flex;
+  align-items: center;
+}
+
+/* footer */
+
+footer {
+  position:relative;
+  z-index: 3;
+  margin-top: 18rem;
+}
+
+.footer-container {
+  width: 100%;
+  padding: 20px;
+  background-color: #2c3532;
+  display: flex;
+  justify-content: space-between;
+}
+.footer-l__block {
+  display: flex;
+  align-items: center;
+}
+
+.github-logo {
+  margin-right: 32px;
+}
+.created-by__title {
+  font-family: "Sandro";
+  color: #ffffff;
+  font-size: 12px;
+  width: 571px;
+}
+.footer-r__block {
+  display: flex;
+}
+.univeristy-logo {
+  margin-right: 11px;
+}
+
+.university-name__title {
+  font-family: "Sandro";
+  color: #ffffff;
+  font-size: 12px;
+  display: flex;
+  align-items: center;
+
+}
+
+.analyze-section {
+    max-width: 960px;
+    width: 100%;
+    margin: auto;
+    margin-top: 15px;
+    display: none;
+    justify-content: center;
+    flex-direction: column;
+}
+
+.display-flex{
+    display: flex;
+}
+
+.parts{
+    display: flex;
+}
+
+.analyze-part{
+    width: 50%;
+    text-align: center;
+    font-family: "Sandro";
+    padding:7px 0 4px;
+    font-size: 18px;
+    border: 1px solid #707070;
+}
+
+.grammar-blocks{
+    display: flex;
+    justify-content: space-around;
+    flex-wrap: wrap;
+    border: 1px solid #707070;
+    border-top: none;
+    font-family: "Sandro";
+}
+
+.grammar-block{
+    width: 44%;
+    border: 1px solid #707070;
+    margin-top: 32px;
+    min-height: 128px;
+    display: flex;
+    flex-direction: column;
+}
+
+.grammar-block-header{
+    font-size: 22px;
+    padding:3px 22px 5px;
+    font-weight: bold;
+    color: white;
+}
+
+.gram-textarea{
+    flex: 1;
+    font-size: 18px;
+    padding-left: 5px;
+    background-color: white;
+}
+
+.hidden{
+    opacity: 0;
+}
+
+.block-last{
+    margin-bottom: 32px;
+}
+
+.block-1>.grammar-block-header{
+    background-color: #3BC18E;
+}
+
+.block-2>.grammar-block-header{
+    background-color: #D1BF33;
+}
+
+.block-3>.grammar-block-header{
+    background-color: #3B83C1;
+}
+
+.block-4>.grammar-block-header{
+    background-color: #E68989;
+}
+
+.block-5>.grammar-block-header{
+    background-color: #238463;
+}
+
+.block-6>.grammar-block-header{
+    background-color: #D69822;
+}
+
+.block-7>.grammar-block-header{
+    background-color: #BC1E9E;
+}
+
+.block-8>.grammar-block-header{
+    background-color: #4DB44D;
+}
+
+.block-9>.grammar-block-header{
+    background-color: #9DC13B;
+}
+
+.block-10{
+    background-color: #E31313;
+}
+
+.block-11{
+    background-color: #567188;
+}
+
+.hidden{
+    opacity: 0;
+}
+
+.block-last{
+    margin-bottom: 32px;
+}
+
+.block-1>.grammar-block-header{
+    background-color: #3BC18E;
+}
+
+.block-2>.grammar-block-header{
+    background-color: #D1BF33;
+}
+
+.block-3>.grammar-block-header{
+    background-color: #3B83C1;
+}
+
+.block-4>.grammar-block-header{
+    background-color: #E68989;
+}
+
+.block-5>.grammar-block-header{
+    background-color: #238463;
+}
+
+.block-6>.grammar-block-header{
+    background-color: #D69822;
+}
+
+.block-7>.grammar-block-header{
+    background-color: #BC1E9E;
+}
+
+.block-8>.grammar-block-header{
+    background-color: #4DB44D;
+}
+
+.block-9>.grammar-block-header{
+    background-color: #9DC13B;
+}
+
+.block-10{
+    background-color: #E31313;
+}
+
+.block-11{
+    background-color: #567188;
+}
+
+.login-bg{
+  position: fixed;
+  width:100%;
+  height:100%;
+  top:0;
+  left:0;
+  display: none;
+  justify-content: center;
+  align-items: center;
+  z-index: 2;
+  background-color: rgba(23, 34, 36, 0.38);
+}
+
+.active-login {
+  display:flex;
+}
+
+.login-content{
+  position:relative;
+  width:512px;
+  height:480px;
+  background-color: #172224;
+  border:1px solid#707070;
+}
+.login-content h2 {
+  margin-top:22px;
+  margin-bottom:33px;
+  font-size:34px;
+  font-family:Sandro;
+  text-align:center;
+  color:#fff;
+}
+.addit-login{
+  display:flex;
+  justify-content: center;
+  margin-bottom:32.88px;
+}
+.img-additional:first-child {
+  margin-right:64.74px;
+}
+.login-inputs{
+  display: flex;
+  justify-content: center;
+}
+.email-input,.forgot-password{
+  margin-bottom:32px;
+}
+.login-input {
+  display: flex;
+  justify-content: center;
+  width: 256px;
+  height:32px;
+  padding:3px 8px 7px;
+  background-color: #FFFFFF;
+  font-size:18px;
+  font-family:Sandro;
+  color:#707070;
+  border:1px solid#707070;
+  outline:none;
+}
+.login-input::placeholder {
+  font-size:18px;
+  font-family:Sandro;
+  color:#707070;
+}
+.emailwarning, .passwordvalidation{
+  margin-top:3px;
+  font-family:'Sandro';
+  color:red;
+}
+.login-btn{
+  margin:auto;
+  display:flex;
+  padding:2px 41px 7px;
+  background-color:#707070;
+  font-size:18px;
+  font-family:Sandro;
+  color:#FFFFFF;
+  border:1px solid#707070;
+  cursor: pointer;
+}
+.registration-button, .avtorization-button{
+  position: absolute;
+  bottom:0px;
+  left:50%;
+  transform: translateX(-50%);
+  margin-bottom:37px;
+  font-size:18px;
+  font-family:Sandro;
+  color:#FFF;
+  background-color:transparent;
+  border:none;
+  outline:none;
+  cursor:pointer;
+}
+.people{
+  display: flex;
+  width: 90%;
+  max-width: 1792px;
+  margin: auto;
+  margin-top: 64px;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  margin: auto;
+}
+
+.person{
+  display: flex;
+  width: 45%;
+  margin-top: 64px;
+}
+.person-name {
+  font-family:Sandro;
+}
+.person-info{
+  margin-left: 32px;
+}
+
+.person-description{
+  font-family:Sandro;
+  font-size: 18px;
+  margin-top: 20px;
+}
+
+.person-job{
+  margin-top: 15px;
+  font-family:Sandro;
+}
+
+.person>img{
+  width: 256px;
+  height: 256px;
+  object-fit: cover;
+}
+
+.file-block {
+  margin-bottom:32px;
+}
+
+.file-tools{
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.tool-container{
+  cursor: pointer;
+  width: 32px;
+  height: 32px;
+  background-color: white;
+  border: 1px solid black;
+  justify-content: center;
+  align-items: center;
+}
+
+.files_page_content{
+  max-width:1470px;
+  width:80%;
+  margin:auto;
+  margin-top:41.9px;
+}
+
+.file_content_heading {
+  margin-bottom:32px;
+}
+
+.file_content_heading h2{
+  font-size:24px;
+  font-family: 'ArialCaps';
+  font-weight: normal;
+  color:#172224;
+}
+
+.files-flex-content{
+  display:flex;
+  justify-content: space-between;
+}
+
+.file-data{
+  margin-bottom:10px;
+}
+
+.file-data span {
+  position:relative;
+  color:#172224;
+  font-size:18px;
+  font-family:Sandro;
+}
+
+.file-data span:first-child {
+  padding-right:60px;
+}
+.file-data span:first-child:after {
+  content:'';
+  position:absolute;
+  top:50%;
+  transform: translateY(-50%);
+  width:1px;
+  height:65%;
+  margin-left:30px;
+  background-color: #172224;
+}
+
+.file-content{
+  margin-right:32px;
+  background-color:#FFFFFF;
+  border:1px solid#707070;
+}
+
+.file-content h2 {
+  padding: 14px 15px 12px;
+  font-size:24px;
+  font-family:Sandro;
+  color:#172224;
+}
+
+.file-content p {
+  padding: 0 15px 25px;
+  font-family:Sandro;
+  font-size:18px;
+  color:#172224;
+}
+
+.file-btn-container{
+  margin: auto;
+  margin-top: 32px;
+  justify-content: center;
+}
+
+.btn-file{
+  padding: 2px 46px 8px;
+  font-size: 34px;
+  text-align: center;
+  background-color: #172224;
+  font-family: "Sandro";
+  left: 4px;
+  color: white;
+  cursor: pointer;
+}
+
+.user-logo{
+  cursor: pointer;
+  margin-top: 10px;
+  margin-right: 6px;
+}
+
+.login{
+  position: relative;
+  height: 41.82px;
+  margin-bottom: 20px;
+}
+
+.my-files{
+  text-decoration: none;
+  color: #172224;
+  transition: all 0.3s ease;
+  border-radius: 2%;
+  padding: 3px;
+}
+
+.my-files:hover{
+  background-color: #707070;
+  color: #EBEBEB;
+  box-shadow: 0 0 11px rgba(33,33,33,.2);
+}
+
+.user-info:before{
+  content: '';
+  display: block;
+  width: 100%;
+  height: 1px;
+  background-color: #707070;
+  margin: 21px 1px;
+  width: 150px;
+}
+
+.user-info{
+  margin-bottom: 21px;
+  padding: 3px;
+}
+
+#dropdown{
+  color: #172224;;
+  background-color: white;
+  display: none;
+  position: absolute;
+  right: 0;
+  top: 0;
+  font-size: 18px;
+  padding: 20px 10px;
+  width: 208px;
+  border: 1px solid #707070;
+}
+
+.active-dropdown{
+  display: block !important;
+}
+
+.invertedLogo{
+  filter: invert(1);
+  position: absolute;
+  right: 0;
+  z-index: 2;
+}
+
+.dropdownMargin{
+  margin-left: 200px;
+}
+
+#log-out{
+  border: 0;
+  background-color: transparent;
+  font-size: 18px;
+  cursor: pointer;
+  padding: 3px;
+  color: #707070;
+  transition: all 0.2s ease;
+  border-radius: 2%;
+}
+
+#log-out:hover{
+  background-color: #707070;
+  color: #EBEBEB;
+  box-shadow: 0 0 11px rgba(33,33,33,.2);
+}
+
+.file-add-block{
+  justify-content: space-between;
+  padding: 36px 125px 32px 32px;
+  border: 1px solid #707070;
+}
+
+.file-add-block h2{
+  font-weight: normal;
+  font-family: 'ArialCaps';
+  color: #172224;
+}
+
+.create-file-checks{
+  flex-direction: column;
+  width: 45%;
+}
+
+.create-file-inputs{
+  width: 45%;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.file-name-inp{
+  padding: 3px 18px;
+  font-size: 18px;
+  width: 100%;
+  margin-bottom: 36px;
+  font-family: Sandro;
+}
+
+.copy-inp{
+  padding: 21px 47px 21px 18px;
+  font-size: 18px;
+  width: 100%;
+  font-family: Sandro;
+  resize: vertical;
+  height: 70px;
+  min-height: 70px;
+}
+
+.file-upload-content{
+  min-height: 544px;
+}
+
+.checks-header{
+  margin-bottom: 75px;
+}
+
+.file-options{
+  font-size: 24px;
+  font-family: Sandro;
+  display: flex;
+  align-items: center;
+  margin-bottom: 24px;
+}
+
+.file-options>input{
+  width: 32px;
+  height: 32px;
+  margin-right: 7px;
+}
+
+.btn-upload{
+  padding: 2px 30px 8px;
+  font-size: 24px;
+  background-color: #172224;
+  font-family: "ArialCaps";
+  left: 4px;
+  color: white;
+  cursor: pointer;
+}
+
+.copy-container{
+  position: relative;
+}
+
+.copy-container>img{
+  position: absolute;
+  color: #707070;
+  right: 32px;
+  bottom: 21px;
+  cursor:pointer;
+}
+
+.content-navbar {
+  margin:34px 32px 34px 68px;
+  font-size: 24px;
+  font-family: Sandro;
+  color:#172224;
+}
+
+.concrete-content{
+  display:flex;
+  justify-content: space-between;
+  margin:0px 32px 96px 96px;
+}
+
+.concrete-words {
+  max-width:1312px;
+  width: 100%;
+}
+
+.concrete-words ul {
+  display: flex;
+  justify-content: flex-start;
+  flex-wrap: wrap;
+}
+
+.concrete-words ul li {
+  width:25%;
+  min-width:224px;
+  margin: 4px 8.333333333333333333333333333333% 0 0;
+  font-size: 24px;
+  font-family: Sandro;
+  color:#2C3532;
+  list-style-type:none;
+}
+
+.concrete-search-tool{
+  width:320px;
+  min-width: 320px;
+}
+
+.search-tool-block{
+  width:100%;
+  border:1px solid#707070;
+}
+
+.info-search {
+  margin:0px 22px 0 32px;
+}
+
+.info-search ul li {
+  margin: 0 0 35px;
+  font-size:24px;
+  font-family:'Sandro';
+  color:#2C3532;
+  list-style-type:none;
+}
+
+.input-search {
+  width:224px;
+  height:32px;
+  margin:32px 0px 66px 32px;
+  font-size:18px;
+  font-family:'Sandro';
+  padding:4px;
+}
+.btn_download{
+  margin-top:32px;
+  width:100%;
+  padding:1.5px 35px 6px;
+  background-color:#2C3532;
+  font-size:24px;
+  font-family:'Sandro';
+  color:#EBEBEB;
+  text-align: left;
+  border:none;
+  outline:none;
+}
+
+.search-btn{
+  margin-top:-30px;
+  margin-left:16.04px;
+  background-color: transparent;
+  border:none;
+}
+
+.search-btn img {
+  width: 30.59px;
+  height: 32.24px;
+}
+
+.search-input-block{
+  display: flex;
+  justify-content: flex-start;
+}
+
+.file-input{
+  display: none;
+  font-size: 15px;
+  margin-left: 10px;
+  padding-top: 5px;
+}
+
+.display-block{
+  display: block;
+}
+
+.forgot-password{
+  font-size:18px;
+  font-family:Sandro;
+  color:#FFF;
+  background-color:transparent;
+  border:none;
+  outline:none;
+  cursor:pointer;
+  text-decoration: underline;
+}
+
+.log-inp-rec{
+  margin-bottom: 32px;
+}
+
+.concrete-words ul li span {
+  color:#FF0000;
+}
+
+.visible {
+  display:block;
+}
+
+.invisible{
+  display:none;
+}
+
+.registration-content, .pas-rec-bg{
+  position:relative;
+  width:512px;
+  height:480px;
+  background-color: #172224;
+  border:1px solid#707070;
+}
+.registration-content h2, .pas-rec-bg h2 {
+  margin-top:22px;
+  margin-bottom:33px;
+  font-size:34px;
+  font-family:Sandro;
+  text-align:center;
+  color:#fff;
+}
+
+.uploading-procces {
+  position: relative;
+  user-select:none;
+  opacity:0.5;
+}
+
+.uploading-text{
+  position: relative;
+}
+
+.uploading-text:after {
+  content:'ფაილი მუშავდება';
+  position: absolute;
+  left:50%;
+  top:30%;
+  transform:translate(-50%);
+  font-size:53px;
+  font-family: 'ArialCaps';
+  color:#172224;
+  z-index:4;
+}
+
+.uploading-icons > .tool-container {
+  cursor:default;
+}

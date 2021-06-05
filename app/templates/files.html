@@ -5,6 +5,7 @@
     <title>QartNLP</title>
     <link rel="stylesheet" href="../static/CSS/styles.css" />
     <link rel="stylesheet" href="../static/CSS/fonts.css" />
+    <script src="https://kit.fontawesome.com/5968971b15.js" crossorigin="anonymous"></script>
   </head>
   <body>
     <header id="header">
@@ -15,12 +16,12 @@
         <div class="nav-right">
           <ul>
             <li class="list-item"><a href="home.html">მთავარი</a></li>
-            <li class="list-item"><a href="">დოკუმენტაცია</a></li>
+            <li class="list-item"><a href="files.html">დოკუმენტაცია</a></li>
             <li class="list-item"><a href="about.html">ჩვენს შესახებ</a></li>
             <li class="icon login">
               <img src="../assets/header-logo.svg" alt="logo" class="user-logo" />
               <div id="dropdown">
-                <a class="my-files" href="files.html">ჩემი ფაილები</a>
+                <a class="my-files" href="#">ჩემი ფაილები</a>
                 <p class="user-info">
                   <span id="user-name">
                     სახელი გვარი
@@ -80,7 +81,7 @@
         </div>
           <button class="avtorization-button">ავტორიზაცია</button>
       </div>
-      
+
       <div class="pas-rec-bg invisible">
         <h2>პაროლის აღდგენა</h2>
         <div class="addit-login">
@@ -106,92 +107,66 @@
         </div>
       </div>
     </div>
-
-    <section class="processing-lang">
-        <h2>ქართული ენის ციფრული დამუშავება</h2>
-        <textarea class="prtext" name="text" id="prtext" placeholder="ჩააკოპირე ქართული ტექსტი, ნახე როგორ მუშაობს სისტემა."></textarea>
-        <div class="btn-block">
-            <button id="analyze-button" class="btn-analyze">
-              <img src="../assets/clear.svg" alt="reload" id="clear-icon" class="clear-icon">
-              <span id="analyze-text">გაანალიზე</span>
+    <div class="files_page_content">
+      <div class="file_content_heading">
+        <h2>ჩემი ფაილები</h2>
+      </div>
+      <div class="file-block uploading-procces">
+        <div class="file-data">
+            <span>შექმნის თარიღი: 2021/01/15</span>
+            <span>ბოლო მოდიფიცირების თარიღი: 2021/02/15</span>
+        </div>
+        <div class="files-flex-content">
+          <div class="file-content uploading-text">
+              <h2>ჩემი ფაილის სათაური</h2>
+              <p>
+                სიტყვა წიგნის გაგონებაზე ადამიანის ცნობიერებაში სავსებით კონკრეტული ობიექტი წარმოისახება, რომელსაც ამ ობიექტისათვის დამახასიათებელი ზომა და ფორმა აქვს. კონკრეტულად ჩემ ცნობიერებაში წარმოსახული ობიექტი ქაღალდისგან არის დამზადებული, A5 ზომისაა და მაგარი ყდა აქვს.
+              </p>
+          </div>
+          <div class="file-tools display-flex uploading-icons">
+            <button class="tool-container display-flex">
+              <i class="fas fa-pen"></i>
             </button>
+            <button class="tool-container display-flex">
+              <i class="fas fa-arrow-down"></i>
+            </button>
+            <button class="tool-container display-flex">
+              <i class="far fa-trash-alt"></i>
+            </button>
+          </div>
         </div>
-    </section>
-    <section id="analyze-section" class="analyze-section">
-        <div class="parts">
-            <p class="analyze-part">ნაწილები</p>
-            <p class="analyze-part">ნაწილები</p>
+      </div>
+      <div class="file-block">
+        <div class="file-data">
+            <span>შექმნის თარიღი: 2021/01/15</span>
+            <span>ბოლო მოდიფიცირების თარიღი: 2021/02/15</span>
         </div>
-        <div class="grammar-blocks">
-            <div class="grammar-block block-1">
-                <h6 class="grammar-block-header">
-                    არსებითი სახელი
-                </h6>
-                <div readonly name="gram" class="gram-textarea" id=""></div>
-            </div>
-            <div class="grammar-block block-2">
-                <h6 class="grammar-block-header">
-                    ზედსართავი სახელი
-                </h6>
-                <div readonly name="gram" class="gram-textarea" id=""></div>
-            </div>
-            <div class="grammar-block block-3">
-                <h6 class="grammar-block-header">
-                    რიცხვითი სახელი
-                </h6>
-                <div readonly name="gram" class="gram-textarea" id=""></div>
-            </div>
-            <div class="grammar-block block-4">
-                <h6 class="grammar-block-header">
-                    ნაცვალსახელი
-                </h6>
-                <div readonly name="gram" class="gram-textarea" id=""></div>
-            </div>
-            <div class="grammar-block block-5">
-                <h6 class="grammar-block-header">
-                    კავშირი
-                </h6>
-                <div readonly name="gram" class="gram-textarea" id=""></div>
-            </div>
-            <div class="grammar-block block-6">
-                <h6 class="grammar-block-header">
-                    ნაწილაკი
-                </h6>
-                <div readonly name="gram" class="gram-textarea" id=""></div>
-            </div>
-            <div class="grammar-block block-7">
-                <h6 class="grammar-block-header">
-                    ზმნიზედა
-                </h6>
-                <div readonly name="gram" class="gram-textarea" id=""></div>
-            </div>
-            <div class="grammar-block block-8">
-                <h6 class="grammar-block-header">
-                    თანდებული
-                </h6>
-                <div readonly name="gram" class="gram-textarea" id=""></div>
-            </div>
-            <div class="grammar-block block-9">
-                <h6 class="grammar-block-header">
-                    შორისდებული
-                </h6>
-                <div readonly name="gram" class="gram-textarea" id=""></div>
-            </div>
-            <div class="grammar-block block-10">
-                <h6 class="grammar-block-header">
-                    ზმნა
-                </h6>
-                <div readonly name="gram" class="gram-textarea" id=""></div>
-            </div>
-            <div class="grammar-block block-last block-11">
-                <h6 class="grammar-block-header">
-                    მიმღეობა
-                </h6>
-                <div readonly name="gram" class="gram-textarea" id=""></div>
-            </div>
-            <i aria-hidden="true" class="grammar-block hidden"></i>
+        <div class="files-flex-content">
+          <div class="file-content">
+              <h2>ჩემი ფაილის სათაური</h2>
+              <p>
+                სიტყვა წიგნის გაგონებაზე ადამიანის ცნობიერებაში სავსებით კონკრეტული ობიექტი წარმოისახება, რომელსაც ამ ობიექტისათვის დამახასიათებელი ზომა და ფორმა აქვს. კონკრეტულად ჩემ ცნობიერებაში წარმოსახული ობიექტი ქაღალდისგან არის დამზადებული, A5 ზომისაა და მაგარი ყდა აქვს.
+              </p>
+          </div>
+          <div class="file-tools display-flex">
+            <button class="tool-container display-flex">
+              <i class="fas fa-pen"></i>
+            </button>
+            <button class="tool-container display-flex">
+              <i class="fas fa-arrow-down"></i>
+            </button>
+            <button class="tool-container display-flex">
+              <i class="far fa-trash-alt"></i>
+            </button>
+          </div>
         </div>
-    </section>
+      </div>
+    </div>
+    <div class="file-btn-container display-flex">
+      <button id="add-file" class="btn-file">
+        დამატება
+      </button>
+    </div>
     <footer>
       <div class="footer-container">
         <div class="footer-l__block">
