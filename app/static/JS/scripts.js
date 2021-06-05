@@ -204,3 +204,4 @@ window.onclick = (event) => {
     registration.classList.remove('visible');
   }
 };
+
