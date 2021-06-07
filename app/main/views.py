@@ -1,5 +1,14 @@
-from flask import Blueprint, render_template
+from flask import Blueprint, render_template, request
 from app.main.temp_data import people, block_files  # TODO: მონაცემების წამოღება ბაზიდან
+from app import babel
+from app.settings import Config
+
+
+@babel.localeselector
+def get_locale():
+    return request.accept_languages.best_match(Config.LANGUAGES.keys())
+
+
 main_blueprint = Blueprint('main',
                            __name__,
                            template_folder='templates/jinja'

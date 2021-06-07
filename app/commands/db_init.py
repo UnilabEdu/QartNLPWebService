@@ -1,8 +1,9 @@
 from flask_script import Command
-from app.models import db
+from app.database import db
 from app.user.user_model import User, Role
 from flask import current_app
 from datetime import datetime
+
 
 class InitDbCommand(Command):
 
