@@ -32,13 +32,9 @@ const loginContent = document.querySelector('.login-bg');
 
 const loginEvent = () =>{
   loginContent.classList.add('active-login');
+  recovPas.classList.remove('active-login')
 }
 loginBtn.addEventListener('click', loginEvent);
-
-window.onclick = (event) => {
-    if (event.target == loginContent)
-        loginContent.classList.remove("active-login");
-};
 
 loginForm = document.getElementById('login-form');
 loginForm.addEventListener('submit', e => {
@@ -156,6 +152,19 @@ if(arrowInc){
   })
 }
 
+const uploadBtn = document.querySelector('#btn-upload');
+if (uploadBtn) {
+  const inputFile = document.querySelector('#file-input');
+  const copyHead = document.querySelector('#copy-text-head');
+  const copyCont = document.querySelector('.copy-container');
+  uploadBtn.addEventListener('click', () => {
+    inputFile.classList.toggle('display-block');
+  });
+  inputFile.onchange = () =>{
+    copyHead.style.display = 'none';
+    copyCont.style.display = 'none';
+  }
+}
 const regButton = document.querySelector('.registration-button');
 const login = document.querySelector('.login-content');
 const registration = document.querySelector('.registration-content');
@@ -173,4 +182,26 @@ logBtn.addEventListener('click', ()=>{
   login.classList.remove('invisible');
   login.classList.add('visible');
 })
+
+const recovPas = document.querySelector('.pas-rec-bg');
+const forgotBtn = document.querySelector('.forgot-password');
+
+forgotBtn.addEventListener('click', e => {
+  e.preventDefault();
+  recovPas.classList.remove('invisible');
+  recovPas.classList.add('visible');
+  login.classList.add('invisible');
+})
+
+window.onclick = (event) => {
+  if (event.target == loginContent){
+    loginContent.classList.remove("active-login");
+    recovPas.classList.add('invisible');
+    recovPas.classList.remove('visible');
+    login.classList.remove('invisible');
+    login.classList.add('visible');
+    registration.classList.add('invisible');
+    registration.classList.remove('visible');
+  }
+};
 
