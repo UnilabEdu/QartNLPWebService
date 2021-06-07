@@ -2,7 +2,7 @@ from flask import Flask
 from flask_migrate import Migrate
 from flask_user import SQLAlchemyAdapter, UserManager
 from flask_mail import Mail
-
+from flask_babel import Babel
 from celery import Celery
 
 from app.settings import Config
@@ -13,6 +13,7 @@ from app.user.admin.admin import admin
 
 migrate = Migrate()
 mail = Mail()
+babel = Babel()
 
 celery = Celery(__name__, broker=Config.CELERY_BROKER_URL, backend=Config.CELERY_RESULT_BACKEND)
 
@@ -34,6 +35,9 @@ def create_app():
 
     # Setup Flask-Mail
     mail.init_app(app)
+
+    # Setup Flask-Babel
+    babel.init_app(app)
 
     # Setup Flask-User
     db_adapter = SQLAlchemyAdapter(db, User)

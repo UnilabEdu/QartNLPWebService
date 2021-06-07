@@ -1,16 +1,14 @@
 import datetime
-from flask_login import LoginManager
 from sqlalchemy.types import BLOB, TEXT
 
 from app.database import db
-from app.user.user_model import User
 
 
 class Profile(db.Model):
     __tablename__ = "profiles"
 
     id = db.Column(db.String, primary_key=True)
-    user_id = db.Column(db.Integer, db.ForeignKey('users.id'))   # 1/2გასამართია რელეიშენშიფი - უჩა
+    user_id = db.Column(db.Integer, db.ForeignKey('user.id'))
     first_name = db.Column(db.String(64), nullable=False)
     last_name = db.Column(db.String(64), nullable=False)
     date_of_birth = db.Column(db.DATE, nullable=False)
@@ -29,23 +27,10 @@ class Profile(db.Model):
         self.info = info
 
 
-# setup login manager
-login_manager = LoginManager()
-login_manager.login_view = "auth.login"
-
-
-@login_manager.user_loader
-def load_user(user_id):
-    return User.query.get(int(user_id))
-
-
-#         self.tools = tools
-
-
 class File(db.Model):
     __tablename__ = "files"
     id = db.Column(db.Integer, primary_key=True)
-    user_id = db.Column(db.Integer, db.ForeignKey('users.id'))  # 2/2გასამართია რელეიშენშიფი - უჩა
+    user_id = db.Column(db.Integer, db.ForeignKey('user.id'))
     title = db.Column(db.String)
     upload_date = db.Column(db.DateTime, default=datetime.datetime.utcnow)
     processes = db.Column(db.String)
@@ -59,6 +44,10 @@ class File(db.Model):
 
     def delete(self):
         db.session.delete(self)
+        db.session.commit()
+
+    def add(self):
+        db.session.add(self)
         db.session.commit()
 
 
@@ -95,7 +84,8 @@ class Status(db.Model):
     # link to celelry task with celery_taskmeta.id
     # process_status
 
-    def __init__(self, file_id, lemat=False, token=False, pos_tag=False, stop_word=False, freq_dist=False, finished=False):
+    def __init__(self, file_id, lemat=False, token=False, pos_tag=False,
+                 stop_word=False, freq_dist=False, finished=False):
         self.file_id = file_id
         self.lemat = lemat
         self.token = token
