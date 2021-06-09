@@ -1,5 +1,19 @@
-from flask import Blueprint, render_template
+from flask import Blueprint, render_template, flash, request
+from flask_babel import gettext
+
 from app.main.temp_data import people, block_files  # TODO: მონაცემების წამოღება ბაზიდან
+from app import babel
+from app.settings import Config
+
+
+# Setting Babel Locale Selector
+
+@babel.localeselector
+def get_locale():
+    return 'ka'
+    # return request.accept_languages.best_match(Config.LANGUAGES.keys())
+
+
 main_blueprint = Blueprint('main',
                            __name__,
                            template_folder='templates'
@@ -9,6 +23,7 @@ main_blueprint = Blueprint('main',
 @main_blueprint.route('/', methods=['GET', 'POST'])
 @main_blueprint.route('/home', methods=['GET', 'POST'])
 def home():
+    flash(gettext("შევდივარ თავ-ფურცელზე"))
     return render_template('home.html')
 
 

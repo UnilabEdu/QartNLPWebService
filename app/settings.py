@@ -28,3 +28,8 @@ class Config(object):
     MAIL_USE_TLS = True
     MAIL_USE_SSL = False
     USER_ENABLE_CONFIRM_EMAIL = False
+
+    LANGUAGES = {
+        "en": "English",
+        "ka": "Georgian"
+    }
