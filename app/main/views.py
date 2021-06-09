@@ -1,30 +1,24 @@
-from flask import Blueprint, render_template, flash, request
-from flask_babel import gettext
-
-from app.main.temp_data import people, block_files  # TODO: მონაცემების წამოღება ბაზიდან
+from flask import Blueprint, render_template, request
+from app.main.temp_data import people, block_files, grammar_blocks, checkboxes, word_list # TODO: მონაცემების წამოღება ბაზიდან
 from app import babel
 from app.settings import Config
 
 
-# Setting Babel Locale Selector
-
 @babel.localeselector
 def get_locale():
-    return 'ka'
-    # return request.accept_languages.best_match(Config.LANGUAGES.keys())
+    return request.accept_languages.best_match(Config.LANGUAGES.keys())
 
 
 main_blueprint = Blueprint('main',
                            __name__,
-                           template_folder='templates'
+                           template_folder='templates/jinja'
                            )
 
 
 @main_blueprint.route('/', methods=['GET', 'POST'])
 @main_blueprint.route('/home', methods=['GET', 'POST'])
 def home():
-    flash(gettext("შევდივარ თავ-ფურცელზე"))
-    return render_template('home.html')
+    return render_template('home.html', blocks=grammar_blocks)
 
 
 @main_blueprint.route('/documentation', methods=['GET', 'POST'])
@@ -35,3 +29,12 @@ def documentation():
 @main_blueprint.route('/about_us', methods=['GET', 'POST'])
 def about_us():
     return render_template('about.html', people=people)
+
+
+@main_blueprint.route('/add_files', methods=['GET', 'POST'])
+def add_files():
+    return render_template('add-file.html', checkboxes=checkboxes)
+
+@main_blueprint.route('/concrete', methods=['GET', 'POST'])
+def concrete():
+    return render_template('concrete.html', word_list=word_list)

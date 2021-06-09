@@ -1,6 +1,6 @@
-from app.models import db
-from flask_user import UserMixin, UserManager
-
+from app.database import db
+from flask_user import UserMixin
+from app.models import Profile, File
 # user_manager = UserManager()
 
 class User(db.Model, UserMixin):
@@ -13,6 +13,8 @@ class User(db.Model, UserMixin):
 
     roles = db.relationship('Role', secondary='user_roles',
                             backref=db.backref('users', lazy='dynamic'))
+    profile = db.relationship('Profile', backref='user', uselist=False)
+    file = db.relationship('File', backref='user')
 
 class Role(db.Model):
     id = db.Column(db.Integer(), primary_key=True)

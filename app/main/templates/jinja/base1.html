@@ -3,8 +3,11 @@
   <head>
     <meta charset="UTF-8" />
     {% block title %}
-        <title>QartNLP</title>
+        <title>{{_("QartNLP")}}</title>
     {% endblock %}
+
+    <link rel="icon" href="{{url_for("static", filename="assets/favicon.png")}}" type="image/png"> 
+    <script src="https://kit.fontawesome.com/5968971b15.js" crossorigin="anonymous"></script>
     <link rel="stylesheet" href="{{url_for("static", filename="CSS/styles.css")}}" />
     <link rel="stylesheet" href="{{url_for("static", filename="CSS/fonts.css")}}" />
   </head>
@@ -12,9 +15,12 @@
     <header id="header">
       {% include "partials/nav.html" %}
     </header>
-    {% include "partials/login.html" %}
+      {% include "partials/login.html" %}
+
+
     {% block content %}
     {% endblock %}
+
     <footer>
       <div class="footer-container">
         <div class="footer-l__block">
@@ -23,9 +29,9 @@
           </div>
           <div class="created-by__title">
             <p>
-              შექმნილია ილიას სახელმწიფო უნივერსიტეტის მორფოლოგიური
+              {{_("შექმნილია ილიას სახელმწიფო უნივერსიტეტის მორფოლოგიური
               ანალიზაატორის ბაზაზე Unilab-ის ციფრული ლაბორატორიის Python
-              Development გუნდის მიერ.
+              Development გუნდის მიერ.")}}
             </p>
           </div>
         </div>
@@ -34,7 +40,7 @@
             <img src="{{url_for("static", filename="assets/university-logo.svg")}}" alt="uny-logo" />
           </div>
           <div class="university-name__title">
-            ილიას სახელმწიფო უნივერსიტეტი
+            {{_("ილიას სახელმწიფო უნივერსიტეტი")}}
           </div>
         </div>
       </div>
