@@ -7,7 +7,7 @@
     {% endblock %}
 
     <link rel="icon" href="{{url_for("static", filename="assets/favicon.png")}}" type="image/png"> 
-
+    <script src="https://kit.fontawesome.com/5968971b15.js" crossorigin="anonymous"></script>
     <link rel="stylesheet" href="{{url_for("static", filename="CSS/styles.css")}}" />
     <link rel="stylesheet" href="{{url_for("static", filename="CSS/fonts.css")}}" />
   </head>
@@ -15,9 +15,12 @@
     <header id="header">
       {% include "partials/nav.html" %}
     </header>
-    {% include "partials/login.html" %}
+      {% include "partials/login.html" %}
+
+
     {% block content %}
     {% endblock %}
+
     <footer>
       <div class="footer-container">
         <div class="footer-l__block">

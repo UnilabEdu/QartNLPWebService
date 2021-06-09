@@ -5,84 +5,30 @@
         <textarea class="prtext" name="text" id="prtext" placeholder="ჩააკოპირე ქართული ტექსტი, ნახე როგორ მუშაობს სისტემა."></textarea>
         <div class="btn-block">
             <button id="analyze-button" class="btn-analyze">
-              <img src="../assets/clear.svg" alt="reload" id="clear-icon" class="clear-icon">
+              <img src="{{url_for("static", filename="assets/clear.svg")}}" alt="reload" id="clear-icon" class="clear-icon">
               <span id="analyze-text">გაანალიზე</span>
             </button>
         </div>
     </section>
+
     <section id="analyze-section" class="analyze-section">
+
         <div class="parts">
             <p class="analyze-part">ნაწილები</p>
             <p class="analyze-part">ნაწილები</p>
         </div>
+
         <div class="grammar-blocks">
-            <div class="grammar-block block-1">
-                <h6 class="grammar-block-header">
-                    არსებითი სახელი
-                </h6>
-                <div readonly name="gram" class="gram-textarea" id=""></div>
-            </div>
-            <div class="grammar-block block-2">
-                <h6 class="grammar-block-header">
-                    ზედსართავი სახელი
-                </h6>
-                <div readonly name="gram" class="gram-textarea" id=""></div>
-            </div>
-            <div class="grammar-block block-3">
-                <h6 class="grammar-block-header">
-                    რიცხვითი სახელი
-                </h6>
-                <div readonly name="gram" class="gram-textarea" id=""></div>
-            </div>
-            <div class="grammar-block block-4">
-                <h6 class="grammar-block-header">
-                    ნაცვალსახელი
-                </h6>
-                <div readonly name="gram" class="gram-textarea" id=""></div>
-            </div>
-            <div class="grammar-block block-5">
-                <h6 class="grammar-block-header">
-                    კავშირი
-                </h6>
-                <div readonly name="gram" class="gram-textarea" id=""></div>
-            </div>
-            <div class="grammar-block block-6">
-                <h6 class="grammar-block-header">
-                    ნაწილაკი
-                </h6>
-                <div readonly name="gram" class="gram-textarea" id=""></div>
-            </div>
-            <div class="grammar-block block-7">
-                <h6 class="grammar-block-header">
-                    ზმნიზედა
-                </h6>
-                <div readonly name="gram" class="gram-textarea" id=""></div>
-            </div>
-            <div class="grammar-block block-8">
-                <h6 class="grammar-block-header">
-                    თანდებული
-                </h6>
-                <div readonly name="gram" class="gram-textarea" id=""></div>
-            </div>
-            <div class="grammar-block block-9">
-                <h6 class="grammar-block-header">
-                    შორისდებული
-                </h6>
-                <div readonly name="gram" class="gram-textarea" id=""></div>
-            </div>
-            <div class="grammar-block block-10">
-                <h6 class="grammar-block-header">
-                    ზმნა
-                </h6>
-                <div readonly name="gram" class="gram-textarea" id=""></div>
-            </div>
-            <div class="grammar-block block-last block-11">
-                <h6 class="grammar-block-header">
-                    მიმღეობა
-                </h6>
-                <div readonly name="gram" class="gram-textarea" id=""></div>
-            </div>
+            {% for block in blocks %}
+                <div class="grammar-block block-{{ loop.index }}">
+                    <h6 class="grammar-block-header">
+                        {{block.text}}
+                    </h6>
+                    <div readonly name="{{ block.name }}" class="gram-textarea" id="{{ block.id }}"></div>
+                </div>
+            {% endfor %}
             <i aria-hidden="true" class="grammar-block hidden"></i>
         </div>
+
     </section>
 {% endblock %}
