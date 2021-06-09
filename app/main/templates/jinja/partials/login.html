@@ -1,6 +1,6 @@
 <div class="login-bg">
       <div class="login-content">
-          <h2>ავტორიზაცია</h2>
+          <h2>{{_("ავტორიზაცია")}}</h2>
           <div class="addit-login">
                   <img class="img-additional" src="{{ url_for('static', filename="assets/Path3452.svg") }}" alt="Github"/>
                   <img class="img-additional" src="{{ url_for('static', filename="assets/RepeatGrid1.svg") }}" alt="Gmail"/>
@@ -8,14 +8,14 @@
           <div class="login-inputs">
               <form name="login" method="POST" id="login-form">
                 <div class="email-input">
-                  <input type="email" name="email" id="email" class="login-input" placeholder="ელფოსტა">
+                  <input type="email" name="email" id="email" class="login-input" placeholder="{{_("ელფოსტა")}}">
                 </div>
                 <div class="password-input">
-                  <input type="password" name="password" id="password" class="login-input" placeholder="პაროლი">
+                  <input type="password" name="password" id="password" class="login-input" placeholder="{{_("პაროლი")}}">
                 </div>
-                 <input type="submit" value="შესვლა" class="login-btn">
+                 <input type="submit" value="{{_("შესვლა")}}" class="login-btn">
               </form>
           </div>
-            <button class="registration-button">რეგისტრაცია</button>
+            <button class="registration-button">{{_("რეგისტრაცია")}}</button>
       </div>
     </div>

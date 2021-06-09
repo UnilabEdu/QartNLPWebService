@@ -3,7 +3,7 @@
   <head>
     <meta charset="UTF-8" />
     {% block title %}
-        <title>QartNLP</title>
+        <title>{{_("QartNLP")}}</title>
     {% endblock %}
 
     <link rel="icon" href="{{url_for("static", filename="assets/favicon.png")}}" type="image/png"> 
@@ -29,9 +29,9 @@
           </div>
           <div class="created-by__title">
             <p>
-              შექმნილია ილიას სახელმწიფო უნივერსიტეტის მორფოლოგიური
+              {{_("შექმნილია ილიას სახელმწიფო უნივერსიტეტის მორფოლოგიური
               ანალიზაატორის ბაზაზე Unilab-ის ციფრული ლაბორატორიის Python
-              Development გუნდის მიერ.
+              Development გუნდის მიერ.")}}
             </p>
           </div>
         </div>
@@ -40,7 +40,7 @@
             <img src="{{url_for("static", filename="assets/university-logo.svg")}}" alt="uny-logo" />
           </div>
           <div class="university-name__title">
-            ილიას სახელმწიფო უნივერსიტეტი
+            {{_("ილიას სახელმწიფო უნივერსიტეტი")}}
           </div>
         </div>
       </div>
