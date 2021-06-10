@@ -5,6 +5,7 @@
     <title>QartNLP</title>
     <link rel="stylesheet" href="../static/CSS/styles.css" />
     <link rel="stylesheet" href="../static/CSS/fonts.css" />
+    <script src="https://kit.fontawesome.com/5968971b15.js" crossorigin="anonymous"></script>
   </head>
   <body>
     <header id="header">
@@ -42,32 +43,94 @@
                   <img class="img-additional" src="../assets/RepeatGrid1.svg" alt="Gmail"/>
           </div>
           <div class="login-inputs">
-            <form name="login" method="POST" id="login-form">
-              <div class="email-input">
+              <form name="login" method="POST" id="login-form">
+                <div class="email-input">
                   <input type="email" name="email" id="email" class="login-input" placeholder="ელფოსტა">
-              </div>
-              <div class="password-input">
+                </div>
+                <div class="password-input">
                   <input type="password" name="password" id="password" class="login-input" placeholder="პაროლი">
-              </div>
-                  <input type="submit" value="შესვლა" class="login-btn">
+                </div>
+                <button class="forgot-password">
+                  დაგავიწყდათ პაროლი?
+                </button>
+                 <input type="submit" value="შესვლა" class="login-btn">
               </form>
           </div>
             <button class="registration-button">რეგისტრაცია</button>
       </div>
-  </div>
 
+      <div class="registration-content invisible">
+        <h2>რეგისტრაცია</h2>
+        <div class="addit-login">
+                <img class="img-additional" src="../assets/Path3452.svg" alt="Github"/>
+                <img class="img-additional" src="../assets/RepeatGrid1.svg" alt="Gmail"/>
+        </div>
+        <div class="login-inputs">
+            <form name="login" method="POST" id="login-form">
+              <div class="email-input">
+                <input type="email" name="email" id="email" class="login-input" placeholder="ელფოსტა">
+              </div>
+              <div class="password-input">
+                <input type="password" name="password" id="password" class="login-input" placeholder="პაროლი">
+              </div>
+              <div class="password-input">
+                <input type="password" name="password" id="password" class="login-input" placeholder="გაიმეორეთ პაროლი">
+              </div>
+               <input type="submit" value="რეგისტრაცია" class="login-btn">
+            </form>
+        </div>
+          <button class="avtorization-button">ავტორიზაცია</button>
+      </div>
+      
+      <div class="pas-rec-bg invisible">
+        <h2>პაროლის აღდგენა</h2>
+        <div class="addit-login">
+                <img class="img-additional" src="../assets/Path3452.svg" alt="Github"/>
+                <img class="img-additional" src="../assets/RepeatGrid1.svg" alt="Gmail"/>
+        </div>
+        <div class="login-inputs">
+            <form name="login" method="POST" id="recov-form">
+              <div class="email-input">
+                <input type="email" name="email" id="email-forgot" class="login-input" placeholder="ელფოსტა">
+              </div>
+              <div class="password-input">
+                <input type="password" name="password-forg" class="login-input log-inp-rec" placeholder="ძველი პაროლი">
+              </div>
+              <div class="password-input">
+                <input type="password" name="password-forg" class="login-input log-inp-rec" placeholder="ახალი პაროლი">
+              </div>
+              <div class="password-input">
+                <input type="password" name="password-forg" id="password-forg" class="login-input log-inp-rec" placeholder="დაადასტურეთ პაროლი">
+              </div>
+               <input type="submit" value="აღდგენა" class="login-btn">
+            </form>
+        </div>
+      </div>
+    </div>
     <section id="about-section">
         <div class="people">
             <div class="person">
+              <div class="person-prof">
                 <img src="../assets/temur-chichua.png" alt="ფოტო">
-                <div class="person-info">
-                    <h2 class="person-name">თემურ ჩიჩუა</h2>
-                    <h2 class="person-job">ინსტრუქტორი</h2>
-                    <p class="person-description">AnimaChatbotics-ის მოქმედი Python დეველოპერი. მუშაობს სხვადასხვა კომპიუტერული მეცნიერების მიმართულებაზე. ასწავლის Python Development-ს ილიას სახელმწიფო უნივერსიტეტის ტექნოლოგიების ლაბორატორია “უნილაბსა” და “ექსპლორიუმში”</p>
-                </div>
+                <span class="soc-icons">
+                  <a href="https://github.com/temurchichua"><i class="fab fa-github"></i></a>
+                  <a href=""><i class="fab fa-facebook-square"></i></a>
+                </span>
+              </div>
+              <div class="person-info">
+                  <h2 class="person-name">თემურ ჩიჩუა</h2>
+                  <h2 class="person-job">ინსტრუქტორი</h2>
+                  <p class="person-description">AnimaChatbotics-ის მოქმედი Python დეველოპერი. მუშაობს სხვადასხვა კომპიუტერული მეცნიერების მიმართულებაზე. ასწავლის Python Development-ს ილიას სახელმწიფო უნივერსიტეტის ტექნოლოგიების ლაბორატორია “უნილაბსა” და “ექსპლორიუმში”</p>
+              </div>
             </div>
             <div class="person">
+              <div class="person-prof">
                 <img src="../assets/temuri-qitsohvili.png" alt="ფოტო">
+                <span class="soc-icons">
+                  <a href="https://github.com/temurchichua"><i class="fab fa-github"></i></a>
+                  <a href=""><i class="fab fa-facebook-square"></i></a>
+                </span>
+              </div>
                 <div class="person-info">
                     <h2 class="person-name">თემური ქიტოშვილი</h2>
                     <h2 class="person-job">
@@ -77,16 +140,28 @@
                 </div>
             </div>
             <div class="person">
+              <div class="person-prof">
                 <img src="../assets/mariam-kvantaliani.png" alt="ფოტო">
+                <span class="soc-icons">
+                  <a href="https://github.com/temurchichua"><i class="fab fa-github"></i></a>
+                  <a href=""><i class="fab fa-facebook-square"></i></a>
+                </span>
+              </div>
                 <div class="person-info">
                     <h2 class="person-name">მარიამ კვანტალიანი</h2>
                     <h2 class="person-job">მომხმარებლის ავტორიზაცია/რეგისტრაცია</h2>
-                    <p class="person-description">შეისწავლის ვებ დეველოპმენტს. დაინტერესებულია dig data 
+                    <p class="person-description">შეისწავლის ვებ დეველოპმენტს. დაინტერესებულია dig data
                       მონაცემებთან მუშაობით და მათი ვიზუალიზაციით. მოსწონს ახალ და საინტერესო პროექტებზე მუშაობა.</p>
                 </div>
             </div>
             <div class="person">
+              <div class="person-prof">
                 <img src="../assets/alisa-sanakoevi.png" alt="ფოტო">
+                <span class="soc-icons">
+                  <a href="https://github.com/temurchichua"><i class="fab fa-github"></i></a>
+                  <a href=""><i class="fab fa-facebook-square"></i></a>
+                </span>
+              </div>
                 <div class="person-info">
                     <h2 class="person-name">ალისა სანაკოევი</h2>
                     <h2 class="person-job">მონაცემთა ბაზები</h2>
@@ -94,7 +169,13 @@
                 </div>
             </div>
             <div class="person">
+              <div class="person-prof">
                 <img src="../assets/nina-darsavelidze.png" alt="ფოტო">
+                <span class="soc-icons">
+                  <a href="https://github.com/temurchichua"><i class="fab fa-github"></i></a>
+                  <a href=""><i class="fab fa-facebook-square"></i></a>
+                </span>
+              </div>
                 <div class="person-info">
                     <h2 class="person-name">ნინა დარსაველიძე</h2>
                     <h2 class="person-job">დოკუმენტაცია და ვიზუალური მასალა</h2>
@@ -102,7 +183,13 @@
                 </div>
             </div>
             <div class="person">
+              <div class="person-prof">
                 <img src="../assets/tengiz-ptaraia.png" alt="ფოტო">
+                <span class="soc-icons">
+                  <a href="https://github.com/temurchichua"><i class="fab fa-github"></i></a>
+                  <a href=""><i class="fab fa-facebook-square"></i></a>
+                </span>
+              </div>
                 <div class="person-info">
                     <h2 class="person-name">თენგიზ პატარაია</h2>
                     <h2 class="person-job">backend, celery</h2>

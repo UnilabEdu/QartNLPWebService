@@ -32,13 +32,9 @@ const loginContent = document.querySelector('.login-bg');
 
 const loginEvent = () =>{
   loginContent.classList.add('active-login');
+  recovPas.classList.remove('active-login')
 }
 loginBtn.addEventListener('click', loginEvent);
-
-window.onclick = (event) => {
-    if (event.target == loginContent)
-        loginContent.classList.remove("active-login");
-};
 
 loginForm = document.getElementById('login-form');
 loginForm.addEventListener('submit', e => {
@@ -113,3 +109,99 @@ logout.addEventListener('click', ()=>{
   localStorage.removeItem('loginInfo');
   location.reload();
 })
+
+const addButton = document.querySelector('#add-file');
+if (addButton) {
+  addButton.addEventListener('click', () => {
+    window.location.href = 'add-file.html';
+  });
+}
+
+const copyInp = document.querySelector('.copy-inp');
+const arrowInc = document.querySelector('.arrow-increase')
+const up = document.querySelector('.cont-up');
+const uploadFile = document.querySelector('.upload-file');
+
+if(arrowInc){
+  arrowInc.addEventListener('click', ()=>{
+    if(!copyInp.classList.contains('active-textarea')){
+      copyInp.style.height = '352px';
+      arrowInc.style.transform = 'rotate(270deg)';
+      up.remove();
+      uploadFile.innerHTML = ``;
+      copyInp.classList.add('active-textarea');
+    }else{
+      copyInp.classList.remove('active-textarea');
+      copyInp.style.height = '70px';
+      arrowInc.style.transform = 'rotate(0deg)';
+      uploadFile.innerHTML = `<div class="cont-up">
+      <h2>ატვირთეთ ფაილი</h2>
+      <button class="btn-upload">
+      upload
+      </button>
+      </div>`
+    }
+  })
+
+  copyInp.addEventListener('click', ()=>{
+    copyInp.style.height = '352px';
+    arrowInc.style.transform = 'rotate(270deg)';
+    up.remove();
+    uploadFile.innerHTML = ``;
+    copyInp.classList.add('active-textarea');
+  })
+}
+
+const uploadBtn = document.querySelector('#btn-upload');
+if (uploadBtn) {
+  const inputFile = document.querySelector('#file-input');
+  const copyHead = document.querySelector('#copy-text-head');
+  const copyCont = document.querySelector('.copy-container');
+  uploadBtn.addEventListener('click', () => {
+    inputFile.classList.toggle('display-block');
+  });
+  inputFile.onchange = () =>{
+    copyHead.style.display = 'none';
+    copyCont.style.display = 'none';
+  }
+}
+const regButton = document.querySelector('.registration-button');
+const login = document.querySelector('.login-content');
+const registration = document.querySelector('.registration-content');
+const logBtn = document.querySelector('.avtorization-button');
+
+regButton.addEventListener('click', ()=>{
+  login.classList.add('invisible');
+  registration.classList.remove('invisible');
+  registration.classList.add('visible');
+})
+
+logBtn.addEventListener('click', ()=>{
+  registration.classList.remove('visible');
+  registration.classList.add('invisible');
+  login.classList.remove('invisible');
+  login.classList.add('visible');
+})
+
+const recovPas = document.querySelector('.pas-rec-bg');
+const forgotBtn = document.querySelector('.forgot-password');
+
+forgotBtn.addEventListener('click', e => {
+  e.preventDefault();
+  recovPas.classList.remove('invisible');
+  recovPas.classList.add('visible');
+  login.classList.add('invisible');
+})
+
+window.onclick = (event) => {
+  if (event.target == loginContent){
+    loginContent.classList.remove("active-login");
+    recovPas.classList.add('invisible');
+    recovPas.classList.remove('visible');
+    login.classList.remove('invisible');
+    login.classList.add('visible');
+    registration.classList.add('invisible');
+    registration.classList.remove('visible');
+  }
+};
+

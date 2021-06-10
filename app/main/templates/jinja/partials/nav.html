@@ -8,20 +8,20 @@
         <div class="nav-right">
           <ul>
 
-            {{  nav_link("main.home", 'მთავარი')  }}
-            {{  nav_link("main.documentation", 'დოკუმენტაცია')  }}
-            {{  nav_link("main.about_us", 'ჩვენს შესახებ')  }}
+            {{  nav_link("main.home", gettext('მთავარი'))  }}
+            {{  nav_link("main.documentation", gettext('დოკუმენტაცია'))  }}
+            {{  nav_link("main.about_us", gettext('ჩვენს შესახებ'))  }}
 
             <li class="icon login">
               <img src="{{ url_for('static', filename="assets/header-logo.svg") }}" alt="logo" class="user-logo" />
               <div id="dropdown">
-                <a class="my-files" href="#">ჩემი ფაილები</a>
+                <a class="my-files" href="#">{{_("ჩემი ფაილები")}}</a>
                 <p class="user-info">
                   <span id="user-name">
-                    სახელი გვარი
+                    {{_("სახელი გვარი")}}
                   </span>
                 </p>
-                <button id="log-out">გამოსვლა</button>
+                <button id="log-out">{{_("გამოსვლა")}}</button>
               </div>
             </li>
           </ul>
