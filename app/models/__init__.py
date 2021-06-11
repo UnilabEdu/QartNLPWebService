@@ -32,7 +32,9 @@ class File(db.Model):
     id = db.Column(db.Integer, primary_key=True)
     user_id = db.Column(db.Integer, db.ForeignKey('user.id'))
     title = db.Column(db.String)
+    file_name = db.Column(db.String)
     upload_date = db.Column(db.DateTime, default=datetime.datetime.utcnow)
+    date_modified = db.Column(db.DateTime, default=datetime.datetime.utcnow)
     processes = db.Column(db.String)
     status = db.relationship('Status', backref='file')
     result = db.relationship('Result', backref='file', uselist=False)
@@ -50,6 +52,14 @@ class File(db.Model):
         db.session.add(self)
         db.session.commit()
 
+    def read(self):
+        file_to_read = open(self.file_name, "r")
+        while True:
+            line = file_to_read.readline(200)
+            if line:
+                return line
+            break
+
 
 class Result(db.Model):
     __tablename__ = "results"
@@ -64,6 +74,10 @@ class Result(db.Model):
         self.words = words
         self.uniq_words = uniq_words
         self.sentences = sentences
+
+    def delete(self):
+        db.session.delete(self)
+        db.session.commit()
 
     def add(self):
         db.session.add(self)
