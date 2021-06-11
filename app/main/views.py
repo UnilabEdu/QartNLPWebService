@@ -1,4 +1,5 @@
 from flask import Blueprint, render_template, request
+from app.main.temp_data import people, block_files  # TODO: მონაცემების წამოღება ბაზიდან
 from app.main.temp_data import people, block_files, grammar_blocks, checkboxes, word_list # TODO: მონაცემების წამოღება ბაზიდან
 from app import babel
 from app.settings import Config
@@ -34,6 +35,7 @@ def about_us():
 @main_blueprint.route('/add_files', methods=['GET', 'POST'])
 def add_files():
     return render_template('add-file.html', checkboxes=checkboxes)
+
 
 @main_blueprint.route('/concrete', methods=['GET', 'POST'])
 def concrete():
