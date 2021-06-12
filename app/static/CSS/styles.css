@@ -989,6 +989,14 @@ input[type='checkbox']:checked {
   color: #425d62;
 }
 
+.soc-icons {
+  margin-top: 15px;
+}
+
+i.fab.fa-facebook-square {
+  margin-left: 10px;
+}
+
 .details-page {
   max-width: 1920px;
   width: 100%;
