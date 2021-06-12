@@ -1060,3 +1060,7 @@ input[type='checkbox']:checked {
   color: #172224;
   border-bottom: 1px solid#707070;
 }
+
+.reg-password-input, .reg-email-input, .reg-password-input-rep {
+  margin-bottom: 18px;
+}
