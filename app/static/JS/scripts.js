@@ -59,6 +59,7 @@ loginForm.addEventListener('submit', e => {
       divPassword.append(validPdiv);
     }
   }
+
   if (inputEmail == "" && inputPassword == "") {
     emailContext();
     passwordContext();
@@ -205,3 +206,109 @@ window.onclick = (event) => {
   }
 };
 
+const regForm = document.getElementById('registration-form')
+
+regForm.addEventListener('submit', e => {
+  e.preventDefault();
+  const divEmail = document.querySelector('.reg-email-input');
+  const divPassword = document.querySelector('.reg-password-input');
+  const divPasswordRep = document.querySelector('.reg-password-input-rep');
+  let inputEmail = document.forms["registration"]["email"].value;
+  let inputPassword = document.forms["registration"]["password"].value;
+  let inputPasswordRep = document.forms["registration"]["passwordrep"].value;
+  const emailContext = () => {
+    if(divEmail.childNodes[3]===undefined){
+      const validEdiv = document.createElement('span');
+      validEdiv.classList.add('emailwarning');
+      validEdiv.textContent = 'გთხოვთ შეიყვანეთ მეილი';
+      divEmail.append(validEdiv);
+    }
+  }
+  const passwordContext = () => {
+    if(divPassword.childNodes[3]===undefined){
+      const validPdiv = document.createElement('span');
+      validPdiv.classList.add('passwordvalidation');
+      validPdiv.textContent = 'გთხოვთ შეიყვანეთ პაროლი';
+      divPassword.append(validPdiv);
+    }
+  }
+
+  const passwordContextRepeat = () => {
+    if(divPasswordRep.childNodes[3]===undefined){
+      const validPdiv = document.createElement('span');
+      validPdiv.classList.add('passwordvalidation');
+      validPdiv.textContent = 'გთხოვთ შეიყვანეთ პაროლი';
+      divPasswordRep.append(validPdiv);
+    }
+  }
+
+  if (inputEmail == "" && inputPassword == "" && inputPasswordRep == "") {
+    emailContext();
+    passwordContext();
+    passwordContextRepeat();
+    return false;
+  }else if(inputPassword == "" && inputEmail !== "" && inputPasswordRep !== ""){
+    if(divEmail.childNodes[3] !== undefined){
+      divEmail.childNodes[3].remove();
+    }
+    if(divPasswordRep.childNodes[3] !== undefined){
+      divPasswordRep.childNodes[3].remove();
+    }
+    passwordContext();
+    return false;
+  }else if(inputPassword == "" && inputEmail == "" && inputPasswordRep !== ""){
+    if(divEmail.childNodes[3] !== undefined){
+      divEmail.childNodes[3].remove();
+    }
+    if(divPasswordRep.childNodes[3] !== undefined){
+      divPasswordRep.childNodes[3].remove();
+    }
+    passwordContext();
+    emailContext();
+    return false;
+  }else if (inputPassword == "" && inputPasswordRep == "" && inputEmail !== ""){
+    if(divEmail.childNodes[3] !== undefined) {
+      divEmail.childNodes[3].remove();
+    }
+    passwordContext();
+    passwordContextRepeat();
+    return false;
+  }else if (inputEmail !== "" && inputPasswordRep == "" && inputEmail !== ""){
+    if(divEmail.childNodes[3] !== undefined) {
+      divEmail.childNodes[3].remove();
+    }
+    if(divPassword.childNodes[3] !== undefined) {
+      divPassword.childNodes[3].remove();
+    }
+    passwordContextRepeat();
+    return false;
+  }else if (inputEmail == "" && inputPasswordRep !== "" && inputPassword !== ""){
+    if(divPassword.childNodes[3] !== undefined) {
+      divPassword.childNodes[3].remove();
+    }
+    if(divPasswordRep.childNodes[3] !== undefined) {
+      divPasswordRep.childNodes[3].remove();
+    }
+    emailContext();
+    return false;
+  }else if (inputEmail == "" && inputPasswordRep == "" && inputPassword !== ""){
+    if(divPassword.childNodes[3] !== undefined) {
+      divPassword.childNodes[3].remove();
+    }
+    passwordContextRepeat();
+    emailContext();
+    return false;
+  }else if (inputEmail !== "" && inputPasswordRep !== "" && inputEmail !== ""){
+    if(divEmail.childNodes[3] !== undefined) {
+      divEmail.childNodes[3].remove();
+    }
+    if(divPassword.childNodes[3] !== undefined) {
+      divPassword.childNodes[3].remove();
+    }
+    if(divPasswordRep.childNodes[3] !== undefined) {
+      divPasswordRep.childNodes[3].remove();
+    }
+    location.reload();
+    return true;
+  }
+})

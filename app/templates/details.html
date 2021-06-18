@@ -2,6 +2,7 @@
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
+    <link href="../assets/favicon.ico" rel="icon" type="image/x-icon" />
     <title>QartNLP</title>
     <link rel="stylesheet" href="../static/CSS/styles.css" />
     <link rel="stylesheet" href="../static/CSS/fonts.css" />
@@ -66,15 +67,15 @@
                 <img class="img-additional" src="../assets/RepeatGrid1.svg" alt="Gmail"/>
         </div>
         <div class="login-inputs">
-            <form name="login" method="POST" id="login-form">
-              <div class="email-input">
-                <input type="email" name="email" id="email" class="login-input" placeholder="ელფოსტა">
+            <form name="registration" method="POST" id="registration-form">
+              <div class="reg-email-input">
+                <input type="email" name="email" id="reg-email" class="login-input" placeholder="ელფოსტა">
               </div>
-              <div class="password-input">
-                <input type="password" name="password" id="password" class="login-input" placeholder="პაროლი">
+              <div class="reg-password-input">
+                <input type="password" name="password" id="reg-password" class="login-input" placeholder="პაროლი">
               </div>
-              <div class="password-input">
-                <input type="password" name="password" id="password" class="login-input" placeholder="გაიმეორეთ პაროლი">
+              <div class="reg-password-input-rep">
+                <input type="password" name="passwordrep" id="reg-password-rep" class="login-input" placeholder="გაიმეორეთ პაროლი">
               </div>
                <input type="submit" value="რეგისტრაცია" class="login-btn">
             </form>
@@ -92,9 +93,6 @@
             <form name="login" method="POST" id="recov-form">
               <div class="email-input">
                 <input type="email" name="email" id="email-forgot" class="login-input" placeholder="ელფოსტა">
-              </div>
-              <div class="password-input">
-                <input type="password" name="password-forg" class="login-input log-inp-rec" placeholder="ძველი პაროლი">
               </div>
               <div class="password-input">
                 <input type="password" name="password-forg" class="login-input log-inp-rec" placeholder="ახალი პაროლი">
