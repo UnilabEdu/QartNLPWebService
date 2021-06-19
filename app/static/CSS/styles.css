@@ -32,7 +32,7 @@
   font-size: 42px;
 }
 
-.nav-left>h2 {
+.nav-left > h2 {
   font-family: Courier;
   font-weight: normal;
   font-size: 82px;
@@ -255,44 +255,44 @@ footer {
   margin-bottom: 32px;
 }
 
-.block-1>.grammar-block-header {
-  background-color: #3BC18E;
+.block-1 > .grammar-block-header {
+  background-color: #3bc18e;
 }
 
-.block-2>.grammar-block-header {
-  background-color: #D1BF33;
+.block-2 > .grammar-block-header {
+  background-color: #d1bf33;
 }
 
-.block-3>.grammar-block-header {
-  background-color: #3B83C1;
+.block-3 > .grammar-block-header {
+  background-color: #3b83c1;
 }
 
-.block-4>.grammar-block-header {
-  background-color: #E68989;
+.block-4 > .grammar-block-header {
+  background-color: #e68989;
 }
 
-.block-5>.grammar-block-header {
+.block-5 > .grammar-block-header {
   background-color: #238463;
 }
 
-.block-6>.grammar-block-header {
-  background-color: #D69822;
+.block-6 > .grammar-block-header {
+  background-color: #d69822;
 }
 
-.block-7>.grammar-block-header {
-  background-color: #BC1E9E;
+.block-7 > .grammar-block-header {
+  background-color: #bc1e9e;
 }
 
-.block-8>.grammar-block-header {
-  background-color: #4DB44D;
+.block-8 > .grammar-block-header {
+  background-color: #4db44d;
 }
 
-.block-9>.grammar-block-header {
-  background-color: #9DC13B;
+.block-9 > .grammar-block-header {
+  background-color: #9dc13b;
 }
 
 .block-10 {
-  background-color: #E31313;
+  background-color: #e31313;
 }
 
 .block-11 {
@@ -307,44 +307,44 @@ footer {
   margin-bottom: 32px;
 }
 
-.block-1>.grammar-block-header {
-  background-color: #3BC18E;
+.block-1 > .grammar-block-header {
+  background-color: #3bc18e;
 }
 
-.block-2>.grammar-block-header {
-  background-color: #D1BF33;
+.block-2 > .grammar-block-header {
+  background-color: #d1bf33;
 }
 
-.block-3>.grammar-block-header {
-  background-color: #3B83C1;
+.block-3 > .grammar-block-header {
+  background-color: #3b83c1;
 }
 
-.block-4>.grammar-block-header {
-  background-color: #E68989;
+.block-4 > .grammar-block-header {
+  background-color: #e68989;
 }
 
-.block-5>.grammar-block-header {
+.block-5 > .grammar-block-header {
   background-color: #238463;
 }
 
-.block-6>.grammar-block-header {
-  background-color: #D69822;
+.block-6 > .grammar-block-header {
+  background-color: #d69822;
 }
 
-.block-7>.grammar-block-header {
-  background-color: #BC1E9E;
+.block-7 > .grammar-block-header {
+  background-color: #bc1e9e;
 }
 
-.block-8>.grammar-block-header {
-  background-color: #4DB44D;
+.block-8 > .grammar-block-header {
+  background-color: #4db44d;
 }
 
-.block-9>.grammar-block-header {
-  background-color: #9DC13B;
+.block-9 > .grammar-block-header {
+  background-color: #9dc13b;
 }
 
 .block-10 {
-  background-color: #E31313;
+  background-color: #e31313;
 }
 
 .block-11 {
@@ -400,7 +400,8 @@ footer {
   justify-content: center;
 }
 
-.email-input, .forgot-password {
+.email-input,
+.forgot-password {
   margin-bottom: 32px;
 }
 
@@ -410,7 +411,7 @@ footer {
   width: 256px;
   height: 32px;
   padding: 3px 8px 7px;
-  background-color: #FFFFFF;
+  background-color: #ffffff;
   font-size: 18px;
   font-family: Sandro;
   color: #707070;
@@ -424,9 +425,10 @@ footer {
   color: #707070;
 }
 
-.emailwarning, .passwordvalidation {
+.emailwarning,
+.passwordvalidation {
   margin-top: 3px;
-  font-family: 'Sandro';
+  font-family: "Sandro";
   color: red;
 }
 
@@ -437,12 +439,13 @@ footer {
   background-color: #707070;
   font-size: 18px;
   font-family: Sandro;
-  color: #FFFFFF;
+  color: #ffffff;
   border: 1px solid#707070;
   cursor: pointer;
 }
 
-.registration-button, .avtorization-button {
+.registration-button,
+.avtorization-button {
   position: absolute;
   bottom: 0px;
   left: 50%;
@@ -450,7 +453,7 @@ footer {
   margin-bottom: 37px;
   font-size: 18px;
   font-family: Sandro;
-  color: #FFF;
+  color: #fff;
   background-color: transparent;
   border: none;
   outline: none;
@@ -493,7 +496,7 @@ footer {
   font-family: Sandro;
 }
 
-.person>img {
+.person > img {
   width: 256px;
   height: 256px;
   object-fit: cover;
@@ -531,7 +534,7 @@ footer {
 
 .file_content_heading h2 {
   font-size: 24px;
-  font-family: 'ArialCaps';
+  font-family: "ArialCaps";
   font-weight: normal;
   color: #172224;
 }
@@ -557,7 +560,7 @@ footer {
 }
 
 .file-data span:first-child:after {
-  content: '';
+  content: "";
   position: absolute;
   top: 50%;
   transform: translateY(-50%);
@@ -569,7 +572,7 @@ footer {
 
 .file-content {
   margin-right: 32px;
-  background-color: #FFFFFF;
+  background-color: #ffffff;
   border: 1px solid#707070;
 }
 
@@ -626,12 +629,12 @@ footer {
 
 .my-files:hover {
   background-color: #707070;
-  color: #EBEBEB;
-  box-shadow: 0 0 11px rgba(33, 33, 33, .2);
+  color: #ebebeb;
+  box-shadow: 0 0 11px rgba(33, 33, 33, 0.2);
 }
 
 .user-info:before {
-  content: '';
+  content: "";
   display: block;
   width: 100%;
   height: 1px;
@@ -647,7 +650,6 @@ footer {
 
 #dropdown {
   color: #172224;
-  ;
   background-color: white;
   display: none;
   position: absolute;
@@ -687,8 +689,8 @@ footer {
 
 #log-out:hover {
   background-color: #707070;
-  color: #EBEBEB;
-  box-shadow: 0 0 11px rgba(33, 33, 33, .2);
+  color: #ebebeb;
+  box-shadow: 0 0 11px rgba(33, 33, 33, 0.2);
 }
 
 .file-add-block {
@@ -699,7 +701,7 @@ footer {
 
 .file-add-block h2 {
   font-weight: normal;
-  font-family: 'ArialCaps';
+  font-family: "ArialCaps";
   color: #172224;
 }
 
@@ -748,27 +750,45 @@ footer {
   margin-bottom: 24px;
 }
 
-.file-options>input {
+.file-options > input {
   width: 32px;
   height: 32px;
   margin-right: 7px;
 }
 
 .btn-upload {
-  padding: 2px 30px 8px;
-  font-size: 24px;
-  background-color: #172224;
-  font-family: "ArialCaps";
-  left: 4px;
-  color: white;
+  position: relative;
+  width: 224px;
+  height: 32px;
+  margin-right: 20px;
   cursor: pointer;
+}
+
+.btn-upload:after {
+  content: "upload";
+  position: absolute;
+  top: 0;
+  left: 0px;
+  display: block;
+  width: 100%;
+  height: 100%;
+  padding: 0 0 0 9px;
+  background: #172224;
+  font-size: 24px;
+  font-family: "ArialCaps";
+  color: #fff;
+}
+
+.file-name {
+  font-family: Sandro;
+  font-size: 24px;
 }
 
 .copy-container {
   position: relative;
 }
 
-.copy-container>img {
+.copy-container > img {
   position: absolute;
   color: #707070;
   right: 32px;
@@ -806,7 +826,7 @@ footer {
   margin: 4px 8.333333333333333333333333333333% 0 0;
   font-size: 24px;
   font-family: Sandro;
-  color: #2C3532;
+  color: #2c3532;
   list-style-type: none;
 }
 
@@ -827,8 +847,8 @@ footer {
 .info-search ul li {
   margin: 0 0 35px;
   font-size: 24px;
-  font-family: 'Sandro';
-  color: #2C3532;
+  font-family: "Sandro";
+  color: #2c3532;
   list-style-type: none;
 }
 
@@ -837,7 +857,7 @@ footer {
   height: 32px;
   margin: 32px 0px 66px 32px;
   font-size: 18px;
-  font-family: 'Sandro';
+  font-family: "Sandro";
   padding: 4px;
 }
 
@@ -845,10 +865,10 @@ footer {
   margin-top: 32px;
   width: 100%;
   padding: 1.5px 35px 6px;
-  background-color: #2C3532;
+  background-color: #2c3532;
   font-size: 24px;
-  font-family: 'Sandro';
-  color: #EBEBEB;
+  font-family: "Sandro";
+  color: #ebebeb;
   text-align: left;
   border: none;
   outline: none;
@@ -885,7 +905,7 @@ footer {
 .forgot-password {
   font-size: 18px;
   font-family: Sandro;
-  color: #FFF;
+  color: #fff;
   background-color: transparent;
   border: none;
   outline: none;
@@ -898,7 +918,7 @@ footer {
 }
 
 .concrete-words ul li span {
-  color: #FF0000;
+  color: #ff0000;
 }
 
 .visible {
@@ -909,7 +929,8 @@ footer {
   display: none;
 }
 
-.registration-content, .pas-rec-bg {
+.registration-content,
+.pas-rec-bg {
   position: relative;
   width: 512px;
   height: 480px;
@@ -917,7 +938,8 @@ footer {
   border: 1px solid#707070;
 }
 
-.registration-content h2, .pas-rec-bg h2 {
+.registration-content h2,
+.pas-rec-bg h2 {
   margin-top: 22px;
   margin-bottom: 33px;
   font-size: 34px;
@@ -937,37 +959,37 @@ footer {
 }
 
 .uploading-text:after {
-  content: 'ფაილი მუშავდება';
+  content: "ფაილი მუშავდება";
   position: absolute;
   left: 50%;
   top: 30%;
   transform: translate(-50%);
   font-size: 53px;
-  font-family: 'ArialCaps';
+  font-family: "ArialCaps";
   color: #172224;
   z-index: 4;
 }
 
-.uploading-icons>.tool-container {
+.uploading-icons > .tool-container {
   cursor: default;
 }
 
-input[type='checkbox'] {
+input[type="checkbox"] {
   cursor: pointer;
   display: flex;
   justify-content: center;
   align-items: center;
 }
 
-input[type='checkbox']::after {
+input[type="checkbox"]::after {
   font-family: "Font Awesome 5 Free";
   font-weight: 900;
-  content: '\f00c';
+  content: "\f00c";
   color: white;
   font-size: 27px;
 }
 
-input[type='checkbox']:checked {
+input[type="checkbox"]:checked {
   appearance: none;
   -webkit-appearance: none;
   background-color: #172224;
@@ -977,15 +999,15 @@ input[type='checkbox']:checked {
   font-size: 30px;
 }
 
-.soc-icons>a {
+.soc-icons > a {
   color: #172224;
 }
 
-.soc-icons>a:hover {
+.soc-icons > a:hover {
   color: #425d62;
 }
 
-.soc-icons>a:active {
+.soc-icons > a:active {
   color: #425d62;
 }
 
@@ -1031,7 +1053,7 @@ input[type='checkbox']:checked {
 }
 
 .block2 span {
-  color: #FF0000;
+  color: #ff0000;
 }
 
 .block3 {
@@ -1061,6 +1083,8 @@ input[type='checkbox']:checked {
   border-bottom: 1px solid#707070;
 }
 
-.reg-password-input, .reg-email-input, .reg-password-input-rep {
+.reg-password-input,
+.reg-email-input,
+.reg-password-input-rep {
   margin-bottom: 18px;
 }
