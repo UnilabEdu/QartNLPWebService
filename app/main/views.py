@@ -35,6 +35,10 @@ def about_us():
 def add_files():
     return render_template('add-file.html', checkboxes=checkboxes)
 
+<<<<<<< HEAD
+=======
+
+>>>>>>> 5669f54512f897751d6947d62b27cab3d6a3feb8
 @main_blueprint.route('/concrete', methods=['GET', 'POST'])
 def concrete():
     return render_template('concrete.html', word_list=word_list)
