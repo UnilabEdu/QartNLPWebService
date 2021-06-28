@@ -10,6 +10,7 @@ from app.database import db
 
 from app.user.user_model import User, Role, UserRoles
 from app.user.admin.admin import admin
+from app.api import api
 
 migrate = Migrate()
 mail = Mail()
@@ -45,6 +46,9 @@ def create_app():
 
     # Setup Flask-Admin
     admin.init_app(app)
+
+    # Initialize API
+    api.init_app(app)
 
     # Blueprint registrations
     from app.main.views import main_blueprint
