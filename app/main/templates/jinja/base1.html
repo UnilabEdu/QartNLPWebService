@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    {% block title %}
+        <title>{{_("QartNLP")}}</title>
+    {% endblock %}
+
+    <link rel="icon" href="{{url_for("static", filename="assets/favicon.png")}}" type="image/png"> 
+    <script src="https://kit.fontawesome.com/5968971b15.js" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="{{url_for("static", filename="CSS/styles.css")}}" />
+    <link rel="stylesheet" href="{{url_for("static", filename="CSS/fonts.css")}}" />
+  </head>
+  <body>
+    <header id="header">
+      {% include "partials/nav.html" %}
+    </header>
+      {% include "partials/login.html" %}
+
+
+    {% block content %}
+    {% endblock %}
+
+    <footer>
+      <div class="footer-container">
+        <div class="footer-l__block">
+          <div class="github-logo">
+            <img src="{{url_for("static", filename="assets/github-logo.svg")}}" alt="guthub-logo" />
+          </div>
+          <div class="created-by__title">
+            <p>
+              {{_("შექმნილია ილიას სახელმწიფო უნივერსიტეტის მორფოლოგიური
+              ანალიზაატორის ბაზაზე Unilab-ის ციფრული ლაბორატორიის Python
+              Development გუნდის მიერ.")}}
+            </p>
+          </div>
+        </div>
+        <div class="footer-r__block">
+          <div class="univeristy-logo">
+            <img src="{{url_for("static", filename="assets/university-logo.svg")}}" alt="uny-logo" />
+          </div>
+          <div class="university-name__title">
+            {{_("ილიას სახელმწიფო უნივერსიტეტი")}}
+          </div>
+        </div>
+      </div>
+    </footer>
+    <script src="{{url_for("static", filename="JS/scripts.js")}}"></script>
+  </body>
+</html>

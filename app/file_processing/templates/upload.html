@@ -1,0 +1,45 @@
+{% extends "base1.html" %}
+{% block content %}
+
+    <form method="POST" enctype="multipart/form-data">
+        {{ upload_form.hidden_tag() }}
+        <div class="files_page_content">
+            <div class="file_content_heading">
+                <h2>ჩემი ფაილები/ფაილის სახელი</h2>
+            </div>
+            <div class="file-block file-add-block display-flex">
+                <div class="create-file-inputs display-flex">
+                    <div class="file-info">
+                        <h2>ფაილის სახელი</h2>
+                        {{ upload_form.name(class="file-name-inp") }}
+                        <h2>ტექსტი</h2>
+                        <div class="copy-container">
+                            {{ upload_form.text(class="copy-inp", placeholder="ჩააკოპირე ტექსტი") }}
+                            <img class="arrow-increase" src=".{{ url_for("static", filename="assets/copy-icon.svg") }}"
+                                 alt="arrow">
+                        </div>
+                    </div>
+                    <div class="upload-file">
+                        <div class="cont-up">
+                            <h2>ატვირთეთ ფაილი</h2>
+                            <label class="btn-file">
+                                {{ upload_form.file(style="display:none", accept=".txt") }}
+                                upload
+                            </label>
+                        </div>
+                    </div>
+                </div>
+                <div class="create-file-checks display-flex">
+                    <h2 class="checks-header">მონიშნეთ ხელსაწყოები, რომლითაც გსურთ ტექსტის/დოკუმენტის დამუშავება:</h2>
+                    {{ upload_form.processes(class="file-options") }}
+                </div>
+            </div>
+        </div>
+        <div class="file-btn-container display-flex">
+            <button class="btn-file" type="submit">
+                დამატება
+            </button>
+        </div>
+    </form>
+
+{% endblock %}

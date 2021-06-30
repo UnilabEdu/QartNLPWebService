@@ -1,0 +1,29 @@
+{% from "macros.html" import nav_link with context %}
+
+    <!-- NAVIGATION -->
+      <nav class="navigation display-flex">
+        <div class="nav-left">
+          <h2>QARTNLP</h2>
+        </div>
+        <div class="nav-right">
+          <ul>
+
+            {{  nav_link("main.home", gettext('მთავარი'))  }}
+            {{  nav_link("main.documentation", gettext('დოკუმენტაცია'))  }}
+            {{  nav_link("main.about_us", gettext('ჩვენს შესახებ'))  }}
+
+            <li class="icon login">
+              <img src="{{ url_for('static', filename="assets/header-logo.svg") }}" alt="logo" class="user-logo" />
+              <div id="dropdown">
+                <a class="my-files" href="#">{{_("ჩემი ფაილები")}}</a>
+                <p class="user-info">
+                  <span id="user-name">
+                    {{_("სახელი გვარი")}}
+                  </span>
+                </p>
+                <button id="log-out">{{_("გამოსვლა")}}</button>
+              </div>
+            </li>
+          </ul>
+        </div>
+      </nav>
