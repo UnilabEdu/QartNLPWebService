@@ -18,6 +18,9 @@ class Config(object):
     CELERY_BROKER_URL = "redis://localhost"
     CELERY_RESULT_BACKEND = "redis://localhost"
 
+    #File processing library location
+    NLP_LIBS_FOLDER = "app/file_processing/libs"
+
     # Flask-User settings
     USER_ENABLE_EMAIL = True
     MAIL_SERVER = 'smtp.mailtrap.io'
