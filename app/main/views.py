@@ -1,5 +1,4 @@
 from flask import Blueprint, render_template, request
-from app.main.temp_data import people, block_files  # TODO: მონაცემების წამოღება ბაზიდან
 from app.main.temp_data import people, block_files, grammar_blocks, checkboxes, word_list # TODO: მონაცემების წამოღება ბაზიდან
 from app import babel
 from app.settings import Config
