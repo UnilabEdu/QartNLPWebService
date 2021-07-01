@@ -6,13 +6,26 @@
 {% endif %}
 {% endmacro %}
 
-{% macro person(name, job, description, image) %}
+{% macro icon_link (link, ico) %}
+    <a href="{{ link }}"><i class="{{ ico }}"></i></a>
+{% endmacro %}
+
+{% macro person(name, job, description, image, social=[]) %}
     <div class="person">
         <img src="{{ url_for("static", filename="assets/"+image) }}" alt="{{name}}ს სურათი">
         <div class="person-info">
             <h2 class="person-name">{{ name }}</h2>
             <h2 class="person-job">{{ job }}</h2>
             <p class="person-description">{{ description }}</p>
+
+            {% if social %}
+            <div class="soc-icons">
+            {% for soc in social %}
+            {{ icon_link( soc.get("link"), soc.get("icon") ) }}
+            {% endfor %}
+            </div>
+            {% endif %}
+
         </div>
     </div>
 {% endmacro %}
