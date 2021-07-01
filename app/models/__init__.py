@@ -109,17 +109,45 @@ class Status(db.Model):
         self.finished = finished
 
 
-class CeleryTask(db.Model):
-    __tablename__ = "celery_taskmeta"
+class Pages(db.Model):
+
+    __tablename__ = "pages"
+
     id = db.Column(db.Integer, primary_key=True)
-    task_id = db.Column(db.String(155))
-    status = db.Column(db.String(50))
-    result = db.Column(BLOB)
-    date_done = db.Column(db.DateTime)
-    traceback = db.Column(TEXT)
-    name = db.Column(db.String(155))
-    args = db.Column(BLOB)
-    kwargs = db.Column(BLOB)
-    worker = db.Column(db.String(155))
-    retries = db.Column(db.Integer)
-    queue = db.Column(db.String(155))
+    start_index = db.Column(db.Integer)
+    end_index = db.Column(db.Integer)
+    sentences = db.relationship("Sentences")
+
+
+class Sentences(db.Model):
+
+    __tablename__ = "sentences"
+    id = db.Column(db.Integer, primary_key=True)
+    page_id = db.Column(db.Integer, db.ForeignKey("pages.id"))
+    start_index = db.Column(db.Integer)
+    end_index = db.Column(db.Integer)
+    words = db.relationship('Words')
+
+    def __init__(self, start_index, end_index):
+        self.start_index = start_index
+        self.end_index = end_index
+
+
+class Words(db.Model):
+
+    __tablename__ = "words"
+    id = db.Column(db.Integer, primary_key=True)
+    sentence_id = db.Column(db.Integer, db.ForeignKey("sentences.id"))
+    start_index = db.Column(db.Integer)
+    end_index = db.Column(db.Integer)
+    raw = db.Column(db.String)
+    lemma = db.Column(db.String)
+    pos_tags = db.Column(db.String)
+
+    def __init__(self, sentence_id, start_index, end_index, raw, lemma, pos_tags):
+        self.sentence_id = sentence_id
+        self.start_index = start_index
+        self.end_index = end_index
+        self.raw = raw
+        self.lemma = lemma
+        self.pos_tags = pos_tags

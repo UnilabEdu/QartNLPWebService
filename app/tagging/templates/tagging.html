@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Tagging</title>
+</head>
+
+<body>
+
+    <div>
+
+        {% set separators = ['.', ',', '?', '!', ';'] %}
+
+        {% for word in text.split() %}
+
+            {% if word[-2] in separators %}
+
+                <span id="w{{ loop.index }}">{{ word[:-2] }}</span>{{ word[-2:] }}
+
+            {% elif word[-1] in separators %}
+
+                <span id="w{{ loop.index }}">{{ word[:-1] }}</span>{{ word[-1] }}
+
+            {% else %}
+
+                <span id="w{{ loop.index }}">{{ word }}</span>
+
+            {% endif %}
+
+        {% endfor %}
+
+    </div>
+
+</body>
+
+</html>
