@@ -1,63 +1,45 @@
-{% from "macros.html" import file_block with context %}
-{% extends "base.html" %}
-
+{% extends "base1.html" %}
 {% block content %}
-    <div class="files_page_content">
-        <div class="file_content_heading">
-            <h2>ჩემი ფაილები/ატვირთვა</h2>
+
+    <form method="POST" enctype="multipart/form-data">
+        {{ upload_form.hidden_tag() }}
+        <div class="files_page_content">
+            <div class="file_content_heading">
+                <h2>ჩემი ფაილები/ფაილის სახელი</h2>
+            </div>
+            <div class="file-block file-add-block display-flex">
+                <div class="create-file-inputs display-flex">
+                    <div class="file-info">
+                        <h2>ფაილის სახელი</h2>
+                        {{ upload_form.name(class="file-name-inp") }}
+                        <h2>ტექსტი</h2>
+                        <div class="copy-container">
+                            {{ upload_form.text(class="copy-inp", placeholder="ჩააკოპირე ტექსტი") }}
+                            <img class="arrow-increase" src=".{{ url_for("static", filename="assets/copy-icon.svg") }}"
+                                 alt="arrow">
+                        </div>
+                    </div>
+                    <div class="upload-file">
+                        <div class="cont-up">
+                            <h2>ატვირთეთ ფაილი</h2>
+                            <label class="btn-file">
+                                {{ upload_form.file(style="display:none", accept=".txt") }}
+                                upload
+                            </label>
+                        </div>
+                    </div>
+                </div>
+                <div class="create-file-checks display-flex">
+                    <h2 class="checks-header">მონიშნეთ ხელსაწყოები, რომლითაც გსურთ ტექსტის/დოკუმენტის დამუშავება:</h2>
+                    {{ upload_form.processes(class="file-options") }}
+                </div>
+            </div>
         </div>
-    </div>
-
-    <div id="upload-box-border"
-         style="display: flex; margin: 67px 224px 224px 224px; padding: 32px; width: 1472px; height: 544px; border: 1px solid black">
-
-        <div style="display:flex; flex-direction: column">
-            <h3 style="font-family: 'Sandro' ">ფაილის სახელი</h3>
-            <input type="text" style="width: 640px; height: 32px; margin-bottom: 32px">
-            <h3>ტექსტი</h3>
-            <textarea class="prtext" placeholder="ჩააკოპირე ტექსტი" style="width: 640px; height: 289px"></textarea>
-
-            <h3>ატვირთეთ ფაილი</h3>
-            <form method=post enctype=multipart/form-data style="width: 100%; height: 100%">
-                {{ upload.hidden_tag() }}
-                <label class="btn-file" style="height: 32px; width: 224px; font-size: 20px">
-                    {{ upload.file(style="display:none") }}
-                    Upload
-                </label>
-                <br>
-                <input type=submit value=დამატება class="btn-file" style="position: relative; top: 50%; left: 50%">
-            </form>
+        <div class="file-btn-container display-flex">
+            <button class="btn-file" type="submit">
+                დამატება
+            </button>
         </div>
-
-        <div style="display: flex; flex-direction: column; margin: auto; width: 515px; height: 491px">
-            <h2 style="padding-bottom: 72px"> მონიშნეთ ხელსაწყოები, რომლითაც გსურთ ტექსტის/დოცუმენტის დამუშავება</h2>
-
-            <label style="padding-bottom: 24px">
-                <input type="checkbox" style="width: 32px; height: 32px">
-                <span style="font-size: 20px">ტექსტის ლემატიზაცია</span>
-            </label>
-
-            <label style="padding-bottom: 24px">
-                <input type="checkbox" style="width: 32px; height: 32px">
-                <span style="font-size: 20px">ტექსტის ტოკენიზაცია</span>
-            </label>
-
-            <label style="padding-bottom: 24px">
-                <input type="checkbox" style="width: 32px; height: 32px">
-                <span style="font-size: 20px">ტექსტის თეგირება</span>
-            </label>
-
-            <label style="padding-bottom: 24px">
-                <input type="checkbox" style="width: 32px; height: 32px">
-                <span style="font-size: 20px">Stop Word-ებისგან გასუფთავება</span>
-            </label>
-
-            <label style="padding-bottom: 24px">
-                <input type="checkbox" style="width: 32px; height: 32px">
-                <span style="font-size: 20px">სიტყვების სიხშირის განაწილება</span>
-            </label>
-
-        </div>
-    </div>
+    </form>
 
 {% endblock %}

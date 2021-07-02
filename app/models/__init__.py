@@ -1,12 +1,10 @@
 import datetime
-from sqlalchemy.types import BLOB, TEXT
 
 from app.database import db
 
 
 class Profile(db.Model):
     __tablename__ = "profiles"
-
     id = db.Column(db.String, primary_key=True)
     user_id = db.Column(db.Integer, db.ForeignKey('user.id'))
     first_name = db.Column(db.String(64), nullable=False)
@@ -35,21 +33,20 @@ class File(db.Model):
     file_name = db.Column(db.String)
     upload_date = db.Column(db.DateTime, default=datetime.datetime.utcnow)
     date_modified = db.Column(db.DateTime, default=datetime.datetime.utcnow)
-    processes = db.Column(db.String)
     status = db.relationship('Status', backref='file')
-    result = db.relationship('Result', backref='file', uselist=False)
+    statistics = db.relationship('Statistics', backref='file', uselist=False)
 
-    def __init__(self, title, processes, user_id):
+    def __init__(self, title, user_id, file_name):
         self.title = title
-        self.processes = processes
         self.user_id = user_id
+        self.file_name = file_name
+
+    def save(self):
+        db.session.add(self)
+        db.session.commit()
 
     def delete(self):
         db.session.delete(self)
-        db.session.commit()
-
-    def add(self):
-        db.session.add(self)
         db.session.commit()
 
     def read(self):
@@ -61,26 +58,30 @@ class File(db.Model):
             break
 
 
-class Result(db.Model):
-    __tablename__ = "results"
+class Statistics(db.Model):
+    __tablename__ = "statistics"
     id = db.Column(db.Integer, primary_key=True)
     file_id = db.Column(db.Integer, db.ForeignKey('files.id'))
     words = db.Column(db.Integer)
     uniq_words = db.Column(db.Integer)
     sentences = db.Column(db.Integer)
+    avg_words_in_sentence = db.Column(db.Integer)
+    avg_chars_in_sentence = db.Column(db.Integer)
 
-    def __init__(self, file_id, words, uniq_words, sentences):
+    def __init__(self, file_id, words, uniq_words, sentences, avg_words_in_sentence, avg_chars_in_sentence):
         self.file_id = file_id
         self.words = words
         self.uniq_words = uniq_words
         self.sentences = sentences
+        self.avg_words_in_sentence = avg_words_in_sentence
+        self.avg_chars_in_sentence = avg_chars_in_sentence
+
+    def save(self):
+        db.session.add(self)
+        db.session.commit()
 
     def delete(self):
         db.session.delete(self)
-        db.session.commit()
-
-    def add(self):
-        db.session.add(self)
         db.session.commit()
 
 
@@ -88,38 +89,122 @@ class Status(db.Model):
     __tablename__ = "status"
     id = db.Column(db.Integer, primary_key=True)
     file_id = db.Column(db.Integer, db.ForeignKey('files.id'))
-    lemat = db.Column(db.Boolean)
-    token = db.Column(db.Boolean)
-    pos_tag = db.Column(db.Boolean)
-    stop_word = db.Column(db.Boolean)
-    freq_dist = db.Column(db.Boolean)
-    finished = db.Column(db.Boolean)
+    lemmatized = db.Column(db.Boolean)
+    tokenized = db.Column(db.Boolean)
+    pos_tagged = db.Column(db.Boolean)
+    stop_words_removed = db.Column(db.Boolean)
+    frequency_distribution_calculated = db.Column(db.Boolean)
+    completed = db.Column(db.Boolean)
+    punctuation_removed = db.Column(db.Boolean)
+    cleared_html_tags = db.Column(db.Boolean)
+    special_chars_removed = db.Column(db.Boolean)
+    cleared_whitespaces = db.Column(db.Boolean)
+    html_tags_removed = db.Column(db.Boolean)
+    expanded_acronyms = db.Column(db.Boolean)
+    words_enumerated = db.Column(db.Boolean)
 
-    # link to celelry task with celery_taskmeta.id
-    # process_status
-
-    def __init__(self, file_id, lemat=False, token=False, pos_tag=False,
-                 stop_word=False, freq_dist=False, finished=False):
+    def __init__(self, file_id, lemmatized=False, tokenized=False, pos_tagged=False,
+                 stop_words_removed=False, frequency_distribution_calculated=False, completed=False,
+                 punctuation_removed=False, cleared_html_tags=False, html_tags_removed=False,
+                 expand_acronyms=False, words_enumerated=False):
         self.file_id = file_id
-        self.lemat = lemat
-        self.token = token
-        self.pos_tag = pos_tag
-        self.stop_word = stop_word
-        self.freq_dist = freq_dist
-        self.finished = finished
+        self.lemmatized = lemmatized
+        self.tokenized = tokenized
+        self.pos_tagged = pos_tagged
+        self.stop_words_removed = stop_words_removed
+        self.frequency_distribution_calculated = frequency_distribution_calculated
+        self.completed = completed
+        self.punctuation_removed = punctuation_removed
+        self.cleared_html_tags = cleared_html_tags
+        self.html_tags_removed = html_tags_removed
+        self.expanded_acronyms = expand_acronyms
+        self.words_enumerated = words_enumerated
+
+    def save(self):
+        db.session.add(self)
+        db.session.commit()
+
+    def delete(self):
+        db.session.delete(self)
+        db.session.commit()
 
 
-class CeleryTask(db.Model):
-    __tablename__ = "celery_taskmeta"
+class Pages(db.Model):
+    __tablename__ = "pages"
     id = db.Column(db.Integer, primary_key=True)
-    task_id = db.Column(db.String(155))
-    status = db.Column(db.String(50))
-    result = db.Column(BLOB)
-    date_done = db.Column(db.DateTime)
-    traceback = db.Column(TEXT)
-    name = db.Column(db.String(155))
-    args = db.Column(BLOB)
-    kwargs = db.Column(BLOB)
-    worker = db.Column(db.String(155))
-    retries = db.Column(db.Integer)
-    queue = db.Column(db.String(155))
+    start_index = db.Column(db.Integer)
+    end_index = db.Column(db.Integer)
+    sentences = db.relationship("Sentences")
+
+
+class Sentences(db.Model):
+    __tablename__ = "sentences"
+    id = db.Column(db.Integer, primary_key=True)
+    page_id = db.Column(db.Integer, db.ForeignKey("pages.id"))
+    start_index = db.Column(db.Integer)
+    end_index = db.Column(db.Integer)
+    words = db.relationship('Words')
+
+    def __init__(self, start_index, end_index):
+        self.start_index = start_index
+        self.end_index = end_index
+
+
+class Words(db.Model):
+    __tablename__ = "words"
+    id = db.Column(db.Integer, primary_key=True)
+    sentence_id = db.Column(db.Integer, db.ForeignKey("sentences.id"))
+    start_index = db.Column(db.Integer)
+    end_index = db.Column(db.Integer)
+    raw = db.Column(db.String)
+    lemma = db.Column(db.String)
+    pos_tags = db.Column(db.String)
+    ner_tags_id = db.Column(db.Integer, db.ForeignKey("ner_tags.id"))
+
+    def __init__(self, sentence_id, start_index, end_index, raw, lemma, pos_tags, ner_tags_id):
+        self.sentence_id = sentence_id
+        self.start_index = start_index
+        self.end_index = end_index
+        self.raw = raw
+        self.lemma = lemma
+        self.pos_tags = pos_tags
+        self.ner_tags_id = ner_tags_id
+
+
+class NerTagType(db.Model):
+    __tablename__ = "ner_tag_type"
+    id = db.Column(db.Integer, primary_key=True)
+    name = db.Column(db.String)
+    title = db.Column(db.String)
+    ner_tags = db.relationship('NerTags', backref='ner_tag_type', lazy=True)
+
+    def __init__(self, name, title):
+        self.name = name
+        self.title = title
+
+    def save(self):
+        db.session.add(self)
+        db.session.commit()
+
+    def delete(self):
+        db.session.delete(self)
+        db.session.commit()
+
+
+class NerTags(db.Model):
+    __tablename__ = "ner_tags"
+    id = db.Column(db.Integer, primary_key=True)
+    ner_tag_type_id = db.Column(db.Integer, db.ForeignKey("ner_tag_type.id"))
+    words = db.relationship('Words', backref='ner_tags', lazy=True)
+
+    def __init__(self, ner_tag_type_id):
+        self.ner_tag_type_id = ner_tag_type_id
+
+    def save(self):
+        db.session.add(self)
+        db.session.commit()
+
+    def delete(self):
+        db.session.delete(self)
+        db.session.commit()
+

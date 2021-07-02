@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Tagging</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+    <script src="{{url_for("static", filename="JS/tagging-script.js")}}"></script>
+
+    <style>
+    #tagging-page #left, #tagging-page #right {
+        min-height: 100px;
+    }
+    #tagging-page button {
+        margin: 5px;
+    }
+    </style>
+
+
+</head>
+
+<body>
+<div class='container'>
+  <div class='row mt-5' id='tagging-page'>
+    <div class='col-md-8'>
+      <div id='left'>
+            <div>
+                {% set separators = ['.', ',', '?', '!', ';'] %}
+
+                {% for word in text.split() %}
+
+                    {% if word[-2] in separators %}
+
+                        <span id="w{{ loop.index }}">{{ word[:-2] }}</span>{{ word[-2:] }}
+
+                    {% elif word[-1] in separators %}
+
+                        <span id="w{{ loop.index }}">{{ word[:-1] }}</span>{{ word[-1] }}
+
+                    {% else %}
+
+                        <span id="w{{ loop.index }}">{{ word }}</span>
+
+                    {% endif %}
+
+                {% endfor %}
+
+            </div>
+      </div>
+    </div>
+    <div class='col-md-4'>
+      <div id='right'>
+        <table class='table table-striped'>
+          <thead>
+            <tr>
+              <td>#</td>
+              <td>Word</td>
+              <td>Tag</td>
+            </tr>
+          </thead>
+          <dbody>
+              {% for tag in tags %}
+                <tr>
+                  <td>{{ tag.get("id") }}</td>
+                  <td>{{ tag.get("value") }}</td>
+                  <td>{{ tag.get("value") }}</td>
+                </tr>
+              {% endfor %}
+
+          </dbody>
+        </table>
+        <div class='buttons text-right d-flex justify-content-between'>
+          <button class='btn btn-danger w-50'>reset</button>
+          <button class='btn btn-success w-50'>save</button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+</body>
+
+</html>
