@@ -176,6 +176,7 @@ class NerTagType(db.Model):
     id = db.Column(db.Integer, primary_key=True)
     name = db.Column(db.String)
     title = db.Column(db.String)
+    description = db.Column(db.String)
     ner_tags = db.relationship('NerTags', backref='ner_tag_type', lazy=True)
 
     def __init__(self, name, title):
