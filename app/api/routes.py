@@ -22,6 +22,8 @@ class NerTagApi(Resource):
 
     def post(self):
         received = NerTagApi.parser.parse_args()
+        words = ["w1", "w2"]
+        
         return {'response': 'done'}
 
     def put(self):

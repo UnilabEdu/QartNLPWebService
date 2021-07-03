@@ -1,6 +1,8 @@
 from app.database import db
 from flask_user import UserMixin
 from app.models import Profile, File
+
+
 # user_manager = UserManager()
 
 class User(db.Model, UserMixin):
@@ -16,12 +18,14 @@ class User(db.Model, UserMixin):
     profile = db.relationship('Profile', backref='user', uselist=False)
     file = db.relationship('File', backref='user')
 
+
 class Role(db.Model):
     id = db.Column(db.Integer(), primary_key=True)
     name = db.Column(db.String(50), unique=True)
 
     def __init__(self, name):
         self.name = name
+
 
 class UserRoles(db.Model):
     id = db.Column(db.Integer(), primary_key=True)
