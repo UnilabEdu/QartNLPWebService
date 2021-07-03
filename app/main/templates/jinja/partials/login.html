@@ -38,14 +38,14 @@
         </div>
         <div class="login-inputs">
             <form name="login" method="POST" id="login-form">
-                <div class="reg-email-input">
+                <div class="email-input">
                     <input type="email" name="email" id="reg-email" class="login-input" placeholder="{{ _("ელფოსტა") }}">
                 </div>
-                <div class="reg-password-input">
+                <div class="password-input">
                     <input type="password" name="password" id="reg-password" class="login-input"
                            placeholder="{{ _("პაროლი") }}">
                 </div>
-                <div class="reg-password-input-rep">
+                <div class="password-input">
                     <input type="password" name="passwordrep" id="reg-password-rep" class="login-input"
                            placeholder="{{ _("გაიმეორეთ პაროლი") }}">
                 </div>
@@ -69,7 +69,10 @@
                     <input type="email" name="email" id="email-forgot" class="login-input"
                            placeholder="{{ _("ელფოსტა") }}">
                 </div>
-
+                <div class="password-input">
+                    <input type="password" name="password-forg" class="login-input log-inp-rec"
+                           placeholder="{{ _("ძველი პაროლი") }}">
+                </div>
                 <div class="password-input">
                     <input type="password" name="password-forg" class="login-input log-inp-rec"
                            placeholder="{{ _("ახალი პაროლი") }}">

@@ -9,7 +9,6 @@
     <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
-    <script src="{{url_for("static", filename="JS/tagging-script.js")}}"></script>
 
     <style>
     #tagging-page #left, #tagging-page #right {
@@ -54,35 +53,31 @@
     </div>
     <div class='col-md-4'>
       <div id='right'>
+      <form method="POST">
+      {{ form.hidden_tag() }}
         <table class='table table-striped'>
-          <thead>
-            <tr>
-              <td>#</td>
-              <td>Word</td>
-              <td>Tag</td>
-            </tr>
-          </thead>
           <dbody>
-              {% for tag in tags %}
                 <tr>
-                  <td>{{ tag.get("id") }}</td>
-                  <td>{{ tag.get("value") }}</td>
-                  <td>{{ tag.get("value") }}</td>
+                  <td>Words</td>
+                  <td id="words_list" >empty</td>
                 </tr>
-              {% endfor %}
 
+              <tr>
+                  <td>Tags</td>
+                  <td>{{ form.ner_tag }}</td>
+              </tr>
           </dbody>
         </table>
         <div class='buttons text-right d-flex justify-content-between'>
-          <button class='btn btn-danger w-50'>reset</button>
-          <button class='btn btn-success w-50'>save</button>
+          <button id="reset_btn" class='btn btn-danger w-50' type="button" >reset</button>
+            {{ form.submit(class='btn btn-success w-50') }}
         </div>
+      </form>
       </div>
     </div>
   </div>
 </div>
-
-
+    <script src="{{url_for("static", filename="JS/tagging-script.js")}}"></script>
 </body>
 
 </html>
