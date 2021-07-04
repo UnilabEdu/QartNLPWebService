@@ -1,23 +1,12 @@
-<!DOCTYPE html>
-<html lang="en">
+{% from "macros.html" import person with context %}
+{% extends "base1.html" %}
+{% block content %}
 
-<head>
-    <meta charset="UTF-8">
-    <title>Tagging</title>
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
-
-    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
-    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
-
-
-</head>
-
-<body>
-<div class='container'>
-  <div class='row mt-5' id='tagging-page'>
-    <div class='col-md-8'>
-      <div id='left'>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/skeleton/2.0.4/skeleton.min.css" integrity="sha512-EZLkOqwILORob+p0BXZc+Vm3RgJBOe1Iq/0fiI7r/wJgzOFZMlsqTa29UEl6v6U6gsV4uIpsNZoV32YZqrCRCQ==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+<div class='container' id='tagging-page' style="min-height: 53.5vh">
+  <div class='row' style="margin-top: 50px;" >
+    <div class='eight columns'>
+      <div id='left' style="padding-top: 12px">
             <div>
                 {% set separators = ['.', ',', '?', '!', ';'] %}
 
@@ -42,7 +31,7 @@
             </div>
       </div>
     </div>
-    <div class='col-md-4'>
+    <div class='four columns'>
       <div id='right'>
       <form method="POST">
       {{ form.hidden_tag() }}
@@ -60,8 +49,8 @@
           </dbody>
         </table>
         <div class='buttons text-right d-flex justify-content-between'>
-          <button id="reset_btn" class='btn btn-danger w-50  m-1' type="button" >reset</button>
-            {{ form.submit(class='btn btn-success w-50 m-1', type="button") }}
+          <button id="reset_btn" style="background-color: #B94E31 ; color: white;" type="button" >reset</button>
+        {{ form.submit(style="background-color: #3D7061; color: white;", type="button") }}
         </div>
       </form>
       </div>
@@ -69,6 +58,8 @@
   </div>
 </div>
     <script src="{{url_for("static", filename="JS/tagging-script.js")}}"></script>
-</body>
+{% endblock %}
 
-</html>
+{# sites main color - #172420 #}
+{# bootstrap red - #dc3545 #}
+{# bootstrap green - #28a745 #}
