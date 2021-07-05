@@ -15,6 +15,18 @@ class NerTagApi(Resource):
         required=True,
         help='missing "ner_tag_" argument'
     )
+    parser.add_argument(
+        'file_id',
+        type=int,
+        required=True,
+        help='missing "file_id" argument'
+    )
+    parser.add_argument(
+        'page_id',
+        type=int,
+        required=True,
+        help='missing "page_id" argument'
+    )
 
     def get(self):
         received = NerTagApi.parser.parse_args()
@@ -22,15 +34,12 @@ class NerTagApi(Resource):
 
     def post(self):
         received = NerTagApi.parser.parse_args()
-        words = ["w1", "w2"]
-        
-        return {'response': 'done'}
-
-    def put(self):
-        return {'response': 'done'}
-
-    def delete(self):
-        return {'response': 'done'}
-
-    def get_list(self):
+        words_index_on_page = ["1", "2"]  # relative to the page
+        """TODO
+        - Load File object from db with file_id
+        - Load Page object by ID from File object
+        - Load words via indexes of words in request from Page object
+        - create new ner_tag object with arguments
+        - save object to DB
+        """
         return {'response': 'done'}

@@ -13,15 +13,48 @@ function clog(){
     }
 }
 
-function updateWordsList(){
-    let text_data = " " + this.textContent
+const taggedWordArray = []
+let taggedWords = []
 
-    clog("word has been pressed")
-    if (words_list.textContent === 'empty'){
-        words_list.textContent = text_data;
+function updateWordsList() {
+    let wordId = this.id.split("w")[1]
+    let wordContent = this.textContent
+
+
+    let wordObject = {
+        id: wordId,
+        content: wordContent
     }
-    else{
-        words_list.textContent += text_data;
+
+    if (taggedWordArray.length === 0) {
+        taggedWordArray.push(wordObject)
+    } else {
+        let lastWordID = taggedWordArray[taggedWordArray.length - 1].id
+
+        if (Math.abs(lastWordID - wordId) === 1) {
+            taggedWordArray.push(wordObject)
+        }
+
+        taggedWordArray.sort(function(a, b) {
+            return a.id - b.id ;
+        });
+    }
+
+
+
+
+    console.log(taggedWordArray)
+    // clog(wordObject+" has been pressed")
+
+    getWordsFromTaggedWordArray()
+    words_list.textContent = taggedWords
+    console.log(taggedWordArray)
+}
+
+function getWordsFromTaggedWordArray(){
+    taggedWords = []
+    for (const obj of taggedWordArray) {
+        taggedWords.push(obj.content)
     }
 }
 
