@@ -2,7 +2,7 @@ from flask import Blueprint, render_template, request
 from app.main.temp_data import people, block_files, grammar_blocks, checkboxes, word_list # TODO: მონაცემების წამოღება ბაზიდან
 from app import babel
 from app.settings import Config
-
+from .forms import NerTagForm
 
 @babel.localeselector
 def get_locale():
@@ -39,3 +39,16 @@ def add_files():
 @main_blueprint.route('/concrete', methods=['GET', 'POST'])
 def concrete():
     return render_template('concrete.html', word_list=word_list)
+
+
+@main_blueprint.route('/tagging', methods=['GET', 'POST'])
+def tagging():
+    form = NerTagForm()
+    random_text = "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum."
+    tags = [
+        {"id": 1, "keys": [5, 6], "value": "ORG"},
+        {"id": 2, "keys": [1, 3], "value": "SOMETHING"},
+        {"id": 3, "keys": [8, 9], "value": "ELSE"},
+        {"id": 4, "keys": [12, 19], "value": "DEV"},
+    ]
+    return render_template('tagging.html', text=random_text, tags=tags, form=form)
