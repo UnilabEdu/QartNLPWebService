@@ -4,14 +4,21 @@ from flask import render_template
 from .forms import NerTagForm
 
 
-@tagging_blueprint.route('/test', methods=['GET', 'POST'])
-def test():
+@tagging_blueprint.route('/test/<int:page_id>', methods=['GET', 'POST'])
+def test(page_id=0):
     form = NerTagForm()
-    random_text = "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum."
+    random_text = "პითონები — გველების ქვეოჯახი მახრჩობელასებრთა ოჯახისა (ან დამოუკიდებელი ოჯახი). გავრცელებულია " \
+                  "აღმოსავლეთ და, ნაწილობრივ, დასავლეთ (ცენტრალური ამერიკა) ნახევარსფეროებში. ამჟამად ქვეოჯახში შედის " \
+                  "8 გვარი, 35 სახეობით. საკუთრივ ცენტრალურ, პითონის გვარში 7 სახეობაა, გავრცელებულია აფრიკაში, " \
+                  "სამხრეთ-აღმოსავლეთ აზიაში, მალაის არქიპელაგზე, ახალ გვინეაში და ავსტრალიაში. ზედა ტუჩზე " \
+                  "აღენიშნებათ 2-4 ღრმული, რაც თერმორეცეპტორს წარმოადგენს. ბინადრობენ უმთავრესად ლერწმიანებში, " \
+                  "ლელიანებში, ქვებს შორის. კარგად ცურავენ, შეუძლიათ ხეზე ასვლა. იკვებებიან ძირითადად ხერხემლიანებით, " \
+                  "რომლებსაც სხეულის რგონებით გუდავენ. "
+
     tags = [
-        {"id": 1, "keys": [5, 6], "value": "ORG"},
-        {"id": 2, "keys": [1, 3], "value": "SOMETHING"},
-        {"id": 3, "keys": [8, 9], "value": "ELSE"},
-        {"id": 4, "keys": [12, 19], "value": "DEV"},
+        {"id": 1, "keys": [11], "value": "LOC."},
+        {"id": 2, "keys": [14], "value": "LOC."},
+        {"id": 3, "keys": [15, 16], "value": "GPE"},
+        {"id": 4, "keys": [23], "value": "NUM"},
     ]
     return render_template('tagging.html', text=random_text, tags=tags, form=form)
