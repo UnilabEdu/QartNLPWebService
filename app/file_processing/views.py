@@ -27,7 +27,7 @@ def upload():
         filename = secure_filename(file.filename)
 
         file_model = File(filename, 'lemat', 1)
-        file_model.add()
+        file_model.save()
 
         path = os.path.join(Config.UPLOAD_FOLDER, filename)
         file.save(path)
