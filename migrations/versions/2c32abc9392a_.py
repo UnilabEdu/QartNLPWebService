@@ -1,8 +1,8 @@
 """empty message
 
-Revision ID: 539f6c6f3e7f
+Revision ID: 2c32abc9392a
 Revises: 
-Create Date: 2021-06-30 23:43:30.754766
+Create Date: 2021-07-07 20:07:13.374865
 
 """
 from alembic import op
@@ -10,7 +10,7 @@ import sqlalchemy as sa
 
 
 # revision identifiers, used by Alembic.
-revision = '539f6c6f3e7f'
+revision = '2c32abc9392a'
 down_revision = None
 branch_labels = None
 depends_on = None
@@ -22,13 +22,9 @@ def upgrade():
     sa.Column('id', sa.Integer(), nullable=False),
     sa.Column('name', sa.String(), nullable=True),
     sa.Column('title', sa.String(), nullable=True),
+    sa.Column('description', sa.String(), nullable=True),
+    sa.Column('short_name', sa.String(), nullable=True),
     sa.PrimaryKeyConstraint('id', name=op.f('pk_ner_tag_type'))
-    )
-    op.create_table('pages',
-    sa.Column('id', sa.Integer(), nullable=False),
-    sa.Column('start_index', sa.Integer(), nullable=True),
-    sa.Column('end_index', sa.Integer(), nullable=True),
-    sa.PrimaryKeyConstraint('id', name=op.f('pk_pages'))
     )
     op.create_table('role',
     sa.Column('id', sa.Integer(), nullable=False),
@@ -51,17 +47,8 @@ def upgrade():
     sa.Column('id', sa.Integer(), nullable=False),
     sa.Column('user_id', sa.Integer(), nullable=True),
     sa.Column('title', sa.String(), nullable=True),
-    sa.Column('file_name', sa.String(), nullable=True),
-    sa.Column('upload_date', sa.DateTime(), nullable=True),
-    sa.Column('date_modified', sa.DateTime(), nullable=True),
     sa.ForeignKeyConstraint(['user_id'], ['user.id'], name=op.f('fk_files_user_id_user')),
     sa.PrimaryKeyConstraint('id', name=op.f('pk_files'))
-    )
-    op.create_table('ner_tags',
-    sa.Column('id', sa.Integer(), nullable=False),
-    sa.Column('ner_tag_type_id', sa.Integer(), nullable=True),
-    sa.ForeignKeyConstraint(['ner_tag_type_id'], ['ner_tag_type.id'], name=op.f('fk_ner_tags_ner_tag_type_id_ner_tag_type')),
-    sa.PrimaryKeyConstraint('id', name=op.f('pk_ner_tags'))
     )
     op.create_table('profiles',
     sa.Column('id', sa.String(), nullable=False),
@@ -76,14 +63,6 @@ def upgrade():
     sa.ForeignKeyConstraint(['user_id'], ['user.id'], name=op.f('fk_profiles_user_id_user')),
     sa.PrimaryKeyConstraint('id', name=op.f('pk_profiles'))
     )
-    op.create_table('sentences',
-    sa.Column('id', sa.Integer(), nullable=False),
-    sa.Column('page_id', sa.Integer(), nullable=True),
-    sa.Column('start_index', sa.Integer(), nullable=True),
-    sa.Column('end_index', sa.Integer(), nullable=True),
-    sa.ForeignKeyConstraint(['page_id'], ['pages.id'], name=op.f('fk_sentences_page_id_pages')),
-    sa.PrimaryKeyConstraint('id', name=op.f('pk_sentences'))
-    )
     op.create_table('user_roles',
     sa.Column('id', sa.Integer(), nullable=False),
     sa.Column('user_id', sa.Integer(), nullable=True),
@@ -91,6 +70,14 @@ def upgrade():
     sa.ForeignKeyConstraint(['role_id'], ['role.id'], name=op.f('fk_user_roles_role_id_role'), ondelete='CASCADE'),
     sa.ForeignKeyConstraint(['user_id'], ['user.id'], name=op.f('fk_user_roles_user_id_user'), ondelete='CASCADE'),
     sa.PrimaryKeyConstraint('id', name=op.f('pk_user_roles'))
+    )
+    op.create_table('pages',
+    sa.Column('id', sa.Integer(), nullable=False),
+    sa.Column('file_id', sa.Integer(), nullable=True),
+    sa.Column('start_index', sa.Integer(), nullable=True),
+    sa.Column('end_index', sa.Integer(), nullable=True),
+    sa.ForeignKeyConstraint(['file_id'], ['files.id'], name=op.f('fk_pages_file_id_files')),
+    sa.PrimaryKeyConstraint('id', name=op.f('pk_pages'))
     )
     op.create_table('statistics',
     sa.Column('id', sa.Integer(), nullable=False),
@@ -122,6 +109,22 @@ def upgrade():
     sa.ForeignKeyConstraint(['file_id'], ['files.id'], name=op.f('fk_status_file_id_files')),
     sa.PrimaryKeyConstraint('id', name=op.f('pk_status'))
     )
+    op.create_table('ner_tags',
+    sa.Column('id', sa.Integer(), nullable=False),
+    sa.Column('page_id', sa.Integer(), nullable=True),
+    sa.Column('ner_tag_type_id', sa.Integer(), nullable=True),
+    sa.ForeignKeyConstraint(['ner_tag_type_id'], ['ner_tag_type.id'], name=op.f('fk_ner_tags_ner_tag_type_id_ner_tag_type')),
+    sa.ForeignKeyConstraint(['page_id'], ['pages.id'], name=op.f('fk_ner_tags_page_id_pages')),
+    sa.PrimaryKeyConstraint('id', name=op.f('pk_ner_tags'))
+    )
+    op.create_table('sentences',
+    sa.Column('id', sa.Integer(), nullable=False),
+    sa.Column('page_id', sa.Integer(), nullable=True),
+    sa.Column('start_index', sa.Integer(), nullable=True),
+    sa.Column('end_index', sa.Integer(), nullable=True),
+    sa.ForeignKeyConstraint(['page_id'], ['pages.id'], name=op.f('fk_sentences_page_id_pages')),
+    sa.PrimaryKeyConstraint('id', name=op.f('pk_sentences'))
+    )
     op.create_table('words',
     sa.Column('id', sa.Integer(), nullable=False),
     sa.Column('sentence_id', sa.Integer(), nullable=True),
@@ -141,15 +144,15 @@ def upgrade():
 def downgrade():
     # ### commands auto generated by Alembic - please adjust! ###
     op.drop_table('words')
+    op.drop_table('sentences')
+    op.drop_table('ner_tags')
     op.drop_table('status')
     op.drop_table('statistics')
+    op.drop_table('pages')
     op.drop_table('user_roles')
-    op.drop_table('sentences')
     op.drop_table('profiles')
-    op.drop_table('ner_tags')
     op.drop_table('files')
     op.drop_table('user')
     op.drop_table('role')
-    op.drop_table('pages')
     op.drop_table('ner_tag_type')
     # ### end Alembic commands ###

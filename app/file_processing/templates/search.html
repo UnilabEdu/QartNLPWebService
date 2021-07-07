@@ -1,0 +1,6 @@
+<div style="text-align:center">
+    {% for list in occurences %}
+        <p>{{ list }} <br> <b>Word:</b>{{ list[2].raw }}<br> <b>Lemma:</b>{{ list[2].lemma }}<br>
+            <b>Tags:</b>{{ list[2].pos_tags }}</p>
+    {% endfor %}
+</div>
