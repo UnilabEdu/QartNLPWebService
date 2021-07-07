@@ -1,10 +1,10 @@
 import datetime
-
 from app.database import db
 
 
 class Profile(db.Model):
     __tablename__ = "profiles"
+
     id = db.Column(db.String, primary_key=True)
     user_id = db.Column(db.Integer, db.ForeignKey('user.id'))
     first_name = db.Column(db.String(64), nullable=False)
@@ -30,9 +30,9 @@ class File(db.Model):
     id = db.Column(db.Integer, primary_key=True)
     user_id = db.Column(db.Integer, db.ForeignKey('user.id'))
     title = db.Column(db.String)
-    file_name = db.Column(db.String)
-    upload_date = db.Column(db.DateTime, default=datetime.datetime.utcnow)
-    date_modified = db.Column(db.DateTime, default=datetime.datetime.utcnow)
+    #file_name = db.Column(db.String)
+    #upload_date = db.Column(db.DateTime, default=datetime.datetime.utcnow)
+    #date_modified = db.Column(db.DateTime, default=datetime.datetime.utcnow)
     status = db.relationship('Status', backref='file')
     statistics = db.relationship('Statistics', backref='file', uselist=False)
 
@@ -130,27 +130,45 @@ class Status(db.Model):
 
 
 class Pages(db.Model):
+
     __tablename__ = "pages"
+
     id = db.Column(db.Integer, primary_key=True)
+    file_id = db.Column(db.Integer, db.ForeignKey("files.id"))
     start_index = db.Column(db.Integer)
     end_index = db.Column(db.Integer)
-    sentences = db.relationship("Sentences")
+    sentences = db.relationship("Sentences", backref="pages")
+
+    def __init__(self, file_id, start_index, end_index):
+        self.file_id = file_id
+        self.start_index = start_index
+        self.end_index = end_index
+
+    def word_by_id(self, word_id):
+        for sentence in self.sentences:
+            if word_id < len(sentence.words):
+                return sentence.words[word_id].raw
+            else:
+                word_id -= len(sentence.words)
 
 
 class Sentences(db.Model):
+
     __tablename__ = "sentences"
     id = db.Column(db.Integer, primary_key=True)
     page_id = db.Column(db.Integer, db.ForeignKey("pages.id"))
     start_index = db.Column(db.Integer)
     end_index = db.Column(db.Integer)
-    words = db.relationship('Words')
+    words = db.relationship('Words', backref="sentences")
 
-    def __init__(self, start_index, end_index):
+    def __init__(self, page_id, start_index, end_index):
+        self.page_id = page_id
         self.start_index = start_index
         self.end_index = end_index
 
 
 class Words(db.Model):
+
     __tablename__ = "words"
     id = db.Column(db.Integer, primary_key=True)
     sentence_id = db.Column(db.Integer, db.ForeignKey("sentences.id"))
@@ -161,14 +179,49 @@ class Words(db.Model):
     pos_tags = db.Column(db.String)
     ner_tags_id = db.Column(db.Integer, db.ForeignKey("ner_tags.id"))
 
-    def __init__(self, sentence_id, start_index, end_index, raw, lemma, pos_tags, ner_tags_id):
+    def __init__(self, sentence_id, start_index, end_index, raw, lemma, pos_tags):
         self.sentence_id = sentence_id
         self.start_index = start_index
         self.end_index = end_index
         self.raw = raw
         self.lemma = lemma
         self.pos_tags = pos_tags
-        self.ner_tags_id = ner_tags_id
+
+    @classmethod
+    def search_by_raw(cls, file_id, raw):
+
+        search_results = (db.session.query(Pages, Sentences, Words)
+                 .join(Sentences, Pages.sentences)
+                 .join(Words, Sentences.words)
+                 .filter(Pages.file_id == file_id)
+                 .filter(Words.raw == raw)
+                 ).all()
+
+        return search_results
+
+    @classmethod
+    def search_by_lemma(cls, file_id, lemma):
+
+        search_results = (db.session.query(Pages, Sentences, Words)
+                 .join(Sentences, Pages.sentences)
+                 .join(Words, Sentences.words)
+                 .filter(Pages.file_id == file_id)
+                 .filter(Words.lemma == lemma)
+                 ).all()
+
+        return search_results
+
+    @classmethod
+    def search_by_tag(cls, file_id, tags):
+
+        search_results = (db.session.query(Pages, Sentences, Words)
+                 .join(Sentences, Pages.sentences)
+                 .join(Words, Sentences.words)
+                 .filter(Pages.file_id == file_id)
+                 .filter(Words.pos_tags.contains(tags))
+                 ).all()
+
+        return search_results
 
 
 class NerTagType(db.Model):
@@ -214,4 +267,3 @@ class NerTags(db.Model):
     def delete(self):
         db.session.delete(self)
         db.session.commit()
-
