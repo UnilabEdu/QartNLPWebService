@@ -2,47 +2,56 @@
 {% block content %}
 
     <div class="files_page_content">
+
       <div class="file_content_heading">
         <h2>{{_("ჩემი ფაილები/ფაილის სახელი")}}</h2>
       </div>
+
       <div class="file-block file-add-block display-flex">
           <div class="create-file-inputs display-flex">
+
             <div class="file-info">
+
               <h2>{{_("ფაილის სახელი")}}</h2>
               <input class="file-name-inp" type="text">
+
               <h2 id="copy-text-head">{{_("ტექსტი")}}</h2>
               <div class="copy-container">
                 <textarea class="copy-inp" id="copy-textarea" placeholder="{{_("ჩააკოპირე ტექსტი")}}"></textarea>
                 <img class="arrow-increase" src="{{url_for("static", filename="assets/copy-icon.svg")}}" alt="arrow">
               </div>
+
             </div>
+
             <div class="upload-file">
               <div class="cont-up">
+
                 <h2>ატვირთეთ ფაილი</h2>
                 <div class="upload-container display-flex">
-                  <button id="btn-upload" class="btn-upload">
-                    Upload
-                  </button>
-                  <input id="file-input" type="file" class="file-input">
+                  <input type="file" class="btn-upload" />
+                  <span class="file-name"></span>
                 </div>
+
               </div>
             </div>
+
           </div>
+
           <div class="create-file-checks display-flex">
-            <h2 class="checks-header">{{_("მონიშნეთ ხელსაწყოები, რომლითაც გსურთ ტექსტის/დოკუმენტის დამუშავება")}}:</h2>
+              <h2 class="checks-header">{{_("მონიშნეთ ხელსაწყოები, რომლითაც გსურთ ტექსტის/დოკუმენტის დამუშავება")}}:</h2>
           {% for box in checkboxes %}
             <div class="file-options">
-                <input id="{{ box.name }}" name="{{ box.name }}" type="checkbox">
+                <input id="{{ box.name }}" name="{{ box.name }}" type="checkbox" />
                 <label for="{{ box.name }}">{{ box.text }}</label>
             </div>
           {% endfor %}
           </div>
+
       </div>
     </div>
+
     <div class="file-btn-container display-flex">
-      <button class="btn-file">
-        {{_("დამატება")}}
-      </button>
+      <button class="btn-file">{{_("დამატება")}}</button>
     </div>
 
 {% endblock %}

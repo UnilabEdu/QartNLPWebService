@@ -1,0 +1,36 @@
+# English translations for PROJECT.
+# Copyright (C) 2021 ORGANIZATION
+# This file is distributed under the same license as the PROJECT project.
+# FIRST AUTHOR <EMAIL@ADDRESS>, 2021.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: PROJECT VERSION\n"
+"Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
+"POT-Creation-Date: 2021-05-26 20:55+0400\n"
+"PO-Revision-Date: 2021-05-26 21:00+0400\n"
+"Language: en\n"
+"Language-Team: en <LL@li.org>\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=utf-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Generated-By: Babel 2.9.1\n"
+"Last-Translator: \n"
+"X-Generator: Poedit 2.4.3\n"
+
+#: app/main/views.py:24
+msgid "შევდივარ თავ-ფურცელზე"
+msgstr "Entering the Home-Page"
+
+#: app/main/templates/home.html:4
+msgid "ქართული ენის ციფრული დამუშავება"
+msgstr "Georgian Natural Language Processing"
+
+#: app/main/templates/home.html:5
+msgid "ჩააკოპირე ქართული ტექსტი, ნახე როგორ მუშაობს სისტემა."
+msgstr "Copy Georgian text, see how the system works."
+
+#: app/main/templates/home.html:9
+msgid "გაანალიზე"
+msgstr "Analyse"

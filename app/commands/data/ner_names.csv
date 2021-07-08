@@ -1,0 +1,37 @@
+﻿Category,Entity,Details,Short
+Person,Person,Names of People,PERSON
+PersonType,PersonType,Job types or roles held by a person,ROLE
+Location,Location,"Natural and human-made landmarks, structures, geographical features, and geopolitical entities.",LOC.
+Location,Geopolitical Entity,"Cities, Countries/regions, states.",GPE
+Location,Structural,Manmade structures,STRUCT
+Location,Geographical,"Geographic and natural features such as rivers, oceans, deserts.",GEO.
+Organization,Organization,"Companies, political groups, musical bands, sport clubs, government bodies, and public organizations. Nationalities and religions are not included in this entity type.",ORG
+Organization,Medical,Medical companies and groups.,MED.
+Organization,Stock exchange,Stock exchange groups.,STK
+Organization,Sports,Sports-related organizations.,SPORT
+Event,Event,"Historical, social, and naturally occurring events.",EVENT
+Event,Cultural,Cultural events and holidays.,CULTe
+Event,Natural,Naturally occurring events.,NATURALe
+Event,Sports,Sporting events.,SPORTe
+Product,Product,Physical objects of various categories.,PROD.
+Product,Computing products,Computing products,COMP.
+Address,Address,Full mailing address.,ADDR.
+PhoneNumber,PhoneNumber,Phone numbers.,PHONE
+Email,Email,Email addresses.,EMAIL
+URL,URL,URLs to websites.,URL
+IP,IP,network IP addresses.,IP
+DateTime,Datetime,Dates and times of day.,Datetime
+DateTime,Date,Calender dates.,DATE
+DateTime,Time,Times of day.,TIME
+DateTIme,DateRange,Date ranges.,DATErng.
+DateTime,TimeRange,Time ranges.,TIMErng.
+DateTime,Duration,Durations.,DUR.
+DateTime,Set,"Set, repeated times.",SET
+Quantity,Quantity,Numbers and numeric quantities,QTY.
+Quantity,Number,Numbers,NUM
+Quantity,Percentage,Percentages,%
+Quantity,Ordinal numbers,Ordinal numbers,ORDNUM.
+Quantity,Age,Ages,AGES
+Quantity,Currency,Currencies,CUR.
+Quantity,Dimensions,Dimensions and measurements,DIM.
+Quantity,Temperature,Temperatures,TEMP.
