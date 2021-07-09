@@ -58,6 +58,10 @@ class File(db.Model):
                 return line
             break
 
+    @classmethod
+    def file_by_id(cls, id):
+        return cls.query.get(id)
+
 
 class Statistics(db.Model):
     __tablename__ = "statistics"
@@ -145,9 +149,17 @@ class Pages(db.Model):
         self.end_index = end_index
 
     def __repr__(self):
-        return f"page starting at index{self.start_index}"
+        return f"Page starting at index {self.start_index}, with ID {self.id}"
+
+    def flush(self):
+        db.session.add(self)
+        db.session.flush()
 
     def word_by_id(self, word_id):
+        if word_id < 1:
+            raise IndexError("ID can not be lower than 1")
+
+        word_id -= 1
         for sentence in self.sentences:
             if word_id < len(sentence.words):
                 return sentence.words[word_id]
@@ -167,6 +179,10 @@ class Sentences(db.Model):
         self.page_id = page_id
         self.start_index = start_index
         self.end_index = end_index
+
+    def flush(self):
+        db.session.add(self)
+        db.session.flush()
 
 
 class Words(db.Model):
@@ -190,6 +206,14 @@ class Words(db.Model):
 
     def __repr__(self):
         return self.raw
+
+    def save(self):
+        db.session.add(self)
+        db.session.commit()
+
+    def flush(self):
+        db.session.add(self)
+        db.session.flush()
 
     @classmethod
     def search_by_raw(cls, file_id, raw):
@@ -225,15 +249,12 @@ class Words(db.Model):
         return search_results
 
     def get_ner_tag(self):
-        """TODO: add method to retrieve ner_tag of the word"""
-        """
-        :return: NerTagType object linked to this word
-        """
-        pass
+        ner_tag_id = NerTagType.query.filter_by(id=self.ner_tags_id).first()
+        ner_tag_type = None
+        if ner_tag_id:
+            ner_tag_type = ner_tag_id.name
 
-    def save(self):
-        db.session.add(self)
-        db.session.commit()
+        return ner_tag_type
 
 
 class NerTagType(db.Model):
