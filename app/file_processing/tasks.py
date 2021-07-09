@@ -10,6 +10,7 @@ import json
 import os
 import time
 
+
 @celery.task()
 def process_file(id, filename, processes):
 
@@ -29,8 +30,7 @@ def process_file(id, filename, processes):
                 page_end = page_start + len(text)
                 page_db = Pages(id, page_start, page_end)
                 #print(f"Pages:  {page_start}, {page_end}")
-                db.session.add(page_db)
-                db.session.flush()
+                page_db.flush()
 
                 #print(type(text))
                 list_of_sentences = split_sentences(text)
@@ -39,20 +39,19 @@ def process_file(id, filename, processes):
                 for sentences in list_of_sentences:
                     sentence_end = sentence_start + len(sentences)
                     sentence_db = Sentences(page_db.id, sentence_start, sentence_end)
-                    db.session.add(sentence_db)
-                    db.session.flush()
+                    sentence_db.flush()
                     #print(f"Sentence: {page_db.id}, {sentence_start}, {sentence_end}")
 
                     lemmatized_words = lemmatize(tokenize(remove_punctuation(sentences)))
                     for word in lemmatized_words:
                         words_db = Words(sentence_db.id, word[3], word[4], word[0], word[1], word[2])
-                        db.session.add(words_db)
+                        words_db.flush()
                         #print(f"Words: {sentence_db.id}, {word[3]}, {word[4]}, {word[0]}, {word[1]}, {word[2]}")
 
                     sentence_start = sentence_end + 1
 
                 page_start = page_end + 1
-            db.session.commit()
+            #db.session.commit()
 
 
 # @celery.task()
