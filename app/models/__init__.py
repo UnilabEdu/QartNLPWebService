@@ -30,9 +30,10 @@ class File(db.Model):
     id = db.Column(db.Integer, primary_key=True)
     user_id = db.Column(db.Integer, db.ForeignKey('user.id'))
     title = db.Column(db.String)
-    #file_name = db.Column(db.String)
-    #upload_date = db.Column(db.DateTime, default=datetime.datetime.utcnow)
-    #date_modified = db.Column(db.DateTime, default=datetime.datetime.utcnow)
+    file_name = db.Column(db.String)
+    upload_date = db.Column(db.DateTime, default=datetime.datetime.utcnow)
+    date_modified = db.Column(db.DateTime, default=datetime.datetime.utcnow)
+    pages = db.relationship('Pages', backref='file')
     status = db.relationship('Status', backref='file')
     statistics = db.relationship('Statistics', backref='file', uselist=False)
 
@@ -130,7 +131,6 @@ class Status(db.Model):
 
 
 class Pages(db.Model):
-
     __tablename__ = "pages"
 
     id = db.Column(db.Integer, primary_key=True)
@@ -144,16 +144,18 @@ class Pages(db.Model):
         self.start_index = start_index
         self.end_index = end_index
 
+    def __repr__(self):
+        return f"page starting at index{self.start_index}"
+
     def word_by_id(self, word_id):
         for sentence in self.sentences:
             if word_id < len(sentence.words):
-                return sentence.words[word_id].raw
+                return sentence.words[word_id]
             else:
                 word_id -= len(sentence.words)
 
 
 class Sentences(db.Model):
-
     __tablename__ = "sentences"
     id = db.Column(db.Integer, primary_key=True)
     page_id = db.Column(db.Integer, db.ForeignKey("pages.id"))
@@ -168,7 +170,6 @@ class Sentences(db.Model):
 
 
 class Words(db.Model):
-
     __tablename__ = "words"
     id = db.Column(db.Integer, primary_key=True)
     sentence_id = db.Column(db.Integer, db.ForeignKey("sentences.id"))
@@ -187,41 +188,52 @@ class Words(db.Model):
         self.lemma = lemma
         self.pos_tags = pos_tags
 
+    def __repr__(self):
+        return self.raw
+
     @classmethod
     def search_by_raw(cls, file_id, raw):
-
         search_results = (db.session.query(Pages, Sentences, Words)
-                 .join(Sentences, Pages.sentences)
-                 .join(Words, Sentences.words)
-                 .filter(Pages.file_id == file_id)
-                 .filter(Words.raw == raw)
-                 ).all()
+                          .join(Sentences, Pages.sentences)
+                          .join(Words, Sentences.words)
+                          .filter(Pages.file_id == file_id)
+                          .filter(Words.raw == raw)
+                          ).all()
 
         return search_results
 
     @classmethod
     def search_by_lemma(cls, file_id, lemma):
-
         search_results = (db.session.query(Pages, Sentences, Words)
-                 .join(Sentences, Pages.sentences)
-                 .join(Words, Sentences.words)
-                 .filter(Pages.file_id == file_id)
-                 .filter(Words.lemma == lemma)
-                 ).all()
+                          .join(Sentences, Pages.sentences)
+                          .join(Words, Sentences.words)
+                          .filter(Pages.file_id == file_id)
+                          .filter(Words.lemma == lemma)
+                          ).all()
 
         return search_results
 
     @classmethod
     def search_by_tag(cls, file_id, tags):
-
         search_results = (db.session.query(Pages, Sentences, Words)
-                 .join(Sentences, Pages.sentences)
-                 .join(Words, Sentences.words)
-                 .filter(Pages.file_id == file_id)
-                 .filter(Words.pos_tags.contains(tags))
-                 ).all()
+                          .join(Sentences, Pages.sentences)
+                          .join(Words, Sentences.words)
+                          .filter(Pages.file_id == file_id)
+                          .filter(Words.pos_tags.contains(tags))
+                          ).all()
 
         return search_results
+
+    def get_ner_tag(self):
+        """TODO: add method to retrieve ner_tag of the word"""
+        """
+        :return: NerTagType object linked to this word
+        """
+        pass
+
+    def save(self):
+        db.session.add(self)
+        db.session.commit()
 
 
 class NerTagType(db.Model):
@@ -233,11 +245,18 @@ class NerTagType(db.Model):
     short_name = db.Column(db.String)
     ner_tags = db.relationship('NerTags', backref='ner_tag_type', lazy=True)
 
+    @classmethod
+    def find_tag_by_name(cls, name):
+        return cls.query.filter_by(name=name).first()
+
     def __init__(self, name, title, description, short_name):
         self.name = name
         self.title = title
         self.short_name = short_name
         self.description = description
+
+    def __repr__(self):
+        return f"NerTagType ({self.id}): {self.name}"
 
     def save(self):
         db.session.add(self)
@@ -255,10 +274,18 @@ class NerTags(db.Model):
     ner_tag_type_id = db.Column(db.Integer, db.ForeignKey("ner_tag_type.id"))
     words = db.relationship('Words', backref='ner_tags', lazy=True)
 
-    def __init__(self, ner_tag_type_id, words, page_id):
+    def __init__(self, ner_tag_type_id, page_id):
         self.page_id = page_id
-        self.words = words
         self.ner_tag_type_id = ner_tag_type_id
+
+    def __repr__(self):
+        return f"{self.words=} tagged into ner_tag type-{self.ner_tag_type_id}"
+
+    def connected_words(self):
+        """
+        :return: list of word objects in relationship
+        """
+        pass
 
     def save(self):
         db.session.add(self)

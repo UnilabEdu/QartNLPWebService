@@ -5,7 +5,7 @@ from .forms import NerTagForm
 
 
 @tagging_blueprint.route('/test/<int:page_id>', methods=['GET', 'POST'])
-def test(page_id=0):
+def test(page_id=0, file_id=0):
     form = NerTagForm()
     random_text = "პითონები — გველების ქვეოჯახი მახრჩობელასებრთა ოჯახისა (ან დამოუკიდებელი ოჯახი). გავრცელებულია " \
                   "აღმოსავლეთ და, ნაწილობრივ, დასავლეთ (ცენტრალური ამერიკა) ნახევარსფეროებში. ამჟამად ქვეოჯახში შედის " \
@@ -15,6 +15,10 @@ def test(page_id=0):
                   "ლელიანებში, ქვებს შორის. კარგად ცურავენ, შეუძლიათ ხეზე ასვლა. იკვებებიან ძირითადად ხერხემლიანებით, " \
                   "რომლებსაც სხეულის რგონებით გუდავენ. "
 
+    # retrieve page by file_id and page_id
+    # retrieve all the tags from the page
+    # build tags object for every word connected to page
+    # LOC = GREEN, GPE = BLUE, NUM = PURPLE
     tags = [
         {"id": 1, "keys": [11], "value": "LOC."},
         {"id": 2, "keys": [14], "value": "LOC."},
