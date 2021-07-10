@@ -42,7 +42,7 @@
   font-size: 20px;
 }
 
-.list-item:after {
+.list-item::after {
   content: "";
   display: inline-block;
   width: 1px;
@@ -1097,4 +1097,73 @@ i.fab.fa-facebook-square {
 .reg-email-input,
 .reg-password-input-rep {
   margin-bottom: 18px;
+}
+
+.hamburger{
+  background-color: transparent;
+  border: none;
+  color: white;
+  cursor: pointer;
+  font-size: 45px;
+  display: none;
+}
+
+.hamburger:focus{
+  outline: none;
+}
+
+@media screen and (max-width: 1318px){
+  .list-item::after {
+    display: none;
+  }
+
+  .list-item{
+    margin-right: 60px;
+    font-size: 27px;
+    text-align: center;
+  }
+
+  .nav-left{
+    margin-right: 60px;
+  }
+}
+
+@media screen and (max-width: 1200px){
+  .nav-right{
+    display: none;
+    flex-direction: column;
+  }
+
+  .nav-right>ul{
+    flex-direction: column;
+  }
+  
+  .nav-right>ul>li{
+    margin: 0;
+    margin-bottom: 15px;
+  }
+
+  .icon{
+    order: 1;
+  }
+
+  .icon>img{
+    margin: 0;
+  }
+
+  .nav-right.show{
+    width: 100%;
+    display: flex;
+  }
+
+  .navigation{
+    flex-wrap: wrap;
+  }
+
+  .hamburger{
+    display: block;
+  }
+}
+
+@media screen and (max-width: 768px){
 }

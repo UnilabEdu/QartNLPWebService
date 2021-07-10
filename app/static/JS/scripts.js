@@ -346,10 +346,18 @@ regForm.addEventListener("submit", (e) => {
 const upload = document.querySelector(".btn-upload");
 let fileName;
 
-upload.addEventListener("change", (item) => {
-  fileName = upload.value.split("\\").slice(-1)[0];
-  flName.innerHTML = fileName;
-  if (flName.textContent !== "") {
-    copyInp.disabled = true;
-  }
+if (upload) {
+  upload.addEventListener("change", (item) => {
+    fileName = upload.value.split("\\").slice(-1)[0];
+    flName.innerHTML = fileName;
+    if (flName.textContent !== "") {
+      copyInp.disabled = true;
+    }
+  });
+}
+
+const hamburger = document.querySelector('.hamburger');
+const navRight = document.querySelector('.nav-right');
+hamburger.addEventListener('click', () => {
+  navRight.classList.toggle('show');
 });
