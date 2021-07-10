@@ -26,7 +26,7 @@ def upload():
         file = upload_form.file.data
         filename = secure_filename(file.filename)
 
-        file_model = File(filename, 'lemat', 1)
+        file_model = File(filename, 1, filename)
         file_model.save()
 
         path = os.path.join(Config.UPLOAD_FOLDER, filename)
@@ -37,19 +37,7 @@ def upload():
     return render_template('upload.html', upload_form=upload_form)
 
 
-@file_processor_blueprint.route('/view_sentence/<int:sentence_id>', methods=['GET', 'POST'])
-def view_db(sentence_id):
-
-    sentence = Sentences.query.filter_by(id=sentence_id).first()
-    sentence_words = []
-
-    for words in sentence.words:
-        sentence_words.append(words.raw)
-
-    print(sentence_words)
-    return json.dumps(sentence_words, ensure_ascii=False)
-
-
+# Temporary pages for debugging
 @file_processor_blueprint.route('/view_pages/<int:page_id>', methods=['GET', 'POST'])
 def view_page(page_id):
 
@@ -68,7 +56,7 @@ def view_word(page_id, word_idx):
     page = Pages.query.filter_by(id=page_id).first()
     word = page.word_by_id(word_idx)
 
-    return json.dumps({"word": word}, ensure_ascii=False)
+    return json.dumps({"word": word.raw, "tag": word.get_ner_tag()}, ensure_ascii=False)
 
 
 @file_processor_blueprint.route('/find_raw/<int:file_id>/<string:word>', methods=['GET', 'POST'])

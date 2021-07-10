@@ -1,9 +1,6 @@
 from app.database import db
 from flask_user import UserMixin
-from app.models import Profile, File
 
-
-# user_manager = UserManager()
 
 class User(db.Model, UserMixin):
     id = db.Column(db.Integer, primary_key=True)
