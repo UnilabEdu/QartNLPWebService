@@ -1,6 +1,7 @@
 from flask_restful import Resource, reqparse
 
-from app.models import File, NerTags, NerTagType
+from app.models.ner_tagging import NerTagType, NerTags
+from app.models.file import File
 
 
 class NerTagApi(Resource):

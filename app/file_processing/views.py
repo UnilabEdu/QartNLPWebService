@@ -5,7 +5,7 @@ from werkzeug.utils import secure_filename
 from app.file_processing.forms import UploadForm
 from app.file_processing.tasks import process_file
 from app.settings import Config
-from app.models import File, Sentences, Pages, Words
+from app.models.file import File, Pages, Sentences, Words
 from app.database import db
 
 import json

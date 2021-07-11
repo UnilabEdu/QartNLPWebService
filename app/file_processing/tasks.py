@@ -1,7 +1,7 @@
 from app import celery
 from app.file_processing.nlp import *
 from app.settings import Config
-from app.models import Pages, Sentences, Words
+from app.models.file import Pages, Sentences, Words
 from app.database import db
 from itertools import islice
 
