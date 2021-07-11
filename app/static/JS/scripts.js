@@ -345,6 +345,7 @@ regForm.addEventListener("submit", (e) => {
 
 const upload = document.querySelector(".btn-upload");
 let fileName;
+
 if (upload) {
   upload.addEventListener("change", (item) => {
     fileName = upload.value.split("\\").slice(-1)[0];
