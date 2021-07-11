@@ -366,6 +366,7 @@ footer {
 
 .active-login {
   display: flex;
+  z-index: 5;
 }
 
 .login-content {
@@ -1104,7 +1105,7 @@ i.fab.fa-facebook-square {
   border: none;
   color: white;
   cursor: pointer;
-  font-size: 45px;
+  font-size: 35px;
   display: none;
 }
 
@@ -1136,19 +1137,20 @@ i.fab.fa-facebook-square {
 
   .nav-right>ul{
     flex-direction: column;
+    position: relative;
+    margin-bottom: 10px;
   }
   
   .nav-right>ul>li{
     margin: 0;
-    margin-bottom: 15px;
+    margin-bottom: 25px;
   }
 
   .icon{
+    position: absolute;
+    right: 0;
+    top: 0;
     order: 1;
-  }
-
-  .icon>img{
-    margin: 0;
   }
 
   .nav-right.show{
@@ -1166,4 +1168,27 @@ i.fab.fa-facebook-square {
 }
 
 @media screen and (max-width: 768px){
+}
+
+@media screen and (max-width: 676px){
+  .nav-right{
+    align-items: flex-start;
+    margin-left: 10px;
+    margin-top: 10px;
+  }
+
+  .nav-right>ul{
+    align-items: flex-start;
+    margin-left: 10px;
+    margin-top: 20px;
+    width: 100%;
+  }
+
+  .nav-left>h2{
+    font-size: 70px;
+  }
+
+  .icon{
+    position: absolute;
+  }
 }
