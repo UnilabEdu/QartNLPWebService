@@ -1,7 +1,85 @@
 {% from "macros.html" import person with context %}
 {% extends "base1.html" %}
 {% block content %}
+<style>
 
+    #tagging-page{
+        line-height: 30px;
+    }
+
+    .ner-tag {
+      padding: 5px 8px;
+      margin: 10px 0px;
+      border-radius: 5px;
+      border: 1px solid rgba(128, 128, 128, 0.3);
+    }
+    .ner-tag:after {
+      font-weight: bold;
+    }
+
+    .ner-tag > span{
+        padding-right: 3px;
+    }
+    .ner-person {
+      background-color: lightgreen;
+    }
+    .ner-person:after {
+      content: " PERSON";
+    }
+
+    .ner-loc {
+      background-color: rgba(0, 128, 0, 0.5);
+    }
+    .ner-loc:after {
+      content: " LOC.";
+    }
+
+    .ner-person3 {
+      background-color: lightyellow;
+    }
+    .ner-person3:after {
+      content: " Some";
+    }
+
+    .ner-num {
+      background-color: rgba(128, 0, 128, 0.5);
+    }
+    .ner-num:after {
+      content: " NUM";
+    }
+
+    .ner-date {
+      background-color: rgba(35,223,200,0.3);
+    }
+    .ner-date:after {
+      content: " DATE";
+    }
+
+    .ner-org {
+      background-color: lightgreen;
+    }
+    .ner-org:after {
+      content: " ORG.";
+    }
+
+    .ner-temp {
+      background-color: rgba(35,23,200,0.3);
+    }
+    .ner-temp:after {
+      content: " TEMP.";
+    }
+
+    .ner-gpe{
+        background-color: rgba(0, 0, 255, 0.5);
+    }
+    .ner-gpe:after {
+      content: " GPE.";
+    }
+    </style>
+{# ALERT JS #}
+<link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/toastify-js/src/toastify.min.css">
+<script type="text/javascript" src="https://cdn.jsdelivr.net/npm/toastify-js"></script>
+{# SKELETON CSS #}
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/skeleton/2.0.4/skeleton.min.css" integrity="sha512-EZLkOqwILORob+p0BXZc+Vm3RgJBOe1Iq/0fiI7r/wJgzOFZMlsqTa29UEl6v6U6gsV4uIpsNZoV32YZqrCRCQ==" crossorigin="anonymous" referrerpolicy="no-referrer" />
 <div class='container' id='tagging-page' style="min-height: 53.5vh">
   <div class='row' style="margin-top: 50px;" >
@@ -29,6 +107,8 @@
                 {% endfor %}
 
             </div>
+
+            <p id='init-json' class="hidden">{{ tags_json }}</p>
       </div>
     </div>
     <div class='four columns'>
