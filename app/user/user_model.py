@@ -1,9 +1,6 @@
 from app.database import db
 from flask_user import UserMixin
-from app.models import Profile, File
 
-
-# user_manager = UserManager()
 
 class User(db.Model, UserMixin):
     id = db.Column(db.Integer, primary_key=True)
@@ -35,3 +32,26 @@ class UserRoles(db.Model):
     def __init__(self, user_id, role_id):
         self.user_id = user_id
         self.role_id = role_id
+
+
+class Profile(db.Model):
+    __tablename__ = "profiles"
+
+    id = db.Column(db.String, primary_key=True)
+    user_id = db.Column(db.Integer, db.ForeignKey('user.id'))
+    first_name = db.Column(db.String(64), nullable=False)
+    last_name = db.Column(db.String(64), nullable=False)
+    date_of_birth = db.Column(db.DATE, nullable=False)
+    img_url = db.Column(db.String)
+    comp_name = db.Column(db.String(64))
+    web_page = db.Column(db.String(64))
+    info = db.Column(db.Text)
+
+    def __init__(self, first_name, last_name, date_of_birth, img_url, comp_name, web_page, info):
+        self.first_name = first_name
+        self.last_name = last_name
+        self.date_of_birth = date_of_birth
+        self.img_url = img_url
+        self.comp_name = comp_name
+        self.web_page = web_page
+        self.info = info
