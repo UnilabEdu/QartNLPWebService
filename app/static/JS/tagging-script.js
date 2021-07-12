@@ -42,6 +42,20 @@ function updateWordsList(wordObject) {
         if (!is_in_array && (is_right_neighbor || is_left_neighbor)) {
             taggedWordArray.push(wordObject);
             taggedWordArray.sort((a, b) => a.id - b.id);
+        } else {
+            Toastify({
+              text: "შემდეგი სიტყვა უნდა იყოს ან მარჯვენა ან მარხენა მეზობელი",
+              duration: 10000,
+              // destination: "https://github.com/apvarun/toastify-js",  // link to plugin github page
+              // newWindow: true,
+              close: true,
+              gravity: "top", // `top` or `bottom`
+              position: "left", // `left`, `center` or `right`
+              backgroundColor: "linear-gradient(to right, darkred, red)",
+              stopOnFocus: true, // Prevents dismissing of toast on hover
+              onClick: function(){} // Callback after click
+            }).showToast();
+
         }
     }
     updateWordListView(); // right block
