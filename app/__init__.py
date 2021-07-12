@@ -7,8 +7,9 @@ from celery import Celery
 
 from app.settings import Config
 from app.database import db
+from app.models.file import File, Statistics, Pages, Sentences, Words
+from app.user.user_model import User, Role, UserRoles, Profile
 
-from app.user.user_model import User, Role, UserRoles
 from app.user.admin.admin import admin
 from app.api import api
 

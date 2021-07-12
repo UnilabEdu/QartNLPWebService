@@ -4,7 +4,7 @@ from flask import render_template
 from .forms import NerTagForm
 
 
-@tagging_blueprint.route('/test/<int:page_id>', methods=['GET', 'POST'])
+@tagging_blueprint.route('/<int:file_id>/<int:page_id>', methods=['GET', 'POST'])
 def test(page_id=0, file_id=0):
     form = NerTagForm()
     random_text = "პითონები — გველების ქვეოჯახი მახრჩობელასებრთა ოჯახისა (ან დამოუკიდებელი ოჯახი). გავრცელებულია " \
