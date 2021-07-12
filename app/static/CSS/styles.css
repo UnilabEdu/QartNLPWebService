@@ -22,7 +22,7 @@
 }
 
 .list-item a {
-  font-family: "Sandro";
+  font-family: 'Sandro';
   text-decoration: none;
   color: white;
 }
@@ -43,7 +43,7 @@
 }
 
 .list-item::after {
-  content: "";
+  content: '';
   display: inline-block;
   width: 1px;
   height: 20px;
@@ -71,7 +71,7 @@ body {
 
 .processing-lang h2 {
   font-size: 34px;
-  font-family: "Sandro";
+  font-family: 'Sandro';
   text-align: center;
   margin-bottom: 87px;
 }
@@ -83,7 +83,7 @@ body {
   background-color: #fff;
   border: 1px solid#172224;
   font-size: 22px;
-  font-family: "Sandro";
+  font-family: 'Sandro';
   background-color: #fff;
   border: 1px solid#172224;
   resize: none;
@@ -123,7 +123,7 @@ body {
   font-size: 34px;
   text-align: center;
   background-color: #172224;
-  font-family: "Sandro";
+  font-family: 'Sandro';
   left: 4px;
   margin: auto;
 }
@@ -166,7 +166,7 @@ footer {
 }
 
 .created-by__title {
-  font-family: "Sandro";
+  font-family: 'Sandro';
   color: #ffffff;
   font-size: 12px;
   width: 571px;
@@ -181,7 +181,7 @@ footer {
 }
 
 .university-name__title {
-  font-family: "Sandro";
+  font-family: 'Sandro';
   color: #ffffff;
   font-size: 12px;
   display: flex;
@@ -209,7 +209,7 @@ footer {
 .analyze-part {
   width: 50%;
   text-align: center;
-  font-family: "Sandro";
+  font-family: 'Sandro';
   padding: 7px 0 4px;
   font-size: 18px;
   border: 1px solid #707070;
@@ -221,7 +221,7 @@ footer {
   flex-wrap: wrap;
   border: 1px solid #707070;
   border-top: none;
-  font-family: "Sandro";
+  font-family: 'Sandro';
 }
 
 .grammar-block {
@@ -429,7 +429,7 @@ footer {
 .emailwarning,
 .passwordvalidation {
   margin-top: 3px;
-  font-family: "Sandro";
+  font-family: 'Sandro';
   color: red;
 }
 
@@ -535,7 +535,7 @@ footer {
 
 .file_content_heading h2 {
   font-size: 24px;
-  font-family: "ArialCaps";
+  font-family: 'ArialCaps';
   font-weight: normal;
   color: #172224;
 }
@@ -561,7 +561,7 @@ footer {
 }
 
 .file-data span:first-child:after {
-  content: "";
+  content: '';
   position: absolute;
   top: 50%;
   transform: translateY(-50%);
@@ -602,7 +602,7 @@ footer {
   font-size: 34px;
   text-align: center;
   background-color: #172224;
-  font-family: "Sandro";
+  font-family: 'Sandro';
   left: 4px;
   color: white;
   cursor: pointer;
@@ -635,7 +635,7 @@ footer {
 }
 
 .user-info:before {
-  content: "";
+  content: '';
   display: block;
   width: 100%;
   height: 1px;
@@ -702,7 +702,7 @@ footer {
 
 .file-add-block h2 {
   font-weight: normal;
-  font-family: "ArialCaps";
+  font-family: 'ArialCaps';
   color: #172224;
 }
 
@@ -766,7 +766,7 @@ footer {
 }
 
 .btn-upload:after {
-  content: "upload";
+  content: 'upload';
   position: absolute;
   top: 0;
   left: 0px;
@@ -776,7 +776,7 @@ footer {
   padding: 0 0 0 9px;
   background: #172224;
   font-size: 24px;
-  font-family: "ArialCaps";
+  font-family: 'ArialCaps';
   color: #fff;
 }
 
@@ -848,7 +848,7 @@ footer {
 .info-search ul li {
   margin: 0 0 35px;
   font-size: 24px;
-  font-family: "Sandro";
+  font-family: 'Sandro';
   color: #2c3532;
   list-style-type: none;
 }
@@ -858,7 +858,7 @@ footer {
   height: 32px;
   margin: 32px 0px 66px 32px;
   font-size: 18px;
-  font-family: "Sandro";
+  font-family: 'Sandro';
   padding: 4px;
 }
 
@@ -868,7 +868,7 @@ footer {
   padding: 1.5px 35px 6px;
   background-color: #2c3532;
   font-size: 24px;
-  font-family: "Sandro";
+  font-family: 'Sandro';
   color: #ebebeb;
   text-align: left;
   border: none;
@@ -960,13 +960,13 @@ footer {
 }
 
 .uploading-text:after {
-  content: "ფაილი მუშავდება";
+  content: 'ფაილი მუშავდება';
   position: absolute;
   left: 50%;
   top: 30%;
   transform: translate(-50%);
   font-size: 53px;
-  font-family: "ArialCaps";
+  font-family: 'ArialCaps';
   color: #172224;
   z-index: 4;
 }
@@ -975,22 +975,22 @@ footer {
   cursor: default;
 }
 
-input[type="checkbox"] {
+input[type='checkbox'] {
   cursor: pointer;
   display: flex;
   justify-content: center;
   align-items: center;
 }
 
-input[type="checkbox"]::after {
-  font-family: "Font Awesome 5 Free";
+input[type='checkbox']::after {
+  font-family: 'Font Awesome 5 Free';
   font-weight: 900;
   color: white;
   font-size: 27px;
 }
 
-input[type="checkbox"]:checked::after {
-  content: "\f00c";
+input[type='checkbox']:checked::after {
+  content: '\f00c';
   appearance: none;
   -webkit-appearance: none;
   background-color: #172224;
@@ -1100,7 +1100,7 @@ i.fab.fa-facebook-square {
   margin-bottom: 18px;
 }
 
-.hamburger{
+.hamburger {
   background-color: transparent;
   border: none;
   color: white;
@@ -1109,86 +1109,199 @@ i.fab.fa-facebook-square {
   display: none;
 }
 
-.hamburger:focus{
+.hamburger:focus {
   outline: none;
 }
 
-@media screen and (max-width: 1318px){
+@media screen and (max-width: 1318px) {
   .list-item::after {
     display: none;
   }
 
-  .list-item{
+  .list-item {
     margin-right: 60px;
     font-size: 27px;
     text-align: center;
   }
 
-  .nav-left{
+  .nav-left {
     margin-right: 60px;
   }
 }
 
-@media screen and (max-width: 1200px){
-  .nav-right{
+@media screen and (max-width: 1200px) {
+  .nav-right {
     display: none;
     flex-direction: column;
   }
 
-  .nav-right>ul{
+  .nav-right > ul {
     flex-direction: column;
     position: relative;
     margin-bottom: 10px;
   }
-  
-  .nav-right>ul>li{
+
+  .nav-right > ul > li {
     margin: 0;
     margin-bottom: 25px;
   }
 
-  .icon{
+  .icon {
     position: absolute;
     right: 0;
     top: 0;
     order: 1;
   }
 
-  .nav-right.show{
+  .nav-right.show {
     width: 100%;
     display: flex;
   }
 
-  .navigation{
+  .navigation {
     flex-wrap: wrap;
   }
 
-  .hamburger{
+  .hamburger {
     display: block;
   }
 }
 
-@media screen and (max-width: 768px){
+@media screen and (max-width: 768px) {
 }
 
-@media screen and (max-width: 676px){
-  .nav-right{
+@media screen and (max-width: 676px) {
+  .nav-right {
     align-items: flex-start;
     margin-left: 10px;
     margin-top: 10px;
   }
 
-  .nav-right>ul{
+  .nav-right > ul {
     align-items: flex-start;
     margin-left: 10px;
     margin-top: 20px;
     width: 100%;
   }
 
-  .nav-left>h2{
+  .nav-left > h2 {
     font-size: 70px;
   }
 
-  .icon{
+  .icon {
     position: absolute;
   }
+}
+
+.wall {
+  max-width: 1089px;
+  width: 100%;
+  margin: 80px auto;
+}
+
+.slider-container {
+  position: relative;
+  max-width: 1089px;
+  width: 100%;
+  height: 567px;
+  border-radius: 18px;
+  overflow: hidden;
+}
+
+.slider-ul {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  top: 0%;
+  transition: 0.3s;
+}
+
+.slider-item {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+  border-radius: 18px;
+}
+
+.slider-pagination {
+  position: absolute;
+}
+
+.slider-img {
+  width: 100%;
+  height: 100%;
+}
+
+.slider-item-content {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  max-width: 40%;
+  margin-left: 80px;
+  z-index: 2;
+}
+
+.btn-for-slider {
+  margin-right: 15px;
+  padding: 7px 20px;
+  background-color: #8771e8;
+  font-size: 16px;
+  color: #fff;
+  border: none;
+  outline: none;
+  border-radius: 6px;
+}
+
+.slider-item-content a {
+  padding: 7px 20px;
+  font-size: 16px;
+  color: #fff;
+}
+
+.slider-item-content p {
+  margin-bottom: 30px;
+  font-size: 16px;
+  color: #d9d9d9;
+}
+
+.slider-item-content h2 {
+  margin-bottom: 20px;
+  font-size: 42px;
+  color: #fff;
+}
+
+.slider-pagination {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  right: 30px;
+}
+
+.pag-button {
+  display: block;
+  margin: 10px 0;
+  width: 8.77px;
+  height: 8.77px;
+  background-color: #fff;
+  border-radius: 50%;
+  cursor: pointer;
+}
+
+.about-project {
+  margin-top: 150px;
+  padding: 30px 100px;
+  background-color: #f5f5f5;
+  border-radius: 18px;
+}
+
+.about-project h2 {
+  margin-top: 20px;
+  font-size: 32px;
+  margin-bottom: 30px;
+  text-align: center;
+  color: #8771e8;
+}
+.about-project p {
+  margin-bottom: 20px;
 }
