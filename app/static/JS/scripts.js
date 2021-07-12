@@ -346,10 +346,44 @@ regForm.addEventListener("submit", (e) => {
 const upload = document.querySelector(".btn-upload");
 let fileName;
 
-upload.addEventListener("change", (item) => {
-  fileName = upload.value.split("\\").slice(-1)[0];
-  flName.innerHTML = fileName;
-  if (flName.textContent !== "") {
-    copyInp.disabled = true;
+if (upload) {
+  upload.addEventListener("change", (item) => {
+    fileName = upload.value.split("\\").slice(-1)[0];
+    flName.innerHTML = fileName;
+    if (flName.textContent !== "") {
+      copyInp.disabled = true;
+    }
+  });
+}
+
+//slider
+const contentSlider = document.querySelector(".slider-ul");
+const sliderItem = document.querySelectorAll(".slider-item");
+const paginationContent = document.querySelector(".slider-pagination");
+
+(function pagination() {
+  if (sliderItem.length > 0) {
+    for (var i = 0; i < sliderItem.length; i++) {
+      var eFpagination = document.createElement("span");
+      eFpagination.classList.add("pag-button");
+      eFpagination.setAttribute("id", i);
+      paginationContent.append(eFpagination);
+    }
+    if (eFpagination) {
+      const getButtons = document.querySelectorAll(".pag-button");
+      getButtons.forEach((eachBtn) => {
+        if (eachBtn.id == 0) {
+          eachBtn.style.background = "#8771E8";
+        }
+        eachBtn.addEventListener("click", () => {
+          getButtons.forEach((eachBtn) => {
+            eachBtn.style.background = "#fff";
+          });
+          eachBtn.style.background = "#8771E8";
+          const x = 100 * eachBtn.id;
+          contentSlider.style.top = `-${x}%`;
+        });
+      });
+    }
   }
-});
+})();
