@@ -89,34 +89,27 @@ function saveButtonOnClick() {
 }
 
 function wrap_id(ids, tag){
-
-    let word = document.querySelector('#w'+ids)
     if (Array.isArray(ids) && ids.length > 1){
+        let word = document.querySelector('#w'+ids[0])
+        let wrapper = document.createElement('span')
+        wrapper.classList.add('ner-tag', 'ner-'+tag.toLowerCase())
+        word.parentNode.insertBefore(wrapper,word)
+
+
         for (let i = ids[0]; i<=ids[1]; i++ ) {
-
+            wrapper.appendChild(document.querySelector('#w'+i))
         }
-    } else {
-        word.innerHTML = `<span class="${tag}">${word.innerHTML}</span>`;
     }
-
 }
 
 function initTags(initJsonSelector) {
     let tags = JSON.parse(initJsonSelector.innerHTML)
-    console.log(tags)
-    let ids_to_wrap = [];
     tags.forEach((words) => {
         if (words.keys.length > 1) {
-
-            for (let i = words.keys[0]; i <= words.keys[1]; i++) {
-                document.querySelector('#w' + i);
-            }
+            wrap_id(words.keys, words.value)
         } else {
-            document.querySelector('#w' + words.keys[0])
+            wrap_id([words.keys[0],words.keys[0]], words.value)
         }
-
-    //    TODO: მარცხენა მხარეს სიტყვების ვიუს განახლება.
-    //    შესაბამისი კლასების დამატება
     })
 }
 
