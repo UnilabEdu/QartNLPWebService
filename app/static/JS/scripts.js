@@ -100,7 +100,7 @@ const dropDown = () => {
 };
 
 const userLogged = () => {
-  loginLogo.src = "../assets/dif-head-logo.svg";
+  loginLogo.src = "../assets/profile.svg";
   loginBtn.removeEventListener("click", loginEvent);
   loginLogo.addEventListener("click", dropDown);
 };
