@@ -4,5 +4,5 @@ from wtforms.validators import DataRequired
 
 
 class NerTagForm(FlaskForm):
-    ner_tag = SelectField("choose tag from the list", choices=[('aim', 'AIM'), ('msn', 'MSN')], validators=[DataRequired(),])
+    ner_tag = SelectField("choose tag from the list", choices=[('num', 'NUM'), ('loc', 'LOC')], validators=[DataRequired(),])
     submit = SubmitField("save")

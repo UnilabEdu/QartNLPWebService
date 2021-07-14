@@ -4,7 +4,8 @@ const saveButton = document.getElementById('submit');
 const words = document.querySelectorAll('span');
 const words_list = document.getElementById('words_list');
 const initJson = document.getElementById('init-json');
-console.log('init_json id selected', initJson)
+const tag_selector = document.getElementById('ner_tag');
+
 let taggedWordArray = [] // array of word objects
 let taggedWords = [] // array of words (right block)
 
@@ -44,16 +45,17 @@ function updateWordsList(wordObject) {
             taggedWordArray.sort((a, b) => a.id - b.id);
         } else {
             Toastify({
-              text: "შემდეგი სიტყვა უნდა იყოს ან მარჯვენა ან მარხენა მეზობელი",
-              duration: 10000,
-              // destination: "https://github.com/apvarun/toastify-js",  // link to plugin github page
-              // newWindow: true,
-              close: true,
-              gravity: "top", // `top` or `bottom`
-              position: "left", // `left`, `center` or `right`
-              backgroundColor: "linear-gradient(to right, darkred, red)",
-              stopOnFocus: true, // Prevents dismissing of toast on hover
-              onClick: function(){} // Callback after click
+                text: "შემდეგი სიტყვა უნდა იყოს ან მარჯვენა ან მარხენა მეზობელი",
+                duration: 10000,
+                // destination: "https://github.com/apvarun/toastify-js",  // link to plugin github page
+                // newWindow: true,
+                close: true,
+                gravity: "top", // `top` or `bottom`
+                position: "left", // `left`, `center` or `right`
+                backgroundColor: "linear-gradient(to right, darkred, red)",
+                stopOnFocus: true, // Prevents dismissing of toast on hover
+                onClick: function () {
+                } // Callback after click
             }).showToast();
 
         }
@@ -102,18 +104,44 @@ function saveButtonOnClick() {
         });
 }
 
-function wrap_id(ids, tag){
-    if (Array.isArray(ids) && ids.length > 1){
-        let word = document.querySelector('#w'+ids[0])
+function wrap_id(ids, tag) {
+    if (Array.isArray(ids) && ids.length > 1) {
+        let word = document.querySelector('#w' + ids[0])
         let wrapper = document.createElement('span')
-        wrapper.classList.add('ner-tag', 'ner-'+tag.toLowerCase())
-        word.parentNode.insertBefore(wrapper,word)
+        wrapper.classList.add('ner-tag', 'ner-' + tag.toLowerCase())
+        word.parentNode.insertBefore(wrapper, word)
 
 
-        for (let i = ids[0]; i<=ids[1]; i++ ) {
-            wrapper.appendChild(document.querySelector('#w'+i))
+        for (let i = ids[0]; i <= ids[1]; i++) {
+            wrapper.appendChild(document.querySelector('#w' + i))
         }
     }
+}
+
+function temp_wrap_ids(tagged_ids) {
+    let is_tagged = taggedWordArray.length > 1;
+    let wrapper = null;
+
+    if (!is_tagged) {
+        let word = document.querySelector('#w' + tagged_ids[0])
+        wrapper = document.createElement('span')
+        wrapper.classList.add('ner-tag','ner-temporary')
+        word.parentNode.insertBefore(wrapper, word)
+    } else {
+        wrapper = document.querySelector('span.ner-temporary')
+    }
+
+    for (let i = Math.min(...tagged_ids); i <= Math.max(...tagged_ids); i++) {
+        wrapper.appendChild(document.querySelector('#w' + i))
+    }
+
+}
+
+function assign_tag(){
+        let ner_selected = tag_selector.value;
+        let ner_tag = document.querySelector(".ner-temporary")
+        ner_tag.className = '';
+        ner_tag.classList.add("ner-tag",'ner-'+ner_selected, 'ner-temporary')
 }
 
 function initTags(initJsonSelector) {
@@ -122,15 +150,21 @@ function initTags(initJsonSelector) {
         if (words.keys.length > 1) {
             wrap_id(words.keys, words.value)
         } else {
-            wrap_id([words.keys[0],words.keys[0]], words.value)
+            wrap_id([words.keys[0], words.keys[0]], words.value)
         }
     })
 }
 
+function preSelectWord(element) {
+    let ids = taggedWordArray.map(word => word.id);
+    Math.min(...ids)
+    temp_wrap_ids([Math.min(...ids), Math.max(...ids)], '')
+}
 
 // EVENT LISTENERS
 resetButton.addEventListener('click', resetButtonOnClick);
 saveButton.addEventListener('click', saveButtonOnClick);
+tag_selector.addEventListener('change', assign_tag  );
 
 for (let i = 0; i < words.length; i++) {
     words[i].addEventListener('click', function () {
@@ -138,6 +172,9 @@ for (let i = 0; i < words.length; i++) {
             id: this.id.split("w")[1],
             content: this.textContent
         })
+
+        preSelectWord(this)
+
     });
 }
 
