@@ -4,6 +4,7 @@ const saveButton = document.getElementById('submit');
 const words = document.querySelectorAll('span');
 const words_list = document.getElementById('words_list');
 const initJson = document.getElementById('init-json');
+const tag_selector = document.getElementById('ner_tag');
 
 let taggedWordArray = [] // array of word objects
 let taggedWords = [] // array of words (right block)
@@ -119,25 +120,28 @@ function wrap_id(ids, tag) {
 
 function temp_wrap_ids(tagged_ids) {
     let is_tagged = taggedWordArray.length > 1;
-
+    let wrapper = null;
 
     if (!is_tagged) {
         let word = document.querySelector('#w' + tagged_ids[0])
-        let wrapper = document.createElement('span')
+        wrapper = document.createElement('span')
         wrapper.classList.add('ner-tag','ner-temporary')
-
         word.parentNode.insertBefore(wrapper, word)
-        for (let i = Math.min(...tagged_ids); i <= Math.max(...tagged_ids); i++) {
-            wrapper.appendChild(document.querySelector('#w' + i))
-        }
     } else {
-        let wrapper = document.querySelector('span.ner-temporary')
-        for (let i = Math.min(...tagged_ids); i <= Math.max(...tagged_ids); i++) {
-            wrapper.appendChild(document.querySelector('#w' + i))
-        }
+        wrapper = document.querySelector('span.ner-temporary')
     }
 
+    for (let i = Math.min(...tagged_ids); i <= Math.max(...tagged_ids); i++) {
+        wrapper.appendChild(document.querySelector('#w' + i))
+    }
 
+}
+
+function assign_tag(){
+        let ner_selected = tag_selector.value;
+        let ner_tag = document.querySelector(".ner-temporary")
+        ner_tag.className = '';
+        ner_tag.classList.add("ner-tag",'ner-'+ner_selected, 'ner-temporary')
 }
 
 function initTags(initJsonSelector) {
@@ -160,6 +164,7 @@ function preSelectWord(element) {
 // EVENT LISTENERS
 resetButton.addEventListener('click', resetButtonOnClick);
 saveButton.addEventListener('click', saveButtonOnClick);
+tag_selector.addEventListener('change', assign_tag  );
 
 for (let i = 0; i < words.length; i++) {
     words[i].addEventListener('click', function () {
