@@ -3,20 +3,20 @@ const resetButton = document.getElementById('reset_btn');
 const saveButton = document.getElementById('submit');
 const words = document.querySelectorAll('span');
 const words_list = document.getElementById('words_list');
+const initJson = document.getElementById('init-json');
+const tag_selector = document.getElementById('ner_tag');
 
 let taggedWordArray = [] // array of word objects
 let taggedWords = [] // array of words (right block)
 
 
-
-
 // FN-s
-function updateWordsList() {
+function updateWordsList(wordObject) {
 
-    let wordObject = {
-        id: this.id.split("w")[1],
-        content: this.textContent
-    }
+    // let wordObject = {
+    //     id: this.id.split("w")[1],
+    //     content: this.textContent
+    // }
 
     let is_taggedWordArray_empty = taggedWordArray.length === 0;
 
@@ -34,29 +34,45 @@ function updateWordsList() {
 
         let is_in_array
 
-        for (let i of taggedWordArray){
-            if (i.id === wordObject.id){
+        for (let i of taggedWordArray) {
+            if (i.id === wordObject.id) {
                 is_in_array = true
             }
         }
 
         if (!is_in_array && (is_right_neighbor || is_left_neighbor)) {
             taggedWordArray.push(wordObject);
-            taggedWordArray.sort((a, b) => a.id - b.id );
+            taggedWordArray.sort((a, b) => a.id - b.id);
+        } else {
+            Toastify({
+                text: "შემდეგი სიტყვა უნდა იყოს ან მარჯვენა ან მარხენა მეზობელი",
+                duration: 10000,
+                // destination: "https://github.com/apvarun/toastify-js",  // link to plugin github page
+                // newWindow: true,
+                close: true,
+                gravity: "top", // `top` or `bottom`
+                position: "left", // `left`, `center` or `right`
+                backgroundColor: "linear-gradient(to right, darkred, red)",
+                stopOnFocus: true, // Prevents dismissing of toast on hover
+                onClick: function () {
+                } // Callback after click
+            }).showToast();
+
         }
     }
     updateWordListView(); // right block
 
 }
 
-
-function updateWordListView(){
+function updateWordListView() {
     taggedWords = []
-    for (const obj of taggedWordArray) { taggedWords.push(obj.content) }
+    for (const obj of taggedWordArray) {
+        taggedWords.push(obj.content)
+    }
     words_list.textContent = taggedWords.join(" ")
 }
 
-function resetButtonOnClick(){
+function resetButtonOnClick() {
     words_list.textContent = "empty";
     taggedWordArray = []
     taggedWords = []
@@ -75,23 +91,91 @@ function saveButtonOnClick() {
     fetch('http://127.0.0.1:5000/api/', {
         method: 'POST',
         headers: {
-          'Accept': 'application/json',
-          'Content-Type': 'application/json'
+            'Accept': 'application/json',
+            'Content-Type': 'application/json'
         },
         body: JSON.stringify(finalJSON)
-      }).then(response => response.json())
+    }).then(response => response.json())
         .then(data => {
-          console.log('Success:', data);
+            console.log('Success:', data);
         })
         .catch((error) => {
-          console.error('Error:', error);
+            console.error('Error:', error);
         });
+}
+
+function wrap_id(ids, tag) {
+    if (Array.isArray(ids) && ids.length > 1) {
+        let word = document.querySelector('#w' + ids[0])
+        let wrapper = document.createElement('span')
+        wrapper.classList.add('ner-tag', 'ner-' + tag.toLowerCase())
+        word.parentNode.insertBefore(wrapper, word)
+
+
+        for (let i = ids[0]; i <= ids[1]; i++) {
+            wrapper.appendChild(document.querySelector('#w' + i))
+        }
+    }
+}
+
+function temp_wrap_ids(tagged_ids) {
+    let is_tagged = taggedWordArray.length > 1;
+    let wrapper = null;
+
+    if (!is_tagged) {
+        let word = document.querySelector('#w' + tagged_ids[0])
+        wrapper = document.createElement('span')
+        wrapper.classList.add('ner-tag','ner-temporary')
+        word.parentNode.insertBefore(wrapper, word)
+    } else {
+        wrapper = document.querySelector('span.ner-temporary')
+    }
+
+    for (let i = Math.min(...tagged_ids); i <= Math.max(...tagged_ids); i++) {
+        wrapper.appendChild(document.querySelector('#w' + i))
+    }
+
+}
+
+function assign_tag(){
+        let ner_selected = tag_selector.value;
+        let ner_tag = document.querySelector(".ner-temporary")
+        ner_tag.className = '';
+        ner_tag.classList.add("ner-tag",'ner-'+ner_selected, 'ner-temporary')
+}
+
+function initTags(initJsonSelector) {
+    let tags = JSON.parse(initJsonSelector.innerHTML)
+    tags.forEach((words) => {
+        if (words.keys.length > 1) {
+            wrap_id(words.keys, words.value)
+        } else {
+            wrap_id([words.keys[0], words.keys[0]], words.value)
+        }
+    })
+}
+
+function preSelectWord(element) {
+    let ids = taggedWordArray.map(word => word.id);
+    Math.min(...ids)
+    temp_wrap_ids([Math.min(...ids), Math.max(...ids)], '')
 }
 
 // EVENT LISTENERS
 resetButton.addEventListener('click', resetButtonOnClick);
 saveButton.addEventListener('click', saveButtonOnClick);
+tag_selector.addEventListener('change', assign_tag  );
 
-for( let i = 0; i < words.length; i++ ){
-    words[i].addEventListener('click', updateWordsList );
+for (let i = 0; i < words.length; i++) {
+    words[i].addEventListener('click', function () {
+        updateWordsList({
+            id: this.id.split("w")[1],
+            content: this.textContent
+        })
+
+        preSelectWord(this)
+
+    });
 }
+
+initTags(initJson)
