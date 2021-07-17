@@ -103,11 +103,10 @@ const userLogged = () => {
   loginLogo.src = '../assets/dif-head-logo.svg'
   loginBtn.removeEventListener('click', loginEvent)
   loginLogo.addEventListener('click', dropDown)
+  loginLogo.src = '../assets/profile.svg'
+  loginBtn.removeEventListener('click', loginEvent)
+  loginLogo.addEventListener('click', dropDown)
 }
-  loginLogo.src = "../assets/profile.svg";
-  loginBtn.removeEventListener("click", loginEvent);
-  loginLogo.addEventListener("click", dropDown);
-};
 
 if (localStorage.loginInfo) {
   userLogged()
