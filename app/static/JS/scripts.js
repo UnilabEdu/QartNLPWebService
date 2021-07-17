@@ -104,6 +104,10 @@ const userLogged = () => {
   loginBtn.removeEventListener('click', loginEvent)
   loginLogo.addEventListener('click', dropDown)
 }
+  loginLogo.src = "../assets/profile.svg";
+  loginBtn.removeEventListener("click", loginEvent);
+  loginLogo.addEventListener("click", dropDown);
+};
 
 if (localStorage.loginInfo) {
   userLogged()
