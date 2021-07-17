@@ -31,6 +31,7 @@ header {
 }
 
 .list-item a {
+  font-family: 'Sandro';
   position: relative;
   text-decoration: none;
   color: #414141;
@@ -39,7 +40,7 @@ header {
 }
 
 .list-item a:after {
-  content: "";
+  content: '';
   position: absolute;
   bottom: -5px;
   left: 0;
@@ -73,8 +74,8 @@ header {
   font-size: 20px;
 }
 
-.list-item:after {
-  content: "";
+.list-item::after {
+  content: '';
   display: inline-block;
   width: 1px;
   height: 20px;
@@ -102,7 +103,7 @@ body {
 
 .processing-lang h2 {
   font-size: 34px;
-  font-family: "Sandro";
+  font-family: 'Sandro';
   text-align: center;
   margin-bottom: 87px;
 }
@@ -114,7 +115,7 @@ body {
   background-color: #fff;
   border: 1px solid#172224;
   font-size: 22px;
-  font-family: "Sandro";
+  font-family: 'Sandro';
   background-color: #fff;
   border: 1px solid#172224;
   resize: none;
@@ -154,7 +155,7 @@ body {
   font-size: 34px;
   text-align: center;
   background-color: #172224;
-  font-family: "Sandro";
+  font-family: 'Sandro';
   left: 4px;
   margin: auto;
 }
@@ -199,6 +200,7 @@ footer {
 }
 
 .created-by__title {
+  font-family: 'Sandro';
   margin: 30px 0 20px;
   color: #ffffff;
   font-size: 16px;
@@ -226,6 +228,7 @@ footer {
 }
 
 .university-name__title {
+  font-family: 'Sandro';
   margin-top: 30px;
   color: #ffffff;
   font-size: 16px;
@@ -252,7 +255,7 @@ footer {
 .analyze-part {
   width: 50%;
   text-align: center;
-  font-family: "Sandro";
+  font-family: 'Sandro';
   padding: 7px 0 4px;
   font-size: 18px;
   border: 1px solid #707070;
@@ -264,7 +267,7 @@ footer {
   flex-wrap: wrap;
   border: 1px solid #707070;
   border-top: none;
-  font-family: "Sandro";
+  font-family: 'Sandro';
 }
 
 .grammar-block {
@@ -409,6 +412,7 @@ footer {
 
 .active-login {
   display: flex;
+  z-index: 5;
 }
 
 .login-content {
@@ -471,7 +475,7 @@ footer {
 .emailwarning,
 .passwordvalidation {
   margin-top: 3px;
-  font-family: "Sandro";
+  font-family: 'Sandro';
   color: red;
 }
 
@@ -577,7 +581,7 @@ footer {
 
 .file_content_heading h2 {
   font-size: 24px;
-  font-family: "ArialCaps";
+  font-family: 'ArialCaps';
   font-weight: normal;
   color: #172224;
 }
@@ -603,7 +607,7 @@ footer {
 }
 
 .file-data span:first-child:after {
-  content: "";
+  content: '';
   position: absolute;
   top: 50%;
   transform: translateY(-50%);
@@ -644,7 +648,7 @@ footer {
   font-size: 34px;
   text-align: center;
   background-color: #172224;
-  font-family: "Sandro";
+  font-family: 'Sandro';
   left: 4px;
   color: white;
   cursor: pointer;
@@ -676,7 +680,7 @@ footer {
 }
 
 .user-info:before {
-  content: "";
+  content: '';
   display: block;
   width: 100%;
   height: 1px;
@@ -742,7 +746,7 @@ footer {
 
 .file-add-block h2 {
   font-weight: normal;
-  font-family: "ArialCaps";
+  font-family: 'ArialCaps';
   color: #172224;
 }
 
@@ -806,7 +810,7 @@ footer {
 }
 
 .btn-upload:after {
-  content: "upload";
+  content: 'upload';
   position: absolute;
   top: 0;
   left: 0px;
@@ -816,7 +820,7 @@ footer {
   padding: 0 0 0 9px;
   background: #172224;
   font-size: 24px;
-  font-family: "ArialCaps";
+  font-family: 'ArialCaps';
   color: #fff;
 }
 
@@ -888,7 +892,7 @@ footer {
 .info-search ul li {
   margin: 0 0 35px;
   font-size: 24px;
-  font-family: "Sandro";
+  font-family: 'Sandro';
   color: #2c3532;
   list-style-type: none;
 }
@@ -898,7 +902,7 @@ footer {
   height: 32px;
   margin: 32px 0px 66px 32px;
   font-size: 18px;
-  font-family: "Sandro";
+  font-family: 'Sandro';
   padding: 4px;
 }
 
@@ -908,7 +912,7 @@ footer {
   padding: 1.5px 35px 6px;
   background-color: #2c3532;
   font-size: 24px;
-  font-family: "Sandro";
+  font-family: 'Sandro';
   color: #ebebeb;
   text-align: left;
   border: none;
@@ -1000,13 +1004,13 @@ footer {
 }
 
 .uploading-text:after {
-  content: "ფაილი მუშავდება";
+  content: 'ფაილი მუშავდება';
   position: absolute;
   left: 50%;
   top: 30%;
   transform: translate(-50%);
   font-size: 53px;
-  font-family: "ArialCaps";
+  font-family: 'ArialCaps';
   color: #172224;
   z-index: 4;
 }
@@ -1015,22 +1019,22 @@ footer {
   cursor: default;
 }
 
-input[type="checkbox"] {
+input[type='checkbox'] {
   cursor: pointer;
   display: flex;
   justify-content: center;
   align-items: center;
 }
 
-input[type="checkbox"]::after {
-  font-family: "Font Awesome 5 Free";
+input[type='checkbox']::after {
+  font-family: 'Font Awesome 5 Free';
   font-weight: 900;
   color: white;
   font-size: 27px;
 }
 
-input[type="checkbox"]:checked::after {
-  content: "\f00c";
+input[type='checkbox']:checked::after {
+  content: '\f00c';
   appearance: none;
   -webkit-appearance: none;
   background-color: #172224;
@@ -1138,6 +1142,99 @@ i.fab.fa-facebook-square {
 .reg-email-input,
 .reg-password-input-rep {
   margin-bottom: 18px;
+}
+
+.hamburger {
+  background-color: transparent;
+  border: none;
+  color: #8771e8;
+  cursor: pointer;
+  font-size: 35px;
+  display: none;
+}
+
+.hamburger:focus {
+  outline: none;
+}
+
+@media screen and (max-width: 1318px) {
+  .list-item::after {
+    display: none;
+  }
+
+  .list-item {
+    margin-right: 60px;
+    font-size: 27px;
+    text-align: center;
+  }
+
+  .nav-left {
+    margin-right: 60px;
+  }
+}
+
+@media screen and (max-width: 1200px) {
+  .nav-right {
+    display: none;
+    flex-direction: column;
+  }
+
+  .nav-right > ul {
+    flex-direction: column;
+    position: relative;
+    margin-bottom: 10px;
+  }
+
+  .nav-right > ul > li {
+    margin: 0;
+    margin-bottom: 25px;
+  }
+
+  .icon {
+    position: absolute;
+    right: 0;
+    top: 0;
+    order: 1;
+  }
+
+  .nav-right.show {
+    width: 100%;
+    display: flex;
+  }
+
+  .navigation {
+    flex-wrap: wrap;
+  }
+
+  .hamburger {
+    display: block;
+  }
+}
+
+@media screen and (max-width: 768px) {
+}
+
+@media screen and (max-width: 676px) {
+  .nav-right {
+    align-items: flex-start;
+    margin-left: 10px;
+    margin-top: 10px;
+  }
+
+  .nav-right > ul {
+    align-items: flex-start;
+    margin-left: 10px;
+    margin-top: 20px;
+    width: 100%;
+  }
+
+  .nav-left > h2 {
+    font-size: 70px;
+  }
+
+  .icon {
+    position: absolute;
+  }
 }
 
 .wall {
