@@ -55,8 +55,8 @@ def create_app():
     from app.main.views import main_blueprint
     app.register_blueprint(main_blueprint, url_prefix="/")
 
-    from app.file_processing.views import file_processor_blueprint
-    app.register_blueprint(file_processor_blueprint, url_prefix="/")
+    from app.files.views import file_views_blueprint
+    app.register_blueprint(file_views_blueprint, url_prefix="/")
 
     from app.tagging.views import tagging_blueprint
     app.register_blueprint(tagging_blueprint, url_prefix="/tagging")

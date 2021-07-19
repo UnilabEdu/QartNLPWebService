@@ -23,9 +23,7 @@
                         <div class="cont-up">
                             <h2>ატვირთეთ ფაილი</h2>
                             <label class="btn-file">
-                                {{ upload_form.file(style="display:none", accept=".txt") }}
-                                upload
-                            </label>
+                                {{ upload_form.file(style="display:none", accept=".txt", onchange="document.getElementById('text').disabled = true;") }}upload</label>
                         </div>
                     </div>
                 </div>

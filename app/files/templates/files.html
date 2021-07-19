@@ -1,0 +1,41 @@
+{% from "macros.html" import file_block with context %}
+{% extends "base1.html" %}
+
+{% block content %}
+    <div class="files_page_content">
+      <div class="file_content_heading">
+        <h2>ჩემი ფაილები</h2>
+      </div>
+
+    {% for file in block_files.items %}
+        {% set desc_data = file.read(310) + "..." %}
+        {% if not file.status[0].completed %}
+            {% set desc_data = "File is still being processed" %}
+        {% endif %}
+        {{
+            file_block(
+                id= file.id,
+                title= file.title,
+                description= desc_data,
+                c_date= file.upload_date,
+                m_date= file.date_modified
+         )
+        }}
+    {% endfor %}
+
+    {% for page in block_files.iter_pages() %}
+        {% if page %}
+            <a href="{{ url_for('files.files_paginate', page_num=page)}}">{{ page }}</a>
+        {% else %}
+            ...
+        {% endif %}
+    {% endfor %}
+
+    <div class="file-btn-container display-flex">
+      <button id="add-file" class="btn-file" onclick="window.location.href='upload'">
+        {{_("დამატება")}}
+      </button>
+    </div>
+{% endblock %}
+
+
