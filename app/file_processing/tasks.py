@@ -1,10 +1,12 @@
 from app import celery
-from app.file_processing.nlp import *
-from app.settings import Config
-from app.models.file import Pages, Sentences, Words
 from app.database import db
-from itertools import islice
+from app.settings import Config
+from app.file_processing.nlp import *
+from app.models.file import File, Pages, Sentences, Words, Statistics
 
+from flask_login import current_user
+
+from itertools import islice
 from ftfy import fix_encoding
 import json
 import os
@@ -12,9 +14,9 @@ import time
 
 
 @celery.task()
-def process_file(id, filename, processes):
+def process_file(id, user, filename, processes):
 
-    file_path = os.path.join(Config.UPLOAD_FOLDER, filename)
+    file_path = os.path.join(Config.UPLOAD_FOLDER, str(user), filename)
 
     if "lemat" in processes:
 
@@ -22,11 +24,10 @@ def process_file(id, filename, processes):
 
             page_start = 0
             while True:
-                text = ''.join(islice(file, 25))
+                text = fix_encoding(''.join(islice(file, 75)))
                 if not text:
                     break
 
-                print(text)
                 page_end = page_start + len(text)
                 page_db = Pages(id, page_start, page_end)
                 #print(f"Pages:  {page_start}, {page_end}")
@@ -50,8 +51,15 @@ def process_file(id, filename, processes):
 
                     sentence_start = sentence_end + 1
 
-                page_start = page_end + 1
-            #db.session.commit()
+                page_start = page_end
+            db.session.commit()
+
+        file = File.file_by_id(id)
+        statistics = Statistics(id, file.get_word_count(), file.get_unique_word_count(), file.get_sentence_count(), None, None)
+        statistics.save()
+
+        file.status[0].completed = True
+        db.session.commit()
 
 
 # @celery.task()

@@ -1,8 +1,11 @@
 import datetime
+import os
 
 from app import db
 from app.models.ner_tagging import NerTagType
+from app.settings import Config
 
+from flask_login import current_user
 
 class File(db.Model):
     __tablename__ = "files"
@@ -29,10 +32,11 @@ class File(db.Model):
         db.session.delete(self)
         db.session.commit()
 
-    def read(self):
-        file_to_read = open(self.file_name, "r")
+    def read(self, amount):
+        file_path = os.path.join(Config.UPLOAD_FOLDER, str(current_user.id), self.file_name)
+        file_to_read = open(file_path, "r", encoding='utf-8')
         while True:
-            line = file_to_read.readline(200)
+            line = file_to_read.read(amount)
             if line:
                 return line
             break
@@ -41,77 +45,26 @@ class File(db.Model):
     def file_by_id(cls, id):
         return cls.query.get(id)
 
+    def get_word_count(self):
+        word_count = (db.session.query(Pages, Sentences, Words)
+                       .join(Pages.sentences)
+                       .join(Sentences.words)
+                       .filter(Pages.file_id == self.id)).count()
+        return word_count
 
-class Statistics(db.Model):
-    __tablename__ = "statistics"
-    id = db.Column(db.Integer, primary_key=True)
-    file_id = db.Column(db.Integer, db.ForeignKey('files.id'))
-    words = db.Column(db.Integer)
-    uniq_words = db.Column(db.Integer)
-    sentences = db.Column(db.Integer)
-    avg_words_in_sentence = db.Column(db.Integer)
-    avg_chars_in_sentence = db.Column(db.Integer)
+    def get_unique_word_count(self):
+        unique_word_count = (db.session.query(Pages, Sentences, Words)
+                          .join(Pages.sentences)
+                          .join(Sentences.words)
+                          .filter(Pages.file_id == self.id)
+                          ).group_by(Words.raw).count()
+        return unique_word_count
 
-    def __init__(self, file_id, words, uniq_words, sentences, avg_words_in_sentence, avg_chars_in_sentence):
-        self.file_id = file_id
-        self.words = words
-        self.uniq_words = uniq_words
-        self.sentences = sentences
-        self.avg_words_in_sentence = avg_words_in_sentence
-        self.avg_chars_in_sentence = avg_chars_in_sentence
-
-    def save(self):
-        db.session.add(self)
-        db.session.commit()
-
-    def delete(self):
-        db.session.delete(self)
-        db.session.commit()
-
-
-class Status(db.Model):
-    __tablename__ = "status"
-    id = db.Column(db.Integer, primary_key=True)
-    file_id = db.Column(db.Integer, db.ForeignKey('files.id'))
-    lemmatized = db.Column(db.Boolean)
-    tokenized = db.Column(db.Boolean)
-    pos_tagged = db.Column(db.Boolean)
-    stop_words_removed = db.Column(db.Boolean)
-    frequency_distribution_calculated = db.Column(db.Boolean)
-    completed = db.Column(db.Boolean)
-    punctuation_removed = db.Column(db.Boolean)
-    cleared_html_tags = db.Column(db.Boolean)
-    special_chars_removed = db.Column(db.Boolean)
-    cleared_whitespaces = db.Column(db.Boolean)
-    html_tags_removed = db.Column(db.Boolean)
-    expanded_acronyms = db.Column(db.Boolean)
-    words_enumerated = db.Column(db.Boolean)
-    active = db.Column(db.Boolean)
-
-    def __init__(self, file_id, lemmatized=False, tokenized=False, pos_tagged=False,
-                 stop_words_removed=False, frequency_distribution_calculated=False, completed=False,
-                 punctuation_removed=False, cleared_html_tags=False, html_tags_removed=False,
-                 expand_acronyms=False, words_enumerated=False):
-        self.file_id = file_id
-        self.lemmatized = lemmatized
-        self.tokenized = tokenized
-        self.pos_tagged = pos_tagged
-        self.stop_words_removed = stop_words_removed
-        self.frequency_distribution_calculated = frequency_distribution_calculated
-        self.completed = completed
-        self.punctuation_removed = punctuation_removed
-        self.cleared_html_tags = cleared_html_tags
-        self.html_tags_removed = html_tags_removed
-        self.expanded_acronyms = expand_acronyms
-        self.words_enumerated = words_enumerated
-
-    def save(self):
-        db.session.add(self)
-        db.session.commit()
-
-    def delete(self):
-        db.session.delete(self)
-        db.session.commit()
+    def get_sentence_count(self):
+        sentence_count = (db.session.query(Pages, Sentences)
+                           .join(Pages.sentences)
+                           .filter(Pages.file_id == self.id)).count()
+        return sentence_count
 
 
 class Pages(db.Model):
@@ -147,10 +100,13 @@ class Pages(db.Model):
                 word_id -= len(sentence.words)
 
     def get_text(self):
-        """TODO
-        - შესაბამისი ფაილიდან მოცემული ოფსეტის ტექსტის ამოკითხვა
-        """
-        raw_text = "ამ გვერდის ობიექტების ინდექს შორის ფაილში არსებული მთელი ტექსტი"
+        file_path = os.path.join(Config.UPLOAD_FOLDER, str(current_user.id), self.file.file_name)
+        raw_text = ""
+
+        with open(file_path, "r", encoding="utf-8") as file:
+            file.read(self.start_index)
+            raw_text = file.read(self.end_index-self.start_index)
+
         return raw_text
 
 
@@ -172,10 +128,13 @@ class Sentences(db.Model):
         db.session.flush()
 
     def get_text(self):
-        """TODO
-        - შესაბამისი ფაილიდან მოცემული ოფსეტის ტექსტის ამოკითხვა
-        """
-        raw_text = "ამ გვერდის ობიექტების ინდექს შორის ფაილში არსებული მთელი ტექსტი"
+        file_path = os.path.join(Config.UPLOAD_FOLDER, str(current_user.id), self.pages.file.file_name)
+        raw_text = ""
+
+        with open(file_path, "r", encoding="utf-8") as file:
+            file.read(self.start_index + self.pages.start_index)
+            raw_text = file.read(self.end_index - self.start_index)
+
         return raw_text
 
 
@@ -216,7 +175,7 @@ class Words(db.Model):
                           .join(Words, Sentences.words)
                           .filter(Pages.file_id == file_id)
                           .filter(Words.raw == raw)
-                          ).all()
+                          )
 
         return search_results
 
@@ -227,7 +186,7 @@ class Words(db.Model):
                           .join(Words, Sentences.words)
                           .filter(Pages.file_id == file_id)
                           .filter(Words.lemma == lemma)
-                          ).all()
+                          )
 
         return search_results
 
@@ -238,7 +197,7 @@ class Words(db.Model):
                           .join(Words, Sentences.words)
                           .filter(Pages.file_id == file_id)
                           .filter(Words.pos_tags.contains(tags))
-                          ).all()
+                          )
 
         return search_results
 
@@ -249,3 +208,79 @@ class Words(db.Model):
             ner_tag_type = ner_tag_id.name
 
         return ner_tag_type
+
+
+class Statistics(db.Model):
+    __tablename__ = "statistics"
+    id = db.Column(db.Integer, primary_key=True)
+    file_id = db.Column(db.Integer, db.ForeignKey('files.id'))
+    words = db.Column(db.Integer)
+    uniq_words = db.Column(db.Integer)
+    sentences = db.Column(db.Integer)
+    avg_words_in_sentence = db.Column(db.Integer)
+    avg_chars_in_sentence = db.Column(db.Integer)
+
+    def __init__(self, file_id, words, uniq_words, sentences, avg_words_in_sentence, avg_chars_in_sentence):
+        self.file_id = file_id
+        self.words = words
+        self.uniq_words = uniq_words
+        self.sentences = sentences
+        self.avg_words_in_sentence = avg_words_in_sentence
+        self.avg_chars_in_sentence = avg_chars_in_sentence
+
+    def save(self):
+        db.session.add(self)
+        db.session.commit()
+
+    def delete(self):
+        db.session.delete(self)
+        db.session.commit()
+
+    @classmethod
+    def statistics_for_fileid(cls, id):
+        return Statistics.query.filter_by(file_id=id).first()
+
+
+class Status(db.Model):
+    __tablename__ = "status"
+    id = db.Column(db.Integer, primary_key=True)
+    file_id = db.Column(db.Integer, db.ForeignKey('files.id'))
+    lemmatized = db.Column(db.Boolean)
+    tokenized = db.Column(db.Boolean)
+    pos_tagged = db.Column(db.Boolean)
+    stop_words_removed = db.Column(db.Boolean)
+    frequency_distribution_calculated = db.Column(db.Boolean)
+    completed = db.Column(db.Boolean)
+    punctuation_removed = db.Column(db.Boolean)
+    cleared_html_tags = db.Column(db.Boolean)
+    special_chars_removed = db.Column(db.Boolean)
+    cleared_whitespaces = db.Column(db.Boolean)
+    html_tags_removed = db.Column(db.Boolean)
+    expanded_acronyms = db.Column(db.Boolean)
+    words_enumerated = db.Column(db.Boolean)
+    active = db.Column(db.Boolean)
+
+    def __init__(self, file_id, lemmatized=False, tokenized=False, pos_tagged=False,
+                 stop_words_removed=False, frequency_distribution_calculated=False, completed=False,
+                 punctuation_removed=False, cleared_html_tags=False, html_tags_removed=False,
+                 expand_acronyms=False, words_enumerated=False, active=True):
+        self.file_id = file_id
+        self.lemmatized = lemmatized
+        self.tokenized = tokenized
+        self.pos_tagged = pos_tagged
+        self.stop_words_removed = stop_words_removed
+        self.frequency_distribution_calculated = frequency_distribution_calculated
+        self.completed = completed
+        self.punctuation_removed = punctuation_removed
+        self.cleared_html_tags = cleared_html_tags
+        self.html_tags_removed = html_tags_removed
+        self.expanded_acronyms = expand_acronyms
+        self.words_enumerated = words_enumerated
+
+    def save(self):
+        db.session.add(self)
+        db.session.commit()
+
+    def delete(self):
+        db.session.delete(self)
+        db.session.commit()

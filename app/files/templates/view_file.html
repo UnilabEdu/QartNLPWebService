@@ -1,0 +1,42 @@
+{% extends "base1.html" %}
+{% block content %}
+    <section class="concrete-page">
+        <div class="content-navbar">
+            {{ _("ჩემი ფაილები / " + file.title) }}
+        </div>
+        <div class="concrete-content">
+            <div style="font-family: Sandro; font-size: 18px" class="concrete-words">
+                {{ word_list }}
+            </div>
+            <div class="concrete-search-tool">
+                <div class="search-tool-block">
+                    <form method="POST">
+                        <div class="search-input-block">
+
+                            {{ search_form.hidden_tag() }}
+                            {{ search_form.search_field(class='input-search') }}
+                            <button class="search-btn">
+                                <img src="{{ url_for("static", filename="assets/search-btn.svg") }}" alt="search"/>
+                            </button>
+
+                        </div>
+                    </form>
+                    <div class="info-search">
+                        <ul>
+                            <li>{{ _("წინადადებები") }}: {{ statistics.sentences }}</li>
+                            <li>{{ _("სიტყვები") }}: {{ statistics.words }}</li>
+                            <li>{{ _("უნიკალური სიტყვები") }}: {{ statistics.uniq_words }}</li>
+                            <li>{{ _("სენტიმენტი") }} -</li>
+                            <li>{{ _("ემოცია") }} -</li>
+                            <li>{{ _("კატეგორია") }} -</li>
+                        </ul>
+                    </div>
+                </div>
+                <button class="btn_download">{{ _("გადმოწერა") }}</button>
+            </div>
+        </div>
+        {% for i in range(1, 1 + file.pages|count) %}
+            <a href="{{ url_for('files.concrete', file_id=file.id, page_id=i) }}">{{ i }}</a>
+        {% endfor %}
+    </section>
+{% endblock %}
