@@ -1,6 +1,6 @@
 <div class="login-bg">
 
-    {#  LOGIN  #}
+{#  LOGIN  #}
 
     <div class="login-content">
 
@@ -15,12 +15,9 @@
                     <input type="email" name="email" id="email" class="login-input" placeholder="{{ _("ელფოსტა") }}">
                 </div>
                 <div class="password-input">
-                    <input type="password" name="password" id="password" class="login-input"
-                           placeholder="{{ _("პაროლი") }}">
+                    <input type="password" name="password" id="password" class="login-input" placeholder="{{ _("პაროლი") }}">
                 </div>
-                <button class="forgot-password">
-                    {{ _("დაგავიწყდათ პაროლი?") }}
-                </button>
+                <button class="forgot-password"> {{ _("დაგავიწყდათ პაროლი?") }} </button>
                 <input type="submit" value="{{ _("შესვლა") }}" class="login-btn">
             </form>
         </div>
@@ -37,15 +34,15 @@
             <img class="img-additional" src="{{ url_for('static', filename="assets/RepeatGrid1.svg") }}" alt="Gmail"/>
         </div>
         <div class="login-inputs">
-            <form name="login" method="POST" id="reg-form">
-                <div class="email-input">
+            <form name="registration" method="POST" id="registration-form">
+                <div class="reg-email-input">
                     <input type="email" name="email" id="reg-email" class="login-input" placeholder="{{ _("ელფოსტა") }}">
                 </div>
-                <div class="password-input">
+                <div class="reg-password-input">
                     <input type="password" name="password" id="reg-password" class="login-input"
                            placeholder="{{ _("პაროლი") }}">
                 </div>
-                <div class="password-input">
+                <div class="reg-password-input-rep">
                     <input type="password" name="passwordrep" id="reg-password-rep" class="login-input"
                            placeholder="{{ _("გაიმეორეთ პაროლი") }}">
                 </div>
