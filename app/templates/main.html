@@ -6,10 +6,6 @@
     <title>QartNLP</title>
     <link rel="stylesheet" href="../static/CSS/styles.css" />
     <link rel="stylesheet" href="../static/CSS/fonts.css" />
-    <script
-    src="https://kit.fontawesome.com/5968971b15.js"
-    crossorigin="anonymous"
-    ></script>
   </head>
   <body>
     <header id="header">
@@ -17,13 +13,10 @@
         <div class="nav-left">
           <img src="../assets/logo.svg" alt="" />
         </div>
-        <button class="hamburger">
-          <i class="fas fa-bars"></i>
-        </button>
         <div class="nav-right">
           <ul>
-            <li class="list-item"><a href="main.html">მთავარი</a></li>
-            <li class="list-item"><a class="active-link-nav" href="home.html">ლემატიზატორი</a></li>
+            <li class="list-item"><a class="active-link-nav" href="main.html">მთავარი</a></li>
+            <li class="list-item"><a href="home.html">ლემატიზატორი</a></li>
             <li class="list-item"><a href="">დოკუმენტაცია</a></li>
             <li class="list-item"><a href="about.html">ჩვენს შესახებ</a></li>
             <li class="icon login">
@@ -180,79 +173,87 @@
       </div>
     </div>
 
-    <section class="processing-lang">
-      <h2>ქართული ენის ციფრული დამუშავება</h2>
-      <textarea
-        class="prtext"
-        name="text"
-        id="prtext"
-        placeholder="ჩააკოპირე ქართული ტექსტი, ნახე როგორ მუშაობს სისტემა."
-      ></textarea>
-      <div class="btn-block">
-        <button id="analyze-button" class="btn-analyze">
-          <img
-            src="../assets/clear.svg"
-            alt="reload"
-            id="clear-icon"
-            class="clear-icon"
-          />
-          <span id="analyze-text">გაანალიზე</span>
-        </button>
-      </div>
-    </section>
-    <section id="analyze-section" class="analyze-section">
-      <div class="parts">
-        <p class="analyze-part">ნაწილები</p>
-        <p class="analyze-part">ნაწილები</p>
-      </div>
-      <div class="grammar-blocks">
-        <div class="grammar-block block-1">
-          <h6 class="grammar-block-header">არსებითი სახელი</h6>
-          <div readonly name="gram" class="gram-textarea" id=""></div>
+    <div class="wall">
+      <section class="slider">
+        <div class="slider-container">
+          <div class="slider-ul">
+            <div class="slider-item">
+              <div class="slider-img">
+                <img src="../assets/imgslider.png" alt="" />
+              </div>
+              <div class="slider-item-content">
+                <h2>ქართული ენის ციფრული დამუშავება</h2>
+                <p>
+                  გამოცადე ლემატიზატორის შესაძლებლობები რეალურ დროში ან სრუი
+                  ფუნქციონალის შესამოწმებლად გაიარე ავტორიზაცია.
+                </p>
+                <button class="btn-for-slider">ავტორიზაცია</button
+                ><a href="/">მეტის გაგება</a>
+              </div>
+            </div>
+            <div class="slider-item">
+              <div class="slider-img">
+                <img src="../assets/imgslider.png" alt="" />
+              </div>
+              <div class="slider-item-content">
+                <h2>ქართული ენის ციფრული დამუშავება</h2>
+                <p>
+                  გამოცადე ლემატიზატორის შესაძლებლობები რეალურ დროში ან სრუი
+                  ფუნქციონალის შესამოწმებლად გაიარე ავტორიზაცია.
+                </p>
+                <button class="btn-for-slider">ავტორიზაცია</button
+                ><a href="/">მეტის გაგება</a>
+              </div>
+            </div>
+            <div class="slider-item">
+              <div class="slider-img">
+                <img src="../assets/imgslider.png" alt="" />
+              </div>
+              <div class="slider-item-content">
+                <h2>ქართული ენის ციფრული დამუშავება</h2>
+                <p>
+                  გამოცადე ლემატიზატორის შესაძლებლობები რეალურ დროში ან სრუი
+                  ფუნქციონალის შესამოწმებლად გაიარე ავტორიზაცია.
+                </p>
+                <button class="btn-for-slider">ავტორიზაცია</button
+                ><a href="/">მეტის გაგება</a>
+              </div>
+            </div>
+            <div class="slider-item">
+              <div class="slider-img">
+                <img src="../assets/imgslider.png" alt="" />
+              </div>
+              <div class="slider-item-content">
+                <h2>ქართული ენის ციფრული დამუშავება</h2>
+                <p>
+                  გამოცადე ლემატიზატორის შესაძლებლობები რეალურ დროში ან სრუი
+                  ფუნქციონალის შესამოწმებლად გაიარე ავტორიზაცია.
+                </p>
+                <button class="btn-for-slider">ავტორიზაცია</button
+                ><a href="/">მეტის გაგება</a>
+              </div>
+            </div>
+          </div>
+          <div class="slider-pagination"></div>
         </div>
-        <div class="grammar-block block-2">
-          <h6 class="grammar-block-header">ზედსართავი სახელი</h6>
-          <div readonly name="gram" class="gram-textarea" id=""></div>
-        </div>
-        <div class="grammar-block block-3">
-          <h6 class="grammar-block-header">რიცხვითი სახელი</h6>
-          <div readonly name="gram" class="gram-textarea" id=""></div>
-        </div>
-        <div class="grammar-block block-4">
-          <h6 class="grammar-block-header">ნაცვალსახელი</h6>
-          <div readonly name="gram" class="gram-textarea" id=""></div>
-        </div>
-        <div class="grammar-block block-5">
-          <h6 class="grammar-block-header">კავშირი</h6>
-          <div readonly name="gram" class="gram-textarea" id=""></div>
-        </div>
-        <div class="grammar-block block-6">
-          <h6 class="grammar-block-header">ნაწილაკი</h6>
-          <div readonly name="gram" class="gram-textarea" id=""></div>
-        </div>
-        <div class="grammar-block block-7">
-          <h6 class="grammar-block-header">ზმნიზედა</h6>
-          <div readonly name="gram" class="gram-textarea" id=""></div>
-        </div>
-        <div class="grammar-block block-8">
-          <h6 class="grammar-block-header">თანდებული</h6>
-          <div readonly name="gram" class="gram-textarea" id=""></div>
-        </div>
-        <div class="grammar-block block-9">
-          <h6 class="grammar-block-header">შორისდებული</h6>
-          <div readonly name="gram" class="gram-textarea" id=""></div>
-        </div>
-        <div class="grammar-block block-10">
-          <h6 class="grammar-block-header">ზმნა</h6>
-          <div readonly name="gram" class="gram-textarea" id=""></div>
-        </div>
-        <div class="grammar-block block-last block-11">
-          <h6 class="grammar-block-header">მიმღეობა</h6>
-          <div readonly name="gram" class="gram-textarea" id=""></div>
-        </div>
-        <i aria-hidden="true" class="grammar-block hidden"></i>
-      </div>
-    </section>
+      </section>
+
+      <section class="about-project">
+        <h2>პროექტის შესახებ</h2>
+        <p>
+          პროექტი მოამზადა უნილაბის პითონის კურსის პირველ კურსდამთავრებულთა
+          სტაჟირების პირველი პროგრამის მონაწილეთა გუნდმა პროექტი მოამზადა
+          უნილაბის პითონის კურსის პირველ კურსდამთავრებულთა სტაჟირების
+        </p>
+        <p>
+          პროექტი მოამზადა უნილაბის პითონის კურსის პირველ კურსდამთავრებულთა
+          სტაჟირების პირველი პროგრამის მონაწილეთა გუნდმა პროექტი მოამზადა
+          უნილაბის პითონის კურსის პირველ კურსდამთავრებულთა სტაჟირების პირველი
+          პროგრამის მონაწილეთა გუნდმა
+        </p>
+      </section>
+    </div>
+
     <footer>
       <div class="footer-container">
         <div class="footer-l__block">
