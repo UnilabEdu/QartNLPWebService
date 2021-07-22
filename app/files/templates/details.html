@@ -1,0 +1,23 @@
+{% extends "base1.html" %}
+{% block content %}
+    <section class="concrete-page">
+      <div class="content-navbar">
+          {{_("ჩემი ფაილები / ჩემი ფაილები / კონკრეტული")}}
+      </div>
+      <div class="concrete-content">
+        <div class="concrete-words">
+            {% for sentence in sentences %}
+                {% set split = sentence.raw_text.split( ) %}
+                {% for words in split %}
+                    {% if words.translate(words.maketrans('', '', '!"#$%&\'()*+,-./:;<=>?@[\\]^_`{|}~')) == sentence.highlight %}
+                        <mark>{{ words }}</mark>
+                    {% else %}
+                        {{ words }}
+                    {% endif %}
+                {% endfor %}
+                <br><br>
+            {% endfor %}
+        </div>
+      </div>
+    </section>
+{% endblock %}
