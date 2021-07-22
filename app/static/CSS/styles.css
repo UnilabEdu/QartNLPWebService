@@ -31,12 +31,12 @@ header {
 }
 
 .list-item a {
-  font-family: 'firaGo';
   position: relative;
   padding:7px 13px;
   margin: 0 10px;
   background-color:transparent;
   font-size: 16px;
+  font-family: 'firaGo';
   color: #151528;
   text-decoration: none;
   border-radius: 8px;
@@ -221,7 +221,6 @@ footer {
 }
 
 .university-name__title {
-  font-family: 'Sandro';
   margin-top: 30px;
   color: #ffffff;
   font-size: 16px;
@@ -1305,6 +1304,12 @@ i.fab.fa-facebook-square {
   margin-bottom: 39px;
   font-size: 16px;
   font-family: 'firaGo';
+  color: #fff;
+}
+
+.slider-item-content p {
+  margin-bottom: 30px;
+  font-size: 16px;
   color: #d9d9d9;
 }
 
@@ -1353,6 +1358,9 @@ i.fab.fa-facebook-square {
   margin-bottom: 20px;
   font-family: 'firaGoBook';
   color: #5D5D5D;
+}
+.about-project p {
+  margin-bottom: 20px;
 }
 
 .coprgt {
