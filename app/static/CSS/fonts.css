@@ -20,3 +20,43 @@
          url('../../fonts/bpg-arial-caps-webfont.ttf') format('truetype'),
          url('../../fonts/bpg-arial-caps-webfont.svg#bpg_arial_capsregular') format('svg');
 }
+
+@font-face {
+    font-family: 'web001';
+    src: url('../../fonts/bpg-web-001-caps-webfont.eot');
+    src: url('../../fonts/bpg-web-001-caps-webfont.eot?#iefix') format('embedded-opentype'),
+         url('../../fonts/bpg-web-001-caps-webfont.woff2') format('woff2'),
+         url('../../fonts/bpg-web-001-caps-webfont.woff') format('woff'),
+         url('../../fonts/bpg-web-001-caps-webfont.ttf') format('truetype'),
+         url('../../fonts/bpg-web-001-caps-webfont.svg#bpg-web-001-caps-webfont') format('svg');
+}
+
+@font-face {
+    font-family: 'firaGo';
+    src: url('../../fonts/FiraGO-Regular.eot');
+    src: url('../../fonts/FiraGO-Regular.eot?#iefix') format('embedded-opentype'),
+         url('../../fonts/FiraGO-Regular.woff2') format('woff2'),
+         url('../../fonts/FiraGO-Regular.woff') format('woff'),
+         url('../../fonts/FiraGO-Regular.ttf') format('truetype'),
+         url('../../fonts/FiraGO-Regular.svg#FiraGO-Regular') format('svg');
+}
+
+@font-face {
+    font-family: 'firaGoLight';
+    src: url('../../fonts/FiraGO-Light.eot');
+    src: url('../../fonts/FiraGO-Light.eot?#iefix') format('embedded-opentype'),
+         url('../../fonts/FiraGO-Light.woff2') format('woff2'),
+         url('../../fonts/FiraGO-Light.woff') format('woff'),
+         url('../../fonts/FiraGO-Light.ttf') format('truetype'),
+         url('../../fonts/FiraGO-Light.svg#FiraGO-Light') format('svg');
+}
+
+@font-face {
+    font-family: 'firaGoBook';
+    src: url('../../fonts/FiraGO-Book.eot');
+    src: url('../../fonts/FiraGO-Book.eot?#iefix') format('embedded-opentype'),
+         url('../../fonts/FiraGO-Book.woff2') format('woff2'),
+         url('../../fonts/FiraGO-Book.woff') format('woff'),
+         url('../../fonts/FiraGO-Book.ttf') format('truetype'),
+         url('../../fonts/FiraGO-Book.svg#FiraGO-Book') format('svg');
+}

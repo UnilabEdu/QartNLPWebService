@@ -361,9 +361,11 @@ if (upload) {
 
 const hamburger = document.querySelector('.hamburger')
 const navRight = document.querySelector('.nav-right')
-hamburger.addEventListener('click', () => {
-  navRight.classList.toggle('show')
-})
+if(hamburger){
+  hamburger.addEventListener('click', () => {
+    navRight.classList.toggle('show')
+  })
+}
 
 //slider
 const contentSlider = document.querySelector('.slider-ul')
@@ -382,13 +384,13 @@ const paginationContent = document.querySelector('.slider-pagination')
       const getButtons = document.querySelectorAll('.pag-button')
       getButtons.forEach((eachBtn) => {
         if (eachBtn.id == 0) {
-          eachBtn.style.background = '#8771E8'
+          eachBtn.style.background = '#496AC1'
         }
         eachBtn.addEventListener('click', () => {
           getButtons.forEach((eachBtn) => {
             eachBtn.style.background = '#fff'
           })
-          eachBtn.style.background = '#8771E8'
+          eachBtn.style.background = '#496AC1'
           const x = 100 * eachBtn.id
           contentSlider.style.top = `-${x}%`
         })

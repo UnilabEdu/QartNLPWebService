@@ -31,32 +31,26 @@ header {
 }
 
 .list-item a {
-  font-family: 'Sandro';
   position: relative;
+  padding:7px 13px;
+  margin: 0 10px;
+  background-color:transparent;
+  font-size: 16px;
+  font-family: 'firaGo';
+  color: #151528;
   text-decoration: none;
-  color: #414141;
-  font-size: 14px;
+  border-radius: 8px;
   transition-duration: 0.2s;
 }
 
-.list-item a:after {
-  content: '';
-  position: absolute;
-  bottom: -5px;
-  left: 0;
-  width: 100%;
-  height: 2px;
-  border-radius: 50px;
-  background-color: #fff; /*8771e8*/
-  transition-duration: 0.3s;
-}
-
-.list-item a:hover:after {
-  background-color: #8771e8;
-}
-
 .list-item a:hover {
-  color: #8771e8;
+  color: #496AC1;
+  background-color:#ECF0F9;
+}
+
+.active-link-nav {
+  background-color:#ECF0F9!important;
+  color: #496AC1!important;
 }
 
 .nav-left {
@@ -72,15 +66,6 @@ header {
 
 .icon {
   font-size: 20px;
-}
-
-.list-item::after {
-  content: '';
-  display: inline-block;
-  width: 1px;
-  height: 20px;
-  background-color: white;
-  margin: 0 20px;
 }
 
 body {
@@ -178,7 +163,7 @@ footer {
   position: relative;
   z-index: 3;
   margin-top: 18rem;
-  background-color: #22184e;
+  background-color: #151528;
 }
 
 .footer-container {
@@ -211,6 +196,12 @@ footer {
   margin-bottom: 20px;
   font-size: 22px;
   text-align: center;
+  font-family:'web001';
+  font-weight: normal;
+}
+
+.created-by__title p {
+  font-family: 'firaGoLight';
 }
 
 .univeristy-logo {
@@ -224,11 +215,12 @@ footer {
 }
 
 .university-name__title h2 {
+  font-family:'web001';
+  font-weight: normal;
   text-align: center;
 }
 
 .university-name__title {
-  font-family: 'Sandro';
   margin-top: 30px;
   color: #ffffff;
   font-size: 16px;
@@ -663,6 +655,7 @@ footer {
   position: relative;
   height: 41.82px;
   margin-bottom: 20px;
+  margin-left:20px;
 }
 
 .my-files {
@@ -1281,16 +1274,18 @@ i.fab.fa-facebook-square {
   position: absolute;
   top: 50%;
   transform: translateY(-50%);
-  max-width: 40%;
+  max-width: 50%;
   margin-left: 80px;
   z-index: 2;
 }
 
 .btn-for-slider {
   margin-right: 15px;
-  padding: 7px 20px;
-  background-color: #8771e8;
+  width:197px;
+  height:49px;
+  background-color: #496AC1;
   font-size: 16px;
+  font-family: 'firaGo';
   color: #fff;
   border: none;
   outline: none;
@@ -1300,6 +1295,15 @@ i.fab.fa-facebook-square {
 .slider-item-content a {
   padding: 7px 20px;
   font-size: 16px;
+  font-family: 'firaGo';
+  color: #fff;
+  text-decoration: none;
+}
+
+.slider-item-content p {
+  margin-bottom: 39px;
+  font-size: 16px;
+  font-family: 'firaGo';
   color: #fff;
 }
 
@@ -1312,6 +1316,8 @@ i.fab.fa-facebook-square {
 .slider-item-content h2 {
   margin-bottom: 20px;
   font-size: 42px;
+  font-family:'web001';
+  font-weight:normal;
   color: #fff;
 }
 
@@ -1319,7 +1325,7 @@ i.fab.fa-facebook-square {
   position: absolute;
   top: 50%;
   transform: translateY(-50%);
-  right: 30px;
+  right: 70px;
 }
 
 .pag-button {
@@ -1334,7 +1340,7 @@ i.fab.fa-facebook-square {
 
 .about-project {
   margin-top: 150px;
-  padding: 30px 100px;
+  padding: 66px 168px;
   background-color: #f5f5f5;
   border-radius: 18px;
 }
@@ -1344,7 +1350,14 @@ i.fab.fa-facebook-square {
   font-size: 32px;
   margin-bottom: 30px;
   text-align: center;
-  color: #8771e8;
+  font-family:'web001';
+  font-weight: normal;
+  color: #496AC1;
+}
+.about-project p {
+  margin-bottom: 20px;
+  font-family: 'firaGoBook';
+  color: #5D5D5D;
 }
 .about-project p {
   margin-bottom: 20px;
@@ -1354,4 +1367,5 @@ i.fab.fa-facebook-square {
   text-align: center;
   color: #fff;
   padding-bottom: 10px;
+  font-family: 'firaGoLight';
 }
