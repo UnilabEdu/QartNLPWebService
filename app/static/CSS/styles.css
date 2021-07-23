@@ -1386,3 +1386,19 @@ i.fab.fa-facebook-square {
 .team-pic:first-child{
   margin-bottom: 32px;
 }
+
+.git{
+  font-size: 24px;
+  display: flex;
+  text-decoration: none;
+  color: #6879D9;
+}
+
+.team-desc{
+  margin-bottom: 41px;
+}
+
+.git>span{
+  font-size: 20px;
+  margin-left: 10px;
+}
