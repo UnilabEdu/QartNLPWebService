@@ -86,7 +86,6 @@ header {
 body {
   padding: 0;
   margin: 0;
-  background-color: #ebebeb;
   box-sizing: border-box;
 }
 
@@ -516,37 +515,6 @@ footer {
   flex-wrap: wrap;
   justify-content: space-between;
   margin: auto;
-}
-
-.person {
-  display: flex;
-  width: 45%;
-  margin-top: 64px;
-}
-
-.person-name {
-  font-family: Sandro;
-}
-
-.person-info {
-  margin-left: 32px;
-}
-
-.person-description {
-  font-family: Sandro;
-  font-size: 18px;
-  margin-top: 20px;
-}
-
-.person-job {
-  margin-top: 15px;
-  font-family: Sandro;
-}
-
-.person > img {
-  width: 256px;
-  height: 256px;
-  object-fit: cover;
 }
 
 .file-block {
@@ -1354,4 +1322,67 @@ i.fab.fa-facebook-square {
   text-align: center;
   color: #fff;
   padding-bottom: 10px;
+}
+
+#about-section{
+  width: 80%;
+  max-width: 900px;
+  margin: auto;
+}
+
+.about-us{
+  margin-top: 112px;
+  margin-bottom: 100px;
+}
+
+.about-head{
+  color: #0E0E1A;
+  text-align: center;
+  margin-bottom: 32px;
+  font-size: 28px;
+  font-weight: bold;
+ /* WEB 001 უნდა */
+}
+
+.about-us-par{
+  font-size: 16px;
+}
+
+.our-team{
+  margin-top: 32px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.team-info{
+  width: 30%;
+}
+
+.team-name{
+  font-size: 37px;
+}
+
+.team-info>h4{
+  font-size: 22px;
+  color: #496AC1;
+  margin-bottom: 18px;
+}
+
+.team-pics{
+  margin-top: 32px;
+  width: 442px;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+}
+
+.team-pic{
+  width: 126px;
+  height: 126px;
+  border-radius: 18px;
+}
+
+.team-pic:first-child{
+  margin-bottom: 32px;
 }
