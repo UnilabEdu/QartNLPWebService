@@ -11,14 +11,14 @@ def get_locale():
 
 main_blueprint = Blueprint('main',
                            __name__,
-                           template_folder='templates/jinja'
-                           )
+                           template_folder='templates/jinja',
 
+                           )
 
 @main_blueprint.route('/', methods=['GET', 'POST'])
 @main_blueprint.route('/home', methods=['GET', 'POST'])
 def home():
-    return render_template('home.html', blocks=grammar_blocks)
+    return render_template('main.html', blocks=grammar_blocks)
 
 
 @main_blueprint.route('/documentation', methods=['GET', 'POST'])
