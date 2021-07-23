@@ -1,11 +1,13 @@
 import datetime
 import os
+import json
 
 from app import db
 from app.models.ner_tagging import NerTagType
 from app.settings import Config
 
 from flask_login import current_user
+
 
 class File(db.Model):
     __tablename__ = "files"
@@ -32,6 +34,10 @@ class File(db.Model):
         db.session.delete(self)
         db.session.commit()
 
+    def disable(self):
+        self.status[0].active = False
+        db.session.commit()
+
     def read(self, amount):
         file_path = os.path.join(Config.UPLOAD_FOLDER, str(current_user.id), self.file_name)
         file_to_read = open(file_path, "r", encoding='utf-8')
@@ -44,6 +50,12 @@ class File(db.Model):
     @classmethod
     def file_by_id(cls, id):
         return cls.query.get(id)
+
+    @classmethod
+    def get_active_files(cls, user_id):
+        active_files = cls.query.join(cls.status).filter(cls.user_id==user_id).filter(Status.active==True)
+
+        return active_files
 
     def get_word_count(self):
         word_count = (db.session.query(Pages, Sentences, Words)
@@ -65,6 +77,46 @@ class File(db.Model):
                            .join(Pages.sentences)
                            .filter(Pages.file_id == self.id)).count()
         return sentence_count
+
+    def create_json(self):
+        file_path = os.path.join(Config.UPLOAD_FOLDER, str(current_user.id), f"{self.title}-lemmatized.json")
+
+        all_words = (db.session.query(Pages, Sentences, Words)
+                       .join(Pages.sentences)
+                       .join(Sentences.words)
+                       .filter(Pages.file_id == self.id))
+
+        with open(file_path, 'w', encoding="utf-8") as f:
+            start = 0
+            while True:
+                stop = start + 10000
+                db_chunk = all_words.slice(start, stop).all()
+
+                if len(db_chunk) == 0:
+                    break
+
+                for result in db_chunk:
+
+                    dict = {
+                        "word": result[2].raw,
+                        "lemma": result[2].lemma,
+                        "tags": result[2].pos_tags,
+                        "page": {
+                            "start": result[0].start_index,
+                            "end": result[0].end_index
+                        },
+                        "sentence": {
+                            "start": result[1].start_index,
+                            "end": result[1].end_index
+                        }
+                    }
+
+                    f.write("\n" + json.dumps(dict, ensure_ascii=False, indent=1))
+
+                start += 10000
+
+
+
 
 
 class Pages(db.Model):
@@ -237,7 +289,7 @@ class Statistics(db.Model):
         db.session.commit()
 
     @classmethod
-    def statistics_for_fileid(cls, id):
+    def statistics_for_file(cls, id):
         return Statistics.query.filter_by(file_id=id).first()
 
 
@@ -276,6 +328,7 @@ class Status(db.Model):
         self.html_tags_removed = html_tags_removed
         self.expanded_acronyms = expand_acronyms
         self.words_enumerated = words_enumerated
+        self.active = active
 
     def save(self):
         db.session.add(self)
