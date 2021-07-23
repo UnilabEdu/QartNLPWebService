@@ -1,4 +1,4 @@
-from flask import Blueprint, render_template, redirect, url_for
+from flask import Blueprint, render_template, redirect, url_for, request, send_from_directory, current_app
 from flask_login import current_user, login_required
 from werkzeug.utils import secure_filename
 
@@ -12,6 +12,7 @@ from app.models.file import File, Pages, Sentences, Words, Statistics, Status
 import json
 import time
 import os
+from zipfile import ZipFile
 
 file_views_blueprint = Blueprint('files',
                                  __name__,
@@ -30,15 +31,22 @@ def upload():
             filename = secure_filename(file.filename)
             title = filename.split(".")[0]
 
-            print(file, filename, title)
-
         elif upload_form.text.data and upload_form.name.data:
             filename = secure_filename(upload_form.name.data + ".txt")
             title = upload_form.name.data
 
-            print(filename, title)
-
         path = os.path.join(Config.UPLOAD_FOLDER, str(current_user.id), filename)
+        duplicate_count = 0
+
+        while os.path.exists(path):
+            duplicate_count += 1
+            new_title = f"{title}-{duplicate_count}"
+            filename = f"{new_title}.txt"
+            path = os.path.join(Config.UPLOAD_FOLDER, str(current_user.id), filename)
+
+        if duplicate_count is not 0:
+            title = new_title
+
         os.makedirs(os.path.dirname(path), exist_ok=True)
 
         if upload_form.file.data:
@@ -62,9 +70,9 @@ def upload():
 @file_views_blueprint.route('/files', defaults={'page_num':1}, methods=['GET', 'POST'])
 @file_views_blueprint.route('/files/<int:page_num>', methods=['GET', 'POST'])
 @login_required
-def files_paginate(page_num):
+def all_files(page_num):
 
-    files = File.query.filter_by(user_id=current_user.id).paginate(per_page=4, page=page_num)
+    files = File.get_active_files(current_user.id).paginate(per_page=4, page=page_num)
 
     return render_template('files.html', block_files=files)
 
@@ -77,7 +85,7 @@ def concrete(file_id, page_id):
     page = file.pages[page_id-1]
     word_list = page.get_text()
 
-    statistics = Statistics.statistics_for_fileid(file_id)
+    statistics = Statistics.statistics_for_file(file_id)
 
     search_form = SearchForm()
 
@@ -105,6 +113,39 @@ def search(word, file_id):
         sentences.append(sentence)
 
     return render_template('details.html', sentences=sentences)
+
+
+@file_views_blueprint.route('/files/disable_file/<int:file_id>', methods=['GET', 'POST'])
+@login_required
+def disable_file(file_id):
+
+    file = File.file_by_id(file_id)
+
+    if current_user.id == file.user_id:
+        file.disable()
+
+    return redirect(request.referrer)
+
+
+@file_views_blueprint.route('/files/download_file/<int:file_id>', methods=['GET', 'POST'])
+@login_required
+def download_file(file_id):
+
+    file = File.file_by_id(file_id)
+    file_path = os.path.join(Config.UPLOAD_FOLDER, str(current_user.id), file.title)
+    absolute_path = os.path.join(current_app.root_path, "uploads", str(current_user.id))
+
+    if current_user.id == file.user_id:
+        with ZipFile(f"{file_path}.zip", 'w') as zipobj:
+            zipobj.write(f"{file_path}.txt", f"{file.title}.txt")
+
+            if file.status[0].lemmatized:
+                file.create_json()
+                zipobj.write(f"{file_path}-lemmatized.json", f"{file.title}-lemmatized.json")
+
+        return send_from_directory(absolute_path, f"{file.title}.zip", as_attachment=True)
+
+    return redirect(url_for('files.all_files'))
 
 
 # Temporary pages for debugging

@@ -56,7 +56,7 @@ def create_app():
     app.register_blueprint(main_blueprint, url_prefix="/")
 
     from app.files.views import file_views_blueprint
-    app.register_blueprint(file_views_blueprint, url_prefix="/files")
+    app.register_blueprint(file_views_blueprint, url_prefix="/")
 
     from app.tagging.views import tagging_blueprint
     app.register_blueprint(tagging_blueprint, url_prefix="/tagging")

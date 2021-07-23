@@ -1,6 +1,7 @@
 from flask_script import Command
 from app.database import db
 from app.user.user_model import User, Role
+from app.models.file import File, Pages, Sentences, Words, Statistics, Status
 from flask import current_app
 from datetime import datetime
 
@@ -60,3 +61,16 @@ def find_or_create_user(username, password, email, role=None):
         db.session.add(user)
 
     return user
+
+
+class ClearFileTables(Command):
+
+    def run(self):
+        db.session.query(File).delete()
+        db.session.query(Pages).delete()
+        db.session.query(Sentences).delete()
+        db.session.query(Words).delete()
+        db.session.query(Status).delete()
+        db.session.query(Statistics).delete()
+        db.session.commit()
+

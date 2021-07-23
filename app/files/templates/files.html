@@ -25,7 +25,7 @@
 
     {% for page in block_files.iter_pages() %}
         {% if page %}
-            <a href="{{ url_for('files.files_paginate', page_num=page)}}">{{ page }}</a>
+            <a href="{{ url_for('files.all_files', page_num=page)}}">{{ page }}</a>
         {% else %}
             ...
         {% endif %}
