@@ -1,63 +1,163 @@
 {% from "macros.html" import person with context %}
 {% extends "base1.html" %}
 {% block content %}
+    <style>
 
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/skeleton/2.0.4/skeleton.min.css" integrity="sha512-EZLkOqwILORob+p0BXZc+Vm3RgJBOe1Iq/0fiI7r/wJgzOFZMlsqTa29UEl6v6U6gsV4uIpsNZoV32YZqrCRCQ==" crossorigin="anonymous" referrerpolicy="no-referrer" />
-<div class='container' id='tagging-page' style="min-height: 53.5vh">
-  <div class='row' style="margin-top: 50px;" >
-    <div class='eight columns'>
-      <div id='left' style="padding-top: 12px">
-            <div>
-                {% set separators = ['.', ',', '?', '!', ';', '-', '—'] %}
+        #tagging-page {
+            line-height: 30px;
+        }
 
-                {% for word in text.split() %}
+        .ner-tag {
+            padding: 5px 8px;
+            margin: 10px 0px;
+            border-radius: 5px;
+            border: 1px solid rgba(128, 128, 128, 0.3);
+            word-break: break-word;
+        }
 
-                    {% if word[-2] in separators %}
+        .ner-tag:after {
+            font-weight: bold;
+        }
 
-                        <span id="w{{ loop.index }}">{{ word[:-2] }}</span>{{ word[-2:] }}
+        .ner-tag > span {
+            padding-right: 3px;
+        }
 
-                    {% elif word[-1] in separators %}
+        .ner-person {
+            background-color: lightgreen;
+        }
 
-                        <span id="w{{ loop.index }}">{{ word[:-1] }}</span>{{ word[-1] }}
+        .ner-person:after {
+            content: " PERSON";
+        }
 
-                    {% else %}
+        .ner-loc {
+            background-color: rgba(0, 128, 0, 0.5);
+        }
 
-                        <span id="w{{ loop.index }}">{{ word }}</span>
+        .ner-loc:after {
+            content: " LOC.";
+        }
 
-                    {% endif %}
+        .ner-person3 {
+            background-color: lightyellow;
+        }
 
-                {% endfor %}
+        .ner-person3:after {
+            content: " Some";
+        }
 
+        .ner-num {
+            background-color: rgba(128, 0, 128, 0.5);
+        }
+
+        .ner-num:after {
+            content: " NUM";
+        }
+
+        .ner-date {
+            background-color: rgba(35, 223, 200, 0.3);
+        }
+
+        .ner-date:after {
+            content: " DATE";
+        }
+
+        .ner-org {
+            background-color: lightgreen;
+        }
+
+        .ner-org:after {
+            content: " ORG.";
+        }
+
+        .ner-temp {
+            background-color: rgba(35, 23, 200, 0.3);
+        }
+
+        .ner-temp:after {
+            content: " TEMP.";
+        }
+
+        .ner-gpe {
+            background-color: rgba(0, 0, 255, 0.5);
+        }
+
+        .ner-gpe:after {
+            content: " GPE.";
+        }
+    </style>
+    {# ALERT JS #}
+    <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/toastify-js/src/toastify.min.css">
+    <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/toastify-js"></script>
+    {# SKELETON CSS #}
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/skeleton/2.0.4/skeleton.min.css"
+          integrity="sha512-EZLkOqwILORob+p0BXZc+Vm3RgJBOe1Iq/0fiI7r/wJgzOFZMlsqTa29UEl6v6U6gsV4uIpsNZoV32YZqrCRCQ=="
+          crossorigin="anonymous" referrerpolicy="no-referrer"/>
+    <div class='container' id='tagging-page' style="min-height: 53.5vh">
+        <div class='row' style="margin-top: 50px;">
+            <div class='eight columns'>
+                <div id='left' style="padding-top: 12px">
+                    <div>
+                        {% set separators = ['.', ',', '?', '!', ';'] %}
+
+                        {% for word in text.split() %}
+
+                            {% if word[-2] in separators %}
+
+                                <span id="w{{ loop.index }}">{{ word[:-2] }}</span>{{ word[-2:] }}
+
+                            {% elif word[-1] in separators %}
+
+                                <span id="w{{ loop.index }}">{{ word[:-1] }}</span>{{ word[-1] }}
+
+                            {% else %}
+
+                                <span id="w{{ loop.index }}">{{ word }}</span>
+
+                            {% endif %}
+
+                        {% endfor %}
+
+                    </div>
+
+                    <p id='init-json' class="hidden">{{ tags_json }}</p>
+                </div>
             </div>
-      </div>
-    </div>
-    <div class='four columns'>
-      <div id='right'>
-      <form method="POST">
-      {{ form.hidden_tag() }}
-        <table class='table table-striped'>
-          <dbody>
-                <tr>
-                  <td>Words</td>
-                  <td id="words_list" >empty</td>
-                </tr>
+            <div class='four columns'>
+                <div id='right'>
+                    <form method="POST">
+                        {{ form.hidden_tag() }}
+                        <table class='table table-striped'>
+                            <dbody>
+                                <tr>
+                                    <td>Words</td>
+                                    <td id="words_list">empty</td>
+                                </tr>
 
-                <tr>
-                  <td>Tags</td>
-                  <td>{{ form.ner_tag(class="form-select") }}</td>
-                </tr>
-          </dbody>
-        </table>
-        <div class='buttons text-right d-flex justify-content-between'>
-          <button id="reset_btn" style="background-color: #B94E31 ; color: white;" type="button" >reset</button>
-        {{ form.submit(style="background-color: #3D7061; color: white;", type="button") }}
+                                <tr>
+                                    <td>Tags</td>
+                                    <td>{{ form.ner_tag(class="form-select") }}</td>
+                                </tr>
+                            </dbody>
+                        </table>
+                        <div class='buttons text-right d-flex justify-content-between'>
+                            <button id="reset_btn" style="background-color: #B94E31 ; color: white;" type="button">
+                                reset
+                            </button>
+                            {{ form.submit(style="background-color: #3D7061; color: white;", type="button") }}
+                        </div>
+                    </form>
+                </div>
+            </div>
         </div>
-      </form>
-      </div>
     </div>
-  </div>
-</div>
-    <script src="{{url_for("static", filename="JS/tagging-script.js")}}"></script>
+    {% if file.pages|count > 1 %}
+        {% for i in range(1, 1 + file.pages|count) %}
+            <a href="{{ url_for('tagging.test', file_id=file.id, page_id=i) }}">{{ i }}</a>
+        {% endfor %}
+    {% endif %}
+    <script src="{{ url_for("static", filename="JS/tagging-script.js") }}"></script>
 {% endblock %}
 
 {# sites main color - #172420 #}
