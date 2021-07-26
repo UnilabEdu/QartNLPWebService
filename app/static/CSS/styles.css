@@ -51,6 +51,17 @@ header {
 .active-link-nav {
   background-color: #ecf0f9 !important;
   color: #496ac1 !important;
+  background-color:#ECF0F9;
+}
+
+.active-link-nav {
+  background-color:#ECF0F9!important;
+  color: #496AC1!important;
+}
+
+.nav-left {
+  color: white;
+  font-size: 42px;
 }
 
 .nav-left > h2 {
@@ -609,6 +620,11 @@ footer {
   cursor: pointer;
 }
 
+.user-logo {
+  cursor: pointer;
+  margin-top: 10px;
+}
+
 .login {
   position: relative;
   height: 41.82px;
@@ -843,7 +859,7 @@ footer {
 .info-search ul li {
   margin: 0 0 35px;
   font-size: 24px;
-  font-family: "Sandro";
+  font-family: 'Sandro';
   color: #2c3532;
   list-style-type: none;
 }
@@ -1316,7 +1332,11 @@ i.fab.fa-facebook-square {
   margin-bottom: 20px;
   font-family: "firaGoBook";
   color: #5d5d5d;
+  font-family:'web001';
+  font-weight: normal;
+  color: #496AC1;
 }
+
 .about-project p {
   margin-bottom: 20px;
 }
@@ -1329,18 +1349,22 @@ i.fab.fa-facebook-square {
 }
 
 #about-section {
+  font-family: 'firaGoLight';
+}
+
+#about-section{
   width: 80%;
   max-width: 900px;
   margin: auto;
 }
 
-.about-us {
+.about-us{
   margin-top: 112px;
   margin-bottom: 100px;
 }
 
-.about-head {
-  color: #0e0e1a;
+.about-head{
+  color: #0E0E1A;
   text-align: center;
   margin-bottom: 32px;
   font-size: 28px;
@@ -1353,27 +1377,37 @@ i.fab.fa-facebook-square {
 }
 
 .our-team {
+=======
+ /* WEB 001 უნდა */
+}
+
+.about-us-par{
+  font-size: 16px;
+}
+
+.our-team{
   margin-top: 32px;
   display: flex;
   align-items: center;
   justify-content: space-between;
 }
 
-.team-info {
+
+.team-info{
   width: 30%;
 }
 
-.team-name {
+.team-name{
   font-size: 37px;
 }
 
-.team-info > h4 {
+.team-info>h4{
   font-size: 22px;
-  color: #496ac1;
+  color: #496AC1;
   margin-bottom: 18px;
 }
 
-.team-pics {
+.team-pics{
   margin-top: 32px;
   width: 442px;
   display: flex;
@@ -1381,7 +1415,7 @@ i.fab.fa-facebook-square {
   justify-content: space-between;
 }
 
-.team-pic {
+.team-pic{
   width: 126px;
   height: 126px;
   border-radius: 18px;
