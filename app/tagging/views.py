@@ -2,18 +2,17 @@ from . import tagging_blueprint
 from flask import render_template
 import json
 from .forms import NerTagForm
+from app.models.file import File, Pages
 
 
 @tagging_blueprint.route('/<int:file_id>/<int:page_id>', methods=['GET', 'POST'])
 def test(page_id=0, file_id=0):
+
+    file = File.file_by_id(file_id)
+    page = file.pages[page_id - 1]
+
     form = NerTagForm()
-    random_text = "პითონები — გველების ქვეოჯახი მახრჩობელასებრთა ოჯახისა (ან დამოუკიდებელი ოჯახი). გავრცელებულია " \
-                  "აღმოსავლეთ და, ნაწილობრივ, დასავლეთ (ცენტრალური ამერიკა) ნახევარსფეროებში. ამჟამად ქვეოჯახში შედის " \
-                  "8 გვარი, 35 სახეობით. საკუთრივ ცენტრალურ, პითონის გვარში 7 სახეობაა, გავრცელებულია აფრიკაში, " \
-                  "სამხრეთ-აღმოსავლეთ აზიაში, მალაის არქიპელაგზე, ახალ გვინეაში და ავსტრალიაში. ზედა ტუჩზე " \
-                  "აღენიშნებათ 2-4 ღრმული, რაც თერმორეცეპტორს წარმოადგენს. ბინადრობენ უმთავრესად ლერწმიანებში, " \
-                  "ლელიანებში, ქვებს შორის. კარგად ცურავენ, შეუძლიათ ხეზე ასვლა. იკვებებიან ძირითადად ხერხემლიანებით, " \
-                  "რომლებსაც სხეულის რგონებით გუდავენ. "
+    not_random_text_anymore = page.get_text()
 
     # retrieve page by file_id and page_id
     # retrieve all the tags from the page
@@ -26,4 +25,4 @@ def test(page_id=0, file_id=0):
         {"id": 4, "keys": [23], "value": "NUM"},
     ]
 
-    return render_template('tagging.html', text=random_text, tags=tags, tags_json=json.dumps(tags, indent = 4), form=form)
+    return render_template('tagging.html', file=file, text=not_random_text_anymore, tags=tags, tags_json=json.dumps(tags, indent = 4), form=form)

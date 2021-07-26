@@ -44,7 +44,7 @@ class NerTags(db.Model):
         self.ner_tag_type_id = ner_tag_type_id
 
     def __repr__(self):
-        return f"{self.words=} tagged into ner_tag type-{self.ner_tag_type_id}"
+        return f"{self.words} tagged into ner_tag type-{self.ner_tag_type_id}"
 
     def connected_words(self):
         """

@@ -1,12 +1,32 @@
 {% extends "base1.html" %}
 {% block content %}
+    <script>
+        function get_word_details(word_id) {
+            let lemma_array = {{ lemma_list|safe}};
+
+            let lemma = document.getElementById('word_lemma');
+            let tag = document.getElementById('word_tag');
+
+            lemma.innerHTML = "ლემმა: " + lemma_array[word_id].lemma;
+            tag.innerHTML = "თეგები: " + lemma_array[word_id].tags;
+        }
+    </script>
     <section class="concrete-page">
         <div class="content-navbar">
             {{ _("ჩემი ფაილები / " + file.title) }}
         </div>
         <div class="concrete-content">
             <div style="font-family: Sandro; font-size: 18px" class="concrete-words">
-                {{ word_list }}
+                {% set splitted_words = word_list.split() %}
+                {% set index = namespace(value=0) %}
+                {% for word in splitted_words %}
+                    {% if word not in '!"#$%&\'()*+,-./:;<=>?@[\\]^_`{|}~' %}
+                        <a onclick=get_word_details({{ index.value }})>{{ word }}</a>
+                        {% set index.value = index.value + 1 %}
+                    {% else %}
+                        {{ word }}
+                    {% endif %}
+                {% endfor %}
             </div>
             <div class="concrete-search-tool">
                 <div class="search-tool-block">
@@ -32,11 +52,23 @@
                         </ul>
                     </div>
                 </div>
+                <br>
+                <div class="search-tool-block">
+                    <div class="info-search">
+                        <ul>
+                            <br>
+                            <li id="word_lemma"> ლემმა:</li>
+                            <li id="word_tag"> თეგები:</li>
+                        </ul>
+                    </div>
+                </div>
                 <button class="btn_download">{{ _("გადმოწერა") }}</button>
             </div>
         </div>
-        {% for i in range(1, 1 + file.pages|count) %}
-            <a href="{{ url_for('files.concrete', file_id=file.id, page_id=i) }}">{{ i }}</a>
-        {% endfor %}
+        {% if file.pages|count > 1 %}
+            {% for i in range(1, 1 + file.pages|count) %}
+                <a href="{{ url_for('files.concrete', file_id=file.id, page_id=i) }}">{{ i }}</a>
+            {% endfor %}
+        {% endif %}
     </section>
 {% endblock %}

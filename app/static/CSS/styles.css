@@ -895,6 +895,7 @@ footer {
   font-family: 'Sandro';
   color: #2c3532;
   list-style-type: none;
+  word-wrap: break-word;
 }
 
 .input-search {

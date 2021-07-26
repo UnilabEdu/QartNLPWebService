@@ -58,14 +58,19 @@ class File(db.Model):
         return active_files
 
     def get_word_count(self):
-        word_count = (db.session.query(Pages, Sentences, Words)
+        word_count = (db.session.query(Words)
                        .join(Pages.sentences)
                        .join(Sentences.words)
                        .filter(Pages.file_id == self.id)).count()
         return word_count
 
+    def relative_page_by_id(self, page_id):
+        for i in range(len(self.pages)):
+            if self.pages[i].id == page_id:
+                return i+1
+
     def get_unique_word_count(self):
-        unique_word_count = (db.session.query(Pages, Sentences, Words)
+        unique_word_count = (db.session.query(Words)
                           .join(Pages.sentences)
                           .join(Sentences.words)
                           .filter(Pages.file_id == self.id)
@@ -73,7 +78,7 @@ class File(db.Model):
         return unique_word_count
 
     def get_sentence_count(self):
-        sentence_count = (db.session.query(Pages, Sentences)
+        sentence_count = (db.session.query(Sentences)
                            .join(Pages.sentences)
                            .filter(Pages.file_id == self.id)).count()
         return sentence_count
@@ -114,9 +119,6 @@ class File(db.Model):
                     f.write("\n" + json.dumps(dict, ensure_ascii=False, indent=1))
 
                 start += 10000
-
-
-
 
 
 class Pages(db.Model):
@@ -160,6 +162,14 @@ class Pages(db.Model):
             raw_text = file.read(self.end_index-self.start_index)
 
         return raw_text
+
+    def get_all_words(self):
+        all_words = (db.session.query(Words)
+                       .join(Pages.sentences)
+                       .join(Sentences.words)
+                       .filter(Pages.id == self.id))
+
+        return all_words
 
 
 class Sentences(db.Model):
