@@ -23,9 +23,7 @@
         <div class="nav-right">
           <ul>
             <li class="list-item"><a href="main.html">მთავარი</a></li>
-            <li class="list-item">
-              <a class="active-link-nav" href="home.html">ლემატიზატორი</a>
-            </li>
+            <li class="list-item"><a href="home.html">ლემატიზატორი</a></li>
             <li class="list-item"><a href="">დოკუმენტაცია</a></li>
             <li class="list-item"><a href="about.html">ჩვენს შესახებ</a></li>
             <li class="icon login">
@@ -183,80 +181,69 @@
         </div>
       </div>
     </div>
-
-    <section class="processing-lang">
-      <h2>ქართული ენის ციფრული დამუშავება</h2>
-      <textarea
-        class="prtext"
-        name="text"
-        id="prtext"
-        placeholder="ჩააკოპირე ქართული ტექსტი, ნახე როგორ მუშაობს სისტემა."
-      ></textarea>
-      <div class="btn-block">
-        <button id="analyze-button" class="btn-analyze">
-          <img
-            src="../assets/clear.svg"
-            alt="reload"
-            id="clear-icon"
-            class="clear-icon"
-          />
-          <span id="analyze-text">გაანალიზე</span>
-        </button>
+    <div class="files_page_content">
+      <div class="file_content_heading">
+        <h2>ჩემი ფაილები/ფაილის სახელი</h2>
       </div>
-    </section>
-    <section id="analyze-section" class="analyze-section">
-      <div class="parts">
-        <p class="analyze-part">ნაწილები</p>
-        <p class="analyze-part">ნაწილები</p>
+      <div class="file-block file-add-block display-flex">
+        <div class="create-file-inputs display-flex">
+          <div class="file-info">
+            <h2>ფაილის სახელი</h2>
+            <input class="file-name-inp" type="text" />
+            <h2 id="copy-text-head">ტექსტი</h2>
+            <div class="copy-container">
+              <textarea
+                class="copy-inp"
+                id="copy-textarea"
+                placeholder="ჩააკოპირე ტექსტი"
+              ></textarea>
+              <img
+                class="arrow-increase"
+                src="../assets/copy-icon.svg"
+                alt="arrow"
+              />
+            </div>
+          </div>
+          <div class="upload-file">
+            <div class="cont-up">
+              <h2>ატვირთეთ ფაილი</h2>
+              <div class="upload-container display-flex">
+                <input type="file" class="btn-upload" />
+                <span class="file-name"></span>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="create-file-checks display-flex">
+          <h2 class="checks-header">
+            მონიშნეთ ხელსაწყოები, რომლითაც გსურთ ტექსტის/დოკუმენტის დამუშავება:
+          </h2>
+          <div class="file-options">
+            <input id="lemal" name="lemal" type="checkbox" />
+            <label for="lemal">ტექსტის ლემატიზაცია</label>
+          </div>
+          <div class="file-options">
+            <input id="token" name="token" type="checkbox" />
+            <label for="token">ტექსტის ტოკენიზაცია</label>
+          </div>
+          <div class="file-options">
+            <input id="tag" name="tag" type="checkbox" />
+            <label for="tag">ტექსტის თეგირება</label>
+          </div>
+          <div class="file-options">
+            <input id="stop" name="stop" type="checkbox" />
+            <label for="stop">Stop word-ებისგან გასუფთავება</label>
+          </div>
+          <div class="file-options">
+            <input id="frequency" name="frequency" type="checkbox" />
+            <label for="frequency">სიტყვების სიხშირის განაწილება</label>
+          </div>
+        </div>
       </div>
-      <div class="grammar-blocks">
-        <div class="grammar-block block-1">
-          <h6 class="grammar-block-header">არსებითი სახელი</h6>
-          <div readonly name="gram" class="gram-textarea" id=""></div>
-        </div>
-        <div class="grammar-block block-2">
-          <h6 class="grammar-block-header">ზედსართავი სახელი</h6>
-          <div readonly name="gram" class="gram-textarea" id=""></div>
-        </div>
-        <div class="grammar-block block-3">
-          <h6 class="grammar-block-header">რიცხვითი სახელი</h6>
-          <div readonly name="gram" class="gram-textarea" id=""></div>
-        </div>
-        <div class="grammar-block block-4">
-          <h6 class="grammar-block-header">ნაცვალსახელი</h6>
-          <div readonly name="gram" class="gram-textarea" id=""></div>
-        </div>
-        <div class="grammar-block block-5">
-          <h6 class="grammar-block-header">კავშირი</h6>
-          <div readonly name="gram" class="gram-textarea" id=""></div>
-        </div>
-        <div class="grammar-block block-6">
-          <h6 class="grammar-block-header">ნაწილაკი</h6>
-          <div readonly name="gram" class="gram-textarea" id=""></div>
-        </div>
-        <div class="grammar-block block-7">
-          <h6 class="grammar-block-header">ზმნიზედა</h6>
-          <div readonly name="gram" class="gram-textarea" id=""></div>
-        </div>
-        <div class="grammar-block block-8">
-          <h6 class="grammar-block-header">თანდებული</h6>
-          <div readonly name="gram" class="gram-textarea" id=""></div>
-        </div>
-        <div class="grammar-block block-9">
-          <h6 class="grammar-block-header">შორისდებული</h6>
-          <div readonly name="gram" class="gram-textarea" id=""></div>
-        </div>
-        <div class="grammar-block block-10">
-          <h6 class="grammar-block-header">ზმნა</h6>
-          <div readonly name="gram" class="gram-textarea" id=""></div>
-        </div>
-        <div class="grammar-block block-last block-11">
-          <h6 class="grammar-block-header">მიმღეობა</h6>
-          <div readonly name="gram" class="gram-textarea" id=""></div>
-        </div>
-        <i aria-hidden="true" class="grammar-block hidden"></i>
-      </div>
-    </section>
+    </div>
+    <div class="file-btn-container display-flex">
+      <button class="btn-file">დამატება</button>
+    </div>
     <footer>
       <div class="footer-container">
         <div class="footer-l__block">
