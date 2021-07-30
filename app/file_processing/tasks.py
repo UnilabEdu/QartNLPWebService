@@ -19,17 +19,17 @@ def process_file(id, user, filename, processes):
 
         if "freq_dist" in processes:
 
-            file = open(file_path, 'r', encoding='utf-8')
-            text = fix_encoding(file.read())
+            freq_file = open(file_path, 'r', encoding='utf-8')
+            freq_text = fix_encoding(freq_file.read())
 
-            result_json = frequency_distribution(text)
-            data = json.dumps(result_json, ensure_ascii=False, indent=1)
+            result_json = frequency_distribution(freq_text)
+            freq_data = json.dumps(result_json, ensure_ascii=False, indent=1)
 
             filetitle = os.path.splitext(filename)[0]
             newtitle = f"{filetitle}-freq_dist.json"
-            file_path = os.path.join(Config.UPLOAD_FOLDER, str(current_user.id), newtitle)
-            with open(file_path, "w", encoding='utf-8') as fp:
-                fp.write(data)
+            freq_filepath = os.path.join(Config.UPLOAD_FOLDER, str(current_user.id), newtitle)
+            with open(freq_filepath, "w", encoding='utf-8') as fp:
+                fp.write(freq_data)
 
         if "lemat" in processes:
             with open(file_path, "r", encoding='utf-8') as file:
