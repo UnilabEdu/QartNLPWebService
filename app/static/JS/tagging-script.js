@@ -76,14 +76,18 @@ function resetButtonOnClick() {
     words_list.textContent = "empty";
     taggedWordArray = []
     taggedWords = []
+
+    let tempNer = document.getElementsByClassName("ner-temporary")
+    tempNer[0].outerHTML = tempNer[0].innerHTML
+    console.log(tempNer)
 }
 
-function saveButtonOnClick() {
+function saveButtonOnClick(file_id, page_id) {
     // send json containing taggedWordArray to api
     let nerTag = document.getElementById('ner_tag').value;
     let finalJSON = {
-        file_id: 1,
-        page_id: 1,
+        file_id: file_id,
+        page_id: page_id,
         ner_tag: nerTag,
         words: taggedWordArray,
     }
@@ -102,6 +106,13 @@ function saveButtonOnClick() {
         .catch((error) => {
             console.error('Error:', error);
         });
+
+    words_list.textContent = "empty";
+    taggedWordArray = []
+    taggedWords = []
+
+    let savedNer = document.getElementsByClassName("ner-temporary")[0]
+    savedNer.classList.remove('ner-temporary')
 }
 
 function wrap_id(ids, tag) {
@@ -112,7 +123,7 @@ function wrap_id(ids, tag) {
         word.parentNode.insertBefore(wrapper, word)
 
 
-        for (let i = ids[0]; i <= ids[1]; i++) {
+        for (let i = ids[0]; i <= ids[ids.length - 1]; i++) {
             wrapper.appendChild(document.querySelector('#w' + i))
         }
     }
@@ -125,7 +136,7 @@ function temp_wrap_ids(tagged_ids) {
     if (!is_tagged) {
         let word = document.querySelector('#w' + tagged_ids[0])
         wrapper = document.createElement('span')
-        wrapper.classList.add('ner-tag','ner-temporary')
+        wrapper.classList.add('ner-tag', 'ner-temporary')
         word.parentNode.insertBefore(wrapper, word)
     } else {
         wrapper = document.querySelector('span.ner-temporary')
@@ -133,15 +144,15 @@ function temp_wrap_ids(tagged_ids) {
 
     for (let i = Math.min(...tagged_ids); i <= Math.max(...tagged_ids); i++) {
         wrapper.appendChild(document.querySelector('#w' + i))
+        wrapper.appendChild(document.createTextNode (" "))
     }
-
 }
 
-function assign_tag(){
-        let ner_selected = tag_selector.value;
-        let ner_tag = document.querySelector(".ner-temporary")
-        ner_tag.className = '';
-        ner_tag.classList.add("ner-tag",'ner-'+ner_selected, 'ner-temporary')
+function assign_tag() {
+    let ner_selected = tag_selector.value;
+    let ner_tag = document.querySelector(".ner-temporary")
+    ner_tag.className = '';
+    ner_tag.classList.add("ner-tag", 'ner-' + ner_selected, 'ner-temporary')
 }
 
 function initTags(initJsonSelector) {
@@ -163,8 +174,8 @@ function preSelectWord(element) {
 
 // EVENT LISTENERS
 resetButton.addEventListener('click', resetButtonOnClick);
-saveButton.addEventListener('click', saveButtonOnClick);
-tag_selector.addEventListener('change', assign_tag  );
+//saveButton.addEventListener('click', saveButtonOnClick);
+tag_selector.addEventListener('change', assign_tag);
 
 for (let i = 0; i < words.length; i++) {
     words[i].addEventListener('click', function () {

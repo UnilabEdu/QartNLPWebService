@@ -1,9 +1,9 @@
 {% macro nav_link(endpoint, text) %}
-{% if request.endpoint.endswith(endpoint) %}
-    <li class="active list-item"><a href="{{ url_for(endpoint) }}">{{text}}</a></li>
-{% else %}
-    <li class="list-item"><a href="{{ url_for(endpoint) }}">{{text}}</a></li>
-{% endif %}
+    {% if request.endpoint.endswith(endpoint) %}
+        <li class="list-item"><a class="active-link-nav" href="{{ url_for(endpoint) }}">{{ text }}</a></li>
+    {% else %}
+        <li class="list-item"><a href="{{ url_for(endpoint) }}">{{ text }}</a></li>
+    {% endif %}
 {% endmacro %}
 
 {% macro icon_link (link, ico) %}
@@ -12,18 +12,18 @@
 
 {% macro person(name, job, description, image, social=[]) %}
     <div class="person">
-        <img src="{{ url_for("static", filename="assets/"+image) }}" alt="{{name}}ს სურათი">
+        <img src="{{ url_for("static", filename="assets/"+image) }}" alt="{{ name }}ს სურათი">
         <div class="person-info">
             <h2 class="person-name">{{ name }}</h2>
             <h2 class="person-job">{{ job }}</h2>
             <p class="person-description">{{ description }}</p>
 
             {% if social %}
-            <div class="soc-icons">
-            {% for soc in social %}
-            {{ icon_link( soc.get("link"), soc.get("icon") ) }}
-            {% endfor %}
-            </div>
+                <div class="soc-icons">
+                    {% for soc in social %}
+                        {{ icon_link( soc.get("link"), soc.get("icon") ) }}
+                    {% endfor %}
+                </div>
             {% endif %}
 
         </div>
@@ -31,29 +31,37 @@
 {% endmacro %}
 
 {% macro file_block(id,title, description, m_date, c_date) %}
-<div class="file-block">
-    <div class="file-data">
-        <span>შექმნის თარიღი: {{c_date}}</span>
-        <span>ბოლო მოდიფიცირების თარიღი: {{m_date}}</span>
+    <div class="file-block">
+        <div class="file-data">
+            <span>შექმნის თარიღი: {{ c_date }}</span>
+            <span>ბოლო მოდიფიცირების თარიღი: {{ m_date }}</span>
+        </div>
+        <div class="files-flex-content">
+            <div class="file-content">
+                <h2><a style="color: inherit; text-decoration: none" ,
+                       href="{{ url_for('files.view_file', file_id=id, page_id=1) }}">{{ title }}</a>
+                </h2>
+                <p>
+                    {{ description }}
+                </p>
+                <div style="height: 100%; display: flex; align-items: flex-end" class="file-tools">
+                    <div class="tool-container display-flex">
+                        <a style="color: inherit; text-decoration: none" ,
+                           href="{{ url_for('tagging.test', file_id=id, page_id=1) }}"><img style="vertical-align: middle"
+                                src="{{ url_for('static', filename="assets/ic-contact-edit.svg") }}"></a>
+                    </div>
+                    <div class="tool-container display-flex">
+                        <a style="color: inherit; text-decoration: none" ,
+                           href="{{ url_for('files.download_file', file_id=id) }}"><img style="vertical-align: middle"
+                                src="{{ url_for('static', filename="assets/ic-actions-download.svg") }}"></a>
+                    </div>
+                    <div class="tool-container display-flex">
+                        <a style="color: inherit; text-decoration: none" ,
+                           href="{{ url_for('files.disable_file', file_id=id) }}"><img style="vertical-align: middle"
+                                src="{{ url_for('static', filename="assets/ic-actions-trash.svg") }}"></a>
+                    </div>
+                </div>
+            </div>
+        </div>
     </div>
-    <div class="files-flex-content">
-      <div class="file-content">
-          <h2><a style="color: inherit; text-decoration: none", href="{{ url_for('files.concrete', file_id=id, page_id=1) }}">{{title}}</a></h2>
-          <p>
-            {{description}}
-          </p>
-      </div>
-      <div class="file-tools display-flex">
-        <div class="tool-container display-flex">
-         <a style="color: inherit; text-decoration: none", href="{{ url_for('tagging.test', file_id=id, page_id=1) }}"><i class="fas fa-pen"></i></a>
-        </div>
-        <div class="tool-container display-flex">
-            <a style="color: inherit; text-decoration: none", href="{{ url_for('files.download_file', file_id=id) }}"><i class="fas fa-arrow-down"></i></a>
-        </div>
-        <div class="tool-container display-flex">
-            <a style="color: inherit; text-decoration: none", href="{{ url_for('files.disable_file', file_id=id) }}"><i class="far fa-trash-alt"></i></a>
-        </div>
-      </div>
-    </div>
-  </div>
 {% endmacro %}

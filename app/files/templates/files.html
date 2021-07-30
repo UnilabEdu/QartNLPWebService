@@ -2,40 +2,126 @@
 {% extends "base1.html" %}
 
 {% block content %}
-    <div class="files_page_content">
-    <div class="file_content_heading">
-        <h2>ჩემი ფაილები</h2>
-    </div>
+    <script>
+        window.onload = function () {
+            var modal = document.getElementById("upload-file");
+            var fileBtn = document.getElementById("add-file-btn");
 
-    {% for file in block_files.items %}
-        {% set desc_data = file.read(310) + "..." %}
-        {% if not file.status[0].completed %}
-            {% set desc_data = "File is still being processed" %}
-        {% endif %}
-        {{ file_block(
+            fileBtn.onclick = function () {
+                modal.style.display = "block";
+            }
+
+            document.onclick = function (event) {
+                if (event.target == modal) {
+                    modal.style.display = "none";
+                }
+            }
+        }
+    </script>
+
+    <div style="display: flex">
+        <div class="profile-box">
+            <img src="{{ url_for('static', filename='assets/default_avatar.png') }}">
+            <p style="font-family: firaGoSemiBold; font-size: 24px">{{ current_user.username }}</p>
+            <p style="font-family: firaGoBook; font-size:18px;">სახელის შეცვლა</p>
+            <p style="font-family: firaGoBook; font-size:18px;">პაროლის შეცვლა</p>
+            <p style="font-family: firaGoBook; font-size:18px;">მეილის განახლება</p>
+            <p style="font-family: firaGoBook; font-size:18px; color: #C14949">გამოსვლა</p>
+        </div>
+
+        <div class="files_page_content">
+
+            <div style="justify-self: center">
+                {% with messages = get_flashed_messages() %}
+                    {% if messages %}
+                        {% for message in messages %}
+                            <p class="flashed-messages">{{ message }}</p>
+                        {% endfor %}
+                    {% endif %}
+                {% endwith %}
+            </div>
+
+            <div class="file-btn-container display-flex">
+                <button id="add-file-btn" class="btn-file">
+                    <a style="padding-right: 10px">დამატება</a>
+                    <img style="vertical-align:middle"
+                         src="{{ url_for('static', filename='assets/ic-actions-add-file.svg') }}">
+                </button>
+            </div>
+            <br><br><br>
+
+            {# Uploaded files list #}
+            {% for file in block_files.items %}
+                {% set desc_data = file.read(310) + "..." %}
+                {% if not file.status[0].completed %}
+                    {% set desc_data = "File is still being processed" %}
+                {% endif %}
+                {{ file_block(
                 id= file.id,
                 title= file.title,
                 description= desc_data,
                 c_date= file.upload_date,
                 m_date= file.date_modified
          ) }}
-    {% endfor %}
+            {% endfor %}
 
-    {% if block_files.pages > 1 %}
-        {% for page in block_files.iter_pages() %}
-            {% if page %}
-                <a href="{{ url_for('files.all_files', page_num=page) }}">{{ page }}</a>
-            {% else %}
-                ...
+            {# Pagination #}
+            {% if block_files.pages > 1 %}
+                <div style="display: flex; justify-content: center;">
+                    {% for page in block_files.iter_pages() %}
+                        {% if page %}
+                            {% if page == page_num %}
+                                <a class="pagination-number active"
+                                   href="{{ url_for('files.all_files', page_num=page) }}">{{ page }}</a>
+                            {% else %}
+                                <a class="pagination-number"
+                                   href="{{ url_for('files.all_files', page_num=page) }}">{{ page }}</a>
+                            {% endif %}
+                        {% else %}
+                            ...
+                        {% endif %}
+                    {% endfor %}
+                </div>
             {% endif %}
-        {% endfor %}
-    {% endif %}
+        </div>
 
-    <div class="file-btn-container display-flex">
-        <button id="add-file" class="btn-file" onclick="window.location.href='upload'">
-            {{ _("დამატება") }}
-        </button>
+    </div>
+
+    {# File upload modal #}
+    <div id="upload-file" class="file-upload-modal">
+        <div class="file-upload-modal-content">
+            <form method="POST" enctype="multipart/form-data">
+                {{ upload_form.hidden_tag() }}
+                <div class="file-add-block display-flex">
+                    <div class="create-file-inputs display-flex">
+                        <div class="file-info">
+                            <h2>შეიყვანეთ ფაილის დასახელება</h2>
+                            {{ upload_form.name(class="file-name-inp") }}
+                            <h2>შეიყვანეთ დასამუშავებელი ტექსტი</h2>
+                            <div class="copy-container">
+                                {{ upload_form.text(class="copy-inp", placeholder="ჩააკოპირე ტექსტი") }}
+                            </div>
+                        </div>
+                        <h2 style="margin-bottom: 32px;">ან</h2>
+                        <div class="upload-file">
+                            <div class="cont-up">
+                                <label class="btn-file-upload">
+                                    {{ upload_form.file(style="display:none", accept=".txt", onchange="document.getElementById('text').disabled = true;") }}ატვირთე
+                                    ფაილი<img style="margin-left: 13px; vertical-align: middle"
+                                              src="{{ url_for('static', filename="assets/ic-editor-attachment.svg") }}"></label>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="create-file-checks display-flex">
+                        <h2 class="checks-header">მონიშნეთ ხელსაწყოები, რომლითაც გსურთ ტექსტის/დოკუმენტის
+                            დამუშავება:</h2>
+                        {{ upload_form.processes(class="file-options") }}
+                        <button style="margin-top: auto;" class="btn-file" type="submit">
+                            დამუშავება
+                        </button>
+                    </div>
+                </div>
+            </form>
+        </div>
     </div>
 {% endblock %}
-
-

@@ -62,7 +62,7 @@ class NerTagApi(Resource):
 
         # Add NerTag object ID to selected words' ner_tags_id (relationship) column
         for word in words:
-            word_from_db = current_page.word_by_id(int(word["id"])-1)
+            word_from_db = current_page.word_by_id(int(word["id"]))
             word_from_db.ner_tags_id = new_ner_tag.id
             word_from_db.save()
         return {'response': 'done'}

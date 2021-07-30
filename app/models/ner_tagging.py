@@ -1,6 +1,5 @@
 from app import db
 
-
 class NerTagType(db.Model):
     __tablename__ = "ner_tag_type"
     id = db.Column(db.Integer, primary_key=True)
@@ -43,14 +42,25 @@ class NerTags(db.Model):
         self.page_id = page_id
         self.ner_tag_type_id = ner_tag_type_id
 
-    def __repr__(self):
-        return f"{self.words} tagged into ner_tag type-{self.ner_tag_type_id}"
+    @classmethod
+    def connected_words(cls, page_id):
+        from app.models.file import Pages
 
-    def connected_words(self):
-        """
-        :return: list of word objects in relationship
-        """
-        pass
+        tags = []
+        first_word_index = Pages.query.filter_by(id=page_id).first().sentences[0].words[0].id
+
+        for nertags in cls.query.filter_by(page_id=page_id).all():
+            id = nertags.words[0].ner_tags_id
+            keys = [word.id - first_word_index + 1 for word in nertags.words]
+            nertag = nertags.words[0].get_ner_tag()
+            dict = {
+                'id': id,
+                'keys': keys,
+                'value': nertag
+            }
+            tags.append(dict)
+
+        return tags
 
     def save(self):
         db.session.add(self)

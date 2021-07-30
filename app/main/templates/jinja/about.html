@@ -2,20 +2,45 @@
 {% extends "base1.html" %}
 {% block content %}
     <section id="about-section">
-        <div class="people">
-            
-            {% for p in people %}
-            {{
-                    person(
-                        name=p.get("name"),
-                        job=p.get("job"),
-                        description=p.get("description"),
-                        image=p.get("image"),
-                        social=p.get("social")
-                    )
-            }}
-            {% endfor %}
-
+        <div class="about-us">
+            <h3 class="about-head">ჩვენ შესახებ</h3>
+            <p class="about-us-par">
+                შემთხვევითად გენერირებული ტექსტი ეხმარება დიზაინერებს და ტიპოგრაფიული
+                ნაწარმის შემქმნელებს, რეალურთან მაქსიმალურად მიახლოებული შაბლონი
+                წარუდგინონ შემფასებელს. ხშირადაა შემთხვევა, როდესაც დიზაინის
+                შემთხვევითად გენერირებული ტექსტი ეხმარება დიზაინერებს და ტიპოგრაფიული
+                ნაწარმის შემქმნელებს. შემთხვევითად გენერირებული ტექსტი ეხმარება
+                დიზაინერებს და ტიპოგრაფიული ნაწარმის შემქმნელებს, რეალურთან
+                მაქსიმალურად მიახლოებული შაბლონი წარუდგინონ შემფასებელს. ხშირადაა
+                შემთხვევა, როდესაც დიზაინის შემთხვევითად გენერირებული ტექსტი ეხმარება
+                დიზაინერებს და ტიპოგრაფიული ნაწარმის შემქმნელებს.
+            </p>
+        </div>
+        <div class="our-team-container">
+            <h3 class="about-head">ჩვენი გუნდი</h3>
+            <div class="our-team">
+                <div class="team-info">
+                    <h2 class="team-name">თემურ ჩიჩუა</h2>
+                    <h4>ინსტრუქტორი</h4>
+                    <p class="team-desc">
+                        AnimaChatbotics-ის მოქმედი Python დეველოპერი. მუშაობს სხვადასხვა
+                        კომპიუტერული მეცნიერების მიმართულებაზე. ასწავლის Python
+                        Development-ს ილიას სახელმწიფო უნივერსიტეტის ტექნოლოგიების
+                        ლაბორატორია “უნილაბსა” და “ექსპლორიუმში”
+                    </p>
+                    <a href="https://github.com/temurchichua" class="git">
+                        <i class="fab fa-github"></i><span>github</span>
+                    </a>
+                </div>
+                <div class="team-pics">
+                    <img src="{{ url_for('static', filename='assets/temur-chichua.png') }}" alt="team member" class="team-pic">
+                    <img src="{{ url_for('static', filename='assets/alisa-sanakoevi.png') }}" alt="team member" class="team-pic">
+                    <img src="{{ url_for('static', filename='assets/nina-darsavelidze.png') }}" alt="team member" class="team-pic">
+                    <img src="{{ url_for('static', filename='assets/temuri-qitsohvili.png') }}" alt="team member" class="team-pic">
+                    <img src="{{ url_for('static', filename='assets/mariam-kvantaliani.png') }}" alt="team member" class="team-pic">
+                    <img src="{{ url_for('static', filename='assets/tengiz-pataria.png') }}" alt="team member" class="team-pic">
+                </div>
+            </div>
         </div>
     </section>
 {% endblock %}

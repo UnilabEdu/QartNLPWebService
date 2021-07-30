@@ -1,9 +1,10 @@
-from flask import Blueprint, render_template, redirect, url_for, request, send_from_directory, current_app
+from flask import Blueprint, render_template, redirect, url_for, request, send_from_directory, current_app, flash
 from flask_login import current_user, login_required
 from werkzeug.utils import secure_filename
 
 from app.database import db
 from app.settings import Config
+from app.file_processing.nlp import lemmatize
 from app.files.forms import UploadForm, SearchForm
 from app.file_processing.tasks import process_file
 from app.models.file import File, Pages, Sentences, Words, Statistics, Status
@@ -19,9 +20,11 @@ file_views_blueprint = Blueprint('files',
                                  )
 
 
-@file_views_blueprint.route('/upload', methods=['GET', 'POST'])
+@file_views_blueprint.route('/files', defaults={'page_num': 1}, methods=['GET', 'POST'])
+@file_views_blueprint.route('/files/<int:page_num>', methods=['GET', 'POST'])
 @login_required
-def upload():
+def all_files(page_num):
+    files = File.get_active_files(current_user.id).paginate(per_page=4, page=page_num)
     upload_form = UploadForm()
 
     if upload_form.validate_on_submit():
@@ -61,24 +64,15 @@ def upload():
         file_status.save()
 
         process_file(file_model.id, current_user.id, filename, upload_form.processes.data)
+        flash('მიმდინარეობს ფაილის დამუშავება')
+        return redirect(url_for('files.all_files'))
 
-        return "File is being processed"
-    return render_template('upload.html', upload_form=upload_form)
-
-
-@file_views_blueprint.route('/files', defaults={'page_num': 1}, methods=['GET', 'POST'])
-@file_views_blueprint.route('/files/<int:page_num>', methods=['GET', 'POST'])
-@login_required
-def all_files(page_num):
-    files = File.get_active_files(current_user.id).paginate(per_page=4, page=page_num)
-
-    return render_template('files.html', block_files=files)
+    return render_template('files.html', page_num=page_num, block_files=files, upload_form=upload_form)
 
 
 @file_views_blueprint.route('/files/<int:file_id>/<int:page_id>', methods=['GET', 'POST'])
 @login_required
-def concrete(file_id, page_id):
-
+def view_file(file_id, page_id):
     file = File.file_by_id(file_id)
     page = file.pages[page_id - 1]
     statistics = Statistics.statistics_for_file(file_id)
@@ -95,35 +89,17 @@ def concrete(file_id, page_id):
         lemma_list.append(dict)
 
     search_form = SearchForm()
+    search_type = 0
     if search_form.validate_on_submit() and search_form.search_field.data:
-        return redirect(url_for('files.search', file_id=file_id, search_word=search_form.search_field.data, page_num=1))
+        if search_form.radio_field.data == 'თავისუფალი ძიება':
+            search_type = 1
+
+        return redirect(url_for('files.search', file_id=file_id, search_word=search_form.search_field.data, page_num=1,
+                                search_type=search_type))
 
     return render_template('view_file.html', file=file, word_list=word_list, statistics=statistics,
-                           search_form=search_form, lemma_list=json.dumps(lemma_list, ensure_ascii=False))
-
-
-@file_views_blueprint.route('/files/<int:file_id>/search/<string:search_word>/<int:page_num>', methods=['GET', 'POST'])
-@login_required
-def search(search_word, file_id, page_num):
-
-    search_results = Words.search_by_raw(file_id, search_word).group_by(Words.sentence_id).paginate(per_page=16,
-                                                                                                    page=page_num)
-    sentences = []
-
-    file = File.file_by_id(file_id)
-
-    for word in search_results.items:
-        sentence_object = Sentences.query.get(word[1].id)
-        sentence = {
-            "raw_text": sentence_object.get_text(),
-            "highlight": word[2].raw,
-            "page_id": file.relative_page_by_id(sentence_object.page_id),
-        }
-
-        sentences.append(sentence)
-
-    return render_template('details.html', file_id=file_id, sentences=sentences, paginate=search_results,
-                           search_word=search_word)
+                           search_form=search_form, lemma_list=json.dumps(lemma_list, ensure_ascii=False),
+                           current_page=page_id)
 
 
 @file_views_blueprint.route('/files/disable_file/<int:file_id>', methods=['GET', 'POST'])
@@ -155,3 +131,32 @@ def download_file(file_id):
         return send_from_directory(absolute_path, f"{file.title}.zip", as_attachment=True)
 
     return redirect(url_for('files.all_files'))
+
+
+@file_views_blueprint.route('/files/<int:file_id>/search/<string:search_word>/<int:search_type>/<int:page_num>',
+                            methods=['GET', 'POST'])
+@login_required
+def search(file_id, search_word, search_type, page_num):
+    if search_type == 0:
+        search_results = Words.search_by_raw(file_id, search_word).group_by(Words.sentence_id).paginate(per_page=8,
+                                                                                                        page=page_num)
+    elif search_type == 1:
+        search_word = lemmatize([search_word])[0][1]
+        search_results = Words.search_by_lemma(file_id, search_word).group_by(Words.sentence_id).paginate(per_page=8,
+                                                                                                          page=page_num)
+    sentences = []
+
+    file = File.file_by_id(file_id)
+
+    for word in search_results.items:
+        sentence_object = Sentences.query.get(word[1].id)
+        sentence = {
+            "raw_text": sentence_object.get_text(),
+            "highlight": word[2].raw,
+            "page_id": file.relative_page_by_id(sentence_object.page_id),
+        }
+
+        sentences.append(sentence)
+
+    return render_template('details.html', file_id=file_id, sentences=sentences, paginate=search_results,
+                           search_word=search_word, page_num=page_num, search_type=search_type)
