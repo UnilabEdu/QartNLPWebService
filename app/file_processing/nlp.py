@@ -71,6 +71,10 @@ def remove_trailing_spaces(text):
     return text
 
 
+def remove_special_characters(text):
+    return re.sub('\W', '', text)
+
+
 def lemmatize(text):
 
     fst = FST.load(Config.NLP_LIBS_FOLDER + "\\geo.fst")

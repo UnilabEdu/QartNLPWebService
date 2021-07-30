@@ -28,9 +28,11 @@ class UploadForm(FlaskForm):
     file = FileField(validators=[FileAllowed(['txt'])])
     processes = MultiCheckboxField(choices=[("lemat", "ტექსტის ლემატიზაცია"),
                                             ("token", "ტექსტის ტოკენიზაცია"),
-                                            ("pos_tag", "ტექსტის თეგირება"),
+                                            ("freq_dist", "სიტყვების სიხშირის განაწილება"),
+                                            ("remove_html", "HTML თეგებისგან გასუფთავება "),
+                                            ('clean_whitespaces', 'ცარიელი სივრცეების გასუფთავება'),
+                                            ('clean_special_characters', 'სიმბოლოებისგან გასუფთავება'),
                                             ("stop_word", "Stop word-ებისგან გასუფთავება"),
-                                            ("freq_dist", "სიტყვების სიხშირის განაწილება")
                                             ])
 
 
