@@ -3,7 +3,7 @@ import os
 import json
 
 from app import db
-from app.models.ner_tagging import NerTagType
+from app.models.ner_tagging import NerTagType, NerTags
 from app.settings import Config
 
 from flask_login import current_user
@@ -264,10 +264,10 @@ class Words(db.Model):
         return search_results
 
     def get_ner_tag(self):
-        ner_tag_id = NerTagType.query.filter_by(id=self.ner_tags_id).first()
         ner_tag_type = None
-        if ner_tag_id:
-            ner_tag_type = ner_tag_id.name
+        if self.ner_tags_id:
+            nertag = NerTags.query.filter_by(id=self.ner_tags_id).first()
+            ner_tag_type = NerTagType.query.filter_by(id=nertag.ner_tag_type_id).first().name
 
         return ner_tag_type
 

@@ -2,45 +2,45 @@
 {% extends "base1.html" %}
 {% block content %}
 
-       <div class="wall">
-      <section class="slider">
-        <div class="slider-container">
-          <div class="slider-ul">
-              {% for i in range(4) %}
-            <div class="slider-item">
-              <div class="slider-img">
-                <img src="{{url_for("static", filename="assets/imgslider.png")}}" alt="slider" />
-              </div>
-              <div class="slider-item-content">
-                <h2>ქართული ენის ციფრული დამუშავება</h2>
-                <p>
-                  გამოცადე ლემატიზატორის შესაძლებლობები რეალურ დროში ან სრუი
-                  ფუნქციონალის შესამოწმებლად გაიარე ავტორიზაცია.
-                </p>
-                <button class="btn-for-slider">ავტორიზაცია</button>
-                  <a href="/">მეტის გაგება</a>
-              </div>
+    <div class="wall">
+        <section class="slider">
+            <div class="slider-container">
+                <div class="slider-ul">
+                    {% for i in range(4) %}
+                        <div class="slider-item">
+                            <div class="slider-img">
+                                <img src="{{ url_for("static", filename="assets/imgslider.png") }}" alt="slider"/>
+                            </div>
+                            <div class="slider-item-content">
+                                <h2>ქართული ენის ციფრული დამუშავება</h2>
+                                <p>
+                                    გამოცადე ლემატიზატორის შესაძლებლობები რეალურ დროში ან სრუი
+                                    ფუნქციონალის შესამოწმებლად გაიარე ავტორიზაცია.
+                                </p>
+                                <button class="btn-for-slider">ავტორიზაცია</button>
+                                <a href="/">მეტის გაგება<span><img src="{{ url_for("static", filename="assets/arrow-right.svg") }}" alt=""/></span></a>
+                            </div>
+                        </div>
+                    {% endfor %}
+                </div>
+                <div class="slider-pagination"></div>
             </div>
-              {% endfor %}
-          <div class="slider-pagination"></div>
-        </div>
-        </div>
-      </section>
+        </section>
 
-      <section class="about-project">
-        <h2>პროექტის შესახებ</h2>
-        <p>
-          პროექტი მოამზადა უნილაბის პითონის კურსის პირველ კურსდამთავრებულთა
-          სტაჟირების პირველი პროგრამის მონაწილეთა გუნდმა პროექტი მოამზადა
-          უნილაბის პითონის კურსის პირველ კურსდამთავრებულთა სტაჟირების
-        </p>
-        <p>
-          პროექტი მოამზადა უნილაბის პითონის კურსის პირველ კურსდამთავრებულთა
-          სტაჟირების პირველი პროგრამის მონაწილეთა გუნდმა პროექტი მოამზადა
-          უნილაბის პითონის კურსის პირველ კურსდამთავრებულთა სტაჟირების პირველი
-          პროგრამის მონაწილეთა გუნდმა
-        </p>
-      </section>
+        <section class="about-project">
+            <h2>პროექტის შესახებ</h2>
+            <p>
+                პროექტი მოამზადა უნილაბის პითონის კურსის პირველ კურსდამთავრებულთა
+                სტაჟირების პირველი პროგრამის მონაწილეთა გუნდმა პროექტი მოამზადა
+                უნილაბის პითონის კურსის პირველ კურსდამთავრებულთა სტაჟირების
+            </p>
+            <p>
+                პროექტი მოამზადა უნილაბის პითონის კურსის პირველ კურსდამთავრებულთა
+                სტაჟირების პირველი პროგრამის მონაწილეთა გუნდმა პროექტი მოამზადა
+                უნილაბის პითონის კურსის პირველ კურსდამთავრებულთა სტაჟირების პირველი
+                პროგრამის მონაწილეთა გუნდმა
+            </p>
+        </section>
     </div>
 
 {% endblock %}

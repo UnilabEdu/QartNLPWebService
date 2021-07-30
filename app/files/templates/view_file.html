@@ -11,12 +11,10 @@
             tag.innerHTML = "თეგები: " + lemma_array[word_id].tags;
         }
     </script>
-    <section class="concrete-page">
-        <div class="content-navbar">
-            {{ _("ჩემი ფაილები / " + file.title) }}
-        </div>
+    <section style="margin-top: 100px">
         <div class="concrete-content">
-            <div style="font-family: Sandro; font-size: 18px" class="concrete-words">
+            <div class="concrete-words">
+
                 {% set splitted_words = word_list.split() %}
                 {% set index = namespace(value=0) %}
                 {% for word in splitted_words %}
@@ -27,29 +25,51 @@
                         {{ word }}
                     {% endif %}
                 {% endfor %}
+
+                {% if file.pages|count > 1 %}
+                    <div style="margin-top: 120px; display: flex; justify-content: center;">
+                        {% for i in range(1, 1 + file.pages|count) %}
+                            {% if current_page == i %}
+                                <a class="pagination-number active"
+                                   href="{{ url_for('files.view_file', file_id=file.id, page_id=i) }}">{{ i }}</a>
+                            {% else %}
+                                <a class="pagination-number"
+                                   href="{{ url_for('files.view_file', file_id=file.id, page_id=i) }}">{{ i }}</a>
+                            {% endif %}
+                        {% endfor %}
+                    </div>
+                {% endif %}
+
             </div>
             <div class="concrete-search-tool">
                 <div class="search-tool-block">
-                    <form method="POST">
-                        <div class="search-input-block">
-
-                            {{ search_form.hidden_tag() }}
-                            {{ search_form.search_field(class='input-search') }}
-                            <button class="search-btn">
-                                <img src="{{ url_for("static", filename="assets/search-btn.svg") }}" alt="search"/>
-                            </button>
-
-                        </div>
-                    </form>
                     <div class="info-search">
-                        <ul>
-                            <li>{{ _("წინადადებები") }}: {{ statistics.sentences }}</li>
-                            <li>{{ _("სიტყვები") }}: {{ statistics.words }}</li>
-                            <li>{{ _("უნიკალური სიტყვები") }}: {{ statistics.uniq_words }}</li>
-                            <li>{{ _("სენტიმენტი") }} -</li>
-                            <li>{{ _("ემოცია") }} -</li>
-                            <li>{{ _("კატეგორია") }} -</li>
-                        </ul>
+                        <div class="statistics-group">
+                            <p>წინადადებები <br> {{ statistics.sentences }} </p>
+                            <p>სიტყვები <br> {{ statistics.words }} </p>
+                        </div>
+                        <div class="statistics-group">
+                            <p>უნიკ. სიტყვ. <br> {{ statistics.uniq_words }} </p>
+                            <p>სენტიმენტი <br> - </p>
+                        </div>
+                        <div class="statistics-group">
+                            <p>ემოცია <br> - </p>
+                            <p>კატეგორია <br> - </p>
+                        </div>
+                        <form method="POST">
+                            <div class="search-input-block">
+                                {{ search_form.hidden_tag() }}
+                                {{ search_form.search_field(class='input-search', placeholder="ძიება...") }}
+                                <button class="search-btn">
+                                    <img src="{{ url_for("static", filename="assets/ic-actions-search.svg") }}"
+                                         alt="search"/>
+                                </button>
+                            </div>
+                            <br>
+                            {% for subfield in search_form.radio_field %}
+                                {{ subfield }} {{ subfield.label(style="font-family: firaGo; font-size:12px; margin-right: 18px")  }}
+                            {% endfor %}
+                        </form>
                     </div>
                 </div>
                 <br>
@@ -62,13 +82,7 @@
                         </ul>
                     </div>
                 </div>
-                <button class="btn_download">{{ _("გადმოწერა") }}</button>
             </div>
         </div>
-        {% if file.pages|count > 1 %}
-            {% for i in range(1, 1 + file.pages|count) %}
-                <a href="{{ url_for('files.concrete', file_id=file.id, page_id=i) }}">{{ i }}</a>
-            {% endfor %}
-        {% endif %}
     </section>
 {% endblock %}

@@ -138,3 +138,7 @@ dmypy.json
 # Cython debug symbols
 cython_debug/
 hints.md
+
+
+/app/file_processing/foma.py
+/app/file_processing/libs/

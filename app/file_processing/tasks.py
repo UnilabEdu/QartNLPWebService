@@ -5,9 +5,7 @@ from app.models.file import File, Pages, Sentences, Words, Statistics
 
 from itertools import islice
 from ftfy import fix_encoding
-import json
 import os
-import time
 
 
 @celery.task()
@@ -59,51 +57,3 @@ def process_file(id, user, filename, processes):
 
             file.status[0].completed = True
             db.session.commit()
-
-# @celery.task()
-# def process_file(file, processes):
-#
-#     path = os.path.join(Config.UPLOAD_FOLDER, file)
-#
-#     with open(path, "r", encoding='utf-8') as fp:
-#         text = fix_encoding(fp.read())
-#         lenght_of_file = len(text)
-#
-#     if "freq_dist" in processes:
-#         result_json = frequency_distribution(text)
-#         data = json.dumps(result_json, ensure_ascii=False, indent=1)
-#         with open(f"app/uploads/freq_dist.json", "w", encoding='utf-8') as fp:
-#             fp.write(data)
-#
-#     if "lemat" in processes:
-#         list_of_sentences = split_sentences(text)
-#         i = 0
-#
-#         while i < len(list_of_sentences):
-#             text_chunk = list_of_sentences[i:i+25]
-#             print(text_chunk)
-#             page_db = Pages(i, i+25)
-#             db.session.add(page_db)
-#             db.session.flush()
-#
-#             start_index = 0
-#             end_index = 0
-#
-#             start_time = time.time()
-#             for words in text_chunk:
-#                 end_index = start_index + len(words)
-#                 sentence_db = Sentences(page_db.id, start_index, end_index)
-#                 db.session.add(sentence_db)
-#                 db.session.flush()
-#                 start_index = end_index + 1
-#
-#                 lemmatized_words = lemmatize(tokenize(remove_punctuation(words)))
-#
-#                 for word in lemmatized_words:
-#                     words_db = Words(sentence_db.id, word[3], word[4], word[0], word[1], word[2])
-#                     db.session.add(words_db)
-#
-#             db.session.commit()
-#             i += 25
-#
-#             print("Total time elapsed: ", time.time() - start_time)

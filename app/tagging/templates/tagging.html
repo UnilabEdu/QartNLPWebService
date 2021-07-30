@@ -145,7 +145,7 @@
                             <button id="reset_btn" style="background-color: #B94E31 ; color: white;" type="button">
                                 reset
                             </button>
-                            {{ form.submit(style="background-color: #3D7061; color: white;", type="button") }}
+                            {{ form.submit(style="background-color: #3D7061; color: white;", type="button", onclick='saveButtonOnClick(' + file_id +',' + page_id +')') }}
                         </div>
                     </form>
                 </div>

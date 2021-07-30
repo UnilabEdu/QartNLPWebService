@@ -1,6 +1,6 @@
 from flask_wtf import FlaskForm
 from flask_wtf.file import FileField, FileRequired, FileAllowed
-from wtforms import StringField, TextAreaField, widgets, SelectMultipleField
+from wtforms import StringField, TextAreaField, widgets, SelectMultipleField, RadioField
 from wtforms.widgets import html_params
 from wtforms.validators import Length
 from markupsafe import Markup
@@ -36,3 +36,4 @@ class UploadForm(FlaskForm):
 
 class SearchForm(FlaskForm):
     search_field = StringField()
+    radio_field = RadioField(choices=['ზუსტი ძიება', 'თავისუფალი ძიება'], default='ზუსტი ძიება')
