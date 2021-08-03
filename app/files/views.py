@@ -60,7 +60,8 @@ def all_files(page_num):
         file_model = File(title, current_user.id, filename)
         file_model.save()
 
-        file_status = Status(file_model.id, lemmatized="lemat" in upload_form.processes.data, completed=False)
+        file_status = Status(file_model.id, frequency_distribution_calculated="freq_dist" in upload_form.processes.data,
+                             lemmatized="lemat" in upload_form.processes.data, completed=False)
         file_status.save()
 
         process_file(file_model.id, current_user.id, filename, upload_form.processes.data)
@@ -127,6 +128,9 @@ def download_file(file_id):
             if file.status[0].lemmatized:
                 file.create_json()
                 zipobj.write(f"{file_path}-lemmatized.json", f"{file.title}-lemmatized.json")
+
+            if file.status[0].frequency_distribution_calculated:
+                zipobj.write(f"{file_path}-freq_dist.json", f"{file.title}-freq_dist.json")
 
         return send_from_directory(absolute_path, f"{file.title}.zip", as_attachment=True)
 
