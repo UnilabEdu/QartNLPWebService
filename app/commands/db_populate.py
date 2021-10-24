@@ -15,9 +15,10 @@ def populate_db_nertags():
                 line_count += 1
                 continue
 
-            new_obj = NerTagType(name=row[0],
-                                 title=row[1],
-                                 description=row[2],
-                                 short_name=row[3])
-            db.session.add(new_obj)
+            if not NerTagType.query.filter_by(title=row[1]).first():
+                new_obj = NerTagType(name=row[0],
+                                     title=row[1],
+                                     description=row[2],
+                                     short_name=row[3])
+                db.session.add(new_obj)
         db.session.commit()

@@ -1,10 +1,17 @@
-from . import tagging_blueprint
-from flask import render_template
+from flask import Blueprint, render_template
 import json
 from .forms import NerTagForm
 from app.models.file import File, Pages
 from app.models.ner_tagging import NerTags
 from app.models.ner_tagging import NerTagType
+
+
+tagging_blueprint = Blueprint('tagging',
+                              __name__,
+                              template_folder='templates',
+                              static_folder='static',
+                              url_prefix='/tagging'
+                              )
 
 
 @tagging_blueprint.route('/<int:file_id>/<int:page_id>', methods=['GET', 'POST'])

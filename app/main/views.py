@@ -1,13 +1,10 @@
 from flask import Blueprint, render_template, request
-from app.main.temp_data import people, block_files, grammar_blocks, checkboxes
+from flask_login import login_user
+
 from app.extentions import babel
+from app.main.temp_data import people, block_files, grammar_blocks
 from app.settings import Config
-
-
-@babel.localeselector
-def get_locale():
-    return request.accept_languages.best_match(Config.LANGUAGES.keys())
-
+from app.user.user_model import User
 
 main_blueprint = Blueprint('main',
                            __name__,
@@ -16,9 +13,15 @@ main_blueprint = Blueprint('main',
                            )
 
 
+@babel.localeselector
+def get_locale():
+    return request.accept_languages.best_match(Config.LANGUAGES.keys())
+
+
 @main_blueprint.route('/', methods=['GET', 'POST'])
 @main_blueprint.route('/home', methods=['GET', 'POST'])
 def home():
+    login_user(User.query.get(1))
     return render_template('main.html', blocks=grammar_blocks)
 
 

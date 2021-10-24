@@ -1,22 +1,21 @@
+import json
+import os
+from zipfile import ZipFile
+
 from flask import Blueprint, render_template, redirect, url_for, request, send_from_directory, current_app, flash
 from flask_login import current_user, login_required
 from werkzeug.utils import secure_filename
 
-from app.database import db
-from app.settings import Config
 from app.file_processing.nlp import lemmatize
-from app.files.forms import UploadForm, SearchForm
 from app.file_processing.tasks import process_file
-from app.models.file import File, Pages, Sentences, Words, Statistics, Status
+from app.files.forms import UploadForm, SearchForm
+from app.models.file import File, Sentences, Words, Statistics, Status
+from app.settings import Config
 
-import json
-import time
-import os
-from zipfile import ZipFile
 
 file_views_blueprint = Blueprint('files',
                                  __name__,
-                                 template_folder='/templates',
+                                 template_folder='templates',
                                  url_prefix='/'
                                  )
 

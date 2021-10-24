@@ -1,20 +1,21 @@
-from app.extentions import celery
+import json
+import os
+from itertools import islice
+
+from flask_login import current_user
+from ftfy import fix_encoding
+
 from app.database import db
+from app.extentions import celery
 from app.file_processing.nlp import *
 from app.models.file import File, Pages, Sentences, Words, Statistics
-
-from itertools import islice
-from ftfy import fix_encoding
-import os
-import json
-from flask_login import current_user
 
 
 @celery.task()
 def process_file(id, user, filename, processes):
-    from app.commands import manager
+    from app import create_app
 
-    with manager.app.app_context():
+    with create_app().app_context():
         file_path = os.path.join(Config.UPLOAD_FOLDER, str(user), filename)
 
         if "freq_dist" in processes:
