@@ -16,7 +16,8 @@ from zipfile import ZipFile
 
 file_views_blueprint = Blueprint('files',
                                  __name__,
-                                 template_folder='templates'
+                                 template_folder='/templates',
+                                 url_prefix='/'
                                  )
 
 

@@ -1,4 +1,4 @@
-from app import celery
+from app.extentions import celery
 from app.database import db
 from app.file_processing.nlp import *
 from app.models.file import File, Pages, Sentences, Words, Statistics

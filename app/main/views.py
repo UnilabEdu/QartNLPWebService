@@ -1,6 +1,6 @@
 from flask import Blueprint, render_template, request
 from app.main.temp_data import people, block_files, grammar_blocks, checkboxes
-from app import babel
+from app.extentions import babel
 from app.settings import Config
 
 
@@ -12,7 +12,7 @@ def get_locale():
 main_blueprint = Blueprint('main',
                            __name__,
                            template_folder='templates/jinja',
-
+                           url_prefix='/'
                            )
 
 
