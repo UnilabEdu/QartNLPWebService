@@ -1,4 +1,4 @@
-from flask import Flask, url_for
+from flask import Flask
 
 from app.api import api
 from app.commands import reset_db_command, populate_db_command, clear_file_tables_command

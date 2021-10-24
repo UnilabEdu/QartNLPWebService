@@ -5,7 +5,7 @@
     {% block title %}
         <title>{{ _("QartNLP") }}</title>
     {% endblock %}
-
+    <link rel="stylesheet" href="{{ url_for("static", filename="CSS/tagging-style.css") }}"/>
     <link rel="icon" href="{{ url_for("static", filename="assets/favicon.ico") }}" type="image/png">
     <script src="https://kit.fontawesome.com/5968971b15.js" crossorigin="anonymous"></script>
     <link rel="stylesheet" href="{{ url_for("static", filename="CSS/styles.css") }}"/>

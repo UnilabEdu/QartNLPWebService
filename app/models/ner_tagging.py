@@ -22,8 +22,18 @@ class NerTagType(db.Model):
         return all_tags_formatted
 
     @classmethod
-    def find_tag_by_name(cls, name):
-        return cls.query.filter_by(name=name).first()
+    def get_nertag_short_names(cls):
+        all_tags = cls.query.all()
+
+        all_tags_formatted = {}
+        for tag in all_tags:
+            all_tags_formatted.update({tag.id: tag.short_name})
+        print(all_tags_formatted)
+        return all_tags_formatted
+
+    @classmethod
+    def find_tag_by_name(cls, short_name):
+        return cls.query.filter_by(short_name=short_name).first()
 
     def __init__(self, name, title, description, short_name):
         self.name = name

@@ -45,6 +45,7 @@ class NerTagApi(Resource):
         """
         # Parse request
         request_arguments = NerTagApi.parser.parse_args()
+        print(request_arguments)
 
         # Prepare db objects for work
         current_file = File.query.get(request_arguments["file_id"])

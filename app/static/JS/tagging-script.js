@@ -5,7 +5,8 @@ const words = document.querySelectorAll('span');
 const words_list = document.getElementById('words_list');
 const initJson = document.getElementById('init-json');
 const tag_selector = document.getElementById('ner_tag');
-
+console.log('initJson:')
+console.log(initJson)
 let taggedWordArray = [] // array of word objects
 let taggedWords = [] // array of words (right block)
 
@@ -91,6 +92,7 @@ function saveButtonOnClick(file_id, page_id) {
         ner_tag: nerTag,
         words: taggedWordArray,
     }
+    console.log(taggedWordArray)
     console.log(finalJSON)
     fetch('http://127.0.0.1:5000/api/', {
         method: 'POST',
@@ -158,6 +160,7 @@ function assign_tag() {
 function initTags(initJsonSelector) {
     let tags = JSON.parse(initJsonSelector.innerHTML)
     tags.forEach((words) => {
+        console.log(words)
         if (words.keys.length > 1) {
             wrap_id(words.keys, words.value)
         } else {

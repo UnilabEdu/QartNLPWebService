@@ -1,12 +1,12 @@
 import datetime
-import os
 import json
+import os
+
+from flask_login import current_user
 
 from app.database import db
 from app.models.ner_tagging import NerTagType, NerTags
 from app.settings import Config
-
-from flask_login import current_user
 
 
 class File(db.Model):
@@ -91,6 +91,8 @@ class File(db.Model):
                        .join(Sentences.words)
                        .filter(Pages.file_id == self.id))
 
+        ner_tag_short_names = NerTagType.get_nertag_short_names()
+
         with open(file_path, 'w', encoding="utf-8") as f:
             start = 0
             while True:
@@ -101,11 +103,21 @@ class File(db.Model):
                     break
 
                 for result in db_chunk:
+                    ner_tag = ''
+                    if result[2].ner_tags_id:
+                        print(result[2].ner_tags_id)
+                        ner_tag_connection = result[2].ner_tags_id
+                        ner_tag = ner_tag_connection.ner_tag_type_id
+                        print('ner_tag found!')
+                        print(ner_tag)
+
+                    print(result[2])
 
                     dict = {
                         "word": result[2].raw,
                         "lemma": result[2].lemma,
                         "tags": result[2].pos_tags,
+                        "ner_tag": ner_tag,
                         "page": {
                             "start": result[0].start_index,
                             "end": result[0].end_index
@@ -113,7 +125,7 @@ class File(db.Model):
                         "sentence": {
                             "start": result[1].start_index,
                             "end": result[1].end_index
-                        }
+                        },
                     }
 
                     f.write("\n" + json.dumps(dict, ensure_ascii=False, indent=1))
@@ -267,9 +279,8 @@ class Words(db.Model):
         ner_tag_type = None
         if self.ner_tags_id:
             nertag = NerTags.query.filter_by(id=self.ner_tags_id).first()
-            ner_tag_type = NerTagType.query.filter_by(id=nertag.ner_tag_type_id).first().name
-
-        return ner_tag_type
+            ner_tag_type = NerTagType.query.filter_by(id=nertag.ner_tag_type_id).first().title
+        return ner_tag_type.replace(' ', '_')
 
 
 class Statistics(db.Model):

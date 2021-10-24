@@ -9,21 +9,21 @@ Organization,Organization,"Companies, political groups, musical bands, sport clu
 Event,Event,"Historical, social, cultural, sporting, and naturally occurring events.",EVENT
 Product,Product,Physical objects of various categories.,PROD.
 Address,Address,Full mailing address.,ADDR.
-PhoneNumber,PhoneNumber,Phone numbers.,PHONE
+PhoneNumber,Phone Number,Phone numbers.,PHONE
 Email,Email,Email addresses.,EMAIL
 URL,URL,URLs to websites.,URL
 IP,IP,network IP addresses.,IP
 DateTime,Datetime,Dates and times of day.,Datetime
 DateTime,Date,Calender dates.,DATE
 DateTime,Time,Times of day.,TIME
-DateTime,DateRange,Date ranges.,DATErng.
-DateTime,TimeRange,Time ranges.,TIMErng.
+DateTime,Date Range,Date ranges.,DATErng.
+DateTime,Time Range,Time ranges.,TIMErng.
 DateTime,Duration,Durations.,DUR.
 Quantity,Quantity,Numbers and numeric quantities,QTY.
 Quantity,Number,Numbers,NUM
 Quantity,Percentage,Percentages,%
-Quantity,Ordinal numbers,Ordinal numbers,ORDNUM.
-Quantity,Age,Ages,AGES
+Quantity,Ordinal Number,Ordinal numbers,ORDNUM.
+Quantity,Age,Ages,AGE
 Quantity,Currency,Currencies,CUR.
 Quantity,Dimensions,Dimensions and measurements,DIM.
 Quantity,Temperature,Temperatures,TEMP.
