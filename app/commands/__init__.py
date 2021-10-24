@@ -1,11 +1,19 @@
-from app import create_app
-from flask_script import Manager
+import click
+from flask.cli import with_appcontext
 
-from flask_migrate import MigrateCommand
-from .db_init import InitDbCommand, ClearFileTables
+from .db_reset import reset_db, clear_file_tables
+from .db_populate import populate_db_nertags
 
-manager = Manager(create_app())
 
-manager.add_command('db', MigrateCommand)
-manager.add_command('db_init', InitDbCommand)
-manager.add_command('clear_file_db', ClearFileTables)
+@click.command('db_reset')
+@with_appcontext
+def reset_db_command():
+    reset_db()
+    click.echo('The database was reset successfully')
+
+
+@click.command('db_clear_file')
+@with_appcontext
+def clear_file_tables_command():
+    clear_file_tables()
+    click.echo('File tables were cleared successfully')

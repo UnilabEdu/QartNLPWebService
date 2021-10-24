@@ -19,7 +19,7 @@ class Config(object):
     CELERY_RESULT_BACKEND = "redis://localhost"
 
     # File processing library location
-    NLP_LIBS_FOLDER = "app\\file_processing\\libs"
+    NLP_LIBS_FOLDER = basedir + "/file_processing/libs"
 
     # Flask-User settings
     USER_ENABLE_EMAIL = True  # TODO: apply Flask-Mail production configuration

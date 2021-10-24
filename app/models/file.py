@@ -2,7 +2,7 @@ import datetime
 import os
 import json
 
-from app import db
+from app.database import db
 from app.models.ner_tagging import NerTagType, NerTags
 from app.settings import Config
 
