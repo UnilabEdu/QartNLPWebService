@@ -1,8 +1,8 @@
 from flask import Flask
 from flask_migrate import Migrate
-from flask_user import SQLAlchemyAdapter, UserManager
 from flask_mail import Mail
 from flask_babel import Babel
+from flask_login import LoginManager
 from celery import Celery
 
 from app.settings import Config
@@ -41,15 +41,20 @@ def create_app():
     # Setup Flask-Babel
     babel.init_app(app)
 
-    # Setup Flask-User
-    db_adapter = SQLAlchemyAdapter(db, User)
-    UserManager(db_adapter, app)
-
     # Setup Flask-Admin
     admin.init_app(app)
 
     # Initialize API
     api.init_app(app)
+
+    # Flask-Login
+    login_manager = LoginManager()
+
+    @login_manager.user_loader
+    def load_user(id_):
+        return User.query.get(id_)
+
+    login_manager.init_app(app)
 
     # Blueprint registrations
     from app.main.views import main_blueprint

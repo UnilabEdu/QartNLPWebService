@@ -3,7 +3,7 @@ from flask_admin.contrib.sqla import ModelView
 from app.database import db
 from app.user.user_model import User
 from flask_admin import Admin, AdminIndexView
-from flask_user import current_user
+from flask_login import current_user
 
 
 class AdminModelView(ModelView):
