@@ -15,8 +15,12 @@ def test(page_id=0, file_id=0):
     file_id = str(file.id)
 
     form = NerTagForm()
-    not_random_text_anymore = page.get_text()
+    not_random_text_anymore = page.get_text()  # TODO: rename this variable
 
     tags = NerTags.connected_words(page.id)
 
-    return render_template('tagging.html', file=file, text=not_random_text_anymore, tags=tags, tags_json=json.dumps(tags, indent = 4), form=form, file_id=file_id, page_id=str(page_id))
+    return render_template('/tagging.html',
+                           file=file, file_id=file_id, page_id=str(page_id),
+                           text=not_random_text_anymore, form=form,
+                           tags=tags, tags_json=json.dumps(tags, indent=4)
+                           )

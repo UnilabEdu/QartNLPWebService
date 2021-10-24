@@ -46,7 +46,7 @@ def all_files(page_num):
             filename = f"{new_title}.txt"
             path = os.path.join(Config.UPLOAD_FOLDER, str(current_user.id), filename)
 
-        if duplicate_count is not 0:
+        if duplicate_count != 0:
             title = new_title
 
         os.makedirs(os.path.dirname(path), exist_ok=True)

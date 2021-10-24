@@ -86,13 +86,13 @@ def lemmatize(text):
 
         lemmatization_result = list(fst.apply_up(word))
 
-        if len(lemmatization_result) is 0:
+        if len(lemmatization_result) == 0:
             lemm_word = ''
             tags = ''
         else:
             split_result = list(lemmatization_result)[-1].split('+')
 
-            if (split_result[0] == "Pfv" or split_result[0] == "Ipfv"):
+            if split_result[0] == "Pfv" or split_result[0] == "Ipfv":
                 split_result[1], split_result[0] = split_result[0], split_result[1]
 
             lemm_word = split_result[0]
@@ -100,7 +100,6 @@ def lemmatize(text):
 
         word_end = word_start + len(word)
         list_separator = ','
-
 
         lemm_list = (word, lemm_word, list_separator.join(tags), word_start, word_end)
 

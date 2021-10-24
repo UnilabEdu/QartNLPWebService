@@ -15,6 +15,7 @@ main_blueprint = Blueprint('main',
 
                            )
 
+
 @main_blueprint.route('/', methods=['GET', 'POST'])
 @main_blueprint.route('/home', methods=['GET', 'POST'])
 def home():

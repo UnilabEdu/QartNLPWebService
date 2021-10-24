@@ -1,7 +1,9 @@
 from app import db
 
+
 class NerTagType(db.Model):
     __tablename__ = "ner_tag_type"
+
     id = db.Column(db.Integer, primary_key=True)
     name = db.Column(db.String)
     title = db.Column(db.String)
@@ -33,6 +35,7 @@ class NerTagType(db.Model):
 
 class NerTags(db.Model):
     __tablename__ = "ner_tags"
+
     id = db.Column(db.Integer, primary_key=True)
     page_id = db.Column(db.Integer, db.ForeignKey("pages.id"))
     ner_tag_type_id = db.Column(db.Integer, db.ForeignKey("ner_tag_type.id"))

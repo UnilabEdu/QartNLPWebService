@@ -139,6 +139,12 @@ dmypy.json
 cython_debug/
 hints.md
 
-
+# File-processing files
 /app/file_processing/foma.py
 /app/file_processing/libs/
+
+# Uploads
+app/uploads
+
+# Database
+data.db

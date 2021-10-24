@@ -6,23 +6,23 @@ class Config(object):
 
     # Flask settings
     CSRF_ENABLED = True
-    DEBUG = True
+    DEBUG = True  # TODO: disable debug mode
 
     # Flask-SQLAlchemy settings
-    SECRET_KEY = os.environ.get('SECRET_KEY', 'appsecretkey')
+    SECRET_KEY = os.environ.get('SECRET_KEY', 'appsecretkey')  # TODO: set secret_key
     SQLALCHEMY_DATABASE_URI = os.environ.get('SQLALCHEMY_DATABASE_URI', f'sqlite:///{os.path.join(basedir, "data.db")}')
     SQLALCHEMY_TRACK_MODIFICATIONS = False
 
     # Celery settings
     UPLOAD_FOLDER = "app/uploads/"
-    CELERY_BROKER_URL = "redis://localhost"
+    CELERY_BROKER_URL = "redis://localhost"  # TODO: update redis URLs
     CELERY_RESULT_BACKEND = "redis://localhost"
 
-    #File processing library location
-    NLP_LIBS_FOLDER = "app/file_processing/libs"
+    # File processing library location
+    NLP_LIBS_FOLDER = "app\\file_processing\\libs"
 
     # Flask-User settings
-    USER_ENABLE_EMAIL = True
+    USER_ENABLE_EMAIL = True  # TODO: apply Flask-Mail production configuration
     MAIL_SERVER = 'smtp.mailtrap.io'
     MAIL_PORT = 2525
     MAIL_USERNAME = '9c35497ccc3adf'

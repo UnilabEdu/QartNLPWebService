@@ -2,7 +2,7 @@
 {% extends "base1.html" %}
 {% block content %}
     <style>
-
+{# TODO: move style to a separate file #}
         #tagging-page {
             line-height: 30px;
         }
@@ -129,7 +129,7 @@
                     <form method="POST">
                         {{ form.hidden_tag() }}
                         <table class='table table-striped'>
-                            <dbody>
+                            <tbody>
                                 <tr>
                                     <td>Words</td>
                                     <td id="words_list">empty</td>
@@ -139,7 +139,7 @@
                                     <td>Tags</td>
                                     <td>{{ form.ner_tag(class="form-select") }}</td>
                                 </tr>
-                            </dbody>
+                            </tbody>
                         </table>
                         <div class='buttons text-right d-flex justify-content-between'>
                             <button id="reset_btn" style="background-color: #B94E31 ; color: white;" type="button">

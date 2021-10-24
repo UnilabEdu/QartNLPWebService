@@ -252,7 +252,7 @@ class Words(db.Model):
 
         return search_results
 
-    @classmethod
+    @classmethod  # TODO: fix search_by_tag
     def search_by_tag(cls, file_id, tags):
         search_results = (db.session.query(Pages, Sentences, Words)
                           .join(Sentences, Pages.sentences)
