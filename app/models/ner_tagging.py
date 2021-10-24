@@ -1,4 +1,4 @@
-from app import db
+from app.database import db
 
 
 class NerTagType(db.Model):
@@ -10,6 +10,16 @@ class NerTagType(db.Model):
     description = db.Column(db.String)
     short_name = db.Column(db.String)
     ner_tags = db.relationship('NerTags', backref='ner_tag_type', lazy=True)
+
+    @classmethod
+    def get_all_nertags(cls):
+        all_tags = cls.query.all()
+
+        all_tags_formatted = []
+        for tag in all_tags:
+            all_tags_formatted.append((tag.short_name, tag.title))
+
+        return all_tags_formatted
 
     @classmethod
     def find_tag_by_name(cls, name):

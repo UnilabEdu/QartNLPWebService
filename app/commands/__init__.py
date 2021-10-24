@@ -12,6 +12,13 @@ def reset_db_command():
     click.echo('The database was reset successfully')
 
 
+@click.command('db_populate')
+@with_appcontext
+def populate_db_command():
+    populate_db_nertags()
+    click.echo('Ner Tags were successfully added to the database')
+
+
 @click.command('db_clear_file')
 @with_appcontext
 def clear_file_tables_command():

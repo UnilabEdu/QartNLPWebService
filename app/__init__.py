@@ -11,7 +11,7 @@ from app.models.file import File, Statistics, Pages, Sentences, Words
 from app.settings import Config
 from app.user.admin.admin import admin
 from app.user.user_model import User, Role, UserRoles, Profile
-from app.commands import reset_db_command, clear_file_tables_command
+from app.commands import reset_db_command, populate_db_command, clear_file_tables_command
 
 migrate = Migrate()
 mail = Mail()
