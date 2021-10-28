@@ -4,7 +4,7 @@
 
 .ner-tag {
     padding: 5px 8px;
-    margin: 10px 0;
+    margin: 10px 0.4rem 10px 0;
     border-radius: 5px;
     border: 1px solid rgba(128, 128, 128, 0.3);
     word-break: break-word;
@@ -243,4 +243,126 @@
 }
 .ner-temperature:after {
     content: " TEMP.";
+}
+
+
+
+#ner-tag-selected {
+    position: relative;
+    padding: 5px 8px;
+    margin: 10px 0;
+    border-radius: 5px;
+    border: 1px solid rgba(128, 128, 128, 0.3);
+    word-break: break-word;
+}
+
+
+#ner-dropdown {
+    left: 0;
+    height: 0;
+    overflow-y: scroll;
+    border-radius: 2rem;
+    position: absolute;
+    background-color: #f1f1f1;
+    min-width: 160px;
+    box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2);
+    z-index: 1;
+    transition-delay: 0.1s;
+    transition-duration: 0.1s;
+    transition-property: height;
+
+    display: flex;
+    flex-grow: 1;
+    flex-direction: column;
+    scrollbar-base-color: transparent;
+    scrollbar-arrow-color: transparent;
+    /*justify-content: center;*/
+}
+::-webkit-scrollbar {
+    width: 0;  /* Remove scrollbar space */
+    background: transparent;  /* Optional: just make scrollbar invisible */
+}
+/* Optional: show position indicator in red */
+::-webkit-scrollbar-thumb {
+    background: #FF0000;
+}
+#ner-tag-selected:hover #ner-dropdown {
+    height: 300px;
+    transition-delay: 0.001s;
+    transition-duration: 0.5s;
+    transition-timing-function: cubic-bezier(1,0,1,1.01);
+}
+#ner-dropdown:hover {
+    height: 300px;
+    transition-delay: 0.5s;
+    transition-duration: 0.5s;
+    transition-timing-function: cubic-bezier(1,0,1,1.01);
+}
+
+#ner-dropdown button {
+    width: 90%;
+    background-color: white;
+    border-radius: 1.5rem;
+    margin: auto auto 0.35rem;
+    box-shadow: 1px 1px 4px 0 rgba(0,0,0,0.21);
+}
+
+#ner-dropdown button:hover {
+    box-shadow: inset 2px 2px 6px 0 rgba(0,0,0,0.21);
+}
+#ner-dropdown button:active {
+    color: white;
+    background-color: #5aa95a
+}
+
+#ner-dropdown p {
+    color: #000011;
+    margin-bottom: 0;
+    font-size: 16px;
+    font-family: Sandro, sans-serif;
+}
+
+/*.ner-tag-delete {*/
+/*    display: none;*/
+/*    color: #930000;*/
+/*    font-weight: bold;*/
+/*    border: none;*/
+/*    border-radius: 100%;*/
+/*    margin-bottom: 0;*/
+/*    background-color: white;*/
+/*    line-height: unset;*/
+/*    letter-spacing: unset;*/
+/*    padding: 0;*/
+/*    width: 2.7rem;*/
+/*    height: 2.7rem;*/
+/*    position: center;*/
+/*}*/
+
+/*.ner-tag:hover .ner-tag:first-child {*/
+/*    display: inline;*/
+/*}*/
+
+.ner-tag-delete {
+    display: none;
+    color: #930000;
+    font-weight: bold;
+    border: none;
+    border-radius: 100%;
+    background-color: white;
+    line-height: unset;
+    letter-spacing: unset;
+    margin: auto;
+    padding: 0;
+    width: 2.4rem;
+    height: 2.4rem;
+    position: center;
+    box-shadow: 2px 2px 5px 0 rgba(0,0,0,0.45);
+}
+
+.ner-tag-delete:hover {
+    box-shadow: inset 2px 1px 5px 0 rgba(0,0,0,0.45);
+}
+.ner-tag-delete:active {
+    color: white;
+    background-color: #930000;
 }

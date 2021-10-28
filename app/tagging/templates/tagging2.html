@@ -1,0 +1,62 @@
+{% from "macros.html" import person with context %}
+{% extends "base1.html" %}
+{% block content %}
+    {# ALERT JS #}
+
+    <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/toastify-js/src/toastify.min.css">
+    <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/toastify-js"></script>
+    {# SKELETON CSS #}
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/skeleton/2.0.4/skeleton.min.css"
+          integrity="sha512-EZLkOqwILORob+p0BXZc+Vm3RgJBOe1Iq/0fiI7r/wJgzOFZMlsqTa29UEl6v6U6gsV4uIpsNZoV32YZqrCRCQ=="
+          crossorigin="anonymous" referrerpolicy="no-referrer"/>
+    <div class='container' id='tagging-page' style="min-height: 53.5vh">
+        <div class='row' style="margin-top: 50px;">
+            <div class='twelve columns'>
+                <div id='left' style="padding-top: 12px">
+                    <div>
+                        {% set separators = ['.', ',', '?', '!', ';'] %}
+
+                        {% for word in text.split() %}
+
+                            {% if word[-2] in separators %}
+
+                                <span id="w{{ loop.index }}">{{ word[:-2] }}</span>{{ word[-2:] }}
+
+                            {% elif word[-1] in separators %}
+
+                                <span id="w{{ loop.index }}">{{ word[:-1] }}</span>{{ word[-1] }}
+
+                            {% else %}
+
+                                <span id="w{{ loop.index }}">{{ word }}</span>
+
+                            {% endif %}
+
+                        {% endfor %}
+
+                    </div>
+
+                    <p id='init-json' class="hidden">{{ tags_json }}</p>
+                </div>
+            </div>
+        </div>
+    </div>
+    {% if file.pages|count > 1 %}
+        {% for i in range(1, 1 + file.pages|count) %}
+            <a href="{{ url_for('tagging.test', file_id=file.id, page_id=i) }}">{{ i }}</a>
+        {% endfor %}
+    {% endif %}
+    <script>
+        let allTypes = {{ all_types | safe }};
+        const fileID = {{ file_id }};
+        const pageID = {{ page_id }};
+        const backendTags = {{ tags_json | safe }};
+        console.log('backendTags:');
+        console.log(backendTags);
+    </script>
+    <script src="{{ url_for("static", filename="JS/tagging-script2.js") }}"></script>
+{% endblock %}
+
+{# sites main color - #172420 #}
+{# bootstrap red - #dc3545 #}
+{# bootstrap green - #28a745 #}

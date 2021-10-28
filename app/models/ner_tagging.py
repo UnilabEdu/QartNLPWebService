@@ -1,4 +1,5 @@
 from app.database import db
+from sqlalchemy import func
 
 
 class NerTagType(db.Model):
@@ -32,8 +33,8 @@ class NerTagType(db.Model):
         return all_tags_formatted
 
     @classmethod
-    def find_tag_by_name(cls, short_name):
-        return cls.query.filter_by(short_name=short_name).first()
+    def find_tag_by_name(cls, title):
+        return cls.query.filter(func.lower(cls.title) == func.lower(title)).first()
 
     def __init__(self, name, title, description, short_name):
         self.name = name
@@ -74,7 +75,11 @@ class NerTags(db.Model):
 
         for nertags in cls.query.filter_by(page_id=page_id).all():
             id = nertags.words[0].ner_tags_id
+            print(id)
+            print([word for word in nertags.words])
+            print(first_word_index)
             keys = [word.id - first_word_index + 1 for word in nertags.words]
+            print('nertagged word ids (keys):', keys)
             nertag = nertags.words[0].get_ner_tag()
             dict = {
                 'id': id,

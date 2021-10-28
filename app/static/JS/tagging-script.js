@@ -47,14 +47,13 @@ function updateWordsList(wordObject) {
         } else {
             Toastify({
                 text: "შემდეგი სიტყვა უნდა იყოს ან მარჯვენა ან მარხენა მეზობელი",
-                duration: 10000,
-                // destination: "https://github.com/apvarun/toastify-js",  // link to plugin github page
-                // newWindow: true,
+                duration: 5000,
                 close: true,
-                gravity: "top", // `top` or `bottom`
-                position: "left", // `left`, `center` or `right`
-                backgroundColor: "linear-gradient(to right, darkred, red)",
-                stopOnFocus: true, // Prevents dismissing of toast on hover
+                gravity: "top",
+                position: "left",
+                backgroundColor: "white",
+                boxShadow: "box-shadow: inset 5px 6px 14px 0 rgba(0,0,0,0.34)",
+                stopOnFocus: false,
                 onClick: function () {
                 } // Callback after click
             }).showToast();
@@ -136,6 +135,7 @@ function temp_wrap_ids(tagged_ids) {
     let wrapper = null;
 
     if (!is_tagged) {
+        debugger
         let word = document.querySelector('#w' + tagged_ids[0])
         wrapper = document.createElement('span')
         wrapper.classList.add('ner-tag', 'ner-temporary')
@@ -158,7 +158,9 @@ function assign_tag() {
 }
 
 function initTags(initJsonSelector) {
+    console.log('inittags')
     let tags = JSON.parse(initJsonSelector.innerHTML)
+    console.log(tags)
     tags.forEach((words) => {
         console.log(words)
         if (words.keys.length > 1) {

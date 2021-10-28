@@ -107,7 +107,7 @@ class File(db.Model):
                     if result[2].ner_tags_id:
                         print(result[2].ner_tags_id)
                         ner_tag_connection = result[2].ner_tags_id
-                        ner_tag = ner_tag_connection.ner_tag_type_id
+                        # ner_tag = ner_tag_connection.ner_tag_type_id
                         print('ner_tag found!')
                         print(ner_tag)
 
@@ -117,7 +117,7 @@ class File(db.Model):
                         "word": result[2].raw,
                         "lemma": result[2].lemma,
                         "tags": result[2].pos_tags,
-                        "ner_tag": ner_tag,
+                        "ner_tag": ner_tag_connection, # TODO: should be nertag
                         "page": {
                             "start": result[0].start_index,
                             "end": result[0].end_index
