@@ -59,9 +59,9 @@ class File(db.Model):
 
     def get_word_count(self):
         word_count = (db.session.query(Words)
-                       .join(Pages.sentences)
-                       .join(Sentences.words)
-                       .filter(Pages.file_id == self.id)).count()
+                      .join(Pages.sentences)
+                      .join(Sentences.words)
+                      .filter(Pages.file_id == self.id)).count()
         return word_count
 
     def relative_page_by_id(self, page_id):
@@ -71,16 +71,16 @@ class File(db.Model):
 
     def get_unique_word_count(self):
         unique_word_count = (db.session.query(Words)
-                          .join(Pages.sentences)
-                          .join(Sentences.words)
-                          .filter(Pages.file_id == self.id)
-                          ).group_by(Words.raw).count()
+                             .join(Pages.sentences)
+                             .join(Sentences.words)
+                             .filter(Pages.file_id == self.id)
+                             ).group_by(Words.raw).count()
         return unique_word_count
 
     def get_sentence_count(self):
         sentence_count = (db.session.query(Sentences)
-                           .join(Pages.sentences)
-                           .filter(Pages.file_id == self.id)).count()
+                          .join(Pages.sentences)
+                          .filter(Pages.file_id == self.id)).count()
         return sentence_count
 
     def create_json(self):
@@ -92,6 +92,14 @@ class File(db.Model):
                        .filter(Pages.file_id == self.id))
 
         ner_tag_short_names = NerTagType.get_nertag_short_names()
+        all_pages = Pages.query.filter_by(file_id=self.id).all()
+        all_pages = [page.id for page in all_pages]
+        all_ner_tag_connections = NerTags.query.filter(NerTags.page_id.in_(all_pages)).all()
+        all_ner_tag_connections_dict = {}
+        print(len(all_ner_tag_connections))
+        for connection in all_ner_tag_connections:
+            print(type(connection.id))
+            all_ner_tag_connections_dict.update({str(connection.id): connection.ner_tag_type_id})
 
         with open(file_path, 'w', encoding="utf-8") as f:
             start = 0
@@ -103,21 +111,17 @@ class File(db.Model):
                     break
 
                 for result in db_chunk:
-                    ner_tag = ''
+                    ner_tag_type_name = ''
                     if result[2].ner_tags_id:
-                        print(result[2].ner_tags_id)
-                        ner_tag_connection = result[2].ner_tags_id
-                        # ner_tag = ner_tag_connection.ner_tag_type_id
-                        print('ner_tag found!')
-                        print(ner_tag)
-
-                    print(result[2])
+                        ner_tag_connection_id = result[2].ner_tags_id
+                        ner_tag_type_id = all_ner_tag_connections_dict[str(ner_tag_connection_id)]
+                        ner_tag_type_name = ner_tag_short_names[str(ner_tag_type_id)]
 
                     dict = {
                         "word": result[2].raw,
                         "lemma": result[2].lemma,
                         "tags": result[2].pos_tags,
-                        "ner_tag": ner_tag_connection, # TODO: should be nertag
+                        "ner_tag": ner_tag_type_name,  # TODO: should be nertag
                         "page": {
                             "start": result[0].start_index,
                             "end": result[0].end_index

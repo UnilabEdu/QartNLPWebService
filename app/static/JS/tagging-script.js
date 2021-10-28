@@ -47,13 +47,14 @@ function updateWordsList(wordObject) {
         } else {
             Toastify({
                 text: "შემდეგი სიტყვა უნდა იყოს ან მარჯვენა ან მარხენა მეზობელი",
-                duration: 5000,
+                duration: 10000,
+                // destination: "https://github.com/apvarun/toastify-js",  // link to plugin github page
+                // newWindow: true,
                 close: true,
-                gravity: "top",
-                position: "left",
-                backgroundColor: "white",
-                boxShadow: "box-shadow: inset 5px 6px 14px 0 rgba(0,0,0,0.34)",
-                stopOnFocus: false,
+                gravity: "top", // `top` or `bottom`
+                position: "left", // `left`, `center` or `right`
+                backgroundColor: "linear-gradient(to right, darkred, red)",
+                stopOnFocus: true, // Prevents dismissing of toast on hover
                 onClick: function () {
                 } // Callback after click
             }).showToast();

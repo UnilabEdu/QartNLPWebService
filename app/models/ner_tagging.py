@@ -28,7 +28,7 @@ class NerTagType(db.Model):
 
         all_tags_formatted = {}
         for tag in all_tags:
-            all_tags_formatted.update({tag.id: tag.short_name})
+            all_tags_formatted.update({str(tag.id): tag.short_name})
         print(all_tags_formatted)
         return all_tags_formatted
 
