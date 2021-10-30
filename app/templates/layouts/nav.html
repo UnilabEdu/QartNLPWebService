@@ -1,4 +1,4 @@
-{% from "macros.html" import nav_link with context %}
+{% from "macros/macros.html" import nav_link with context %}
 
 <!-- NAVIGATION -->
 <nav class="navigation display-flex">
@@ -9,7 +9,7 @@
         <ul>
             {{ nav_link("main.home", gettext('მთავარი')) }}
             {{ nav_link("files.all_files", gettext('ლემატიზატორი')) }}
-            {{ nav_link("main.about_us", gettext('ჩვენს შესახებ')) }}
+            {{ nav_link("main.about_us", gettext('ჩვენ შესახებ')) }}
             <a class="icon" href="{{ url_for('files.all_files') }}">
                 <div class="user-place">
                     <img src="{{ url_for('static', filename="assets/user.svg") }}" alt="logo" class="user-logo"/>

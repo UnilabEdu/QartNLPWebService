@@ -1,5 +1,4 @@
-{% from "macros.html" import person with context %}
-{% extends "base1.html" %}
+{% extends "layouts/base_for_full_pages.html" %}
 {% block content %}
     {# ALERT JS #}
 
@@ -11,7 +10,7 @@
           crossorigin="anonymous" referrerpolicy="no-referrer"/>
     <div class='container' id='tagging-page' style="min-height: 53.5vh">
         <div class='row' style="margin-top: 50px;">
-            <div class='eight columns'>
+            <div class='twelve columns'>
                 <div id='left' style="padding-top: 12px">
                     <div>
                         {% set separators = ['.', ',', '?', '!', ';'] %}
@@ -39,32 +38,6 @@
                     <p id='init-json' class="hidden">{{ tags_json }}</p>
                 </div>
             </div>
-            <div class='four columns'>
-                <div id='right'>
-                    <form method="POST">
-                        {{ form.hidden_tag() }}
-                        <table class='table table-striped'>
-                            <tbody>
-                                <tr>
-                                    <td>Words</td>
-                                    <td id="words_list">empty</td>
-                                </tr>
-
-                                <tr>
-                                    <td>Tags</td>
-                                    <td>{{ form.ner_tag(class="form-select") }}</td>
-                                </tr>
-                            </tbody>
-                        </table>
-                        <div class='buttons text-right d-flex justify-content-between'>
-                            <button id="reset_btn" style="background-color: #B94E31 ; color: white;" type="button">
-                                reset
-                            </button>
-                            {{ form.submit(style="background-color: #3D7061; color: white;", type="button", onclick='saveButtonOnClick(' + file_id +',' + page_id +')') }}
-                        </div>
-                    </form>
-                </div>
-            </div>
         </div>
     </div>
     {% if file.pages|count > 1 %}
@@ -72,7 +45,15 @@
             <a href="{{ url_for('tagging.test', file_id=file.id, page_id=i) }}">{{ i }}</a>
         {% endfor %}
     {% endif %}
-    <script src="{{ url_for("static", filename="JS/tagging-script.js") }}"></script>
+    <script>
+        let allTypes = {{ all_types | safe }};
+        const fileID = {{ file_id }};
+        const pageID = {{ page_id }};
+        const backendTags = {{ tags_json | safe }};
+        console.log('backendTags:');
+        console.log(backendTags);
+    </script>
+    <script src="{{ url_for("static", filename="JS/tagging-script2.js") }}"></script>
 {% endblock %}
 
 {# sites main color - #172420 #}

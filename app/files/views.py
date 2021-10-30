@@ -68,7 +68,7 @@ def all_files(page_num):
         flash('მიმდინარეობს ფაილის დამუშავება')
         return redirect(url_for('files.all_files'))
 
-    return render_template('files.html', page_num=page_num, block_files=files, upload_form=upload_form)
+    return render_template('files/files.html', page_num=page_num, block_files=files, upload_form=upload_form)
 
 
 @file_views_blueprint.route('/files/<int:file_id>/<int:page_id>', methods=['GET', 'POST'])
@@ -98,7 +98,7 @@ def view_file(file_id, page_id):
         return redirect(url_for('files.search', file_id=file_id, search_word=search_form.search_field.data, page_num=1,
                                 search_type=search_type))
 
-    return render_template('view_file.html', file=file, word_list=word_list, statistics=statistics,
+    return render_template('files/view_file.html', file=file, word_list=word_list, statistics=statistics,
                            search_form=search_form, lemma_list=json.dumps(lemma_list, ensure_ascii=False),
                            current_page=page_id)
 
@@ -162,5 +162,5 @@ def search(file_id, search_word, search_type, page_num):
 
         sentences.append(sentence)
 
-    return render_template('details.html', file_id=file_id, sentences=sentences, paginate=search_results,
+    return render_template('files/details.html', file_id=file_id, sentences=sentences, paginate=search_results,
                            search_word=search_word, page_num=page_num, search_type=search_type)

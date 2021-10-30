@@ -8,7 +8,6 @@ from app.models.ner_tagging import NerTagType
 
 tagging_blueprint = Blueprint('tagging',
                               __name__,
-                              template_folder='templates',
                               static_folder='static',
                               url_prefix='/tagging'
                               )
@@ -28,7 +27,7 @@ def test(page_id=0, file_id=0):
 
     tags = NerTags.connected_words(page.id)
 
-    return render_template('/tagging.html',
+    return render_template('tagging/tagging.html',
                            file=file, file_id=file_id, page_id=str(page_id),
                            text=not_random_text_anymore, form=form,
                            tags=tags, tags_json=json.dumps(tags, indent=4)
@@ -56,7 +55,7 @@ def test2(page_id=0, file_id=0):
 
     tags = NerTags.connected_words(page.id)
 
-    return render_template('/tagging2.html',
+    return render_template('tagging/tagging2.html',
                            file=file, file_id=file_id, page_id=str(page_id),
                            text=not_random_text_anymore, form=form,
                            tags=tags, tags_json=json.dumps(tags, indent=4),
