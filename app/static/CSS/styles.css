@@ -36,7 +36,7 @@ header {
     margin: 0 10px;
     background-color: transparent;
     font-size: 16px;
-    font-family: "firaGo";
+    font-family: "firaGo", sans-serif;
     color: #151528;
     text-decoration: none;
     border-radius: 8px;
@@ -51,7 +51,6 @@ header {
 .active-link-nav {
     background-color: #ecf0f9 !important;
     color: #496ac1 !important;
-    background-color: #ECF0F9;
 }
 
 .active-link-nav {
@@ -65,7 +64,7 @@ header {
 }
 
 .nav-left > h2 {
-    font-family: Courier;
+    font-family: Courier, sans-serif;
     font-weight: normal;
     font-size: 82px;
 }
@@ -83,8 +82,7 @@ body {
 .processing-lang {
     max-width: 960px;
     width: 100%;
-    margin: auto;
-    margin-top: 64px;
+    margin: 64px auto auto;
     /* margin-bottom: 433px; */
     display: flex;
     justify-content: center;
@@ -93,7 +91,7 @@ body {
 
 .processing-lang h2 {
     font-size: 34px;
-    font-family: "Sandro";
+    font-family: "Sandro", sans-serif;
     text-align: center;
     margin-bottom: 87px;
 }
@@ -104,8 +102,7 @@ body {
     padding: 4px 35px;
     background-color: #fff;
     font-size: 22px;
-    font-family: "Sandro";
-    background-color: #fff;
+    font-family: "Sandro", sans-serif;
     border: 1px solid #172224;
     resize: none;
 }
@@ -121,16 +118,14 @@ body {
 }
 
 .btn-block {
-    margin: auto;
-    margin-top: 32px;
+    margin: 32px auto auto;
     display: flex;
     align-items: center;
 }
 
 .clear-icon {
     display: none;
-    margin-right: 10px;
-    margin: auto;
+    margin: auto 10px auto auto;
 }
 
 .clear-bt:last-child {
@@ -144,7 +139,7 @@ body {
     font-size: 34px;
     text-align: center;
     background-color: #172224;
-    font-family: "Sandro";
+    font-family: "Sandro", sans-serif;
     left: 4px;
     margin: auto;
 }
@@ -189,7 +184,7 @@ footer {
 }
 
 .created-by__title {
-    font-family: "Sandro";
+    font-family: "Sandro", sans-serif;
     margin: 30px 0 20px;
     color: #ffffff;
     font-size: 16px;
@@ -200,26 +195,26 @@ footer {
     margin-bottom: 20px;
     font-size: 22px;
     text-align: center;
-    font-family: "web001";
+    font-family: "web001", sans-serif;
     font-weight: normal;
 }
 
 .created-by__title p {
-    font-family: "firaGoLight";
+    font-family: "firaGoLight", sans-serif;
 }
 
-.univeristy-logo {
+.university-logo {
     margin-right: 11px;
     margin-top: 15px;
 }
 
-.univeristy-logo a {
+.university-logo a {
     margin-left: 15px;
     text-decoration: none;
 }
 
 .university-name__title h2 {
-    font-family: "web001";
+    font-family: "web001", sans-serif;
     font-weight: normal;
     text-align: center;
 }
@@ -233,8 +228,7 @@ footer {
 .analyze-section {
     max-width: 960px;
     width: 100%;
-    margin: auto;
-    margin-top: 15px;
+    margin: 15px auto auto;
     display: none;
     justify-content: center;
     flex-direction: column;
@@ -251,7 +245,7 @@ footer {
 .analyze-part {
     width: 50%;
     text-align: center;
-    font-family: "Sandro";
+    font-family: "Sandro", sans-serif;
     padding: 7px 0 4px;
     font-size: 18px;
     border: 1px solid #707070;
@@ -263,7 +257,7 @@ footer {
     flex-wrap: wrap;
     border: 1px solid #707070;
     border-top: none;
-    font-family: "Sandro";
+    font-family: "Sandro", sans-serif;
 }
 
 .grammar-block {
@@ -423,7 +417,7 @@ footer {
     margin-top: 22px;
     margin-bottom: 33px;
     font-size: 34px;
-    font-family: Sandro;
+    font-family: Sandro, sans-serif;
     text-align: center;
     color: #fff;
 }
@@ -431,11 +425,11 @@ footer {
 .addit-login {
     display: flex;
     justify-content: center;
-    margin-bottom: 32.88px;
+    margin-bottom: 33px;
 }
 
 .img-additional:first-child {
-    margin-right: 64.74px;
+    margin-right: 65px;
 }
 
 .login-inputs {
@@ -456,7 +450,7 @@ footer {
     padding: 3px 8px 7px;
     background-color: #ffffff;
     font-size: 18px;
-    font-family: Sandro;
+    font-family: Sandro, sans-serif;
     color: #707070;
     border: 1px solid #707070;
     outline: none;
@@ -464,14 +458,14 @@ footer {
 
 .login-input::placeholder {
     font-size: 18px;
-    font-family: Sandro;
+    font-family: Sandro, sans-serif;
     color: #707070;
 }
 
 .emailwarning,
 .passwordvalidation {
     margin-top: 3px;
-    font-family: "Sandro";
+    font-family: "Sandro", sans-serif;
     color: red;
 }
 
@@ -481,21 +475,21 @@ footer {
     padding: 2px 41px 7px;
     background-color: #707070;
     font-size: 18px;
-    font-family: Sandro;
+    font-family: Sandro, sans-serif;
     color: #ffffff;
     border: 1px solid #707070;
     cursor: pointer;
 }
 
 .registration-button,
-.avtorization-button {
+.authorization-button {
     position: absolute;
-    bottom: 0px;
+    bottom: 0;
     left: 50%;
     transform: translateX(-50%);
     margin-bottom: 37px;
     font-size: 18px;
-    font-family: Sandro;
+    font-family: Sandro, sans-serif;
     color: #fff;
     background-color: transparent;
     border: none;
@@ -507,11 +501,9 @@ footer {
     display: flex;
     width: 90%;
     max-width: 1792px;
-    margin: auto;
-    margin-top: 64px;
     flex-wrap: wrap;
     justify-content: space-between;
-    margin: auto;
+    margin: 64px auto auto auto;
 }
 
 .file-block {
@@ -534,10 +526,7 @@ footer {
 .files_page_content {
     background-color: #F9F9F9;
     border-radius: 18px;
-    padding-left: 76px;
-    padding-right: 76px;
-    padding-top: 64px;
-    padding-bottom: 64px;
+    padding: 64px 76px;
     max-width: 1470px;
     width: 80%;
     margin-top: 96px;
@@ -551,7 +540,7 @@ footer {
 
 .file_content_heading h2 {
     font-size: 24px;
-    font-family: "ArialCaps";
+    font-family: "ArialCaps", sans-serif;
     font-weight: normal;
     color: #172224;
 }
@@ -569,7 +558,7 @@ footer {
     position: relative;
     color: #172224;
     font-size: 16px;
-    font-family: firaGo;
+    font-family: firaGo, sans-serif;
 }
 
 .file-data span:first-child {
@@ -577,7 +566,6 @@ footer {
 }
 
 .file-data span:first-child:after {
-    content: "";
     content: "";
     position: absolute;
     top: 50%;
@@ -598,24 +586,23 @@ footer {
 
 .file-content h2 {
     float: left;
-    padding: 0px 15px 24px;
+    padding: 0 15px 24px;
     font-size: 24px;
-    font-family: firaGoSemibold;
+    font-family: firaGoSemibold, sans-serif;
     color: #151528;
 }
 
 .file-content p {
     float: left;
-    padding: 0px 15px;
+    padding: 0 15px;
     margin-right: 64px;
-    font-family: firaGo;
+    font-family: firaGo, sans-serif;
     font-size: 16px;
     color: #151528;
 }
 
 .file-btn-container {
-    margin: auto;
-    margin-top: 32px;
+    margin: 32px auto auto;
     justify-content: center;
 }
 
@@ -626,7 +613,7 @@ footer {
     font-size: 16px;
     text-align: center;
     background-color: #496AC1;
-    font-family: "firaGo";
+    font-family: "firaGo", sans-serif;
     left: 4px;
     color: white;
     cursor: pointer;
@@ -639,7 +626,7 @@ footer {
     font-size: 16px;
     text-align: center;
     background-color: #ECF0F9;
-    font-family: "firaGo";
+    font-family: "firaGo", sans-serif;
     left: 4px;
     color: #496AC1;
     cursor: pointer;
@@ -653,7 +640,7 @@ footer {
 
 .login {
     position: relative;
-    height: 41.82px;
+    height: 42px;
     margin-bottom: 20px;
     margin-left: 20px;
 }
@@ -675,7 +662,6 @@ footer {
 .user-info:before {
     content: "";
     display: block;
-    width: 100%;
     height: 1px;
     background-color: #707070;
     margin: 21px 1px;
@@ -736,7 +722,7 @@ footer {
 }
 
 .file-add-block h2 {
-    font-family: "firaGo";
+    font-family: "firaGo", sans-serif;
     font-size: 16px;
     color: #000000;
 }
@@ -759,17 +745,17 @@ footer {
     width: 100%;
     margin-top: 16px;
     margin-bottom: 16px;
-    font-family: firaGo;
+    font-family: firaGo, sans-serif;
     border: none;
     border-radius: 8px;
 }
 
 .copy-inp {
     padding: 21px 47px 21px 18px;
-    margin: 16px 0px;
+    margin: 16px 0;
     font-size: 18px;
     width: 100%;
-    font-family: firaGo;
+    font-family: firaGo, sans-serif;
     resize: vertical;
     height: 332px;
     min-height: 70px;
@@ -787,7 +773,7 @@ footer {
 
 .file-options {
     font-size: 24px;
-    font-family: Sandro;
+    font-family: Sandro, sans-serif;
     display: flex;
     align-items: center;
     margin-bottom: 24px;
@@ -811,19 +797,19 @@ footer {
     content: "upload";
     position: absolute;
     top: 0;
-    left: 0px;
+    left: 0;
     display: block;
     width: 100%;
     height: 100%;
     padding: 0 0 0 9px;
     background: #172224;
     font-size: 24px;
-    font-family: "ArialCaps";
+    font-family: "ArialCaps", sans-serif;
     color: #fff;
 }
 
 .file-name {
-    font-family: Sandro;
+    font-family: Sandro, sans-serif;
     font-size: 24px;
 }
 
@@ -842,18 +828,18 @@ footer {
 .content-navbar {
     margin: 34px 32px 34px 68px;
     font-size: 24px;
-    font-family: Sandro;
+    font-family: Sandro, sans-serif;
     color: #172224;
 }
 
 .concrete-content {
     display: flex;
     justify-content: space-between;
-    margin: 0px 32px 96px 96px;
+    margin: 0 32px 96px 96px;
 }
 
 .concrete-words {
-    font-family: firaGo;
+    font-family: firaGo, sans-serif;
     font-size: 16px;
     max-width: 1312px;
     width: 100%;
@@ -871,9 +857,9 @@ footer {
 .concrete-words ul li {
     width: 25%;
     min-width: 224px;
-    margin: 4px 8.333333333333333333333333333333% 0 0;
+    margin: 4px 8.333% 0 0;
     font-size: 24px;
-    font-family: Sandro;
+    font-family: Sandro, sans-serif;
     color: #2c3532;
     list-style-type: none;
 }
@@ -888,13 +874,13 @@ footer {
 }
 
 .info-search {
-    margin: 0px 22px 0 32px;
+    margin: 0 22px 0 32px;
 }
 
 .info-search ul li {
     margin: 0 0 35px;
     font-size: 16px;
-    font-family: 'firaGo';
+    font-family: 'firaGo', sans-serif;
     color: #2c3532;
     background-color: #F5F5F5;
     border-radius: 8px;
@@ -906,20 +892,20 @@ footer {
     width: 215px;
     height: 45px;
     font-size: 16px;
-    font-family: 'firaGo';
+    font-family: 'firaGo', sans-serif;
     padding: 4px;
     border: none;
-    border-radius: 8px 0px 0px 8px;
+    border-radius: 8px 0 0 8px;
     background-color: #F6F6F6;
 }
 
 .btn_download {
     margin-top: 32px;
     width: 100%;
-    padding: 1.5px 35px 6px;
+    padding: 2px 35px 6px;
     background-color: #2c3532;
     font-size: 24px;
-    font-family: "Sandro";
+    font-family: "Sandro", sans-serif;
     color: #ebebeb;
     text-align: left;
     border: none;
@@ -929,7 +915,7 @@ footer {
 .search-btn {
     width: 45px;
     height: 45px;
-    border-radius: 0px 8px 8px 0px;
+    border-radius: 0 8px 8px 0;
     background-color: #496AC1;
     border: none;
 }
@@ -958,7 +944,7 @@ footer {
 
 .forgot-password {
     font-size: 18px;
-    font-family: Sandro;
+    font-family: Sandro, sans-serif;
     color: #fff;
     background-color: transparent;
     border: none;
@@ -997,7 +983,7 @@ footer {
     margin-top: 22px;
     margin-bottom: 33px;
     font-size: 34px;
-    font-family: Sandro;
+    font-family: Sandro, sans-serif;
     text-align: center;
     color: #fff;
 }
@@ -1019,7 +1005,7 @@ footer {
     top: 30%;
     transform: translate(-50%);
     font-size: 53px;
-    font-family: "ArialCaps";
+    font-family: "ArialCaps", sans-serif;
     color: #172224;
     z-index: 4;
 }
@@ -1036,7 +1022,7 @@ input[type="checkbox"] {
 }
 
 input[type="checkbox"]::after {
-    font-family: "Font Awesome 5 Free";
+    font-family: "Font Awesome 5 Free", sans-serif;
     font-weight: 900;
     color: white;
     font-size: 27px;
@@ -1083,7 +1069,7 @@ i.fab.fa-facebook-square {
 }
 
 .disablem {
-    margin-left: 0px;
+    margin-left: 0;
 }
 
 .details-container {
@@ -1126,23 +1112,22 @@ i.fab.fa-facebook-square {
 }
 
 .details-block:last-child .block1 {
-    border-bottom: 0px;
+    border-bottom: 0;
 }
 
 .details-block:last-child .block2 {
-    border-bottom: 0px;
+    border-bottom: 0;
 }
 
 .details-block:last-child .block3 {
-    border-bottom: 0px;
+    border-bottom: 0;
 }
 
 .details-block ul li {
     list-style-type: none;
-    padding: 20px 10px;
-    padding-right: 20px;
+    padding: 20px 20px 20px 10px;
     font-size: 24px;
-    font-family: Sandro;
+    font-family: Sandro, sans-serif;
     color: #172224;
     border-bottom: 1px solid #707070;
 }
@@ -1195,8 +1180,7 @@ i.fab.fa-facebook-square {
     }
 
     .nav-right > ul > li {
-        margin: 0;
-        margin-bottom: 25px;
+        margin: 0 0 25px;
     }
 
     .icon {
@@ -1265,7 +1249,7 @@ i.fab.fa-facebook-square {
     position: relative;
     width: 100%;
     height: 100%;
-    top: 0%;
+    top: 0;
     transition: 0.3s;
 }
 
@@ -1301,7 +1285,7 @@ i.fab.fa-facebook-square {
     height: 49px;
     background-color: #496ac1;
     font-size: 16px;
-    font-family: "firaGo";
+    font-family: "firaGo", sans-serif;
     color: #fff;
     border: none;
     outline: none;
@@ -1311,7 +1295,7 @@ i.fab.fa-facebook-square {
 .slider-item-content a {
     padding: 7px 20px;
     font-size: 16px;
-    font-family: "firaGo";
+    font-family: "firaGo", sans-serif;
     color: #fff;
     text-decoration: none;
 }
@@ -1319,7 +1303,7 @@ i.fab.fa-facebook-square {
 .slider-item-content p {
     margin-bottom: 39px;
     font-size: 16px;
-    font-family: "firaGo";
+    font-family: "firaGo", sans-serif;
     color: #fff;
 }
 
@@ -1332,7 +1316,7 @@ i.fab.fa-facebook-square {
 .slider-item-content h2 {
     margin-bottom: 20px;
     font-size: 42px;
-    font-family: "web001";
+    font-family: "web001", sans-serif;
     font-weight: normal;
     color: #fff;
 }
@@ -1347,8 +1331,8 @@ i.fab.fa-facebook-square {
 .pag-button {
     display: block;
     margin: 10px 0;
-    width: 8.77px;
-    height: 8.77px;
+    width: 9px;
+    height: 9px;
     background-color: #fff;
     border-radius: 50%;
     cursor: pointer;
@@ -1366,14 +1350,14 @@ i.fab.fa-facebook-square {
     font-size: 32px;
     margin-bottom: 30px;
     text-align: center;
-    font-family: "web001";
+    font-family: "web001", sans-serif;
     font-weight: normal;
     color: #496ac1;
 }
 
 .about-project p {
     margin-bottom: 20px;
-    font-family: "firaGoBook";
+    font-family: "firaGoBook", sans-serif;
     color: #5d5d5d;
     font-weight: normal;
 }
@@ -1382,11 +1366,11 @@ i.fab.fa-facebook-square {
     text-align: center;
     color: #fff;
     padding-bottom: 10px;
-    font-family: "firaGoLight";
+    font-family: "firaGoLight", sans-serif;
 }
 
 #about-section {
-    font-family: 'firaGoLight';
+    font-family: 'firaGoLight', sans-serif;
 }
 
 #about-section {
@@ -1503,7 +1487,7 @@ i.fab.fa-facebook-square {
 
 /* Added for files page */
 .pagination-number {
-    font-family: firaGo;
+    font-family: firaGo, sans-serif;
     font-size: 20px;
     color: #496AC1;
     text-decoration: none;
@@ -1568,7 +1552,7 @@ i.fab.fa-facebook-square {
 }
 
 .statistics-group p {
-    font-family: 'firaGo';
+    font-family: 'firaGo', sans-serif;
     font-size: 16px;
     background-color: #F5F5F5;
     text-align: center;
@@ -1593,7 +1577,7 @@ i.fab.fa-facebook-square {
 .flashed-messages {
     background-color: #ECF0F9;
     color: #496AC1;
-    font-family: firaGo;
+    font-family: firaGo, sans-serif;
     text-align: center;
     padding: 12px;
     border-radius: 8px;
