@@ -1,18 +1,18 @@
-{% from "macros.html" import file_block with context %}
-{% extends "base1.html" %}
+{% extends "layouts/base_for_full_pages.html" %}
+{% from "macros/macros.html" import file_block with context %}
 
 {% block content %}
     <script>
         window.onload = function () {
-            var modal = document.getElementById("upload-file");
-            var fileBtn = document.getElementById("add-file-btn");
+            let modal = document.getElementById("upload-file");
+            let fileBtn = document.getElementById("add-file-btn");
 
             fileBtn.onclick = function () {
                 modal.style.display = "block";
             }
 
             document.onclick = function (event) {
-                if (event.target == modal) {
+                if (event.target === modal) {
                     modal.style.display = "none";
                 }
             }
@@ -21,12 +21,12 @@
 
     <div style="display: flex">
         <div class="profile-box">
-            <img src="{{ url_for('static', filename='assets/default_avatar.png') }}">
-            <p style="font-family: firaGoSemiBold; font-size: 24px">{{ current_user.username }}</p>
-            <p style="font-family: firaGoBook; font-size:18px;">სახელის შეცვლა</p>
-            <p style="font-family: firaGoBook; font-size:18px;">პაროლის შეცვლა</p>
-            <p style="font-family: firaGoBook; font-size:18px;">მეილის განახლება</p>
-            <p style="font-family: firaGoBook; font-size:18px; color: #C14949">გამოსვლა</p>
+            <img src="{{ url_for('static', filename='assets/default_avatar.png') }}" alt="">
+            <p style="font-family: firaGoSemiBold, sans-serif; font-size: 24px">{{ current_user.username }}</p>
+            <p style="font-family: firaGoBook, sans-serif; font-size:18px;">სახელის შეცვლა</p>
+            <p style="font-family: firaGoBook, sans-serif; font-size:18px;">პაროლის შეცვლა</p>
+            <p style="font-family: firaGoBook, sans-serif; font-size:18px;">მეილის განახლება</p>
+            <p style="font-family: firaGoBook, sans-serif; font-size:18px; color: #C14949">გამოსვლა</p>
         </div>
 
         <div class="files_page_content">
@@ -45,7 +45,7 @@
                 <button id="add-file-btn" class="btn-file">
                     <a style="padding-right: 10px">დამატება</a>
                     <img style="vertical-align:middle"
-                         src="{{ url_for('static', filename='assets/ic-actions-add-file.svg') }}">
+                         src="{{ url_for('static', filename='assets/ic-actions-add-file.svg') }}" alt="">
                 </button>
             </div>
             <br><br><br>
@@ -108,7 +108,7 @@
                                 <label class="btn-file-upload">
                                     {{ upload_form.file(style="display:none", accept=".txt", onchange="document.getElementById('text').disabled = true;") }}ატვირთე
                                     ფაილი<img style="margin-left: 13px; vertical-align: middle"
-                                              src="{{ url_for('static', filename="assets/ic-editor-attachment.svg") }}"></label>
+                                              src="{{ url_for('static', filename="assets/ic-editor-attachment.svg") }}" alt=""></label>
                             </div>
                         </div>
                     </div>

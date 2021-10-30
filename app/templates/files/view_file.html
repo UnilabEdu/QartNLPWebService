@@ -1,8 +1,8 @@
-{% extends "base1.html" %}
+{% extends "layouts/base_for_full_pages.html" %}
 {% block content %}
     <script>
         function get_word_details(word_id) {
-            let lemma_array = {{ lemma_list|safe}};
+            let lemma_array = {{ lemma_list | safe}};
 
             let lemma = document.getElementById('word_lemma');
             let tag = document.getElementById('word_tag');
@@ -75,8 +75,8 @@
                 <br>
                 <div class="search-tool-block">
                     <div class="info-search">
+                        <br>
                         <ul>
-                            <br>
                             <li id="word_lemma"> ლემმა:</li>
                             <li id="word_tag"> თეგები:</li>
                         </ul>

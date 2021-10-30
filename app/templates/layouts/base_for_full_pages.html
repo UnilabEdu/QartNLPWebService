@@ -13,9 +13,8 @@
 </head>
 <body>
 <header id="header">
-    {% include "partials/nav.html" %}
+    {% include "layouts/nav.html" %}
 </header>
-{% include "partials/login.html" %}
 
 
 {% block content %}
@@ -28,30 +27,21 @@
                 <h2>პორტალის შესახებ</h2>
                 <p>
                     შექმნილია ილიას სახელმწიფო უნივერსიტეტის ქართული ენის
-                    ლემატიზატორის ბაზაზე unilab-ის ციფრული ლაბორატორიის Python
+                    ლემატიზატორის ბაზაზე UniLab-ის ციფრული ლაბორატორიის Python
                     Development გუნდის მიერ.
                 </p>
             </div>
         </div>
         <div class="footer-r__block">
             <div class="university-name__title"><h2>პროექტი ქსელში</h2></div>
-            <div class="univeristy-logo">
+            <div class="university-logo">
                 <a href="https://www.facebook.com/" target="_blank">
                     <img src="{{ url_for("static", filename="assets/fb.svg") }}" alt=""/>
-                </a>
-                <a href="https://www.twitter.com/" target="_blank">
-                    <img src="{{ url_for("static", filename="assets/tw.svg") }}" alt=""/>
-                </a>
-                <a href="https://www.linkedin.com/" target="_blank">
-                    <img src="{{ url_for("static", filename="assets/linkedin.svg") }}" alt=""/>
-                </a>
-                <a href="https://dribbble.com/" target="_blank">
-                    <img src="{{ url_for("static", filename="assets/dribble.svg") }}" alt=""/>
                 </a>
             </div>
         </div>
     </div>
-    <div class="coprgt">Copyright © QarNLP 2020</div>
+    <div class="coprgt">Copyright © QartNLP 2021</div>
 </footer>
 <script src="{{ url_for("static", filename="JS/scripts.js") }}"></script>
 </body>

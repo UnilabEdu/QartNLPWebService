@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8"/>
+    {% block title %}
+        <title>{{ _("QartNLP") }}</title>
+    {% endblock %}
+    <link rel="icon" href="{{ url_for("static", filename="assets/favicon.ico") }}" type="image/png">
+    <script src="https://kit.fontawesome.com/5968971b15.js" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="{{ url_for("static", filename="CSS/styles.css") }}"/>
+    <link rel="stylesheet" href="{{ url_for("static", filename="CSS/fonts.css") }}"/>
+</head>
+
+<body>
+
+{% block content %}
+{% endblock %}
+
+</body>
+</html>

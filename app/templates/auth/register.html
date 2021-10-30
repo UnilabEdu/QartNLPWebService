@@ -1,0 +1,28 @@
+{% extends 'layouts/base_for_popups.html' %}
+
+{% block title %}
+    <title>QartNLP - რეგისტრაცია</title>
+{% endblock %}
+
+{% block content %}
+    <div>
+        <div>
+            <div>
+                <form method="POST">
+                    {{ form.hidden_tag() }}
+                    {{ form.first_name(placeholder="სახელი") }}
+                    <br>
+                    {{ form.last_name(placeholder="გვარი") }}
+                    <br>
+                    {{ form.email(placeholder="ელ-ფოსტა") }}
+                    <br>
+                    {{ form.password(placeholder="პაროლი") }}
+                    <br>
+                    {{ form.confirm_password(placeholder="გაიმეორეთ პაროლი") }}
+                    <br>
+                    {{ form.submit() }}
+                </form>
+            </div>
+        </div>
+    </div>
+{% endblock %}
