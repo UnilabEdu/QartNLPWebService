@@ -1,7 +1,7 @@
 from flask import Blueprint, render_template, request
-from flask_login import login_user
+from flask_login import login_user, logout_user
 
-from app.extentions import babel
+from app.extensions import babel
 from app.main.temp_data import people, block_files, grammar_blocks
 from app.settings import Config
 from app.models.user import User
@@ -18,15 +18,8 @@ def get_locale():
 
 
 @main_blueprint.route('/', methods=['GET', 'POST'])
-@main_blueprint.route('/home', methods=['GET', 'POST'])
 def home():
-    login_user(User.query.get(1))
     return render_template('main/main.html', blocks=grammar_blocks)
-
-
-@main_blueprint.route('/documentation', methods=['GET', 'POST'])
-def documentation():
-    return render_template('files/files.html', block_files=block_files)
 
 
 @main_blueprint.route('/about_us', methods=['GET', 'POST'])

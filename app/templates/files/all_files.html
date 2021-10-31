@@ -21,12 +21,44 @@
 
     <div style="display: flex">
         <div class="profile-box">
-            <img src="{{ url_for('static', filename='assets/default_avatar.png') }}" alt="">
+            <img src="{{ url_for('static', filename='uploads/' + (current_user.picture or 'default_avatar.png')) }}" alt="">
             <p style="font-family: firaGoSemiBold, sans-serif; font-size: 24px">{{ current_user.username }}</p>
+                <form method="POST" enctype="multipart/form-data">
+                    {{ picture_form.hidden_tag() }}
+                    {{ picture_form.picture(accept='image/*') }}
+                    {{ picture_form.submit_picture() }}
+                </form>
+
             <p style="font-family: firaGoBook, sans-serif; font-size:18px;">სახელის შეცვლა</p>
-            <p style="font-family: firaGoBook, sans-serif; font-size:18px;">პაროლის შეცვლა</p>
-            <p style="font-family: firaGoBook, sans-serif; font-size:18px;">მეილის განახლება</p>
-            <p style="font-family: firaGoBook, sans-serif; font-size:18px; color: #C14949">გამოსვლა</p>
+                <form method="POST">
+                    {{ name_form.hidden_tag() }}
+                    {{ name_form.first_name(value=current_user.first_name) }}
+                    {{ name_form.last_name(value=current_user.last_name) }}
+                    {{ name_form.password(placeholder="პაროლი") }}
+                    {{ name_form.submit_name() }}
+                </form>
+
+            {% if not current_user.is_oauth %}
+                <p style="font-family: firaGoBook, sans-serif; font-size:18px;">პაროლის შეცვლა</p>
+                    <form method="POST">
+                        {{ password_form.hidden_tag() }}
+                        {{ password_form.old_password(placeholder='ძველი პაროლი') }}
+                        {{ password_form.password(placeholder='ახალი პაროლი') }}
+                        {{ password_form.confirm_password(placeholder='გაიმეორეთ პაროლი') }}
+                        {{ password_form.submit_password_change() }}
+                    </form>
+
+                <p style="font-family: firaGoBook, sans-serif; font-size:18px;">მეილის განახლება</p>
+                    <form method="POST">
+                        {{ email_form.hidden_tag() }}
+                        {{ email_form.new_email(placeholder='ახალი ელ-ფოსტა') }}
+                        {{ email_form.password(placeholder='პაროლი') }}
+                        {{ email_form.submit_email() }}
+                    </form>
+            {% endif %}
+
+
+            <a href="{{ url_for('auth.logout') }}" style="font-family: firaGoBook, sans-serif; font-size:18px; color: #C14949">გამოსვლა</a>
         </div>
 
         <div class="files_page_content">
@@ -116,9 +148,7 @@
                         <h2 class="checks-header">მონიშნეთ ხელსაწყოები, რომლითაც გსურთ ტექსტის/დოკუმენტის
                             დამუშავება:</h2>
                         {{ upload_form.processes(class="file-options", style='font-family: firaGo; font-size: 18px') }}
-                        <button style="margin-top: auto;" class="btn-file" type="submit">
-                            დამუშავება
-                        </button>
+                        {{ upload_form.submit_upload(class='btn-file', style='margin-top: auto;') }}
                     </div>
                 </div>
             </form>

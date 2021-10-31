@@ -3,20 +3,23 @@ from flask import Flask
 from app.api import api
 from app.commands import reset_db_command, populate_db_command, clear_file_tables_command
 from app.database import db
-from app.extentions import migrate, mail, babel, celery, login_manager
+from app.extensions import migrate, mail, babel, celery, login_manager
 from app.settings import Config
-from app.user.admin.admin import admin
-from app.user.user_model import User
+from app.admin.admin import admin
+from app.models.user import User
 
 from app.files.views import file_views_blueprint
 from app.main.views import main_blueprint
 from app.tagging.views import tagging_blueprint
-
+from app.auth.views import auth_blueprint
+from app.auth.google import google_blueprint
 
 BLUEPRINTS = [
     main_blueprint,
     tagging_blueprint,
-    file_views_blueprint
+    file_views_blueprint,
+    auth_blueprint,
+    google_blueprint
 ]
 
 COMMANDS = [
@@ -51,7 +54,6 @@ def create_app():
     @login_manager.user_loader
     def load_user(id_):
         return User.query.get(id_)
-
     login_manager.init_app(app)
 
     # Initialize commands and blueprints

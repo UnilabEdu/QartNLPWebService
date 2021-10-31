@@ -1,5 +1,5 @@
 from app.database import db
-from app.user.user_model import User, Role
+from app.models.user import User, Role
 from app.models.file import File, Pages, Sentences, Words, Statistics, Status
 from datetime import datetime
 from werkzeug.security import generate_password_hash
@@ -12,17 +12,17 @@ def reset_db():
 
 
 def populate_db():  # TODO: update db_reset command
-    admin_role = find_or_create_role("Admin")
+    super_admin_role = find_or_create_role("super_admin")
+    admin_role = find_or_create_role("admin")
+    user_role = find_or_create_role("user")
 
-    find_or_create_user(username='username1',
-                        password=generate_password_hash('password'),
-                        email='admin1@email.com',
+    find_or_create_user(password=generate_password_hash('password'),
+                        email='main_admin@mail.com',
                         role=admin_role)
 
-    find_or_create_user(username='username2',
-                        password=generate_password_hash('password'),
-                        email='user2@email.com',
-                        role=admin_role)
+    find_or_create_user(password=generate_password_hash('password'),
+                        email='admin@mail.com',
+                        role=super_admin_role)
 
     db.session.commit()
 
@@ -38,14 +38,15 @@ def find_or_create_role(name):
     return role
 
 
-def find_or_create_user(username, password, email, role=None):
+def find_or_create_user(password, email, role=None):
     user = User.query.filter_by(email=email).first()
 
     if not user:
-        user = User(username=username,
-                    password=password,
-                    email=email,
-                    confirmed_at=datetime.utcnow(),
+        user = User(email=email,
+                    first_name='FirstName',
+                    last_name='LastName',
+                    _password=password,
+                    confirmed_at=None,
                     active=True)
 
         if role:

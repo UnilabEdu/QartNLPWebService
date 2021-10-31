@@ -6,7 +6,7 @@ from flask_login import current_user
 from ftfy import fix_encoding
 
 from app.database import db
-from app.extentions import celery
+from app.extensions import celery
 from app.file_processing.nlp import *
 from app.models.file import File, Pages, Sentences, Words, Statistics
 

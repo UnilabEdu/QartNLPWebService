@@ -1,17 +1,21 @@
 import json
 import os
+from random import randint
 from zipfile import ZipFile
 
 from flask import Blueprint, render_template, redirect, url_for, request, send_from_directory, current_app, flash
 from flask_login import current_user, login_required
+from werkzeug.security import generate_password_hash
 from werkzeug.utils import secure_filename
 
+from app.auth.forms import ChangePasswordForm, ChangeNameForm, ChangeEmailForm, ProfilePictureForm
+from app.auth.views import confirm_user_mail
+from app.database import db
 from app.file_processing.nlp import lemmatize
 from app.file_processing.tasks import process_file
 from app.files.forms import UploadForm, SearchForm
 from app.models.file import File, Sentences, Words, Statistics, Status
 from app.settings import Config
-
 
 file_views_blueprint = Blueprint('files',
                                  __name__,
@@ -26,8 +30,13 @@ file_views_blueprint = Blueprint('files',
 def all_files(page_num):
     files = File.get_active_files(current_user.id).paginate(per_page=4, page=page_num)
     upload_form = UploadForm()
+    name_form = ChangeNameForm()
+    password_form = ChangePasswordForm()
+    email_form = ChangeEmailForm()
+    picture_form = ProfilePictureForm()
 
-    if upload_form.validate_on_submit():
+    # File upload handling
+    if upload_form.validate_on_submit() and upload_form.submit_upload.data:
         if upload_form.file.data:
             file = upload_form.file.data
             filename = secure_filename(file.filename)
@@ -68,7 +77,67 @@ def all_files(page_num):
         flash('მიმდინარეობს ფაილის დამუშავება')
         return redirect(url_for('files.all_files'))
 
-    return render_template('files/files.html', page_num=page_num, block_files=files, upload_form=upload_form)
+    # Handling user data changes
+    elif name_form.validate_on_submit() and name_form.submit_name.data:
+        if current_user.check_password(name_form.password.data):
+            current_user.first_name = name_form.first_name.data
+            current_user.last_name = name_form.last_name.data
+            db.session.commit()
+            flash('თქვენი სახელი განახლდა')
+        else:
+            flash('შეყვანილი პაროლი არასწორია. თქვენი სახელი არ განახლდა.', 'danger')
+
+        return redirect(url_for('files.all_files'))
+
+    elif password_form.validate_on_submit() and password_form.submit_password_change.data:
+        if current_user.check_password(password_form.old_password.data):
+            current_user._password = generate_password_hash(password_form.password.data)
+            db.session.commit()
+            flash('თქვენი პაროლი განახლდა')
+        else:
+            flash('შეყვანილი პაროლი არასწორია. თქვენი პაროლი არ განახლდა.', 'danger')
+
+        return redirect(url_for('files.all_files'))
+
+    elif email_form.validate_on_submit() and email_form.submit_email.data:
+        if current_user.check_password(email_form.password.data):
+            current_user.email = email_form.new_email.data
+            current_user.confirmed_at = None
+            db.session.commit()
+            confirm_user_mail(email_form.new_email.data)
+            flash('თქვენი ელ-ფოსტა განახლდა. '
+                  f'ელ-ფოსტის ვერიფიკაციის შეტყობინება გაგზავნილია {email_form.password.data} მისამართზე.')
+        else:
+            flash('შეყვანილი პაროლი არასწორია. თქვენი ელ-ფოსტა არ განახლდა.', 'danger')
+
+        return redirect(url_for('files.all_files'))
+    elif picture_form.validate_on_submit() and picture_form.submit_picture.data:
+        file = picture_form.picture.data
+        picture_title = secure_filename(
+            f'{current_user.first_name}_{current_user.last_name}_{randint(1000000, 9999999)}_{file.filename}'
+        )
+        file.save(f'app/static/uploads/{picture_title}')
+
+        current_user.picture = picture_title
+        db.session.commit()
+        flash('თქვენი პროფილის სურათი განახლდა')
+        return redirect(url_for('files.all_files'))
+
+    # Flash errors which are defined in forms
+    if request.method == 'POST':
+        submitted_form_errors = upload_form.errors   if upload_form.submit_upload.data            else \
+                                name_form.errors     if name_form.submit_name.data                else \
+                                password_form.errors if password_form.submit_password_change.data else \
+                                email_form.errors    if email_form.submit_email.data              else \
+                                picture_form.errors  if picture_form.submit_picture.data          else None
+        if submitted_form_errors:
+            for errors in submitted_form_errors.values():
+                for error in errors:
+                    flash(error)
+
+    return render_template('files/all_files.html', page_num=page_num, block_files=files, upload_form=upload_form,
+                           name_form=name_form, password_form=password_form,
+                           email_form=email_form, picture_form=picture_form)
 
 
 @file_views_blueprint.route('/files/<int:file_id>/<int:page_id>', methods=['GET', 'POST'])
@@ -98,7 +167,7 @@ def view_file(file_id, page_id):
         return redirect(url_for('files.search', file_id=file_id, search_word=search_form.search_field.data, page_num=1,
                                 search_type=search_type))
 
-    return render_template('files/view_file.html', file=file, word_list=word_list, statistics=statistics,
+    return render_template('files/one_file.html', file=file, word_list=word_list, statistics=statistics,
                            search_form=search_form, lemma_list=json.dumps(lemma_list, ensure_ascii=False),
                            current_page=page_id)
 

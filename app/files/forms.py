@@ -1,6 +1,6 @@
 from flask_wtf import FlaskForm
 from flask_wtf.file import FileField, FileRequired, FileAllowed
-from wtforms import StringField, TextAreaField, widgets, SelectMultipleField, RadioField
+from wtforms import StringField, TextAreaField, widgets, SelectMultipleField, RadioField, SubmitField
 from wtforms.widgets import html_params
 from wtforms.validators import Length
 from markupsafe import Markup
@@ -34,6 +34,7 @@ class UploadForm(FlaskForm):
                                             ('clean_special_characters', 'სიმბოლოებისგან გასუფთავება'),
                                             ("stop_word", "Stop word-ებისგან გასუფთავება"),
                                             ])
+    submit_upload = SubmitField('დამუშავება')
 
 
 class SearchForm(FlaskForm):
