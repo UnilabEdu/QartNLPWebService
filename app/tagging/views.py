@@ -1,10 +1,12 @@
-from flask import Blueprint, render_template
 import json
-from .forms import NerTagForm
-from app.models.file import File, Pages
-from app.models.ner_tagging import NerTags
-from app.models.ner_tagging import NerTagType
 
+from flask import Blueprint, render_template, flash, redirect, url_for
+from flask_login import current_user
+
+from app.models.file import File
+from app.models.ner_tagging import NerTagType
+from app.models.ner_tagging import NerTags
+from .forms import NerTagForm
 
 tagging_blueprint = Blueprint('tagging',
                               __name__,
@@ -45,6 +47,10 @@ def test2(page_id=0, file_id=0):
     # end
 
     file = File.file_by_id(file_id)
+    if file.user_id != current_user.id:
+        flash('ამ ფაილზე წვდომა არ გაქვთ')
+        return redirect(url_for('files.all_files'))
+
     page = file.pages[page_id - 1]
 
     file_id = str(file.id)

@@ -23,7 +23,7 @@ class User(db.Model, UserMixin):
     confirmed_at = db.Column(db.DateTime())
     is_oauth = db.Column(db.Boolean(), server_default='0')
     active = db.Column('is_active', db.Boolean(), nullable=False, server_default='1')
-    roles = db.relationship('Role', secondary='user_role',
+    roles = db.relationship('Role', secondary='user_to_role',
                             backref=db.backref('user', lazy='dynamic'))
     file = db.relationship('File', backref='user')
 
@@ -58,6 +58,21 @@ class User(db.Model, UserMixin):
             print(email)
             return cls.query.filter(func.lower(cls.email) == func.lower(email)).first()
 
+    def is_admin(self):
+        admin_role = Role.query.filter_by(name='admin').first()
+        super_admin_role = Role.query.filter_by(name='super_admin').first()
+        if admin_role in self.roles or super_admin_role in self.roles:
+            return True
+        else:
+            return False
+
+    def is_super_admin(self):
+        super_admin_role = Role.query.filter_by(name='super_admin')
+        if super_admin_role in self.roles:
+            return True
+        else:
+            return False
+
 
 class Role(db.Model):
 
@@ -72,7 +87,7 @@ class Role(db.Model):
 
 class UserRoles(db.Model):
 
-    __tablename__ = 'user_role'
+    __tablename__ = 'user_to_role'
 
     id = db.Column(db.Integer(), primary_key=True)
     users_id = db.Column(db.Integer(), db.ForeignKey('user.id', ondelete='CASCADE'))
@@ -95,4 +110,3 @@ class OAuth(OAuthConsumerMixin, db.Model):
     users_id = db.Column(db.Integer, db.ForeignKey(User.id), nullable=False)
     user = db.relationship(User, backref=db.backref("oauth", collection_class=attribute_mapped_collection("provider"),
                                                     cascade="all, delete-orphan",),)
-
