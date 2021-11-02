@@ -1615,3 +1615,161 @@ i.fab.fa-facebook-square {
   font-size:15px;
   margin:0 15px 10px; 
 }
+
+.flex-container {
+  display: flex;
+  justify-content: flex-start;
+}
+
+.left-menu {
+  width:186px;
+  margin-right:36px;
+}
+
+.doc-content {
+  width: 687px;
+  background-color: #F9F9F9;
+  border-radius: 18px;
+  margin-right:36px;
+  padding:65px 75px;
+}
+
+.menu-content li {
+  position: relative;
+  list-style-type:none;
+  padding:10px 0;
+}
+
+.arrow-cat{
+  position: absolute;
+  width:11px;
+  height:11px;
+  left:0;
+  margin-top:4px;
+  background-image: url('../../assets/arrow.svg');
+  background-repeat: no-repeat;
+  background-size: contain;
+}
+
+.menu-content li a {
+  font-family: 'firaGo';
+  font-size:16px;
+  text-decoration: none;
+  padding:0 20px;
+  color:#0E0E1A;
+}
+
+.menu-content li p {
+  font-family: 'firaGo';
+  font-size:16px;
+  text-decoration: none;
+  padding:0 20px;
+  color:#0E0E1A;
+}
+
+.cat-text{
+  font-family: 'firaGo';
+  font-size:16px;
+  text-decoration: none;
+  padding:0 20px;
+  color:#0E0E1A;
+  cursor: pointer;
+}
+
+.dropdown-categories {
+  display: none;
+}
+
+.active-menu {
+  display: block;
+  margin-left:50px;
+  margin-top:10px;
+  margin-bottom:10px;
+}
+
+.dropdown-categories li {
+  padding: 5px!important;
+  font-family: 'firaGo';
+}
+
+.rotate {
+  margin-top:7px;
+  transform: rotate(90deg);
+  background-image: url('../../assets/droparrow.svg');
+  background-repeat: no-repeat;
+  background-size: contain;
+}
+
+.active-link {
+  color:#496AC1;
+}
+
+.doc-block {
+  margin-bottom:37px;
+}
+
+.doc-block h2 {
+  font-family: 'firaGo';
+  font-size:24px;
+  margin-bottom:17px;
+}
+
+.doc-block p {
+  font-size:16px;
+  font-family: 'firaGoBook';
+  color:#474747;
+}
+
+.code-block {
+  padding: 48px 46px;
+  background-color:#0E0E1A;
+  margin-top:27px;
+  border-radius:18px;
+  color:#C4C4C4;
+  position: relative;
+}
+
+.copyButton {
+  position: absolute;
+  background-image: url('../../assets/copy.png');
+  width:30px;
+  height:30px;
+  right:0;
+  top:0;
+  margin-top:20px;
+  margin-right:15px;
+  background-repeat: no-repeat;
+  background-size: contain;
+  background-color: transparent;
+  border:none;
+  cursor:pointer;
+  z-index:10;
+}
+
+.copied {
+  background-image: url('../../assets/copySuccess.png');
+}
+
+.r-menu-cont ul li {
+  list-style-type: none;
+    margin-bottom:19px;
+}
+
+.r-menu-cont ul li a{
+  font-family: "firaGoBook";
+  font-size:18px;
+  text-decoration: none;
+  color:#474747;
+}
+
+.left-menu  {
+  padding-top:20px;
+}
+
+.right-menu {
+  padding-top:30px;
+}
+
+.source-code {
+  position: relative;
+}

@@ -290,3 +290,46 @@ const paginationContent = document.querySelector('.slider-pagination');
     }
   }
 })()
+
+
+//dropdown list 
+const lists = document.querySelectorAll('.drop-list-li');
+const dropdownMenus = document.querySelectorAll('.dropdown-categories');
+
+lists.forEach((element)=>{
+  dropdownMenus.forEach((drop)=>{
+     element.addEventListener('click', ()=>{
+       if(element.id === drop.id){
+         drop.classList.toggle('active-menu')
+         element.firstChild.nextSibling.classList.toggle('rotate')
+         element.lastChild.previousSibling.classList.toggle('active-link')
+       }
+    })
+  })
+})
+
+//copy clipboard 
+const answer = document.querySelector("#copyResult");
+const copy   = document.querySelectorAll("#copyButton");
+const selection = window.getSelection();
+const range = document.createRange();
+const textToCopy = document.querySelectorAll("#textToCopy")
+
+copy.forEach((e)=>{
+  e.addEventListener('click', ()=>{
+    e.classList.add('copied');
+    setTimeout(()=>{
+      e.classList.remove('copied');
+    },2000)
+    range.selectNodeContents(e.nextElementSibling);
+    selection.removeAllRanges();
+    selection.addRange(range);
+    const successful = document.execCommand('copy');
+    if(successful){
+      // answer.innerHTML = 'Copied!';
+    } else {
+      // answer.innerHTML = 'Unable to copy!';  
+    }
+    window.getSelection().removeAllRanges()
+  })
+})
