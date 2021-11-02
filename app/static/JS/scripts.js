@@ -36,53 +36,34 @@ const loginEvent = () => {
 }
 loginBtn.addEventListener('click', loginEvent)
 
-loginForm = document.getElementById('login-form')
-loginForm.addEventListener('submit', (e) => {
+loginForm = document.querySelector('.login-btn')
+loginForm.addEventListener('click', (e) => {
   e.preventDefault()
-  const divEmail = document.querySelector('.email-input')
-  const divPassword = document.querySelector('.password-input')
+  const divEmail = document.querySelector('#email')
+  const divPassword = document.querySelector('#password')
   let inputEmail = document.forms['login']['email'].value
   let inputPassword = document.forms['login']['password'].value
-  const emailContext = () => {
-    if (divEmail.childNodes[3] === undefined) {
-      const validEdiv = document.createElement('span')
-      validEdiv.classList.add('emailwarning')
-      validEdiv.textContent = 'გთხოვთ შეიყვანეთ მეილი'
-      divEmail.append(validEdiv)
-    }
-  }
-  const passwordContext = () => {
-    if (divPassword.childNodes[3] === undefined) {
-      const validPdiv = document.createElement('span')
-      validPdiv.classList.add('passwordvalidation')
-      validPdiv.textContent = 'გთხოვთ შეიყვანეთ პაროლი'
-      divPassword.append(validPdiv)
-    }
+  
+  if(divEmail.value == ''){
+    document.querySelector('#email').style.border = '1px solid red'
+  } else{
+    document.querySelector('#email').style.border = 'none'
   }
 
-  if (inputEmail == '' && inputPassword == '') {
-    emailContext()
-    passwordContext()
-    return false
-  } else if (inputPassword == '' && inputEmail !== '') {
-    if (divEmail.childNodes[3] !== undefined) {
-      divEmail.childNodes[3].remove()
-    }
-    passwordContext()
-    return false
-  } else if (inputPassword !== '' && inputEmail == '') {
-    emailContext()
-    if (divPassword.childNodes[3] !== undefined) {
-      divPassword.childNodes[3].remove()
-    }
-    return false
-  } else {
+  if(divPassword.value == ''){
+    document.querySelector('#password').style.border = '1px solid red'
+  } else{
+    document.querySelector('#password').style.border = 'none'
+  }
+
+  if(divPassword.value !== '' && divEmail.value !== ''){
     localStorage.setItem(
       'loginInfo',
       JSON.stringify({ email: inputEmail, password: inputPassword })
     )
     location.reload()
   }
+ 
 })
 
 const loginLogo = document.querySelector('.user-logo')
@@ -221,10 +202,8 @@ regForm.addEventListener('submit', (e) => {
   e.preventDefault()
   const divEmail = document.querySelector('.reg-email-input')
   const divPassword = document.querySelector('.reg-password-input')
-  const divPasswordRep = document.querySelector('.reg-password-input-rep')
   let inputEmail = document.forms['registration']['email'].value
   let inputPassword = document.forms['registration']['password'].value
-  let inputPasswordRep = document.forms['registration']['passwordrep'].value
   const emailContext = () => {
     if (divEmail.childNodes[3] === undefined) {
       const validEdiv = document.createElement('span')
@@ -242,108 +221,21 @@ regForm.addEventListener('submit', (e) => {
     }
   }
 
-  const passwordContextRepeat = () => {
-    if (divPasswordRep.childNodes[3] === undefined) {
-      const validPdiv = document.createElement('span')
-      validPdiv.classList.add('passwordvalidation')
-      validPdiv.textContent = 'გთხოვთ შეიყვანეთ პაროლი'
-      divPasswordRep.append(validPdiv)
-    }
+  if(inputEmail == ''){
+    document.querySelector('#reg-email').style.border = '1px solid red';
+  }else{
+    document.querySelector('#reg-email').style.border = 'none';
+  }
+  if(inputPassword == ''){
+    document.querySelector('#reg-password').style.border = '1px solid red';
+  }else{
+    document.querySelector('#reg-password').style.border = 'none';
   }
 
-  if (inputEmail == '' && inputPassword == '' && inputPasswordRep == '') {
-    emailContext()
-    passwordContext()
-    passwordContextRepeat()
-    return false
-  } else if (
-    inputPassword == '' &&
-    inputEmail !== '' &&
-    inputPasswordRep !== ''
-  ) {
-    if (divEmail.childNodes[3] !== undefined) {
-      divEmail.childNodes[3].remove()
-    }
-    if (divPasswordRep.childNodes[3] !== undefined) {
-      divPasswordRep.childNodes[3].remove()
-    }
-    passwordContext()
-    return false
-  } else if (
-    inputPassword == '' &&
-    inputEmail == '' &&
-    inputPasswordRep !== ''
-  ) {
-    if (divEmail.childNodes[3] !== undefined) {
-      divEmail.childNodes[3].remove()
-    }
-    if (divPasswordRep.childNodes[3] !== undefined) {
-      divPasswordRep.childNodes[3].remove()
-    }
-    passwordContext()
-    emailContext()
-    return false
-  } else if (
-    inputPassword == '' &&
-    inputPasswordRep == '' &&
-    inputEmail !== ''
-  ) {
-    if (divEmail.childNodes[3] !== undefined) {
-      divEmail.childNodes[3].remove()
-    }
-    passwordContext()
-    passwordContextRepeat()
-    return false
-  } else if (inputEmail !== '' && inputPasswordRep == '' && inputEmail !== '') {
-    if (divEmail.childNodes[3] !== undefined) {
-      divEmail.childNodes[3].remove()
-    }
-    if (divPassword.childNodes[3] !== undefined) {
-      divPassword.childNodes[3].remove()
-    }
-    passwordContextRepeat()
-    return false
-  } else if (
-    inputEmail == '' &&
-    inputPasswordRep !== '' &&
-    inputPassword !== ''
-  ) {
-    if (divPassword.childNodes[3] !== undefined) {
-      divPassword.childNodes[3].remove()
-    }
-    if (divPasswordRep.childNodes[3] !== undefined) {
-      divPasswordRep.childNodes[3].remove()
-    }
-    emailContext()
-    return false
-  } else if (
-    inputEmail == '' &&
-    inputPasswordRep == '' &&
-    inputPassword !== ''
-  ) {
-    if (divPassword.childNodes[3] !== undefined) {
-      divPassword.childNodes[3].remove()
-    }
-    passwordContextRepeat()
-    emailContext()
-    return false
-  } else if (
-    inputEmail !== '' &&
-    inputPasswordRep !== '' &&
-    inputEmail !== ''
-  ) {
-    if (divEmail.childNodes[3] !== undefined) {
-      divEmail.childNodes[3].remove()
-    }
-    if (divPassword.childNodes[3] !== undefined) {
-      divPassword.childNodes[3].remove()
-    }
-    if (divPasswordRep.childNodes[3] !== undefined) {
-      divPasswordRep.childNodes[3].remove()
-    }
-    location.reload()
-    return true
+  if(inputEmail !== '' && inputPassword !== ''){
+    console.log('registration')
   }
+
 })
 
 const upload = document.querySelector('.btn-upload')
@@ -368,11 +260,11 @@ if(hamburger){
 }
 
 //slider
-const contentSlider = document.querySelector('.slider-ul')
-const sliderItem = document.querySelectorAll('.slider-item')
-const paginationContent = document.querySelector('.slider-pagination')
+const contentSlider = document.querySelector('.slider-ul');
+const sliderItem = document.querySelectorAll('.slider-item');
+const paginationContent = document.querySelector('.slider-pagination');
 
-;(function pagination() {
+(function pagination() {
   if (sliderItem.length > 0) {
     for (var i = 0; i < sliderItem.length; i++) {
       var eFpagination = document.createElement('span')

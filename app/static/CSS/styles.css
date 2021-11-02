@@ -414,19 +414,26 @@ footer {
 
 .login-content {
   position: relative;
-  width: 512px;
-  height: 480px;
-  background-color: #172224;
-  border: 1px solid#707070;
+  width: 1202px;
+  height: 702px;
+  background-color: #496AC1;
+  display: flex;
+  border-radius: 18px;
 }
 
 .login-content h2 {
-  margin-top: 22px;
-  margin-bottom: 33px;
-  font-size: 34px;
-  font-family: Sandro;
+  margin-top: 80px;
+  margin-bottom: 90px;
+  font-size: 27px;
+  font-family: 'web001';
   text-align: center;
-  color: #fff;
+  color: #496AC1;
+}
+
+.login-cont {
+  width:603px;
+  background-color: #FFFFFF;
+  border-radius:18px;
 }
 
 .addit-login {
@@ -452,20 +459,21 @@ footer {
 .login-input {
   display: flex;
   justify-content: center;
-  width: 256px;
-  height: 32px;
-  padding: 3px 8px 7px;
-  background-color: #ffffff;
-  font-size: 18px;
-  font-family: Sandro;
+  width: 449px;
+  height: 52px;
+  padding: 0px 20px;
+  background-color: #F9F9F9;
+  font-size: 13px;
+  font-family: 'web001';
   color: #707070;
-  border: 1px solid#707070;
+  border: none;
   outline: none;
+  border-radius:12px;
 }
 
 .login-input::placeholder {
-  font-size: 18px;
-  font-family: Sandro;
+  font-size: 13px;
+  font-family: 'web001';
   color: #707070;
 }
 
@@ -477,23 +485,31 @@ footer {
 }
 
 .login-btn {
+  position: relative;
   margin: auto;
   display: flex;
-  padding: 2px 41px 7px;
-  background-color: #707070;
-  font-size: 18px;
-  font-family: Sandro;
+  width:449px;
+  height:61px;
+  background-color: #496AC1;
+  font-size: 16px;
+  font-family: 'firaGo';
   color: #ffffff;
-  border: 1px solid#707070;
+  border-radius:12px;
+  border: none;
   cursor: pointer;
+  text-align: center;
+  margin-left: 2px;
+}
+
+.login-btn span{
+  position: absolute;
+  left:50%;
+  top:50%;
+  transform: translate(-50%, -50%);
 }
 
 .registration-button,
 .avtorization-button {
-  position: absolute;
-  bottom: 0px;
-  left: 50%;
-  transform: translateX(-50%);
   margin-bottom: 37px;
   font-size: 18px;
   font-family: Sandro;
@@ -915,14 +931,15 @@ footer {
 }
 
 .forgot-password {
-  font-size: 18px;
-  font-family: Sandro;
-  color: #fff;
+  margin-top:9px;
+  float:right;
+  font-size: 12px;
+  font-family: 'firaGo';
+  color: #496AC1;
   background-color: transparent;
   border: none;
   outline: none;
   cursor: pointer;
-  text-decoration: underline;
 }
 
 .log-inp-rec {
@@ -934,7 +951,7 @@ footer {
 }
 
 .visible {
-  display: block;
+  display: flex
 }
 
 .invisible {
@@ -945,9 +962,16 @@ footer {
 .pas-rec-bg {
   position: relative;
   width: 512px;
-  height: 480px;
+  height: 702px;
   background-color: #172224;
   border: 1px solid#707070;
+}
+
+.registration-content {
+  width:1202px;
+  background-color:#496AC1;
+  border:none;
+  border-radius:18px;
 }
 
 .registration-content h2,
@@ -1462,4 +1486,132 @@ i.fab.fa-facebook-square {
   position: absolute;
   margin-top: 16px;
   margin-left: 10px;
+}
+
+.content-login {
+  width:1202px;
+}
+
+.gare-avtorizacia h4 {
+  text-align: center;
+  color:#8B8B8B;
+  font-family: 'firaGo';
+  font-size:12px;
+  font-weight: normal;
+}
+
+.gare-avtorizacia {
+  margin-top:40px;
+}
+
+.o-auth{
+  position: relative;
+  margin-top:21px;
+  width:449px;
+  height:62px;
+  background-color:#fff;
+  border-radius: 12px;
+  border:1px solid#C4C4C4;
+  cursor: pointer;
+}
+
+.o-auth span img{
+  width:23px;
+  margin-right:10px;
+  margin-top:-3px;
+}
+
+.o-auth span {
+  position: absolute;
+  left:50%;
+  top:50%;
+  transform: translate(-50%, -50%);
+  display: flex;
+  font-size:18px;
+  font-family: 'firaGo';
+}
+
+.cont {
+  position: absolute;
+  width:402px;
+  left:50%;
+  top:50%;
+  transform: translate(-50%, -50%);
+}
+
+.registration-butt {
+  position: relative;
+  width:603px;
+}
+
+.cont h1 {
+  text-align: center;
+  font-size:27px;
+  color: #FFFFFF;
+  font-family: 'web001';
+  margin-bottom:25px;
+}
+
+.cont p {
+  text-align: center;
+  color:#FFFFFF;
+  font-size:19px;
+  margin-bottom:40px;
+  font-family: 'firaGoLight';
+}
+
+.registration-button, .avtorization-button {
+  margin-left:50px;
+  width:310px;
+  height:61px;
+  background-color: transparent;
+  border:1px solid#fff;
+  border-radius:12px;
+  font-family: 'firaGo';
+}
+
+.avt {
+  width:603px;
+}
+
+.registration-content h2 {
+  margin-top: 80px;
+  margin-bottom: 60px;
+  font-size: 27px;
+  font-family: 'web001';
+  text-align: center;
+  color: #496AC1;
+}
+
+.name-lastname {
+  display: flex;
+  margin-bottom:14px;
+}
+
+.name-input {
+  display: flex;
+  justify-content: center;
+  width: 177px;
+  height: 52px;
+  padding: 0px 20px;
+  background-color: #F9F9F9;
+  font-size: 13px;
+  font-family: 'web001';
+  color: #707070;
+  border: none;
+  outline: none;
+  border-radius:12px;
+}
+
+.n23 {
+  width: 241px;
+}
+.n-input{
+  margin-right:28px;
+}
+.n-input h5, .reg-password-input h5, .reg-email-input h5 , .email-input h5, .password-input h5 {
+  font-family: "firaGo";
+  font-weight: normal;
+  font-size:15px;
+  margin:0 15px 10px; 
 }
