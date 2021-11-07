@@ -23,7 +23,7 @@
 
 /* Person */
 .ner-person {
-    background-color: #3cbb5b;
+    background-color: #6bf38d;
 }
 .ner-person:after {
     content: " PERSON";
@@ -31,7 +31,7 @@
 
 /* Occupation */
 .ner-occupation {
-    background-color: rgb(3, 171, 115);
+    background-color: rgb(27, 215, 155);
 }
 .ner-occupation:after {
     content: " ROLE";
@@ -39,7 +39,7 @@
 
 /* Location */
 .ner-location {
-    background-color: rgb(151, 26, 194);
+    background-color: rgb(222, 147, 255);
 }
 .ner-location:after {
     content: " LOC.";
@@ -47,7 +47,7 @@
 
 /* Geopolitical Entity */
 .ner-geopolitical_entity {
-    background-color: rgb(47, 78, 224);
+    background-color: rgb(126, 149, 253);
 }
 .ner-geopolitical_entity:after {
     content: " GPE";
@@ -55,7 +55,7 @@
 
 /* Structural Location */
 .ner-structural_location {
-    background-color: rgb(4, 119, 161);
+    background-color: rgb(50, 186, 243);
 }
 .ner-structural_location:after {
     content: " STRUCT";
@@ -71,7 +71,7 @@
 
 /* Organization */
 .ner-organization {
-    background-color: rgb(194, 123, 43);
+    background-color: rgb(255, 178, 94);
 }
 .ner-organization:after {
     content: " ORG";
@@ -79,7 +79,7 @@
 
 /* Event */
 .ner-event {
-    background-color: rgb(176, 10, 74);
+    background-color: rgb(255, 153, 166);
 }
 .ner-event:after {
     content: " EVENT";
@@ -87,7 +87,7 @@
 
 /* Product */
 .ner-product {
-    background-color: rgb(144, 187, 73);
+    background-color: rgb(193, 246, 110);
 }
 .ner-product:after {
     content: " PROD.";
@@ -95,7 +95,7 @@
 
 /* Address */
 .ner-address {
-    background-color: rgb(139, 131, 199);
+    background-color: rgb(200, 193, 252);
 }
 .ner-address:after {
     content: " ADDR.";
@@ -103,7 +103,7 @@
 
 /* Phone Number */
 .ner-phone_number {
-    background-color: rgb(164, 116, 208);
+    background-color: rgb(217, 171, 255);
 }
 .ner-phone_number:after {
     content: " PHONE";
@@ -111,7 +111,7 @@
 
 /* Email */
 .ner-email {
-    background-color: rgb(115, 113, 189);
+    background-color: rgb(170, 165, 255);
 }
 .ner-email:after {
     content: " EMAIL";
@@ -119,7 +119,7 @@
 
 /* URL */
 .ner-url {
-    background-color: rgb(183, 26, 84);
+    background-color: rgb(255, 195, 217);
 }
 .ner-url:after {
     content: " URL";
@@ -127,7 +127,7 @@
 
 /* IP */
 .ner-ip {
-    background-color: rgb(217, 0, 92);
+    background-color: rgb(255, 171, 206);
 }
 .ner-ip:after {
     content: " IP";
@@ -135,7 +135,7 @@
 
 /* Datetime */
 .ner-datetime {
-    background-color: rgb(208, 144, 5);
+    background-color: rgb(255, 213, 129);
 }
 .ner-datetime:after {
     content: " Datetime";
@@ -143,7 +143,7 @@
 
 /* Date */
 .ner-date {
-    background-color: rgb(199, 164, 98);
+    background-color: rgb(255, 215, 146);
 }
 .ner-date:after {
     content: " DATE";
@@ -151,7 +151,7 @@
 
 /* Time */
 .ner-time {
-    background-color: rgb(243, 168, 32);
+    background-color: rgb(255, 202, 105);
 }
 .ner-time:after {
     content: " TIME";
@@ -159,7 +159,7 @@
 
 /* Date Range */
 .ner-date_range {
-    background-color: rgb(246, 134, 14);
+    background-color: rgb(255, 174, 89);
 }
 .ner-date_range:after {
     content: " DATErng.";
@@ -167,7 +167,7 @@
 
 /* Time Range */
 .ner-time_range {
-    background-color: rgb(243, 113, 32);
+    background-color: rgb(255, 152, 93);
 }
 .ner-time_range:after {
     content: " TIMErng.";
@@ -175,7 +175,7 @@
 
 /* Duration */
 .ner-duration {
-    background-color: rgb(217, 34, 34);
+    background-color: rgb(255, 115, 115);
 }
 .ner-duration:after {
     content: " DUR.";
@@ -183,7 +183,7 @@
 
 /* Quantity */
 .ner-quantity {
-    background-color: rgb(222, 138, 138);
+    background-color: rgb(248, 137, 137);
 }
 .ner-quantity:after {
     content: " QTY.";
@@ -191,7 +191,7 @@
 
 /* Number */
 .ner-number {
-    background-color: rgb(245, 96, 96);
+    background-color: rgb(253, 105, 105);
 }
 .ner-number:after {
     content: " NUM";
@@ -199,7 +199,7 @@
 
 /* Percentage */
 .ner-percentage {
-    background-color: rgb(201, 38, 38);
+    background-color: rgb(255, 111, 111);
 }
 .ner-percentage:after {
     content: " %";
@@ -207,7 +207,7 @@
 
 /* Ordinal Number */
 .ner-ordinal_number {
-    background-color: rgb(206, 60, 60);
+    background-color: rgb(255, 77, 77);
 }
 .ner-ordinal_number:after {
     content: " ORDNUM.";
@@ -215,7 +215,7 @@
 
 /* Age */
 .ner-age {
-    background-color: rgb(212, 238, 29);
+    background-color: rgb(235, 255, 115);
 }
 .ner-age:after {
     content: " AGE";
@@ -223,7 +223,7 @@
 
 /* Currency */
 .ner-currency {
-    background-color: rgb(77, 173, 100);
+    background-color: rgb(108, 217, 133);
 }
 .ner-currency:after {
     content: " CUR.";
@@ -231,7 +231,7 @@
 
 /* Dimensions */
 .ner-dimensions {
-    background-color: rgb(107, 159, 175);
+    background-color: rgb(112, 220, 248);
 }
 .ner-dimensions:after {
     content: " DIM.";
@@ -239,7 +239,7 @@
 
 /* Temperature */
 .ner-temperature {
-    background-color: rgb(213, 206, 111);
+    background-color: rgb(243, 227, 99);
 }
 .ner-temperature:after {
     content: " TEMP.";
