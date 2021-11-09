@@ -138,7 +138,7 @@
                         <div class="upload-file">
                             <div class="cont-up">
                                 <label class="btn-file-upload">
-                                    {{ upload_form.file(style="display:none", accept=".txt", onchange="document.getElementById('text').disabled = true;") }}ატვირთე
+                                    {{ upload_form.file(style="display:none", accept=".txt, .docx, .doc, .html, .pdf", onchange="document.getElementById('text').disabled = true;") }}ატვირთე
                                     ფაილი<img style="margin-left: 13px; vertical-align: middle"
                                               src="{{ url_for('static', filename="assets/ic-editor-attachment.svg") }}" alt=""></label>
                             </div>

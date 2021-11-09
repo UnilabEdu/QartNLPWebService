@@ -25,7 +25,8 @@ class MultiCheckboxField(SelectMultipleField):
 class UploadForm(FlaskForm):
     name = StringField()
     text = TextAreaField(validators=[Length(max=2000)])
-    file = FileField(validators=[FileAllowed(['txt'])])
+    file = FileField(validators=[FileAllowed(['txt', 'docx', 'doc', 'pdf'],
+                                 message='ფაილი არ დამუშავდა. გთხოვთ ატვირთოთ .word, .doc, .docx ან .html ფაილი')])
     processes = MultiCheckboxField(choices=[("lemat", "ტექსტის ლემატიზაცია"),
                                             ("token", "ტექსტის ტოკენიზაცია"),
                                             ("freq_dist", "სიტყვების სიხშირის განაწილება"),

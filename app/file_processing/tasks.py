@@ -2,6 +2,7 @@ import json
 import os
 from itertools import islice
 
+import textract
 from flask_login import current_user
 from ftfy import fix_encoding
 
@@ -9,14 +10,32 @@ from app.database import db
 from app.extensions import celery
 from app.file_processing.nlp import *
 from app.models.file import File, Pages, Sentences, Words, Statistics
+from app.settings import basedir
 
 
 @celery.task()
-def process_file(id, user, filename, processes):
+def process_file(id, user, filename, processes, extension):
     from app import create_app
 
+    file_path = os.path.join(Config.UPLOAD_FOLDER, str(user), filename)
+    available_extensions = ['docx', 'doc', 'html', 'pdf']
+
+    if extension in available_extensions:
+        filename = filename.replace('.', '_') + '_converted.txt'
+        file_object = File.query.get(id)
+        file_object.file_name = filename
+        print('antiword envvariable', os.environ.get('ANTIWORDHOME'))
+        plain_text = textract.process(file_path, input_encoding='utf-8', output_encoding='utf-8').decode('utf-8')
+
+        converted_txt_path = os.path.join(basedir, 'uploads', str(current_user.id), filename)
+        print(converted_txt_path)
+        with open(converted_txt_path, "w", encoding='utf-8') as text_file:
+            text_file.write(plain_text)
+            text_file.close()
+
+        file_path = converted_txt_path
+
     with create_app().app_context():
-        file_path = os.path.join(Config.UPLOAD_FOLDER, str(user), filename)
 
         if "freq_dist" in processes:
 

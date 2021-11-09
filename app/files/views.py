@@ -38,21 +38,27 @@ def all_files(page_num):
     # File upload handling
     if upload_form.validate_on_submit() and upload_form.submit_upload.data:
         if upload_form.file.data:
+            print('file detected')
             file = upload_form.file.data
             filename = secure_filename(file.filename)
             title = filename.split(".")[0]
+            print('file:', file)
+            print('filename:', filename)
+            print('title:', title)
 
         elif upload_form.text.data and upload_form.name.data:
             filename = secure_filename(upload_form.name.data + ".txt")
             title = upload_form.name.data
 
         path = os.path.join(Config.UPLOAD_FOLDER, str(current_user.id), filename)
+        print('path:', path)
         duplicate_count = 0
 
+        extension = filename.split('.')[1]
         while os.path.exists(path):
             duplicate_count += 1
             new_title = f"{title}-{duplicate_count}"
-            filename = f"{new_title}.txt"
+            filename = f"{new_title}.{extension}"
             path = os.path.join(Config.UPLOAD_FOLDER, str(current_user.id), filename)
 
         if duplicate_count != 0:
@@ -67,13 +73,15 @@ def all_files(page_num):
                 f.write(upload_form.text.data)
 
         file_model = File(title, current_user.id, filename)
+        print(file_model)
         file_model.save()
 
         file_status = Status(file_model.id, frequency_distribution_calculated="freq_dist" in upload_form.processes.data,
                              lemmatized="lemat" in upload_form.processes.data, completed=False)
+        print(file_status)
         file_status.save()
 
-        process_file(file_model.id, current_user.id, filename, upload_form.processes.data)
+        process_file(file_model.id, current_user.id, filename, upload_form.processes.data, extension)
         flash('მიმდინარეობს ფაილის დამუშავება')
         return redirect(url_for('files.all_files'))
 

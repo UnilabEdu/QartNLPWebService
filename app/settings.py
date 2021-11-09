@@ -41,3 +41,6 @@ class Config(object):
     GOOGLE_OAUTH_CLIENT_SECRET = '8DYkW12OxSBJjrAVco-c-RWo'
     OAUTHLIB_RELAX_TOKEN_SCOPE = 1
     os.environ["OAUTHLIB_INSECURE_TRANSPORT"] = "True"
+
+    # Antiword
+    os.environ['ANTIWORDHOME'] = basedir
