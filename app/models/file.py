@@ -212,8 +212,9 @@ class Sentences(db.Model):
         with open(file_path, "r", encoding="utf-8") as file:
             file.read(self.start_index + self.pages.start_index)
             raw_text = file.read(self.end_index - self.start_index)
-
-        return raw_text
+            while raw_text[:1] == '\n':
+                raw_text = raw_text[1:]
+        return raw_text.replace('\n', ' ')
 
 
 class Words(db.Model):

@@ -7,6 +7,7 @@ class Config(object):
     # Flask settings
     CSRF_ENABLED = True
     DEBUG = True  # TODO: disable debug mode
+    JSON_AS_ASCII = False
 
     # Flask-SQLAlchemy settings
     SECRET_KEY = os.environ.get('SECRET_KEY', 'appsecretkey')  # TODO: set secret_key
