@@ -2,6 +2,7 @@
   margin: 0;
   padding: 0;
   box-sizing: border-box;
+  text-decoration: none;
 }
 
 header {
@@ -409,7 +410,7 @@ footer {
 
 .active-login {
   display: flex;
-  z-index: 5;
+  z-index: 11;
 }
 
 .login-content {
@@ -954,12 +955,31 @@ footer {
   display: flex
 }
 
+.vis {
+  display: block;
+}
+
 .invisible {
   display: none;
 }
 
-.registration-content,
-.pas-rec-bg {
+.autoriz {
+  display: block;
+  float: right;
+  margin-bottom:20px;
+  cursor: pointer;
+  margin-top: 9px;
+    float: right;
+    font-size: 16px;
+    font-family: 'firaGo';
+    color: #496AC1;
+    background-color: transparent;
+    border: none;
+    outline: none;
+    cursor: pointer;
+}
+
+.registration-content{
   position: relative;
   width: 512px;
   height: 702px;
@@ -974,8 +994,7 @@ footer {
   border-radius:18px;
 }
 
-.registration-content h2,
-.pas-rec-bg h2 {
+.registration-content h2{
   margin-top: 22px;
   margin-bottom: 33px;
   font-size: 34px;
@@ -1690,6 +1709,7 @@ i.fab.fa-facebook-square {
 .dropdown-categories li {
   padding: 5px!important;
   font-family: 'firaGo';
+  cursor: pointer;
 }
 
 .rotate {
@@ -1759,6 +1779,9 @@ i.fab.fa-facebook-square {
   font-family: "firaGoBook";
   font-size:18px;
   text-decoration: none;
+  color:#575757;
+}
+.r-menu-cont ul li a:hover {
   color:#474747;
 }
 
@@ -1772,4 +1795,341 @@ i.fab.fa-facebook-square {
 
 .source-code {
   position: relative;
+}
+
+.pas-rec-bg {
+  width:603px;
+  background-color: #FFFFFF;
+  border-radius:18px;
+}
+
+.pas-rec-bg h2 {
+  margin-top: 80px;
+  margin-bottom: 90px;
+  font-size: 27px;
+  font-family: 'web001';
+  text-align: center;
+  color: #496AC1;
+}
+
+.news-block {
+  display: flex;
+  justify-content: flex-start;
+  margin-bottom:62px;
+}
+
+.news-img {
+  width: 368px;
+  margin-right: 56px;
+  overflow:hidden;
+  border-radius: 16px;
+}
+
+.news-img img {
+  width:100%;
+}
+
+.news-info {
+  width:665px;
+}
+
+.news-info h2 {
+  margin-top:10px;
+  font-family: 'web001';
+  font-size:32px;
+  margin-bottom:10px;
+  color:#040404;
+}
+
+.news-info p {
+  font-family: 'firaGoBook';
+  font-size:16px;
+  color: #000000;
+  margin-bottom:20px;
+}
+
+.news-data {
+  color: #464646;
+  font-size: 16px;
+  font-family: 'web001';
+}
+
+.fullstory {
+  width:830px;
+  position: relative;
+  margin: auto;
+}
+
+.back-news{
+  position: absolute;
+  margin-left:-100px;
+  margin-top:2px;
+}
+
+.back-news a {
+  font-size:22px;
+  font-family: 'web001';
+  color: #0E0E1A;
+}
+
+.back-news a img {
+  margin-top:3px;
+  float:left;
+}
+
+.back-news a span{
+  margin-left:10px;
+}
+
+.img-place-full {
+  width: 830px;
+}
+
+.img-place-full img {
+  width: 100%
+}
+
+
+.info-fullstory{
+  overflow:hidden;
+}
+
+
+.info-fullstory h2 {
+  margin-top:64px;
+  font-family: 'web001';
+  font-size:32px;
+  margin-bottom:25px;
+  color:#040404;
+}
+
+.info-fullstory p {
+  font-family: 'firaGoBook';
+  font-size:16px;
+  color: #000000;
+  margin-bottom:16px;
+}
+
+.data-fullstory {
+  float: right;
+  font-family: 'firaGoBook';
+  font-size:16px;
+  color:#464646;
+}
+
+.recent-news {
+  margin-top:95px;
+}
+
+.recent-news h1 {
+  font-family: 'web001';
+  font-size:32px;
+  text-align: center;
+}
+
+.news-block-2 {
+  width: 368px;
+  overflow:hidden;
+  margin-top:54px;
+}
+
+.news-info-2 {
+  width: 368px;
+}
+.news-info-2 h2 {
+  margin-top:21px;
+  font-family: 'web001';
+  font-size:26px;
+  margin-bottom:14px;
+  color:#040404;
+}
+
+.news-info-2 p {
+  font-family: 'firaGoBook';
+  font-size:16px;
+  color: #000000;
+  margin-bottom:20px;
+}
+
+.news-img-2 {
+  position: relative;
+  overflow:hidden;
+  width:368px;
+  height: 257px; 
+  border-radius: 16px;
+}
+
+.news-img-2 img {
+  position: absolute;
+  max-width:105%;
+  height:100%;
+  top:50%;
+  left:50%;
+  transform:translate(-50%, -50%);
+}
+
+.nw-block {
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap
+}
+
+.profile-info {
+  background-color: #496AC112;
+  color: #496AC1;
+  font-size:16px;
+  font-family: 'firaGo';
+  border:none;
+  text-align: center;
+  width:160px;
+  height: 46px;
+  border-radius: 10px;
+  cursor: pointer;
+  margin-top:30px;
+}
+
+.logout-btn {
+  padding:12px 0;
+  background-color: #F5ECEC;
+  color: #C14949;
+  font-size:16px;
+  font-family: 'firaGo';
+  border:none;
+  text-align: center;
+  width:160px;
+  height: 46px;
+  border-radius: 10px;
+  cursor: pointer;
+  margin-top:14px;
+}
+
+.profile-box p {
+  font-family: firaGoSemiBold, sans-serif; font-size: 24px
+}
+
+.img-box {
+  width:96px;
+  height: 96px;
+  overflow:hidden;
+}
+
+.profile-setting-popup {
+  display: none;
+}
+
+.setting-on {
+  position: fixed;
+  display: flex;
+  justify-content: center;
+  width:100%;
+  height: 100%;
+  top:0;
+  left:0;
+  background-color: #ffffffe0;
+  z-index: 12;
+  overflow-y:auto;
+  padding:30px 0;
+}
+
+.setting-block {
+  width:1088px;
+  height:879px;
+  background-color: #F9F9F9;
+  border-radius:18px;
+  display:flex;
+  justify-content: space-between;
+  padding:67px 76px;
+}
+
+.profile-picture-block {
+  margin-bottom:34px;
+}
+
+.profile-picture-block h2 {
+  font-family: 'firaGo';
+  font-size:24px;
+  color: #151528;
+  margin-bottom:22px;
+}
+
+.pic-bl {
+  background-color:#fff;
+  border-radius: 22px;
+  width:438px;
+  padding:44px 51px;
+}
+
+.pic-bl-picture {
+  background-color:#fff;
+  border-radius: 22px;
+  width:438px;
+  padding:24px 31px;
+}
+
+.in-pt {
+  margin-bottom:32px;
+}
+
+.in-pt h3 {
+  color: #2A2A2A;
+  font-family: 'firaGo';
+  font-size:20px;
+  font-weight: normal;
+}
+
+.in-pt input {
+  background-color: #F9F9F9;
+  border-radius:12px;
+  width:340px;
+  height:57px;
+  padding: 0 20px;
+  border:none;
+  margin-top:10px;
+}
+
+.in-pt p {
+  color:#E98940;
+  font-size:11px;
+ font-family: 'firaGo';
+ margin-top:10px;
+}
+
+.changesBtn {
+  position: absolute;
+  background-color: #496AC1;
+  color: #fff;
+  font-size:20px;
+  border-radius:20px;
+  border:none;
+  width:420px;
+  height:77px;
+  margin-left:15px;
+  font-family: 'firaGo'; 
+  bottom:0;
+}
+
+.right-setting-block {
+  position: relative;
+}
+
+.im {
+  position: relative;
+  width: 107px;
+  height: 107px;
+  overflow:hidden;
+  border-radius: 50%;
+  margin-right:30px;
+}
+
+.im img {
+  position: absolute;
+  width: 100%;
+  left:50%;
+  top:50%;
+  transform: translate(-50%, -50%)
+}
+
+.pt-upload {
+  display: flex;
+  align-items: center;
 }

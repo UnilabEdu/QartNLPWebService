@@ -180,17 +180,26 @@ const forgotBtn = document.querySelector('.forgot-password')
 forgotBtn.addEventListener('click', (e) => {
   e.preventDefault()
   recovPas.classList.remove('invisible')
-  recovPas.classList.add('visible')
-  login.classList.add('invisible')
+  recovPas.classList.add('vis')
+  document.querySelector('.login-cont').classList.add('invisible')
 })
+
+if(document.querySelector('.autoriz')){
+document.querySelector('.autoriz').addEventListener('click', (e)=>{
+  e.preventDefault()
+  recovPas.classList.add('invisible')
+  recovPas.classList.remove('vis')
+  document.querySelector('.login-cont').classList.remove('invisible')
+})
+}
 
 window.onclick = (event) => {
   if (event.target == loginContent) {
     loginContent.classList.remove('active-login')
     recovPas.classList.add('invisible')
-    recovPas.classList.remove('visible')
+    recovPas.classList.remove('vis')
     login.classList.remove('invisible')
-    login.classList.add('visible')
+    document.querySelector('.login-cont').classList.remove('invisible')
     registration.classList.add('invisible')
     registration.classList.remove('visible')
   }
@@ -333,3 +342,22 @@ copy.forEach((e)=>{
     window.getSelection().removeAllRanges()
   })
 })
+
+
+//profile-setting
+const profileSettingBtn = document.querySelector('.profile-info');
+
+
+if(profileSettingBtn){
+  profileSettingBtn.addEventListener('click', ()=>{
+    document.querySelector('.profile-setting-popup').classList.add('setting-on');
+    document.body.style.overflow = 'hidden'
+  }) 
+}
+
+window.onclick = (event) => {
+  if (event.target == document.querySelector('.profile-setting-popup')) {
+    document.querySelector('.profile-setting-popup').classList.remove('setting-on');
+    document.body.style.overflow = 'auto'
+  }
+}
