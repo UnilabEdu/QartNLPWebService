@@ -1,0 +1,345 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <link href="../assets/favicon.ico" rel="icon" type="image/x-icon" />
+    <title>QartNLP</title>
+    <link rel="stylesheet" href="../static/CSS/styles2.css" />
+    <link rel="stylesheet" href="../static/CSS/fonts.css" />
+  </head>
+  <body>
+    <header id="header">
+      <nav class="navigation display-flex">
+        <div class="nav-left">
+          <img src="../assets/new-logo.svg" alt="" />
+        </div>
+        <div class="nav-right">
+          <ul>
+            <li class="list-item">
+              <a class="active-link-nav" href="main.html">მთავარი</a>
+            </li>
+            <li class="list-item"><a href="home.html">ლემატიზატორი</a></li>
+            <li class="list-item"><a href="">დოკუმენტაცია</a></li>
+            <li class="list-item"><a href="about.html">ჩვენს შესახებ</a></li>
+            <li class="icon login">
+              <div class="user-place">
+                <img src="../assets/user.svg" alt="logo" class="user-logo" />
+              </div>
+              <div id="dropdown">
+                <a class="my-files" href="files.html">ჩემი ფაილები</a>
+                <p class="user-info">
+                  <span id="user-name"> სახელი გვარი </span>
+                </p>
+                <button id="log-out">გამოსვლა</button>
+              </div>
+            </li>
+          </ul>
+        </div>
+      </nav>
+    </header>
+
+    <div class="login-bg">
+      <div class="content-login">
+        <div class="login-content">
+          <div class="login-cont">
+            <h2>ავტორიზაცია</h2>
+            <div class="login-inputs">
+              <form name="login" method="POST" id="login-form">
+                <div class="email-input">
+                  <h5>ელ-ფოსტა</h5>
+                  <input
+                    type="email"
+                    name="email"
+                    id="email"
+                    class="login-input"
+                  />
+                </div>
+                <div class="password-input">
+                  <h5>პაროლი</h5>
+                  <input
+                    type="password"
+                    name="password"
+                    id="password"
+                    class="login-input"
+                  />
+                </div>
+                <div style="overflow:hidden"><button class="forgot-password">დაგავიწყდათ პაროლი?</button></div>
+                <button type="submit" class="login-btn"><span>შესვლა</span></button>
+                <div class="gare-avtorizacia">
+                  <h4>გარე ავტორიზაცია</h4>
+                  <button class="o-auth"><span><img src="../assets/g.png"/>Google</span></button>
+                </div>
+              </form>
+            </div>
+          </div>
+          <div class="registration-butt">
+            <div class="cont">
+              <h1>გამარჯობა, მეგობარო!</h1>
+              <p>შეიყვანეთ თქვენი პირადი მონაცემები და დაიწყეთ მოგზაურობა ჩვენთან</p>
+              <button class="registration-button">რეგისტრაცია</button>
+            </div>
+          </div>
+        </div>
+
+        <div class="registration-content invisible">
+          <div class="registration-butt">
+            <div class="cont">
+              <h1>კეთილი იყოს თქვენი დაბრუნება</h1>
+              <p>ჩვენთან კავშირის გასაგრძელებლად გთხოვთ შეხვიდეთ თქვენს პერსონალურ ინფორმაციასთან</p>
+              <button class="avtorization-button">ავტორიზაცია</button>
+            </div>
+          </div>
+          <div class="login-cont">
+            <h2>რეგისტრაცია</h2>
+            <div class="login-inputs">
+              <form name="registration" method="POST" id="registration-form">
+                <div class="name-lastname">
+                  <div class="n-input">
+                    <h5>სახელი</h5>
+                      <input
+                        type="name"
+                        name="name"
+                        id="name-input"
+                        class="name-input"
+                      />
+                  </div>
+                  <div class="n-input">
+                    <h5>გვარი</h5>
+                      <input
+                        type="name"
+                        name="name"
+                        id="name-input"
+                        class="name-input n23"
+                      />
+                  </div>
+                </div>
+                <div class="reg-email-input">
+                  <h5>ელ-ფოსტა</h5>
+                  <input
+                    type="email"
+                    name="email"
+                    id="reg-email"
+                    class="login-input"
+                  />
+                </div>
+                <div class="reg-password-input">
+                  <h5>პაროლი</h5>
+                  <input
+                    type="password"
+                    name="password"
+                    id="reg-password"
+                    class="login-input"
+                  />
+                </div>
+<!--                 <div class="reg-password-input-rep">
+                  <input
+                    type="password"
+                    name="passwordrep"
+                    id="reg-password-rep"
+                    class="login-input"
+                    placeholder="გაიმეორეთ პაროლი"
+                  />
+                </div> -->
+                <button type="submit" class="login-btn"><span>რეგისტრაცია</span></button>
+                <div class="gare-avtorizacia">
+                  <h4>გარე რეგისტრაცია</h4>
+                  <button class="o-auth"><span><img src="../assets/g.png"/>Google</span></button>
+                </div>
+              </form>
+            </div>
+          </div>
+        </div>
+
+        <div class="pas-rec-bg invisible">
+          <h2>პაროლის აღდგენა</h2>
+          <div class="addit-login">
+            <img
+              class="img-additional"
+              src="../assets/Path3452.svg"
+              alt="Github"
+            />
+            <img
+              class="img-additional"
+              src="../assets/RepeatGrid1.svg"
+              alt="Gmail"
+            />
+          </div>
+          <div class="login-inputs">
+            <form name="login" method="POST" id="recov-form">
+              <div class="email-input">
+                <input
+                  type="email"
+                  name="email"
+                  id="email-forgot"
+                  class="login-input"
+                  placeholder="ელფოსტა"
+                />
+              </div>
+              <div class="password-input">
+                <input
+                  type="password"
+                  name="password-forg"
+                  class="login-input log-inp-rec"
+                  placeholder="ახალი პაროლი"
+                />
+              </div>
+              <div class="password-input">
+                <input
+                  type="password"
+                  name="password-forg"
+                  id="password-forg"
+                  class="login-input log-inp-rec"
+                  placeholder="დაადასტურეთ პაროლი"
+                />
+              </div>
+              <input type="submit" value="აღდგენა" class="login-btn" />
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="wall">
+      <div class="flex-container">
+        <div class="left-menu">
+          <div class="menu-container">
+            <ul class="menu-content">
+              <li class="drop-list-li" id="drp-1">
+                <span class="arrow-cat"></span>
+                <span class="cat-text">დოკუმენტაცია</span>
+              </li>
+              <div class="dropdown-categories" id="drp-1">
+                <ul>
+                  <li>მთავარი</li>
+                  <li>დკუმენტაცია</li>
+                  <li>ჩვენს შესახებ</li>
+                </ul>
+              </div>
+              <li class="drop-list-li" id="drp-2">
+                <span class="arrow-cat"></span>
+                <span class="cat-text">ჩვენს შესახებ</span>
+              </li>
+              <div class="dropdown-categories" id="drp-2">
+                <ul>
+                  <li>მთავარი</li>
+                  <li>დკუმენტაცია</li>
+                  <li>ჩვენს შესახებ</li>
+                </ul>
+              </div>
+              <li>
+                <a href="">სიახლეები</a>
+              </li>
+              <li class="drop-list-li" id="drp-3">
+                <span class="arrow-cat"></span>
+                <span class="cat-text">ლემატიზატორი</span>
+              </li>
+              <div class="dropdown-categories" id="drp-3">
+                <ul>
+                  <li>მთავარი</li>
+                  <li>დკუმენტაცია</li>
+                  <li>ჩვენს შესახებ</li>
+                </ul>
+              </div>
+              <li class="drop-list-li" id="drp-4">
+                <span class="arrow-cat"></span>
+                <span class="cat-text">სიახლეები</span>
+              </li>
+              <div class="dropdown-categories" id="drp-4">
+                <ul>
+                  <li>მთავარი</li>
+                  <li>დკუმენტაცია</li>
+                  <li>ჩვენს შესახებ</li>
+                </ul>
+              </div>
+              <li>
+                <a href="">მთავარი</a>
+              </li>
+            </ul>
+          </div>
+        </div>
+
+        <div class="doc-content">
+          <div class="doc-block">
+            <h2>მეთოდები</h2>
+            <p>ენის ციფრული დამუშავებისთვის აუცილებელია ხელსაწყოები, რომელებიც ტექსტის ანალიზში დაგვეხმარებიან. ხელსაწყოთა ნაკრების გამოყენების შედეგად ვიღებთ ,,გასუფთავებულ" ტექსტს პრაქტიკული გამოყენებისთვის.</p>
+          </div>
+          <div class="doc-block">
+            <h2>ლემატიზატორი</h2>
+            <p>მეთოდი ამუშავებს არგუმენტად გადაცემულ ტექსტს და სიტყვათა სეპარირების შემდეგ გვიბრუნებს თითოეული სტყვის ლემას ანუ საწყის ფორმას</p>
+            <div class="source-code">
+              <button class="copyButton" id="copyButton"></button>
+              <div class="code-block" id="textToCopy">
+                <p style="color:#F9AE76; margin-bottom:25px"># Program to generate a random number between 0 and 9</p>
+                <p style="color:#F9AE76; margin-bottom:5px"># importing the random module</p>
+                <p style="margin-bottom:35px"><span style="color:#7F55E3">import</span> random</p>
+                <p><span style="color:#7F55E3">print</span>(random.randint(<span style="color:#F9AE76">0,9</span>))</p>
+                <span id="copyResult"></span>
+              </div>
+            </div>
+          </div>
+          <div class="doc-block">
+            <h2>ტოკენიზატორი</h2>
+            <p>ტოკენიზატორი მიღებულ ტექტს ამუშავებს და ცალ-ცალკე გვიბრუნებს ტექსტის თითოეულ სიტყვას.</p>
+            <div class="source-code">
+              <button class="copyButton" id="copyButton"></button>
+              <div class="code-block" id="textToCopy">
+                <p style="margin-bottom:15px"><span style="color:#7F55E3">import</span> random</p>
+                <p><span style="color:#7F55E3">print</span>(random.randint(<span style="color:#F9AE76">0,9</span>))</p>
+                <span id="copyResult"></span>
+              </div>
+            </div>
+          </div>
+          <div class="doc-block">
+            <h2>სიხშირის მაჩვენებელი</h2>
+            <p>მეთოდი ითვლის მიღებული სიტყვის ტექსტში არსებულ სიხშირეს. გადავცემთ ტექსტს, რომელიც გვიბრუნებს მიღებული შედეგების ლექსიკონს</p>
+          </div>
+        </div>
+
+        <div class="right-menu">
+          <div class="r-menu-cont">
+            <ul>
+              <li><a href="">მთავარი</a></li>
+              <li><a href="">ჩვენს შესახებ</a></li>
+              <li><a href="">სიახლეები</a></li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <footer>
+      <div class="footer-container">
+        <div class="footer-l__block">
+          <div class="created-by__title">
+            <h2>პორტალის შესახებ</h2>
+            <p>
+              შექმნილია ილიას სახელმწიფო უნივერსიტეტის ქართული ენის
+              ლემატიზატორის ბაზაზე unilab-ის ციფრული ლაბორატორიის Python
+              Development გუნდის მიერ.
+            </p>
+          </div>
+        </div>
+        <div class="footer-r__block">
+          <div class="university-name__title"><h2>პროექტი ქსელში</h2></div>
+          <div class="univeristy-logo">
+            <a href="https://www.facebook.com/" target="_blank">
+              <img src="../assets/fb.svg" alt="" />
+            </a>
+            <a href="https://www.twitter.com/" target="_blank">
+              <img src="../assets/tw.svg" alt="" />
+            </a>
+            <a href="https://www.linkedin.com/" target="_blank">
+              <img src="../assets/linkedin.svg" alt="" />
+            </a>
+            <a href="https://dribbble.com/" target="_blank">
+              <img src="../assets/dribble.svg" alt="" />
+            </a>
+          </div>
+        </div>
+      </div>
+      <div class="coprgt">Copyright © QarNLP 2020</div>
+    </footer>
+
+    <script src="../static/JS/scripts.js"></script>
+  </body>
+</html>

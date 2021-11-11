@@ -60,13 +60,3 @@
          url('../fonts/FiraGO-Book.ttf') format('truetype'),
          url('../fonts/FiraGO-Book.svg#FiraGO-Book') format('svg');
 }
-
-@font-face {
-    font-family: 'firaGoSemibold';
-    src: url('../fonts/FiraGO-SemiBold.eot');
-    src: url('../fonts/FiraGO-SemiBold.eot?#iefix') format('embedded-opentype'),
-         url('../fonts/FiraGO-SemiBold.woff2') format('woff2'),
-         url('../fonts/FiraGO-SemiBold.woff') format('woff'),
-         url('../fonts/FiraGO-SemiBold.ttf') format('truetype'),
-         url('../fonts/FiraGO-SemiBold.svg#FiraGO-SemiBold') format('svg');
-}
