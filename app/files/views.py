@@ -83,7 +83,7 @@ def all_files(page_num):
         print(file_status)
         file_status.save()
 
-        process_file(file_model.id, current_user.id, filename, upload_form.processes.data, extension)
+        process_file.delay(file_model.id, current_user.id, filename, upload_form.processes.data, extension)
         flash('მიმდინარეობს ფაილის დამუშავება')
         return redirect(url_for('files.all_files'))
 
