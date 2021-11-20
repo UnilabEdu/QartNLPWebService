@@ -2285,3 +2285,248 @@ i.fab.fa-facebook-square {
   display: flex;
   align-items: center;
 }
+
+.search-input {
+    width:941px;
+    height:60px;
+    border-radius:12px;
+    background-color: #F6F6F6;
+    color:#86878B;
+    font-family: 'firaGoBook';
+    font-size:18px;
+    padding: 0 20px;
+    border:none;
+    outline: none
+}
+
+.search-input::placeholder {
+    color:#86878B;
+    font-family: 'firaGoBook';
+    font-size:18px;
+}
+
+.search-bl-btn{
+    width:132px;
+    height: 60px;
+    border-radius: 12px;
+    background-color: #496AC1;
+    border:none;
+    outline: none;
+    margin-left:10px;
+    cursor: pointer;
+}
+
+.search-bl-btn {
+    font-family: 'firaGoBook';
+    color:#fff;
+    font-size:18px;
+}
+
+.search-bl-btn img{
+    display: inline-block;
+    vertical-align: top;
+    margin-right:5px;
+}
+
+.btns-for-filter {
+    display: flex;
+    justify-content: flex-start;
+    margin: 10px 0;
+}
+
+.f-btn {
+    margin-right:20px;
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+.f-btn span {
+    color: #496AC1;
+    font-size:16px;
+    font-family: 'firaGo';
+}
+
+.f-btn img {
+    display: inline-block;
+    vertical-align: top;
+    margin-left:5px;
+}
+
+.f-btn:hover {
+    opacity: 0.5;
+}
+
+.block-1-srch{
+    margin-top:40px;
+}
+
+.block-content {
+    display: flex;
+    align-items: flex-start;
+    margin-bottom:20px;
+}
+
+.num {
+    background-color: #ECF0F9;
+    border-radius:12px;
+    width:60px;
+    height: 60px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: #496AC1;
+    font-family: 'firaGo';
+    font-size:24px;
+}
+
+.nums {
+    display: flex;
+    align-items: center;
+}
+
+.minus-btn {
+    background-image: url('../../assets/minus-btn.svg');
+    background-repeat: no-repeat;
+    width:24px;
+    height: 5px;
+    margin-right:10px;
+}
+
+.pls-btn {
+    background-image: url('../../assets/plus-btn.svg');
+    background-repeat: no-repeat;
+    width:24px;
+    height: 18px;
+    margin-left:10px;
+}
+
+.block-txt-content {
+    margin-left:20px;
+}
+
+.block-txt-content p {
+    background-color: #F5F5F5;
+    border-radius:12px;
+    padding:25px;
+    font-family: 'firaGoBook';
+    margin-bottom:5px;
+}
+
+.search-results {
+    margin-top:63px;
+}
+
+.search-form-titles h2 {
+    color: #222323;
+    font-family: 'firaGo';
+    font-size:24px;
+}
+
+.search-form-titles h4 {
+    color: #4B4B4B;
+    font-family: 'firaGoBook';
+    font-size:18px;    
+    font-weight: normal;
+    margin-top:4px;
+}
+
+.search-form-titles {
+    margin-bottom:34px;
+}
+
+.result-content {
+    padding:38px 44px 64px;
+    background-color: #F5F5F5;
+    border-radius: 12px; 
+}
+
+.result-content p {
+    color: #0E0E1A;
+    font-family: 'firaGo';
+    font-size:18px;
+}
+
+.result-content div {
+    float:right;
+    margin-top:19px;
+    color: #496AC1;
+    font-family: 'firaGo';
+}
+
+.filter-form {
+    display: none;
+}
+
+.active-block {
+    display: block;
+}
+
+.filter-form li {
+    list-style-type:none;
+    background-color: transparent;
+    border:1px solid#496AC1;
+    border-radius:8px;
+    padding:7px;
+    color: #496AC1;
+    font-family: 'firaGo';
+    margin-bottom:10px;
+    margin-right:10px;
+    cursor: pointer;
+}
+
+.filter-form {
+    width:665px;
+    background-color: #F9F9F9;
+    padding:30px;
+    border-radius:12px;
+    margin-top:20px;
+}
+
+.filter-form div {
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.active-li {
+    background-color:#496AC1!important;
+    color:#FFFFFF!important;
+}
+
+.filter-form div h2 {
+    display: block;
+    width:100%;
+    margin-top:15px;
+    margin-bottom:23px;
+    font-size:20px;
+    color: #151528;
+    font-family: 'firaGoBook';
+}
+
+.btn-save {
+    background-color: #ECF0F9;
+    color: #496AC1;
+    font-size:18px;
+    font-family: 'firaGo';
+    margin:auto;
+    margin-top:30px;
+    margin-bottom:30px;
+    display: flex;
+    border:none;
+    border-radius: 8px;
+    width:315px;
+    height: 52px;
+    text-align: center;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+}
+
+.result-content div {
+    cursor: pointer;
+}
+
+.result-content div img {
+    display: inline-block;
+    vertical-align: center;
+    margin-left:5px;
+}
