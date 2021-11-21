@@ -3,7 +3,6 @@ import os
 from itertools import islice
 
 import textract
-from flask_login import current_user
 from ftfy import fix_encoding
 
 from app.database import db
@@ -27,7 +26,7 @@ def process_file(id, user, filename, processes, extension):
         print('antiword envvariable', os.environ.get('ANTIWORDHOME'))
         plain_text = textract.process(file_path, input_encoding='utf-8', output_encoding='utf-8').decode('utf-8')
 
-        converted_txt_path = os.path.join(basedir, 'uploads', str(current_user.id), filename)
+        converted_txt_path = os.path.join(basedir, 'uploads', str(user), filename)
         print(converted_txt_path)
         with open(converted_txt_path, "w", encoding='utf-8') as text_file:
             text_file.write(plain_text)
@@ -47,7 +46,7 @@ def process_file(id, user, filename, processes, extension):
 
             filetitle = os.path.splitext(filename)[0]
             newtitle = f"{filetitle}-freq_dist.json"
-            freq_filepath = os.path.join(Config.UPLOAD_FOLDER, str(current_user.id), newtitle)
+            freq_filepath = os.path.join(Config.UPLOAD_FOLDER, str(user), newtitle)
             with open(freq_filepath, "w", encoding='utf-8') as fp:
                 fp.write(freq_data)
 

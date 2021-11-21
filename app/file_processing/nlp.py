@@ -77,7 +77,7 @@ def remove_special_characters(text):
 
 def lemmatize(text):
 
-    fst = FST.load(Config.NLP_LIBS_FOLDER + "\\geo.fst")
+    fst = FST.load(Config.NLP_LIBS_FOLDER + "/geo.fst")
 
     lemmatized_words = []
     word_start = 0

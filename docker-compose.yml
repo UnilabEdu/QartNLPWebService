@@ -1,0 +1,53 @@
+version: "3.8"
+services:
+  web:
+    build: .
+    container_name: "qartnlp-web"
+    command: run --host=0.0.0.0
+    ports:
+      - "5000:5000"
+    environment:
+      FLASK_APP: run.py
+    volumes:
+      - qartnlp-uploads:/qartnlp/app/uploads
+      - qartnlp-db:/qartnlp/app/database
+      - qartnlp-images:/qartnlp/app/static/uploads
+    links:
+      - redis
+    depends_on:
+      - redis
+    networks:
+      - qartnlp-network
+
+  redis:
+    container_name: "qartnlp-redis"
+    image: redis:6.2.6
+    hostname: redis
+    ports:
+      - "6379:6379"
+    networks:
+      - qartnlp-network
+
+  celery:
+    build: .
+    container_name: "qartnlp-celery"
+    entrypoint: celery
+    command: -A app.file_processing.tasks worker --pool=solo --loglevel=INFO
+    volumes:
+      - qartnlp-uploads:/qartnlp/app/uploads
+      - qartnlp-db:/qartnlp/app/database
+      - qartnlp-images:/qartnlp/app/static/uploads
+    links:
+      - redis
+    depends_on:
+      - redis
+    networks:
+      - qartnlp-network
+
+volumes:
+  qartnlp-uploads:
+  qartnlp-db:
+  qartnlp-images:
+
+networks:
+  qartnlp-network:

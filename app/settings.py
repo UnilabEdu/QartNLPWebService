@@ -11,13 +11,14 @@ class Config(object):
 
     # Flask-SQLAlchemy settings
     SECRET_KEY = os.environ.get('SECRET_KEY', 'appsecretkey')  # TODO: set secret_key
-    SQLALCHEMY_DATABASE_URI = os.environ.get('SQLALCHEMY_DATABASE_URI', f'sqlite:///{os.path.join(basedir, "data.db")}')
+    SQLALCHEMY_DATABASE_URI = os.environ.get('SQLALCHEMY_DATABASE_URI',
+                                             f'sqlite:///{os.path.join(basedir, "database/data.db")}')
     SQLALCHEMY_TRACK_MODIFICATIONS = False
 
     # Celery settings
     UPLOAD_FOLDER = "app/uploads/"
-    CELERY_BROKER_URL = "redis://localhost"  # TODO: update redis URLs
-    CELERY_RESULT_BACKEND = "redis://localhost"
+    CELERY_BROKER_URL = "redis://redis"  # TODO: update redis URLs
+    CELERY_RESULT_BACKEND = "redis://redis"
 
     # File processing library location
     NLP_LIBS_FOLDER = basedir + "/file_processing/libs"
