@@ -403,7 +403,7 @@ footer {
 
 .active-login {
     display: flex;
-    z-index: 11;
+    z-index: 5;
 }
 
 .login-content {
@@ -583,7 +583,9 @@ footer {
     padding: 64px 76px;
     max-width: 1470px;
     width: 80%;
-    margin: 41.9px auto auto auto;
+    margin-top: 96px;
+    margin-right: 139px;
+    margin-left: 38px;
 }
 
 .file_content_heading {
@@ -1024,44 +1026,24 @@ footer {
     display: none;
 }
 
-.autoriz {
-    display: block;
-    float: right;
-    margin-bottom:20px;
-    cursor: pointer;
-    margin-top: 9px;
-    float: right;
-    font-size: 16px;
-    font-family: 'firaGo', sans-serif;
-    color: #496AC1;
-    background-color: transparent;
-    border: none;
-    outline: none;
-}
-
-.registration-content{
+/*.registration-content,
+.pas-rec-bg {
     position: relative;
     width: 512px;
-    height: 702px;
+    height: 480px;
     background-color: #172224;
     border: 1px solid #707070;
-}
+}*/
 
-.registration-content {
-    width:1202px;
-    background-color:#496AC1;
-    border:none;
-    border-radius:18px;
-}
-
-.registration-content h2{
+/*.registration-content h2,
+.pas-rec-bg h2 {
     margin-top: 22px;
     margin-bottom: 33px;
     font-size: 34px;
-    font-family: Sandro, sans-serif;
+    font-family: Sandro, sans-serif, sans-serif;
     text-align: center;
     color: #fff;
-}
+}*/
 
 .uploading-procces {
     position: relative;
