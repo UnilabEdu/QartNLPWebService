@@ -23,14 +23,12 @@ __pycache__/
 
 # Distribution / packaging
 .Python
-build/
 develop-eggs/
 dist/
 downloads/
 eggs/
 .eggs/
 lib64/
-parts/
 sdist/
 var/
 wheels/
@@ -80,5 +78,3 @@ migrations/
 env/
 venv/
 ENV/
-
-*.pyc
