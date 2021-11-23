@@ -19,7 +19,7 @@ class User(db.Model, UserMixin):
     _password = db.Column(db.String(255), nullable=False)
     password_reset_key = db.Column(db.String(), nullable=True)
     email_activation_key = db.Column(db.String(), nullable=True)
-    register_date = db.Column(db.DateTime)
+    register_date = db.Column(db.DateTime())
     confirmed_at = db.Column(db.DateTime())
     is_oauth = db.Column(db.Boolean(), server_default='0')
     active = db.Column('is_active', db.Boolean(), nullable=False, server_default='1')
