@@ -15,31 +15,50 @@ from app.settings import basedir
 @celery.task()
 def process_file(id, user, filename, processes, extension):
     from app import create_app
-
-    file_path = os.path.join(Config.UPLOAD_FOLDER, str(user), filename)
-    available_extensions = ['docx', 'doc', 'html', 'pdf']
-
-    if extension in available_extensions:
-        filename = filename.replace('.', '_') + '_converted.txt'
-        file_object = File.query.get(id)
-        file_object.file_name = filename
-        print('antiword envvariable', os.environ.get('ANTIWORDHOME'))
-        plain_text = textract.process(file_path, input_encoding='utf-8', output_encoding='utf-8').decode('utf-8')
-
-        converted_txt_path = os.path.join(basedir, 'uploads', str(user), filename)
-        print(converted_txt_path)
-        with open(converted_txt_path, "w", encoding='utf-8') as text_file:
-            text_file.write(plain_text)
-            text_file.close()
-
-        file_path = converted_txt_path
-
     with create_app().app_context():
 
+        file_path = os.path.join(Config.UPLOAD_FOLDER, str(user), filename)
+        available_extensions = ['docx', 'doc', 'html', 'pdf']
+
+        if extension in available_extensions:
+            filename = filename.replace('.', '_') + '_converted.txt'
+            file_object = File.query.get(id)
+            file_object.file_name = filename
+
+            if extension == 'html':
+                current_file = open(file_path, 'r', encoding='utf-8')
+                plain_text = current_file.read()
+                current_file.close()
+            else:
+                plain_text = textract.process(file_path, input_encoding='utf-8', output_encoding='utf-8').decode('utf-8')
+
+            converted_txt_path = os.path.join(basedir, 'uploads', str(user), filename)
+
+            with open(converted_txt_path, "w", encoding='utf-8') as text_file:
+                text_file.write(plain_text)
+                text_file.close()
+
+            file_path = converted_txt_path
+
+        # modifying/cleaning and replacing text in the uploaded file
+        current_file = open(file_path, 'r', encoding='utf-8')
+        current_text = current_file.read()
+        current_file.close()
+        if 'remove_html' in processes or extension == 'html':
+            current_text = remove_html_tags(current_text)
+        if 'clean_whitespaces' in processes:
+            current_text = remove_trailing_spaces(current_text)
+        if 'clean_special_characters' in processes:
+            current_text = remove_special_characters(current_text)
+        with open('file.txt', 'w') as file:
+            file.write(current_text)
+
+        # generating frequency distribution and lemma tags
         if "freq_dist" in processes:
 
             freq_file = open(file_path, 'r', encoding='utf-8')
             freq_text = fix_encoding(freq_file.read())
+            freq_file.close()
 
             result_json = frequency_distribution(freq_text)
             freq_data = json.dumps(result_json, ensure_ascii=False, indent=1)
