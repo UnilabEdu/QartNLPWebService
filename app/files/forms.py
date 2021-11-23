@@ -25,15 +25,15 @@ class MultiCheckboxField(SelectMultipleField):
 class UploadForm(FlaskForm):
     name = StringField()
     text = TextAreaField(validators=[Length(max=2000)])
-    file = FileField(validators=[FileAllowed(['txt', 'docx', 'doc', 'pdf'],
+    file = FileField(validators=[FileAllowed(['txt', 'docx', 'doc', 'pdf', 'html'],
                                  message='ფაილი არ დამუშავდა. გთხოვთ ატვირთოთ .word, .doc, .docx ან .html ფაილი')])
     processes = MultiCheckboxField(choices=[("lemat", "ტექსტის ლემატიზაცია"),
-                                            ("token", "ტექსტის ტოკენიზაცია"),
+                                            # ("token", "ტექსტის ტოკენიზაცია"),
                                             ("freq_dist", "სიტყვების სიხშირის განაწილება"),
                                             ("remove_html", "HTML თეგებისგან გასუფთავება "),
                                             ('clean_whitespaces', 'ცარიელი სივრცეების გასუფთავება'),
                                             ('clean_special_characters', 'სიმბოლოებისგან გასუფთავება'),
-                                            ("stop_word", "Stop word-ებისგან გასუფთავება"),
+                                            # ("stop_word", "Stop word-ებისგან გასუფთავება"),
                                             ])
     submit_upload = SubmitField('დამუშავება')
 
