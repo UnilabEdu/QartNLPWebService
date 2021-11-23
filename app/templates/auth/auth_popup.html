@@ -1,0 +1,116 @@
+{% from "macros/macros.html" import flash_auth_popup %}
+
+{% block auth_popup %}
+    <div class="login-bg">
+      <div class="content-login">
+        <div class="login-content">
+          <div class="pas-rec-bg invisible">
+            <h2>პაროლის აღდგენა</h2>
+            <div class="login-inputs">
+              <form name="login" method="POST" id="recov-form">
+                <div class="email-input">
+                  <h5>ელ-ფოსტა</h5>
+                  {{ forms['forgot'].hidden_tag() }}
+                  {{ forms['forgot'].email(class='login-input') }}
+                </div>
+                  <br>
+                  {% if submitted_form == 'forgot' %}
+                        {{ flash_auth_popup() }}
+                  {% endif %}
+                <div style="overflow:hidden"><span class="autoriz">ავტორიზაცია</span></div>
+                {{ forms['forgot'].submit_password_forgot(class='login-btn') }}
+              </form>
+            </div>
+          </div>
+          <div class="login-cont">
+            <h2>ავტორიზაცია</h2>
+            <div class="login-inputs">
+              <form name="login" method="POST" id="login-form">
+                <div class="email-input">
+                  <h5>ელ-ფოსტა</h5>
+                  {{ forms['login'].hidden_tag() }}
+                  {{ forms['login'].login(class='login-input') }}
+                </div>
+                <div class="password-input">
+                  <h5>პაროლი</h5>
+                  {{ forms['login'].password(class='login-input') }}
+                </div>
+                  <br>
+                  {% if submitted_form == 'login' %}
+                        {{ flash_auth_popup() }}
+                  {% endif %}
+                <div style="overflow:hidden"><button type="button" class="forgot-password">დაგავიწყდათ პაროლი?</button></div>
+                {{ forms['login'].submit_login(class='login-btn') }}
+                <div class="gare-avtorizacia">
+                  <h4>გარე ავტორიზაცია</h4>
+                  <div class="o-auth">
+                      <a href="{{ url_for('google.login') }}">
+                          <img src="{{ url_for('static', filename='assets/g.png') }}" alt="google-logo"/>
+                          Google
+                      </a>
+                  </div>
+                </div>
+              </form>
+            </div>
+          </div>
+          <div class="registration-butt">
+            <div class="cont">
+              <h1>გამარჯობა, მეგობარო!</h1>
+              <p>შეიყვანეთ თქვენი პირადი მონაცემები და დაიწყეთ მოგზაურობა ჩვენთან</p>
+              <button class="registration-button">რეგისტრაცია</button>
+            </div>
+          </div>
+        </div>
+
+        <div class="registration-content invisible">
+          <div class="registration-butt">
+            <div class="cont">
+              <h1>კეთილი იყოს თქვენი დაბრუნება</h1>
+              <p>ჩვენთან კავშირის გასაგრძელებლად გთხოვთ შეხვიდეთ თქვენს პერსონალურ ინფორმაციასთან</p>
+              <button class="avtorization-button">ავტორიზაცია</button>
+            </div>
+          </div>
+          <div class="login-cont">
+            <h2>რეგისტრაცია</h2>
+            <div class="login-inputs">
+              <form name="registration" method="POST" id="registration-form">
+                <div class="name-lastname">
+                  <div class="n-input">
+                    <h5>სახელი</h5>
+                    {{ forms['signup'].hidden_tag() }}
+                    {{ forms['signup'].first_name(class='name-input') }}
+                  </div>
+                  <div class="n-input">
+                    <h5>გვარი</h5>
+                    {{ forms['signup'].last_name(class='name-input n23') }}
+                  </div>
+                </div>
+                <div class="reg-email-input">
+                  <h5>ელ-ფოსტა</h5>
+                  {{ forms['signup'].email(class='login-input') }}
+                </div>
+                <div class="reg-password-input">
+                  <h5>პაროლი</h5>
+                  {{ forms['signup'].password(class='login-input') }}
+                </div>
+                  {% if submitted_form == 'signup' %}
+                        {{ flash_auth_popup() }}
+                  {% endif %}
+                  <br>
+                  {{ forms['signup'].submit_signup(class='login-btn') }}
+                <div class="gare-avtorizacia">
+                  <h4>გარე ავტორიზაცია</h4>
+                  <div class="o-auth">
+                      <a href="{{ url_for('google.login') }}">
+                          <img src="{{ url_for('static', filename='assets/g.png') }}" alt="google-logo"/>
+                          Google
+                      </a>
+                  </div>
+                </div>
+              </form>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+{% endblock %}

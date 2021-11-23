@@ -1,27 +1,43 @@
 {% from "macros/macros.html" import nav_link with context %}
 
 <!-- NAVIGATION -->
-<nav class="navigation display-flex">
-    <div class="nav-left">
-        <img src="{{ url_for('static', filename="assets/new-logo.svg") }}" alt=""/>
-    </div>
-    <div class="nav-right">
-        <ul>
-            {{ nav_link("main.home", gettext('მთავარი')) }}
-            {{ nav_link("files.all_files", gettext('ლემატიზატორი')) }}
-            {{ nav_link("main.about_us", gettext('ჩვენ შესახებ')) }}
-            <a class="icon" href="{{ url_for('files.all_files') }}">
-                <div class="user-place">
-                    <img src="{{ url_for('static', filename="assets/user.svg") }}" alt="logo" class="user-logo"/>
-                </div>
-                <div id="dropdown">
-                    <a class="my-files" href="{{ url_for('files.all_files') }}">{{ _("ჩემი ფაილები") }}</a>
-                    <p class="user-info">
-                        <span id="user-name"> {{ _("სახელი გვარი") }} </span>
-                    </p>
-                    <button id="log-out">{{ _("გამოსვლა") }}</button>
-                </div>
-            </a>
-        </ul>
-    </div>
-</nav>
+<header id="header">
+    <nav class="navigation display-flex">
+        <div class="nav-left">
+            <img src="{{ url_for('static', filename="assets/new-logo.svg") }}" alt=""/>
+        </div>
+        <div class="nav-right">
+            <ul>
+                {{ nav_link("main.home", gettext('მთავარი')) }}
+                {{ nav_link("files.all_files", gettext('ჩემი ფაილები')) }}
+                {{ nav_link("main.about", gettext('ჩვენ შესახებ')) }}
+
+                {# Show Auth button or My Profile button #}
+                {% if not current_user.is_authenticated %}
+                    <a class="icon login">
+                        <div class="user-place">
+                            <img src="{{ url_for('static', filename="assets/user.svg") }}" alt="logo" class="user-logo"/>
+                        </div>
+                    </a>
+                {% else %}
+                    <a class="icon login" href="{{ url_for('files.all_files') }}">
+                        <div class="user-place">
+                            <img src="
+                                    {{ url_for('static', filename='uploads/' + (current_user.picture or 'default_avatar.png')) }}"
+                                 alt="my-profile-picture"
+                                 height="100%"
+                                 width="100%"
+                                 style="border-radius: 100%;"
+                            />
+                        </div>
+                    </a>
+                {% endif %}
+
+            </ul>
+        </div>
+    </nav>
+</header>
+
+{% if not current_user.is_authenticated %}
+    {% include 'auth/auth_popup.html' %}
+{% endif %}

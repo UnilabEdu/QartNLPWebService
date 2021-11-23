@@ -32,10 +32,10 @@ class SignupForm(FlaskForm):
                              [DataRequired(message='გთხოვთ შეიყვანოთ პაროლი'),
                               Length(min=6,
                                      max=128,
-                                     message='პაროლი უნდა შედგებოდეს 6-128 სიმბოლოსგან'),
-                              EqualTo('confirm_password', message='შეყვანილი პაროლები არ ემთხვევა ერთმანეთს')])
-    confirm_password = PasswordField('გაიმეორეთ პაროლი',
-                                     [DataRequired(message='გთხოვთ გაიმეოროთ არჩეული პაროლი')])
+                                     message='პაროლი უნდა შედგებოდეს 6-128 სიმბოლოსგან')])
+    # EqualTo('confirm_password', message='შეყვანილი პაროლები არ ემთხვევა ერთმანეთს')])
+    # confirm_password = PasswordField('გაიმეორეთ პაროლი',
+    #                                  [DataRequired(message='გთხოვთ გაიმეოროთ არჩეული პაროლი')])
     submit_signup = SubmitField('რეგისტრაცია')
 
     def validate_email(self, field):
@@ -64,35 +64,19 @@ class ResetPasswordForm(FlaskForm):
     submit_password_reset = SubmitField('პაროლის შეცვლა')
 
 
-class ChangePasswordForm(FlaskForm):
+class ChangeProfileDataForm(FlaskForm):
     email = HiddenField()
-    old_password = PasswordField('ძველი პაროლი',
-                                 [DataRequired(
-                                     message='პაროლის შესაცვლელად, გთხოვთ შეიყვანოთ თქვენი ახლანდელი პაროლი')])
-    password = PasswordField('ახალი პაროლი',
-                             [DataRequired(message='გთხოვთ შეიყვანოთ ახალი პაროლი'),
-                              Length(min=6,
-                                     max=128,
-                                     message='პაროლი უნდა შედგებოდეს 6-128 სიმბოლოსგან'),
-                              EqualTo('confirm_password', message='შეყვანილი პაროლები არ ემთხვევა ერთმანეთს')])
-    confirm_password = PasswordField('გაიმეორეთ პაროლი',
-                                     [DataRequired(message='გთხოვთ გაიმეოროთ არჩეული პაროლი')])
+    old_password = PasswordField('ძველი პაროლი')
+    new_password = PasswordField('ახალი პაროლი',
+                                  [EqualTo('confirm_password', message='შეყვანილი პაროლები არ ემთხვევა ერთმანეთს')])
+    confirm_password = PasswordField('გაიმეორეთ პაროლი')
     submit_password_change = SubmitField('პაროლის შეცვლა')
 
-
-class ChangeEmailForm(FlaskForm):
     new_email = EmailField('ელ-ფოსტა',
                            [DataRequired(message='გთხოვთ შეიყვანოთ თქვენი ელ-ფოსტა'),
                             Email(message='ელ-ფოსტის მისამართი არასწორადაა შეყვანილი')])
-    password = PasswordField('პაროლი',
-                             [DataRequired(message='ელ-ფოსტის შესაცვლელად, გთხოვთ შეიყვანოთ პაროლი'),
-                              Length(min=6,
-                                     max=128,
-                                     message='პაროლი უნდა შედგებოდეს 6-128 სიმბოლოსგან')])
     submit_email = SubmitField('ელ-ფოსტის შეცვლა')
 
-
-class ChangeNameForm(FlaskForm):
     first_name = StringField('სახელი',
                              [DataRequired(message='გთხოვთ შეიყვანოთ თქვენი სახელი'),
                               Length(max=40,
@@ -101,12 +85,12 @@ class ChangeNameForm(FlaskForm):
                             [DataRequired(message='გთხოვთ შეიყვანოთ თქვენი გვარი'),
                              Length(max=40,
                                     message='გვარი არ უნდა შედგებოდეს 40-ზე მეტი სიმბოლოსგან')])
-    password = PasswordField('პაროლი',
-                             [DataRequired(message='სახელის შესაცვლელად, გთხოვთ შეიყვანოთ პაროლი'),
-                              Length(min=6,
-                                     max=128,
-                                     message='პაროლი უნდა შედგებოდეს 6-128 სიმბოლოსგან')])
-    submit_name = SubmitField('სახელის შეცვლა')
+    password = PasswordField('პაროლი')
+    submit_profile_changes = SubmitField('მონაცემების შეცვლა')
+
+    def validate_new_email(self, field):
+        if User.select(email=field.data) is not None:
+            raise ValidationError('შეყვანილი ელ-ფოსტა უკვე დაკავშირებულია სხვა ანგარიშთან')
 
 
 class ProfilePictureForm(FlaskForm):
@@ -115,4 +99,4 @@ class ProfilePictureForm(FlaskForm):
         FileAllowed(['jpg', 'jpe', 'jpeg', 'png'],
                     message='პროფილის სურათი არ განახლდა. გთხოვთ აირჩიოთ .jpg, .jpe, .jpeg ან .png ფორმატის სურათი')
     ])
-    submit_picture = SubmitField('პროფილის სურათის განახლება')
+    submit_picture = SubmitField('სურათის განახლება')

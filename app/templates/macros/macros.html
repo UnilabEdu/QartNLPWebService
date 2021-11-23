@@ -47,7 +47,7 @@
                 <div style="height: 100%; display: flex; align-items: flex-end" class="file-tools">
                     <div class="tool-container display-flex">
                         <a style="color: inherit; text-decoration: none" ,
-                           href="{{ url_for('tagging.test', file_id=id, page_id=1) }}"><img style="vertical-align: middle"
+                           href="{{ url_for('tagging.tagging', file_id=id, page_id=1) }}"><img style="vertical-align: middle"
                                 src="{{ url_for('static', filename="assets/ic-contact-edit.svg") }}"></a>
                     </div>
                     <div class="tool-container display-flex">
@@ -64,4 +64,26 @@
             </div>
         </div>
     </div>
+{% endmacro %}
+
+{% macro flash_auth_popup() %}
+{#    <div id="form-login-error">#}
+        {% with messages = get_flashed_messages(with_categories=True) %}
+            {% if messages %}
+                {% for category, message in messages %}
+                    {% if category in ['success'] %}
+                        {% set category_class = 'flashed-messages' %}
+                    {% else %}
+                        {% set category_class = 'red-flashed-message' %}
+                    {% endif %}
+
+                    {% if loop.index > 0 and messages[loop.index] == messages[loop.index - 1] %}
+                        {# do nothing, don't display a message if it's a duplicate of the previous one #}
+                    {% else %}
+                        <p class="{{ category_class }}">{{ message }}</p>
+                    {% endif %}
+                {% endfor %}
+            {% endif %}
+        {% endwith %}
+{#    </div>#}
 {% endmacro %}

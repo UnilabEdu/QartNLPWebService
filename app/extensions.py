@@ -10,6 +10,7 @@ migrate = Migrate()
 mail = Mail()
 babel = Babel()
 login_manager = LoginManager()
-login_manager.login_view = 'auth.login'
+login_manager.login_view = 'main.home'
 login_manager.login_message = 'გთხოვთ გაიაროთ ავტორიზაცია'
+login_manager.login_message_category = 'danger'
 celery = Celery(__name__, broker=Config.CELERY_BROKER_URL, backend=Config.CELERY_RESULT_BACKEND)

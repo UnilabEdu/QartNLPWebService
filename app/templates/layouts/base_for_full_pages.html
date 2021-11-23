@@ -8,13 +8,12 @@
     <link rel="stylesheet" href="{{ url_for("static", filename="CSS/tagging-style.css") }}"/>
     <link rel="icon" href="{{ url_for("static", filename="assets/favicon.ico") }}" type="image/png">
     <script src="https://kit.fontawesome.com/5968971b15.js" crossorigin="anonymous"></script>
-    <link rel="stylesheet" href="{{ url_for("static", filename="CSS/styles.css") }}"/>
+    <link rel="stylesheet" href="{{ url_for("static", filename="CSS/styles2.css") }}"/>
     <link rel="stylesheet" href="{{ url_for("static", filename="CSS/fonts.css") }}"/>
 </head>
 <body>
-<header id="header">
+
     {% include "layouts/nav.html" %}
-</header>
 
 
 {% block content %}
@@ -43,6 +42,12 @@
     </div>
     <div class="coprgt">Copyright © QartNLP 2021</div>
 </footer>
-<script src="{{ url_for("static", filename="JS/scripts.js") }}"></script>
+    {#    <script src="{{ url_for("static", filename="JS/scripts.js") }}"></script>#}
+    {% if not current_user.is_authenticated %}
+        <script>
+            const displayThisPopup = {{ submitted_form | tojson }}
+        </script>
+        <script src="{{ url_for('static', filename='JS/auth-popup.js') }}"></script>
+    {% endif %}
 </body>
 </html>
