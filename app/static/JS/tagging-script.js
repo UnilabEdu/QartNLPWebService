@@ -1,198 +1,243 @@
 // VARS
-const resetButton = document.getElementById('reset_btn');
-const saveButton = document.getElementById('submit');
 const words = document.querySelectorAll('span');
 const words_list = document.getElementById('words_list');
-const initJson = document.getElementById('init-json');
-const tag_selector = document.getElementById('ner_tag');
-console.log('initJson:')
-console.log(initJson)
-let taggedWordArray = [] // array of word objects
-let taggedWords = [] // array of words (right block)
+console.log('words_list!')
+console.log(words_list)
 
+let selectedWordIDs = []
+let selectedWordObjects = []
+let alreadyTaggedIDs = []
 
-// FN-s
-function updateWordsList(wordObject) {
+for (let i = 0; i < words.length; i++) {
+    words[i].addEventListener('click', () => selectWord(words[i]));
+}
 
-    // let wordObject = {
-    //     id: this.id.split("w")[1],
-    //     content: this.textContent
-    // }
+let wrapper = document.createElement('span')
+wrapper.id = 'ner-tag-selected'
+const dropdown = document.createElement('div')
+dropdown.id = 'ner-dropdown'
+const dropdownHelpText = document.createElement('p')
+dropdownHelpText.innerText = 'Choose a Ner Type for the selection:'
+dropdown.append(dropdownHelpText)
+for (let nerTitle of allTypes) {
+    let nerSelector = document.createElement('button')
+    nerSelector.innerText = nerTitle
+    nerSelector.addEventListener('click', () => applyNerTag(nerSelector))
+    dropdown.append(nerSelector)
+}
 
-    let is_taggedWordArray_empty = taggedWordArray.length === 0;
+let deleteButton = document.createElement('button')
+deleteButton.innerText = 'X'
+deleteButton.classList.add('ner-tag-delete')
+let timeout;
 
-    if (is_taggedWordArray_empty) {
-        // just add clicked word if it's the first one;
-        taggedWordArray.push(wordObject)
+function selectWord(word) {
+    let selectedWordId = parseInt(word.id.split('w')[1])
+    let nextSibling = word.nextSibling
 
+    if (alreadyTaggedIDs.includes(selectedWordId)) {
+        displayDeleteButton(word)
+        return;
+    } else if (selectedWordIDs.includes(selectedWordId)) {
+        displayDeleteButton(word, true)
+        return;
+    }
+
+    if (!selectedWordIDs.length) {
+        word.parentNode.insertBefore(wrapper, word)
+    }
+
+    if ( (!selectedWordIDs.length) || (Math.max(...selectedWordIDs) + 1 === selectedWordId) ) {
+        wrapper.append(word, nextSibling)
+    } else if (Math.min(...selectedWordIDs) - 1 === selectedWordId) {
+        wrapper.prepend(word, nextSibling)
     } else {
-
-        let lastWordID = taggedWordArray[taggedWordArray.length - 1].id
-        let firstWordID = taggedWordArray[0].id
-
-        let is_right_neighbor = Math.abs(parseInt(lastWordID) - parseInt(wordObject.id)) === 1
-        let is_left_neighbor = Math.abs(parseInt(firstWordID) - parseInt(wordObject.id)) === 1
-
-        let is_in_array
-
-        for (let i of taggedWordArray) {
-            if (i.id === wordObject.id) {
-                is_in_array = true
-            }
-        }
-
-        if (!is_in_array && (is_right_neighbor || is_left_neighbor)) {
-            taggedWordArray.push(wordObject);
-            taggedWordArray.sort((a, b) => a.id - b.id);
-        } else {
-            Toastify({
+        console.log('incorrect word selected')
+        Toastify({
                 text: "შემდეგი სიტყვა უნდა იყოს ან მარჯვენა ან მარხენა მეზობელი",
-                duration: 10000,
-                // destination: "https://github.com/apvarun/toastify-js",  // link to plugin github page
-                // newWindow: true,
+                duration: 5000,
                 close: true,
-                gravity: "top", // `top` or `bottom`
-                position: "left", // `left`, `center` or `right`
-                backgroundColor: "linear-gradient(to right, darkred, red)",
-                stopOnFocus: true, // Prevents dismissing of toast on hover
+                gravity: "left",
+                position: "left",
+                backgroundColor: "#525e79",
                 onClick: function () {
                 } // Callback after click
             }).showToast();
-
-        }
+        return;
     }
-    updateWordListView(); // right block
 
+    selectedWordIDs.push(selectedWordId)
+    let wordObject = { id: selectedWordId, content: word.value }
+    selectedWordObjects.push(wordObject)
+
+    wrapper.append(dropdown)
+    console.log(selectedWordIDs)
 }
 
-function updateWordListView() {
-    taggedWords = []
-    for (const obj of taggedWordArray) {
-        taggedWords.push(obj.content)
-    }
-    words_list.textContent = taggedWords.join(" ")
+console.log(allTypes)
+
+
+function applyNerTag(element) {
+    let nerTagName = element.innerText || element.textContent
+    postNerTag(nerTagName)
 }
 
-function resetButtonOnClick() {
-    words_list.textContent = "empty";
-    taggedWordArray = []
-    taggedWords = []
-
-    let tempNer = document.getElementsByClassName("ner-temporary")
-    tempNer[0].outerHTML = tempNer[0].innerHTML
-    console.log(tempNer)
-}
-
-function saveButtonOnClick(file_id, page_id) {
-    // send json containing taggedWordArray to api
-    let nerTag = document.getElementById('ner_tag').value;
-    let finalJSON = {
-        file_id: file_id,
-        page_id: page_id,
-        ner_tag: nerTag,
-        words: taggedWordArray,
+function postNerTag(nerTagName) {
+    const requestBody = {
+        file_id: fileID,
+        page_id: pageID,
+        ner_tag: nerTagName,
+        words: selectedWordObjects
     }
-    console.log(taggedWordArray)
-    console.log(finalJSON)
-    fetch('http://127.0.0.1:5000/api/', {
+
+    fetch('/api/', {
         method: 'POST',
         headers: {
             'Accept': 'application/json',
             'Content-Type': 'application/json'
         },
-        body: JSON.stringify(finalJSON)
+        body: JSON.stringify(requestBody)
     }).then(response => response.json())
         .then(data => {
             console.log('Success:', data);
+            let resultObject = {keys: data.words, value: data.tag_type}
+            backendTags.push(resultObject)
+            refreshTags()
         })
         .catch((error) => {
             console.error('Error:', error);
-        });
-
-    words_list.textContent = "empty";
-    taggedWordArray = []
-    taggedWords = []
-
-    let savedNer = document.getElementsByClassName("ner-temporary")[0]
-    savedNer.classList.remove('ner-temporary')
-}
-
-function wrap_id(ids, tag) {
-    if (Array.isArray(ids) && ids.length > 1) {
-        let word = document.querySelector('#w' + ids[0])
-        let wrapper = document.createElement('span')
-        wrapper.classList.add('ner-tag', 'ner-' + tag.toLowerCase())
-        word.parentNode.insertBefore(wrapper, word)
-
-
-        for (let i = ids[0]; i <= ids[ids.length - 1]; i++) {
-            wrapper.appendChild(document.querySelector('#w' + i))
-        }
-    }
-}
-
-function temp_wrap_ids(tagged_ids) {
-    let is_tagged = taggedWordArray.length > 1;
-    let wrapper = null;
-
-    if (!is_tagged) {
-        debugger
-        let word = document.querySelector('#w' + tagged_ids[0])
-        wrapper = document.createElement('span')
-        wrapper.classList.add('ner-tag', 'ner-temporary')
-        word.parentNode.insertBefore(wrapper, word)
-    } else {
-        wrapper = document.querySelector('span.ner-temporary')
-    }
-
-    for (let i = Math.min(...tagged_ids); i <= Math.max(...tagged_ids); i++) {
-        wrapper.appendChild(document.querySelector('#w' + i))
-        wrapper.appendChild(document.createTextNode (" "))
-    }
-}
-
-function assign_tag() {
-    let ner_selected = tag_selector.value;
-    let ner_tag = document.querySelector(".ner-temporary")
-    ner_tag.className = '';
-    ner_tag.classList.add("ner-tag", 'ner-' + ner_selected, 'ner-temporary')
-}
-
-function initTags(initJsonSelector) {
-    console.log('inittags')
-    let tags = JSON.parse(initJsonSelector.innerHTML)
-    console.log(tags)
-    tags.forEach((words) => {
-        console.log(words)
-        if (words.keys.length > 1) {
-            wrap_id(words.keys, words.value)
-        } else {
-            wrap_id([words.keys[0], words.keys[0]], words.value)
-        }
-    })
-}
-
-function preSelectWord(element) {
-    let ids = taggedWordArray.map(word => word.id);
-    Math.min(...ids)
-    temp_wrap_ids([Math.min(...ids), Math.max(...ids)], '')
-}
-
-// EVENT LISTENERS
-resetButton.addEventListener('click', resetButtonOnClick);
-//saveButton.addEventListener('click', saveButtonOnClick);
-tag_selector.addEventListener('change', assign_tag);
-
-for (let i = 0; i < words.length; i++) {
-    words[i].addEventListener('click', function () {
-        updateWordsList({
-            id: this.id.split("w")[1],
-            content: this.textContent
         })
-
-        preSelectWord(this)
-
-    });
 }
 
-initTags(initJson)
+
+function refreshTags() {
+    resetEverything()
+
+    alreadyTaggedIDs = []
+    let wrapperID = 1
+    for (let tagObject of backendTags) {
+        alreadyTaggedIDs.push(...tagObject.keys)
+        console.log('alreadyTaggedIDs')
+        console.log(alreadyTaggedIDs)
+        let targetWords = getWordsById(tagObject.keys)
+        let targetClass = 'ner-' + tagObject.value.toLowerCase().replace(' ', '_')
+        let doneWrapper = document.createElement('span')
+        doneWrapper.id = 'wrapper-' + wrapperID.toString()
+        wrapperID++
+
+        doneWrapper.classList.add('ner-tag', targetClass)
+        targetWords[0].parentNode.insertBefore(doneWrapper, targetWords[0])
+
+        doneWrapper.append(...targetWords)
+    }
+}
+
+refreshTags()
+
+
+
+function resetEverything(onlyDeselect = false) {
+    let allWrappers;
+    if (onlyDeselect) {
+        allWrappers = [document.getElementById('ner-tag-selected')]
+    } else {
+        allWrappers = document.querySelectorAll('.ner-tag, #ner-tag-selected')
+    }
+    for (let elem of allWrappers) {
+        elem.replaceWith(...elem.childNodes)
+    }
+    deleteButton.style.display = 'none'
+    selectedWordIDs = []
+    selectedWordObjects = []
+}
+
+
+// Helpers
+
+function getWordsById(ids) {
+    const wordElements = []
+
+    ids.sort()
+
+    for (let id of ids) {
+        let elem = document.getElementById('w' + id)
+        wordElements.push(elem)
+        wordElements.push(elem.nextSibling)
+    }
+    return wordElements
+}
+
+
+function displayDeleteButton(wordElement, isDeselectButton = false) {
+    let handlerFuncDelete = () => deleteNerTag(wordIDs)
+    let handlerFuncDeselect = () => resetEverything(true)
+    deleteButton.removeEventListener('click', handlerFuncDelete)
+    deleteButton.removeEventListener('click', handlerFuncDeselect)
+
+    clearTimeout(timeout)
+    deleteButton.style.display = 'inline'
+    let wrapperElement = wordElement.parentNode
+    let parentID = wrapperElement.id.split('-')[1]
+    deleteButton.id = 'delete-btn-' + parentID
+    wrapperElement.append(deleteButton)
+    let wordsToDelete = wrapperElement.childNodes
+    console.log('wordsToDelete')
+    console.log(wordsToDelete)
+    let wordIDs = []
+
+    for (let word of wordsToDelete) {
+        console.log(word.tagName)
+        if (word.tagName === 'SPAN') {
+            console.log('word')
+            let wordID = parseInt(word.id.split('w')[1])
+            wordIDs.push(wordID)
+        }
+    }
+
+    timeout = setTimeout(() => deleteButton.style.display = 'none', 2000)
+    if (isDeselectButton) {
+        deleteButton.addEventListener('click', handlerFuncDeselect, { once: true })
+    } else {
+        deleteButton.addEventListener('click', handlerFuncDelete, { once: true })
+    }
+}
+
+function deleteNerTag(words) {
+    const requestBody = {
+        file_id: fileID,
+        page_id: pageID,
+        word_ids: words,
+        words: selectedWordObjects
+    }
+
+
+    console.log('delete attempted')
+    console.log(words)
+    fetch('/api/', {
+        method: 'DELETE',
+        headers: {
+            'Accept': 'application/json',
+            'Content-Type': 'application/json'
+        },
+        body: JSON.stringify(requestBody)
+    }).then(response => response.json())
+        .then(data => {
+            console.log('Success:', data);
+            console.log(backendTags)
+            let removedTagIndex = backendTags.findIndex( (item) => {
+                console.log(item.keys.sort())
+                console.log(data.words.sort())
+                console.log(item.keys)
+                console.log(data.words)
+                console.log(item.keys.sort() === data.words.sort())
+                return JSON.stringify(item.keys.sort()) === JSON.stringify(data.words.sort())
+            } )
+            backendTags.splice(removedTagIndex, 1)
+            console.log(removedTagIndex)
+            console.log(data.words)
+            refreshTags()
+        })
+        .catch((error) => {
+            console.error('Error:', error);
+        })
+}
