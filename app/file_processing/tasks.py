@@ -24,6 +24,17 @@ def process_file(id, user, filename, processes, extension):
             filename = filename.replace('.', '_') + '_converted.txt'
             file_object = File.query.get(id)
             file_object.file_name = filename
+            print('antiword envvariable', os.environ.get('ANTIWORDHOME'))
+            if extension == 'html':
+                current_file = open(file_path, 'r', encoding='utf-8')
+                plain_text = current_file.read()
+                current_file.close()
+            else:
+                plain_text = textract.process(file_path, input_encoding='utf-8', output_encoding='utf-8').decode('utf-8')
+        if extension in available_extensions:
+            filename = filename.replace('.', '_') + '_converted.txt'
+            file_object = File.query.get(id)
+            file_object.file_name = filename
 
             if extension == 'html':
                 current_file = open(file_path, 'r', encoding='utf-8')
@@ -32,6 +43,11 @@ def process_file(id, user, filename, processes, extension):
             else:
                 plain_text = textract.process(file_path, input_encoding='utf-8', output_encoding='utf-8').decode('utf-8')
 
+            converted_txt_path = os.path.join(basedir, 'uploads', str(user), filename)
+
+            with open(converted_txt_path, "w", encoding='utf-8') as text_file:
+                text_file.write(plain_text)
+                text_file.close()
             converted_txt_path = os.path.join(basedir, 'uploads', str(user), filename)
 
             with open(converted_txt_path, "w", encoding='utf-8') as text_file:
