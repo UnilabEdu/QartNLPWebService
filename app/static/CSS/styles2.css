@@ -416,8 +416,8 @@ footer {
 }
 
 .login-content h2 {
-    margin-top: 80px;
-    margin-bottom: 90px;
+    margin-top: 70px;
+    margin-bottom: 65px;
     font-size: 27px;
     font-family: 'web001', sans-serif;
     text-align: center;
@@ -483,6 +483,7 @@ footer {
     color: #707070;
 }
 
+.red-flashed-message,
 .emailwarning,
 .passwordvalidation {
     margin-top: 3px;
@@ -492,7 +493,6 @@ footer {
 
 .login-btn {
     position: relative;
-    display: flex;
     width:449px;
     height:61px;
     background-color: #496AC1;
@@ -1557,7 +1557,7 @@ i.fab.fa-facebook-square {
 }
 
 .file-upload-modal {
-    display: none;
+    display: block;
     position: fixed;
     z-index: 9999;
     padding-top: 100px;
@@ -1685,13 +1685,13 @@ i.fab.fa-facebook-square {
   cursor: pointer;
 }
 
-.o-auth span img{
+.o-auth a img{
   width:23px;
   margin-right:10px;
   margin-top:-3px;
 }
 
-.o-auth span {
+.o-auth a {
   position: absolute;
   left:50%;
   top:50%;
@@ -1745,8 +1745,8 @@ i.fab.fa-facebook-square {
 }
 
 .registration-content h2 {
-    margin-top: 80px;
-    margin-bottom: 60px;
+    margin-top: 65px;
+    margin-bottom: 45px;
     font-size: 27px;
     font-family: 'web001', sans-serif;
     text-align: center;
