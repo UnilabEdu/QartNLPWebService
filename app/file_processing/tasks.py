@@ -24,17 +24,6 @@ def process_file(id, user, filename, processes, extension):
             filename = filename.replace('.', '_') + '_converted.txt'
             file_object = File.query.get(id)
             file_object.file_name = filename
-            print('antiword envvariable', os.environ.get('ANTIWORDHOME'))
-            if extension == 'html':
-                current_file = open(file_path, 'r', encoding='utf-8')
-                plain_text = current_file.read()
-                current_file.close()
-            else:
-                plain_text = textract.process(file_path, input_encoding='utf-8', output_encoding='utf-8').decode('utf-8')
-        if extension in available_extensions:
-            filename = filename.replace('.', '_') + '_converted.txt'
-            file_object = File.query.get(id)
-            file_object.file_name = filename
 
             if extension == 'html':
                 current_file = open(file_path, 'r', encoding='utf-8')
