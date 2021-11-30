@@ -19,7 +19,7 @@
         <div class="our-team-container">
             <h3 class="about-head">ჩვენი გუნდი</h3>
             <div class="our-team">
-                <div class="team-info">
+                <div class="team-info active-info" id="member-1">
                     <h2 class="team-name">თემურ ჩიჩუა</h2>
                     <h4>ინსტრუქტორი</h4>
                     <p class="team-desc">
@@ -32,15 +32,119 @@
                         <i class="fab fa-github"></i><span>github</span>
                     </a>
                 </div>
-                <div class="team-pics">
-                    <img src="{{ url_for('static', filename='assets/temur-chichua.png') }}" alt="team member" class="team-pic">
-                    <img src="{{ url_for('static', filename='assets/alisa-sanakoevi.png') }}" alt="team member" class="team-pic">
-                    <img src="{{ url_for('static', filename='assets/nina-darsavelidze.png') }}" alt="team member" class="team-pic">
-                    <img src="{{ url_for('static', filename='assets/temuri-qitsohvili.png') }}" alt="team member" class="team-pic">
-                    <img src="{{ url_for('static', filename='assets/mariam-kvantaliani.png') }}" alt="team member" class="team-pic">
-                    <img src="{{ url_for('static', filename='assets/tengiz-pataria.png') }}" alt="team member" class="team-pic">
-                </div>
+                          <div class="team-info" id="member-2">
+            <h2 class="team-name">ალისა სანაკოევი</h2>
+            <h4>ინსტრუქტორი</h4>
+            <p class="team-desc">
+              AnimaChatbotics-ის მოქმედი Python დეველოპერი. მუშაობს სხვადასხვა
+              კომპიუტერული მეცნიერების მიმართულებაზე. ასწავლის Python
+              Development-ს ილიას სახელმწიფო უნივერსიტეტის ტექნოლოგიების
+              ლაბორატორია “უნილაბსა” და “ექსპლორიუმში”
+            </p>
+            <a href="https://github.com/temurchichua" class="git">
+              <i class="fab fa-github"></i><span>github</span>
+            </a>
+          </div>
+          <div class="team-info" id="member-3">
+            <h2 class="team-name">ნინა დარსაველიძე</h2>
+            <h4>ინსტრუქტორი</h4>
+            <p class="team-desc">
+              AnimaChatbotics-ის მოქმედი Python დეველოპერი. მუშაობს სხვადასხვა
+              კომპიუტერული მეცნიერების მიმართულებაზე. ასწავლის Python
+              Development-ს ილიას სახელმწიფო უნივერსიტეტის ტექნოლოგიების
+              ლაბორატორია “უნილაბსა” და “ექსპლორიუმში”
+            </p>
+            <a href="https://github.com/temurchichua" class="git">
+              <i class="fab fa-github"></i><span>github</span>
+            </a>
+          </div>
+          <div class="team-info" id="member-4">
+            <h2 class="team-name">თემური ქიტოშვილი</h2>
+            <h4>ინსტრუქტორი</h4>
+            <p class="team-desc">
+              AnimaChatbotics-ის მოქმედი Python დეველოპერი. მუშაობს სხვადასხვა
+              კომპიუტერული მეცნიერების მიმართულებაზე. ასწავლის Python
+              Development-ს ილიას სახელმწიფო უნივერსიტეტის ტექნოლოგიების
+              ლაბორატორია “უნილაბსა” და “ექსპლორიუმში”
+            </p>
+            <a href="https://github.com/temurchichua" class="git">
+              <i class="fab fa-github"></i><span>github</span>
+            </a>
+          </div>
+          <div class="team-info" id="member-5">
+            <h2 class="team-name">მარიამ კვანტალიანი</h2>
+            <h4>ინსტრუქტორი</h4>
+            <p class="team-desc">
+              AnimaChatbotics-ის მოქმედი Python დეველოპერი. მუშაობს სხვადასხვა
+              კომპიუტერული მეცნიერების მიმართულებაზე. ასწავლის Python
+              Development-ს ილიას სახელმწიფო უნივერსიტეტის ტექნოლოგიების
+              ლაბორატორია “უნილაბსა” და “ექსპლორიუმში”
+            </p>
+            <a href="https://github.com/temurchichua" class="git">
+              <i class="fab fa-github"></i><span>github</span>
+            </a>
+          </div>
+          <div class="team-info" id="member-6">
+            <h2 class="team-name">თენგიზ პატარაია</h2>
+            <h4>ინსტრუქტორი</h4>
+            <p class="team-desc">
+              AnimaChatbotics-ის მოქმედი Python დეველოპერი. მუშაობს სხვადასხვა
+              კომპიუტერული მეცნიერების მიმართულებაზე. ასწავლის Python
+              Development-ს ილიას სახელმწიფო უნივერსიტეტის ტექნოლოგიების
+              ლაბორატორია “უნილაბსა” და “ექსპლორიუმში”
+            </p>
+            <a href="https://github.com/temurchichua" class="git">
+              <i class="fab fa-github"></i><span>github</span>
+            </a>
+          </div>
+          <div class="team-pics">
+            <div class="team-member current-member" id="member-1">
+              <img src="{{ url_for('static', filename='assets/temur-chichua.png') }}" alt="team member" class="team-pic">
+              <div class="full-photo" id="member-1">
+                <img src="{{ url_for('static', filename='assets/temur-chichua.png') }}" alt="team member" class="team-pic-full">
+                <button class="close-photo"><img src="{{ url_for('static', filename='assets/close.svg') }}" class="close-btn" alt="close"></button>
+              </div>
             </div>
+            <div class="team-member" id="member-2">
+              <img src="{{ url_for('static', filename='assets/alisa-sanakoevi.png') }}" alt="team member" class="team-pic">
+              <div class="full-photo" id="member-2">
+                <img src="{{ url_for('static', filename='assets/alisa-sanakoevi.png') }}" alt="team member" class="team-pic-full">
+                <button class="close-photo"><img src="{{ url_for('static', filename='assets/close.svg') }}" class="close-btn" alt="close"></button>
+              </div>
+            </div>
+            <div class="team-member" id="member-3">
+              <img src="{{ url_for('static', filename='assets/nina-darsavelidze.png') }}" alt="team member" class="team-pic">
+              <div class="full-photo" id="member-3">
+                <img src="{{ url_for('static', filename='assets/nina-darsavelidze.png') }}" alt="team member" class="team-pic-full">
+                <button class="close-photo"><img src="{{ url_for('static', filename='assets/close.svg') }}" class="close-btn" alt="close"></button>
+              </div>
+            </div>
+            <div class="team-member" id="member-4">
+              <img src="{{ url_for('static', filename='assets/temuri-qitsohvili.png') }}" alt="team member" class="team-pic">
+              <div class="full-photo" id="member-4">
+                <img src="{{ url_for('static', filename='assets/temuri-qitsohvili.png') }}" alt="team member" class="team-pic-full">
+                <button class="close-photo"><img src="{{ url_for('static', filename='assets/close.svg') }}" class="close-btn" alt="close"></button>
+              </div>
+            </div>
+            <div class="team-member" id="member-5">
+              <img src="{{ url_for('static', filename='assets/mariam-kvantaliani.png') }}" alt="team member" class="team-pic">
+              <div class="full-photo" id="member-5">
+                <img src="{{ url_for('static', filename='assets/mariam-kvantaliani.png') }}" alt="team member" class="team-pic-full">
+                <button class="close-photo"><img src="{{ url_for('static', filename='assets/close.svg') }}" class="close-btn" alt="close"></button>
+              </div>
+            </div>
+            <div class="team-member" id="member-6">
+              <img src="{{ url_for('static', filename='assets/tengiz-pataria.png') }}" alt="team member" class="team-pic">
+              <div class="full-photo" id="member-6">
+                <img src="{{ url_for('static', filename='assets/tengiz-pataria.png') }}" alt="team member" class="team-pic-full">
+                <button class="close-photo"><img src="{{ url_for('static', filename='assets/close.svg') }}" class="close-btn" alt="close"></button>
+              </div>
+            </div>
+          </div>
+        </div>
         </div>
     </section>
+
+    <script src="{{ url_for('static', filename='JS/scripts.js') }}"></script>
+
 {% endblock %}

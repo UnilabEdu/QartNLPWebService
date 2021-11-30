@@ -1,12 +1,43 @@
-console.log('noun')
-console.log(grammarSearchForm['არსებითი სახელი'])
+// lemmatization demo
+const btn = document.getElementById('analyze-button')
+const grammarSection = document.getElementById('analyze-section')
+const clearText = document.getElementById('analyze-text')
+const grammarText = document.getElementById('prtext')
+if (btn) {
+  btn.addEventListener('click', () => {
+    if (clearText.innerText === 'გაანალიზე') {
+      if (grammarText.value.trim().length === 0) {
+        alert('გთხოვთ, შეიყვანეთ ტექსტი.')
+      } else {
+        grammarSection.classList.toggle('display-flex')
+        clearText.innerText = 'გაასუფთავე'
+        btn.style.background = '#707070'
+      }
+    } else {
+      grammarSection.classList.toggle('display-flex')
+      clearText.innerText = 'გაანალიზე'
+      btn.style.background = '#496AC1'
+      btn.classList.remove('clear-bt')
+      grammarText.value = ''
+    }
+  })
+}
 
-console.log('verb')
-console.log(grammarSearchForm['ზმნა'])
+
+// file search filter
+
 
 const filterBtn = document.querySelector('#filter-form');
 
 if(filterBtn){
+  console.log('noun')
+  console.log(grammarSearchForm['არსებითი სახელი'])
+
+  console.log('verb')
+  console.log(grammarSearchForm['ზმნა'])
+
+
+
   filterBtn.addEventListener('click', ()=>{
     document.querySelector('.filter-form').classList.toggle('active-block');
   })
@@ -67,6 +98,48 @@ if(filterBtn){
           z.classList.toggle('active-li')
         }else {
           z.classList.remove('active-li')
+        }
+      })
+    })
+  })
+}
+
+
+//team members
+const members = document.querySelectorAll('.team-member');
+const membersInfo = document.querySelectorAll('.team-info');
+const flp = document.querySelectorAll('.full-photo');
+
+if(members){
+  membersInfo.forEach(memberInfo=>{
+    members.forEach(member=>{
+      member.addEventListener('click', ()=>{
+        if(memberInfo.id === member.id){
+          memberInfo.classList.add('active-info');
+        }else{
+          memberInfo.classList.remove('active-info');
+        }
+        members.forEach(e=>{
+          if(member === e){
+            e.classList.add('current-member')
+          }else{
+            e.classList.remove('current-member')
+          }
+        })
+      })
+    })
+  })
+
+  members.forEach((e)=>{
+    flp.forEach((x)=>{
+      document.querySelectorAll('.close-photo').forEach(y=>{
+        y.addEventListener('click', ()=>{
+          x.classList.remove('active-photo')
+        })
+      })
+      e.addEventListener('dblclick', ()=>{
+        if(e.id === x.id){
+          x.classList.add('active-photo')
         }
       })
     })
