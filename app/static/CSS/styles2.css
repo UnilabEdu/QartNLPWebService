@@ -97,14 +97,17 @@ body {
 }
 
 .prtext {
-    width: 960px;
-    height: 288px;
-    padding: 4px 35px;
-    background-color: #fff;
-    font-size: 22px;
-    font-family: "Sandro", sans-serif;
-    border: 1px solid #172224;
+    width: 720px;
+    height: 224px;
+    padding: 42px;
+    background-color: #F5F5F5;
+    font-size: 18px;
+    font-family: 'firaGoBook';
+    color: #000000;
+    border:none;
     resize: none;
+    border-radius:18px;
+    margin: auto;
 }
 
 .prtext:focus {
@@ -135,26 +138,20 @@ body {
 }
 
 .btn-analyze {
-    padding: 2px 46px 8px;
-    font-size: 34px;
+    width:195px;
+    height: 46px;
+    font-size: 16px;
     text-align: center;
-    background-color: #172224;
-    font-family: "Sandro", sans-serif;
-    left: 4px;
-    margin: auto;
-}
-
-.btn-analyze {
-    padding: 8px 46px;
-    font-size: 34px;
-    text-align: center;
-    background-color: #172224;
+    font-family: 'firaGo';
+    background-color: #496AC1;
     color: #ffffff;
     cursor: pointer;
     outline: none;
     border: none;
     display: flex;
     align-items: center;
+    justify-content: center;
+    border-radius:12px;
 }
 
 /* footer */
@@ -232,6 +229,7 @@ footer {
     display: none;
     justify-content: center;
     flex-direction: column;
+    margin-top:95px;
 }
 
 .display-flex {
@@ -240,33 +238,38 @@ footer {
 
 .parts {
     display: flex;
+    justify-content: center;
 }
 
 .analyze-part {
-    width: 50%;
+    padding:13px 21px;
     text-align: center;
-    font-family: "Sandro", sans-serif;
-    padding: 7px 0 4px;
+    font-family: 'firaGo';
+    color: #496AC1;
     font-size: 18px;
-    border: 1px solid #707070;
+    background-color: #F5F5F5;
+    border-radius: 8px;
+    margin-right:20px;
+    cursor: pointer;
+}
+
+.disabled {
+    color: #B1B1B1;
 }
 
 .grammar-blocks {
     display: flex;
     justify-content: space-around;
     flex-wrap: wrap;
-    border: 1px solid #707070;
-    border-top: none;
-    font-family: "Sandro", sans-serif;
 }
 
 .grammar-block {
     width: 44%;
-    border: 1px solid #707070;
+    border: none;
     margin-top: 32px;
     min-height: 128px;
-    display: flex;
-    flex-direction: column;
+    background-color: #F5F5F5;
+    border-radius: 18px;
 }
 
 .grammar-block-header {
@@ -327,14 +330,6 @@ footer {
     background-color: #9dc13b;
 }
 
-.block-10 {
-    background-color: #e31313;
-}
-
-.block-11 {
-    background-color: #567188;
-}
-
 .hidden {
     opacity: 0;
 }
@@ -379,14 +374,6 @@ footer {
     background-color: #9dc13b;
 }
 
-.block-10 {
-    background-color: #e31313;
-}
-
-.block-11 {
-    background-color: #567188;
-}
-
 .login-bg {
     position: fixed;
     width: 100%;
@@ -408,7 +395,7 @@ footer {
 .login-content {
   position: relative;
   width: 1202px;
-  height: 702px;
+  height: 668px;
   background-color: #496AC1;
   display: flex;
   border-radius: 18px;
@@ -528,7 +515,7 @@ footer {
 .registration-content{
   position: relative;
   width: 512px;
-  height: 702px;
+  height: 668px;
   background-color: #172224;
   border: 1px solid#707070;
 }
@@ -565,6 +552,7 @@ footer {
 .file-tools {
     flex-direction: column;
     justify-content: space-between;
+    height:auto!important;
 }
 
 .tool-container {
@@ -573,6 +561,11 @@ footer {
     height: 32px;
     justify-content: center;
     align-items: center;
+    margin-bottom:14px;
+}
+
+.tool-container a img {
+    width:16px;
 }
 
 .files_page_content {
@@ -581,8 +574,8 @@ footer {
     padding: 64px 76px;
     max-width: 1470px;
     width: 80%;
-    margin-top: 96px;
-    margin-right: 139px;
+    margin-top: 2px;
+    margin-right:46px;
     margin-left: 38px;
 }
 
@@ -1468,11 +1461,28 @@ i.fab.fa-facebook-square {
     display: flex;
     align-items: center;
     justify-content: space-between;
+    position: relative;
 }
 
 
 .team-info {
     width: 30%;
+    display: none;
+}
+
+.team-member {
+    cursor: pointer;
+    border:3px solid transparent;
+}
+
+.current-member {
+    border-radius:20px;
+    border:3px solid#F3F3F3;
+    height:132px;
+}
+
+.active-info {
+    display: block;
 }
 
 .team-name {
@@ -1583,10 +1593,10 @@ i.fab.fa-facebook-square {
     flex-direction: column;
     align-items: center;
     width: 314px;
-    height: 445px;
+    height: 365px;
     flex-shrink: 0;
     margin-top: 96px;
-    margin-left: 96px;
+    margin-left: 56px;
     padding-top: 38px;
     border-radius: 18px;
     background-color: #f9f9f9;
@@ -1660,7 +1670,7 @@ i.fab.fa-facebook-square {
 }
 
 .content-login {
-  width:1202px;
+  max-width:1202px;
 }
 
 .gare-avtorizacia h4 {
@@ -2352,6 +2362,11 @@ i.fab.fa-facebook-square {
     margin-left:5px;
 }
 
+.filter {
+    width:18px;
+    filter: invert(67%) sepia(57%) saturate(6837%) hue-rotate(207deg) brightness(79%) contrast(88%);
+}
+
 .f-btn:hover {
     opacity: 0.5;
 }
@@ -2529,4 +2544,36 @@ i.fab.fa-facebook-square {
     display: inline-block;
     vertical-align: center;
     margin-left:5px;
+}
+
+.full-photo {
+    margin-top:36px;
+    top:0;
+    right:0;
+    position: absolute;
+    background:rgba(246,246,246, 0.4);
+    width:443px;
+    height:298px;
+    display: none;
+}
+
+.active-photo {
+    display: block;
+}
+
+.team-pic-full {
+    width:60%;
+    margin-left:50px;
+    margin-top: 13px;
+    margin-left: 90px;
+    border-radius:16px;
+}
+
+.close-photo {
+    position: absolute;
+    right: 0;
+    background-color: transparent;
+    border: none;
+    outline: none;
+    cursor: pointer;
 }

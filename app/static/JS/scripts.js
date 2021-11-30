@@ -1,6 +1,5 @@
 const btn = document.getElementById('analyze-button')
 const grammarSection = document.getElementById('analyze-section')
-const clearIcon = document.getElementById('clear-icon')
 const clearText = document.getElementById('analyze-text')
 const grammarText = document.getElementById('prtext')
 if (btn) {
@@ -11,16 +10,12 @@ if (btn) {
       } else {
         grammarSection.classList.toggle('display-flex')
         clearText.innerText = 'გაასუფთავე'
-        clearIcon.classList.toggle('display-flex')
         btn.style.background = '#707070'
-        btn.style.padding = '8px'
       }
     } else {
-      clearIcon.classList.toggle('display-flex')
       grammarSection.classList.toggle('display-flex')
       clearText.innerText = 'გაანალიზე'
-      btn.style.background = '#172224'
-      btn.style.padding = '8px 42px'
+      btn.style.background = '#496AC1'
       btn.classList.remove('clear-bt')
       grammarText.value = ''
     }
@@ -430,4 +425,45 @@ if(filterBtn){
       })
     })
   })  
+}
+
+//team members
+const members = document.querySelectorAll('.team-member');
+const membersInfo = document.querySelectorAll('.team-info');
+const flp = document.querySelectorAll('.full-photo');
+
+if(members){
+  membersInfo.forEach(memberInfo=>{
+    members.forEach(member=>{
+      member.addEventListener('click', ()=>{
+        if(memberInfo.id == member.id){
+          memberInfo.classList.add('active-info');
+        }else{
+          memberInfo.classList.remove('active-info');
+        }
+        members.forEach(e=>{
+          if(member === e){
+            e.classList.add('current-member')
+          }else{
+            e.classList.remove('current-member')
+          }
+        })
+      })
+    })
+  })
+
+  members.forEach((e)=>{
+    flp.forEach((x)=>{
+      document.querySelectorAll('.close-photo').forEach(y=>{
+        y.addEventListener('click', ()=>{
+          x.classList.remove('active-photo')
+        })
+      })
+      e.addEventListener('dblclick', ()=>{
+        if(e.id == x.id){
+          x.classList.add('active-photo')
+        }
+      })
+    })
+  })
 }
