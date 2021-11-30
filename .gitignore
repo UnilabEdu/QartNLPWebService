@@ -147,5 +147,5 @@ hints.md
 app/uploads
 
 # Database
-# data.db
+data.db
 data.db-journal

@@ -2,7 +2,7 @@ import click
 from flask.cli import with_appcontext
 
 from .db_reset import reset_db, clear_file_tables
-from .db_populate import populate_db_nertags
+from .db_populate import populate_db_nertags, populate_grammatical_cases
 
 
 @click.command('db_reset')
@@ -16,7 +16,8 @@ def reset_db_command():
 @with_appcontext
 def populate_db_command():
     populate_db_nertags()
-    click.echo('Ner Tags were successfully added to the database')
+    populate_grammatical_cases()
+    click.echo('Ner Tags and Grammatical Cases were successfully added to the database')
 
 
 @click.command('db_clear_file')

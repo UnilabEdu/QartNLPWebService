@@ -1,0 +1,265 @@
+﻿
+არსებითი სახელი,არსებითი სახელი,არსებითი სახელი
+Noun,არსებითი სახელი,+N
+Proper,საკუთარი,+Prop
+Name,სახელი/გვარი,+Name
+Geographical,გეოგრაფიული სახელი,+Geog
+Common,საზოგადო,+Com
+Singular,მხოლობითი რიცხვი,+Sg
+Plural,მრავლობითი რიცხვი ,+Pl
+Nominative,სახელობითი ბრუნვა,+Nom
+Ergative,მოთხრობითი ბრუნვა,+Erg
+Dative,მიცემითი ბრუნვა,+Dat
+Genetive,ნათესაობითი ბრუნვა,+Gen
+Instrumental,მოქმედებითი ბრუნვა,+Ins
+Adverbial,ვითარებითი ბრუნვა,+Advb
+Vocative,წოდებითი ბრუნვა,+Voc
+Emphasis,ემფატიკური ხმოვანი,+Emph
+Postposition,თანდებული,+Post
+Particle,ნაწილაკი,+Ptcl
+Auxiliary,"დამხმარე ზმნა, 3 პირი",+Aux
+ზედსართავი სახელი,ზედსართავი სახელი,ზედსართავი სახელი
+Adjective,ზედსართავი სახელი,+A
+Positive Degree,დადებითი ხარისხი,+Pos
+Comparative Degree,ოდნაობითი ხარისხი,+Com
+Superlative Degree,უფროობითი ხარისხი,+Sup
+Singular,მხოლობითი რიცხვი,+Sg
+Plural,მრავლობითი რიცხვი ,+Pl
+Nominative,სახელობითი ბრუნვა,+Nom
+Ergative,მოთხრობითი ბრუნვა,+Erg
+Dative,მიცემითი ბრუნვა,+Dat
+Genertive,ნათესაობითი ბრუნვა,+Gen
+Instrumental,მოქმედებითი ბრუნვა,+Ins
+Ablative,ვითარებითი ბრუნვა,+Abl
+Vocative,წოდებითი ბრუნვა,+Voc
+Emphasis,ემფატიკური ხმოვანი,+Emph
+Postposition,თანდებული,+Post
+Particle,ნაწილაკი,+Ptcl
+Auxiliary,"დამხმარე ზმნა, 3 პირი",+Aux
+რიცხვითი სახელი,რიცხვითი სახელი,რიცხვითი სახელი
+Numeral,რიცხვითი სახელი,+Num
+Cardinal,რაოდენობითი ,+Card
+Ordinal,რიგობითი ,+Ord
+,ანბანური ფორმა,+Alpha
+Digits,რიცხვითი ფორმა,+Dig
+Letter,ანბანურად,+Letter
+Roman,რომაული რიცხვი,+Rom
+Fractal,წილობითი ,+Fn
+Singular,მხოლობითი რიცხვი,+Sg
+Plural,მრავლობითი რიცხვი ,+Pl
+Nominative,სახელობითი ბრუნვა,+Nom
+Ergative,მოთხრობითი ბრუნვა,+Erg
+Dative,მიცემითი ბრუნვა,+Dat
+Genertive,ნათესაობითი ბრუნვა,+Gen
+Instrumental,მოქმედებითი ბრუნვა,+Ins
+Adverbial,ვითარებითი ბრუნვა,+Advb
+Emphasis,ემფატიკური ხმოვანი,+Emph
+Postposition,თანდებული,+Post
+Particle,ნაწილაკი,+Ptcl
+Auxiliary,"დამხმარე ზმნა, 3 პირი",+Aux
+ნაცვალსახელი,ნაცვალსახელი,ნაცვალსახელი
+Pronoun,ნაცვალსახელი,+Pron
+Personal,პირის ნაცვალსახელი,+Pers
+Demonstrative,ჩვენებითი ნაცვალსახელი,+Dem
+Possesive,კუთვნილებითი ნაცვალსახელი,+Poss
+Indefinite,განუსაზღვრელობითი ნაცვალსახელი,+Indf
+Interrogative,კითხვითი ნაცვალსახელი,+Int
+Relative,მიმართებითი ნაცვალსახელი,+Rel
+Reflexive,უკუქცევითი ნაცვალსახელი,+Refl
+Reciprocal,ურთიერთობითი ნაცვალსახელი,+Recp
+Negative,უარყოფითი ნაცვალსახელი,+Neg
+Determinal,განსაზღვრებითი ნაცვალსახელი,+Det
+First person,პირველი პირი,1
+Second person,მეორე პირი,2
+Third person,მესამე პირი,3
+Singular,მხოლობითი რიცხვი,+Sg
+Plural,მრავლობითი რიცხვი ,+Pl
+Nominative,სახელობითი ბრუნვა,+Nom
+Ergative,მოთხრობითი ბრუნვა,+Erg
+Dative,მიცემითი ბრუნვა,+Dat
+Genetive,ნათესაობითი ბრუნვა,+Gen
+Instrumental,მოქმედებითი ბრუნვა,+Ins
+Ablative,ვითარებითი ბრუნვა,+Abl
+Vocative,წოდებითი ბრუნვა,+Voc
+Emphasis,ემფატიკური ხმოვანი,+Emph
+Postposition,თანდებული,+Post
+Particle,ნაწილაკი,+Ptcl(n)
+Auxiliary,"დამხმარე ზმნა, 3 პირი",+Aux
+კავშირი,კავშირი,კავშირი
+Conjunction,კავშირი,+Conj
+Coordinative,მაერთებელი,+Coord
+Subordinating,მაქვემდებარებელი,+Subord
+ნაწილაკი,ნაწილაკი,ნაწილაკი
+Particle,ნაწილაკი,+Part
+Interrogative,კითხვითი,+Q
+Relative,მიმართებითი,+Rel
+Prohibitive,უკუთქმითი,+Proh
+Word-by-word,სიტყვა-სიტყვითი,+Wor
+Positive,დადებითი,+Pos
+Intensive,გაძლიერებითი,+Int
+Infinitive,განუსაზღვრელობითი,+Inf
+Negative,უარყოფითი,+Neg
+ზმნიზედა,ზმნიზედა,ზმნიზედა
+Adverb,ზმნიზედა,+Adv
+Locative,ადგილის,+Loc
+Temporal,დროის,+Temp
+Modifier,ვითარების,+Mod
+Quantity,ზომა-ოდენობის,+Quan
+Causal,მიზეზის,+Caus
+Specifier,მიზნის,+Spec
+Interrogative,კითხვითი,+Q
+Relative,მიმართებითი,+Rel
+თანდებული,თანდებული,თანდებული
+Postposition,თანდებული,+Post
+Nominative,სახელობითი ბრუნვა,+Nom
+Dative,მიცემითი ბრუნვა,+Dat
+Genetive,ნათესაობითი ბრუნვა,+Gen
+Instrumental,მოქმედებითი ბრუნვა,+Ins
+Adverbial,ვითარებითი ბრუნვა,+Advb
+Preposition,წინდებული,+Prep
+შორისდებული,შორისდებული,შორისდებული
+Interjection,შორისდებული,+Itj
+პუნქტუაცია,პუნქტუაცია,პუნქტუაცია
+Punctuation,პუნქტუაცია,F
+Sentence final,წერტილი,+Period
+Sentence internal,მძიმე,+Comma
+"Quote, par. final","ფრჩხილები, დასასრული",+ParenZ
+"Quote, par. Initial","ფრჩხილები, დასაწყისი",+ParenA
+"Hyphen, dash",ტირე,+Hyphen
+Exclamatory mark,ძახილის ნიშანი,+ExclPoint
+Interrogative,კითხვის ნიშანი,+IntMark
+Colon,ორი წერტილი,+Colon
+Semicolon,წერტილ-მძიმე,+Semicolon
+Ellipsis,სამი წერტილი,+Ellipsis
+Quotation Mark,ბრჭყალები,+Quote
+Star,ვარსკვლავი,+Star
+Symbols,სიმბოლო,+Symbol
+Apostrophe,აპოსტროფი,x
+ზმნა,ზმნა,ზმნა
+Verb,ზმნა,+Verb
+Main,ძირითადი,+M
+Auxiliary,მეშველი,+Aux
+I Diathesis,პირველი დიათეზა,+Idt
+II Diathesis,მეორე დიათეზა,+IIDt
+III Diathesis,მესამე დიათეზა,+IIIDt
+Relative Static,რელ. სტატიკური,+RelStat
+Absolute Static,აბს. სტატიკური,+AbsStat
+Dinamic,დინამიკური,+Din
+Relative Dinamic,რელ. დინამიკური,+RelDin
+Intransitive,გარდაუვალი,+Intr
+Indicative,თხრობითი კილო,+Ind
+Subjunctive,კავშირებითი კილო,+Subj
+Imperative,ბრძანებითი კილო,+Imp
+Transitive,გარდამავალი,+Trans
+Unaccusative,ვნებითი,+Unacc
+Unergative,საშუალი ,+Unerg
+Inverse,ინვერსიული,+Inv
+Indirect Transitive,ირიბ-გარდამავალი,+IndTrans
+Active,აქტივი,+Act
+Autoactive,ავტოაქტივი,+AutAct
+Indirect Active,ირიბი აქტივი,+IndAct
+Inactive,ინაქტივი,+Inact
+Passive,პასივი,+Pass
+Mediopassive,ავტოპასივი,+MPass
+Inverse,ინვერსიული,+Inv
+Perfective Aspect,სრული ასპექტი,Pfv+
+Imperfective Aspect,უსრული ასპექტი,Ipfv+
+"First Subject, Singular","პირველი სუბიექტური პირი, მხოლობითი",+Subj1Sg
+"Second Subject, Singular","მეორე სუბიექტური პირი, მხოლობითი",+Subj2Sg
+"Third Subject, Singular","მესამე სუბიექტური პირი, მხოლობითი",+Subj3Sg
+"First Subject, Plural","პირველი სუბიექტური პირი, მრავლობითი",+Subj1Pl
+"Second Subject, Plural","მეორე სუბიექტური პირი, მრავლობითი",+Subj2Pl
+"Third Subject, Plural","მესამე სუბიექტური პირი, მრავლობითი",+Subj3Pl
+"First Subject, Singular","პირველი სუბიექტური პირი, ბენეფიციარი, მხოლობითი",+SubjBen1Sg
+"Second Subject, Singular","მეორე სუბიექტური პირი, მხოლობითი",+SubjBen2Sg
+"Third Subject, Singular","მესამე სუბიექტური პირი, მხოლობითი",+SubjBen3Sg
+"First Subject, Plural","პირველი სუბიექტური პირი, მრავლობითი",+SubjBen1Pl
+"Second Subject, Plural","მეორე სუბიექტური პირი, მრავლობითი",+SubjBen2Pl
+"Third Subject, Plural","მესამე სუბიექტური პირი, მრავლობითი",+SubjBen3Pl
+"First Subject, Singular, Causer","პირველი სუბიექტური პირი, კაუზატორი, მხოლობითი",+SubjCaus1Sg
+"Second Subject, Singular","მეორე სუბიექტური პირი, მხოლობითი",+SubjCaus2Sg
+"Third Subject, Singular","მესამე სუბიექტური პირი, მხოლობითი",+SubjCaus3Sg
+"First Subject, Plural","პირველი სუბიექტური პირი, მრავლობითი",+SubjCaus1Pl
+"Second Subject, Plural","მეორე სუბიექტური პირი, მრავლობითი",+SubjCaus2Pl
+"Third Subject, Plural","მესამე სუბიექტური პირი, მრავლობითი",+SubjCaus3Pl
+"First Object, Singular","პირველი პირდაპირი ობიექტური პირი, მხოლობითი",+Obj1Sg
+"Second Object, Singular","მეორე პირდაპირი ობიექტური პირი, მხოლობითი",+Obj2Sg
+"Third Object, Singular","მესამე პირდაპირი ობიექტური პირი, მხოლობითი",+Obj3Sg
+"First Object, Plural","პირველი პირდაპირი ობიექტური პირი, მრავლობითი",+Obj1Pl
+"Second Object, Plural","მეორე პირდაპირი ობიექტური პირი, მრავლობითი",+Obj2Pl
+"Third Object, Plural","მესამე პირდაპირი ობიექტური პირი, მრავლობითი",+Obj3Pl
+First Object Beneficiary,"პირველი ირიბ-ობიექტური პირი, ბენეფიციარი",+ObjBen1
+First Object Beneficiary,"პირველი ირიბ-ობიექტური პირი, ბენეფიციარი, მხოლობითი",+ObjBen1Sg
+First Object Beneficiary,"პირველი ირიბ-ობიექტური პირი, ბენეფიციარი, მრავლობითი",+ObjBen1Pl
+Second Object Beneficiary,"მეორე ირიბ-ობიექტური პირი, ბენეფიციარი",+ObjBen2
+"Second Object Beneficiary, Singular","მეორე ირიბ-ობიექტური პირი, ბენეფიციარი, მხოლობითი",+ObjBen2Sg
+"Second Object Beneficiary, Plural","მეორე ირიბ-ობიექტური პირი, ბენეფიციარი, მრავლობითი",+ObjBen2Pl
+Third Object Beneficiary,"მესამე ირიბ-ობიექტური პირი,  ბენეფიციარი",+ObjBen3
+First Object Locative,"პირველი ირიბ-ობიექტური პირი, ლოკატივი ",+ObjLoc1
+"First Object Locative, Singular","პირველი ირიბ-ობიექტური პირი, ლოკატივი, მხოლობითი",+ObjLoc1Sg
+"First Object Locative, Plural","პირველი ირიბ-ობიექტური პირი, ლოკატივი , მრავლობითი",+ObjLoc1Pl
+Second Object Locative,"მეორე ირიბ-ობიექტური პირი, ლოკატივი",+ObjLoc2
+"Second Object Locative, Singular","მეორე ირიბ-ობიექტური პირი, ლოკატივი, მხოლობითი",+ObjLoc2Sg
+"Second Object Locative, Plural","მეორე ირიბ-ობიექტური პირი, ლოკატივი, მრავლობითი",+ObjLoc2Pl
+Third Object Locative,"მესამე ირიბ-ობიექტური პირი, ლოკატივი",+ObjLoc3
+First Object Recipient,"პირველი ირიბ-ობიექტური პირი, ადრესატი ",+ObjRec1
+"First Object Recipient, Singular","პირველი ირიბ-ობიექტური პირი, ადრესატი , მხოლობითი",+ObjRec1Sg
+"First Object Recipient, Plural","პირველი ირიბ-ობიექტური პირი, ადრესატი, მრავლობითი",+ObjRec1Pl
+Second Object Recipient,"მეორე ირიბ-ობიექტური პირი, ადრესატი ",+ObjRec2
+"Second Object Recipient, Singular","მეორე ირიბ-ობიექტური პირი, ადრესატი , მხოლობითი",+Obj2RecSg
+"Second Object Recipient, Plural","მეორე ირიბ-ობიექტური პირი, ადრესატი , მრავლობითი",+Obj2RecPl
+Third Object Recipient,"მესამე ირიბ-ობიექტური პირი, ადრესატი ",+Obj3Rec
+"First Object Recipient, Causee","პირველი ირიბ-ობიექტური პირი, კაუზატივი",+ObjRecCaus1
+"First Object Recipient, Causee","პირველი ირიბ-ობიექტური პირი, კაუზატივი, მხოლობითი",+ObjRecCaus1Sg
+"First Object Recipient, Causee","პირველი ირიბ-ობიექტური პირი, კაუზატივი, მრავლობითი",+ObjRecCaus1Pl
+"Second Object Recipient, Causee","მეორე ირიბ-ობიექტური პირი, კაუზატივი",+ObjRecCaus2
+"Second Object Recipient, Causee","მეორე ირიბ-ობიექტური პირი, კაუზატივი, მხოლობითი",+Obj2RecCausSg
+"Second Object Recipient, Causee","მეორე ირიბ-ობიექტური პირი, კაუზატივი, მრავლობითი",+Obj2RecCausPl
+"Third Object Recipient, Causee","მესამე ირიბ-ობიექტური პირი, კაუზატივი",+Obj3RecCaus
+First Object Patient,"პირველი ირიბ-ობიექტური პირი, პაციენსი",+Obj1Pat
+"First Object Patient, Singular","პირველი ირიბ-ობიექტური პირი, პაციენსი, მხოლობითი",+Obj1PatSg
+"First Object Patient, Plural","პირველი ირიბ-ობიექტური პირი, პაციენსი, მრავლობითი",+Obj1PatPl
+Second Object Patient,"მეორე ირიბ-ობიექტური პირი, პაციენსი",+Obj2Pat
+"Second Object Patient, Singular","მეორე ირიბ-ობიექტური პირი, პაციენსი, მხოლობითი",+Obj2PatSg
+"Second Object Patient, Plural","მეორე ირიბ-ობიექტური პირი, პაციენსი, მრავლობითი",+Obj2PatPl
+Third Object Patient,"მესამე ირიბ-ობიექტური პირი, პაციენსი",+Obj3Pat
+Subject Nominative,სუბიექტი ნომინატივი,<NomSubj>
+Subject Ergative,სუბიექტი ერგატივი,<ErgSubj>
+Subject Dative,სუბიექტი დატივი,<DatSubj>
+Subject Nominative,სუბიექტი ნომინატივი,<NomSubjBen>
+Subject Ergative,სუბიექტი ერგატივი,<ErgSubjBen>
+Subject Dative,სუბიექტი დატივი,<DatSubjBen>
+Object Nominative,ობიექტი ნომინატივი,<NomObj>
+Object Dative,ობიექტი დატივი,<DatObj>
+Object Dative Benefactive,ობიექტი დატივი ბენეფიციარი,<DatObjBen>
+Object Dative Benefactive,ობიექტი დატივი ადრესატი,<DatObjRec>
+Object Dative Locative,ობიექტი დატივი ლოკატივი,<DatObjLoc>
+Object Dative Patient,ობიექტი დატივი პაციენსი,<DatObjPat>
+,"მესამე სერიის ობიექტი, სამპირიან ზმნებში",<GenObj(for)>
+Subject Nominative,სუბიექტი ნომინატივი კაუზატორი,<NomSubjCaus>
+Subject Ergative,სუბიექტი ერგატივი კაუზატორი,<ErgSubjCaus>
+Subject Dative,სუბიექტი დატივი კაუზატორი,<DatSubjCaus>
+Object Dative Causee,ობიექტი დატივი კაუზაციის ადრესატი,<DatObjRecCaus>
+Present Indicative,აწმყო,+Pres
+Imperfect Indicative,უწყვეტელი (ნამყო უსრული),+Imperf
+Present Subjunctive,აწმყოს კავშირებითი,+PresSbj
+Future Indicative,მყოფადი,+Fut
+Future Conditional,ხოლმეობით-პირობითი,+FutCond
+Future Subjunctive,მყოფადის კავშირებითი,+FutSbj
+Aorist Indicative,წყვეტილი,+Aor
+Aorist Subjunctive,მეორე კავშირებითი,+AorSbj
+Aorist Imperative,ბრძანებითი,+AorImp
+Perfect Indicative,პირველი რეზულტატივი/თურმეობითი,+Res1
+Pluperfect,მეორე რეზულტატივი,+Res2
+Perfect Subjunctive,მესამე კავშირებითი,+PerfSbj
+"Gerund, Masdar",საწყისი,+VerbalNoun
+Participle,მიმღეობა,+VerbalAdj
+აბრევიატურა,აბრევიატურა,აბრევიატურა
+Abbreviation,აბრევიატურა,+Abbrev
+არაქართული შრიფტით დაბეჭდილი,არაქართული შრიფტით დაბეჭდილი,არაქართული შრიფტით დაბეჭდილი
+Non-Georgian,არაქართული შრიფტით დაბეჭდილი,+Foreign
+პირდაპირი ნათქვამი,პირდაპირი ნათქვამი,პირდაპირი ნათქვამი
+Indirect Speech,პირდაპირი ნათქვამი,
+Indirect Speech,პირველი პირის ნათქვამის განმეორება,+IndSpeech1
+Indirect Speech,"პირველი პირის დანაბარი სიტყვა, რომელიც მეორე პირმა მესამე პირს უნდა გადასცეს",+IndSpeech2
+Indirect Speech,მესამე პირის ნათქვამი,+IndSpeech3

@@ -16,6 +16,7 @@ from app.file_processing.tasks import process_file
 from app.files.forms import UploadForm, SearchForm
 from app.files.utils import image_crop_and_resize
 from app.models.file import File, Sentences, Words, Statistics, Status, Pages
+from app.models.grammatical_cases import GrammaticalCase
 from app.settings import Config
 
 file_views_blueprint = Blueprint('files',
@@ -80,7 +81,7 @@ def all_files(page_num):
         print(file_status)
         file_status.save()
 
-        process_file.delay(file_model.id, current_user.id, filename, upload_form.processes.data, extension)
+        process_file(file_model.id, current_user.id, filename, upload_form.processes.data, extension)
         flash('მიმდინარეობს ფაილის დამუშავება')
         return redirect(url_for('files.all_files'))
 
@@ -250,6 +251,24 @@ def download_file(file_id):
 
 @file_views_blueprint.route('/files/<int:file_id>/search/<int:results_page_id>')
 def search(file_id, results_page_id):
+    # Search form
+    parts_of_speech = GrammaticalCase.query.filter_by(part_of_speech=None).all()
+    grammatical_cases = GrammaticalCase.query.filter(GrammaticalCase.part_of_speech != None).all()
+
+    search_form = {
+        part_of_speech.full_name_ge: part_of_speech.to_json(part_of_speech=True)
+        for part_of_speech in parts_of_speech}
+
+    print(grammatical_cases)
+    for tag in grammatical_cases:
+        search_form[tag.part_of_speech]['tags'].append(tag.to_json())
+
+    search_form = json.dumps(search_form, ensure_ascii=False)
+
+    return render_template('files/search.html', grammar_search_form=search_form)
+
+
+    # Search results
     query = request.args.get('query')
     if query not in session['search_results'].keys():
         # time.sleep(5)
@@ -300,4 +319,7 @@ def search(file_id, results_page_id):
     if results_page_id > len(session['search_results'][query]):
         return {'resp': 'ნაპოვნია 0 შედეგი'}
     print(session['search_results'][query][results_page_id-1])
+
+    return {'response': search_form}
+
     return {'response': session['search_results'][query][results_page_id-1]}
