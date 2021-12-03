@@ -55,7 +55,7 @@ def process_file(id, user, filename, processes, extension):
             current_text = remove_trailing_spaces(current_text)
         if 'clean_special_characters' in processes:
             current_text = remove_special_characters(current_text)
-        with open('file.txt', 'w') as file:
+        with open('file.txt', 'w', encoding='utf-8') as file:
             file.write(current_text)
 
         # generating frequency distribution and lemma tags
