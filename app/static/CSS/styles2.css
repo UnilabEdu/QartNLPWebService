@@ -262,7 +262,6 @@ footer {
     display: flex;
     justify-content: space-around;
     flex-wrap: wrap;
-    border: 1px solid #707070;
     border-top: none;
     font-family: "Sandro", sans-serif;
 }
