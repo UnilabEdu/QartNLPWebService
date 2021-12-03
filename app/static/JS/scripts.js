@@ -9,6 +9,10 @@ if (btn) {
       if (grammarText.value.trim().length === 0) {
         alert('გთხოვთ, შეიყვანეთ ტექსტი.')
       } else {
+
+        displayLemmatizedData(grammarText.value.trim())
+
+
         grammarSection.classList.toggle('display-flex')
         clearText.innerText = 'გაასუფთავე'
         btn.style.background = '#707070'
@@ -19,10 +23,58 @@ if (btn) {
       btn.style.background = '#496AC1'
       btn.classList.remove('clear-bt')
       grammarText.value = ''
+      let allResultDivs = document.querySelectorAll('.grammar-block')
+      let allResultTexts = document.querySelectorAll('.gram-textarea')
+
+      for (let elem in allResultDivs) {
+          elem.remove()
+      }
+      for (let elem in allResultTexts) {
+          elem.remove()
+      }
+
     }
   })
 }
 
+
+async function requestLemmatization(text) {
+    let options = {
+      method: 'POST',
+      headers: {
+        'Accept': 'application/json',
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify({
+        "text": (text)
+      })}
+    return await fetch('api/lemma', options)
+        .then(r => {return r.json() })
+}
+
+async function displayLemmatizedData(text) {
+    let lemmatizedData = await requestLemmatization(text)
+
+    const parentDiv = document.querySelectorAll('.grammar-blocks')[0]
+
+    let counter = 0
+    for (const [key, value] of Object.entries(lemmatizedData)) {
+        console.log(key)
+        console.log(value)
+        counter++
+        let block_to_insert = document.createElement('div')
+        block_to_insert.classList.add('grammar-block')
+        block_to_insert.classList.add(`block-${counter-1}`)
+        parentDiv.appendChild(block_to_insert)
+
+        let child_block_to_insert = document.createElement('div')
+        child_block_to_insert.classList.add('gram-textarea')
+        block_to_insert.appendChild(child_block_to_insert)
+        child_block_to_insert.innerHTML = `<h2> ${key} </h2> <br> ლემმა: ${value.lemma} <br> თეგები: ${value.pos_tags}`
+
+    }
+    console.log(lemmatizedData)
+}
 
 // file search filter
 
@@ -30,11 +82,8 @@ if (btn) {
 const filterBtn = document.querySelector('#filter-form');
 
 if(filterBtn){
-  console.log('noun')
-  console.log(grammarSearchForm['არსებითი სახელი'])
-
-  console.log('verb')
-  console.log(grammarSearchForm['ზმნა'])
+  console.log('ძიების შედეგები')
+  console.log(searchResults)
 
 
 
