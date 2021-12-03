@@ -20,6 +20,7 @@ def get_locale():
 @main_blueprint.route('/', methods=['GET', 'POST'], endpoint='home')
 @main_blueprint.route('/login', methods=['GET', 'POST'], endpoint='home-login')
 @main_blueprint.route('/about_us', methods=['GET', 'POST'], endpoint='about')
+@main_blueprint.route('/lemma', methods=['GET', 'POST'], endpoint='lemma')
 def info_views():
     """
     Contains outer pages which don't require authorization and have auth popups: landing page, about us...
@@ -52,6 +53,7 @@ def info_views():
 
     if request.endpoint == 'main.home' or request.endpoint == 'main.home-login':
         return render_template('main/main.html', forms=forms, submitted_form=submitted_form)
-
     elif request.endpoint == 'main.about':
         return render_template('main/about.html', forms=forms, submitted_form=submitted_form, people=people)
+    elif request.endpoint == 'main.lemma':
+        return render_template('main/lemma.html', forms=forms, submitted_form=submitted_form)
