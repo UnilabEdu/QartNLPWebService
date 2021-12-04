@@ -210,8 +210,12 @@ def download_file(file_id):
             zipobj.write(f"{file_path}.txt", f"{file.title}.txt")
 
             if file.status[0].lemmatized:
+                from time import time
+                a = time()
                 file.create_json()
+                print(time() - a)
                 zipobj.write(f"{file_path}-lemmatized.json", f"{file.title}-lemmatized.json")
+                zipobj.write(f"{file_path}-lemmatized.xml", f"{file.title}-lemmatized.xml")
 
             if file.status[0].frequency_distribution_calculated:
                 zipobj.write(f"{file_path}-freq_dist.json", f"{file.title}-freq_dist.json")
@@ -265,11 +269,9 @@ def search(file_id, results_page_id):
 
     search_form = json.dumps(search_form, ensure_ascii=False)
 
-    return render_template('files/search.html', grammar_search_form=search_form)
-
-
     # Search results
     query = request.args.get('query')
+    session['search_results'] = {}
     if query not in session['search_results'].keys():
         # time.sleep(5)
         all_words = (db.session.query(Words)
@@ -320,6 +322,5 @@ def search(file_id, results_page_id):
         return {'resp': 'ნაპოვნია 0 შედეგი'}
     print(session['search_results'][query][results_page_id-1])
 
-    return {'response': search_form}
-
-    return {'response': session['search_results'][query][results_page_id-1]}
+    return render_template('files/search.html', grammar_search_form=search_form,
+                           search_results=session['search_results'][query][results_page_id-1])

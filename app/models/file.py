@@ -7,6 +7,7 @@ from flask_login import current_user
 from app.database import db
 from app.models.ner_tagging import NerTagType, NerTags
 from app.settings import Config
+from app.files.utils import escape_for_xml
 
 
 class File(db.Model):
@@ -84,7 +85,8 @@ class File(db.Model):
         return sentence_count
 
     def create_json(self):
-        file_path = os.path.join(Config.UPLOAD_FOLDER, str(current_user.id), f"{self.title}-lemmatized.json")
+        file_path_json = os.path.join(Config.UPLOAD_FOLDER, str(current_user.id), f"{self.title}-lemmatized.json")
+        file_path_xml = os.path.join(Config.UPLOAD_FOLDER, str(current_user.id), f"{self.title}-lemmatized.xml")
 
         all_words = (db.session.query(Pages, Sentences, Words)
                        .join(Pages.sentences)
@@ -101,7 +103,12 @@ class File(db.Model):
             print(type(connection.id))
             all_ner_tag_connections_dict.update({str(connection.id): connection.ner_tag_type_id})
 
-        with open(file_path, 'w', encoding="utf-8") as f:
+        result_json = []
+        result_xml = []
+        result_xml.append('<?xml version="1.0" encoding="UTF-8"?>\n<words>\n')
+        word_index = 0
+        # Write JSON
+        with open(file_path_json, 'w', encoding="utf-8") as f:
             start = 0
             while True:
                 stop = start + 10000
@@ -111,6 +118,8 @@ class File(db.Model):
                     break
 
                 for result in db_chunk:
+                    word_index += 1
+
                     ner_tag_type_name = ''
                     if result[2].ner_tags_id:
                         ner_tag_connection_id = result[2].ner_tags_id
@@ -121,7 +130,7 @@ class File(db.Model):
                         "word": result[2].raw,
                         "lemma": result[2].lemma,
                         "tags": result[2].pos_tags,
-                        "ner_tag": ner_tag_type_name,  # TODO: should be nertag
+                        "ner_tag": ner_tag_type_name,
                         "page": {
                             "start": result[0].start_index,
                             "end": result[0].end_index
@@ -132,9 +141,32 @@ class File(db.Model):
                         },
                     }
 
-                    f.write("\n" + json.dumps(dict, ensure_ascii=False, indent=1))
+                    xml = f'    <word number="{word_index}">\n' \
+                          f'        <raw>{escape_for_xml(result[2].raw)}</raw>\n' \
+                          f'        <lemma>{escape_for_xml(result[2].lemma)}</lemma>\n' \
+                          f'        <tags>{escape_for_xml(result[2].pos_tags)}</tags>\n' \
+                          f'        <ner_tags>{escape_for_xml(ner_tag_type_name)}</ner_tags>\n\n' \
+                          f'        <page>\n' \
+                          f'            <start>{result[0].start_index}</start>\n' \
+                          f'            <end>{result[0].end_index}</end>\n' \
+                          f'        </page>\n\n' \
+                          f'        <sentence>\n' \
+                          f'            <start>{result[1].start_index}</start>\n' \
+                          f'            <end>{result[1].end_index}</end>\n' \
+                          f'        </sentence>\n' \
+                          f'    </word>\n\n'
+
+                    result_json.append(dict)
+                    result_xml.append(xml)
 
                 start += 10000
+
+            f.write(json.dumps(result_json, ensure_ascii=False, indent=4))
+
+        # Write XML
+        with open(file_path_xml, 'w', encoding="utf-8") as f:
+            result_xml.append('</words>')
+            f.write(''.join(result_xml))
 
 
 class Pages(db.Model):
