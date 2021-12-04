@@ -210,10 +210,7 @@ def download_file(file_id):
             zipobj.write(f"{file_path}.txt", f"{file.title}.txt")
 
             if file.status[0].lemmatized:
-                from time import time
-                a = time()
                 file.create_json()
-                print(time() - a)
                 zipobj.write(f"{file_path}-lemmatized.json", f"{file.title}-lemmatized.json")
                 zipobj.write(f"{file_path}-lemmatized.xml", f"{file.title}-lemmatized.xml")
 

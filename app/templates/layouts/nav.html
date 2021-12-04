@@ -4,7 +4,9 @@
 <header id="header">
     <nav class="navigation display-flex">
         <div class="nav-left">
-            <img src="{{ url_for('static', filename="assets/new-logo.svg") }}" alt=""/>
+            <a href="{{ url_for('main.home') }}">
+                <img src="{{ url_for('static', filename="assets/new-logo.svg") }}" alt=""/>
+            </a>
         </div>
         <div class="nav-right">
             <ul>

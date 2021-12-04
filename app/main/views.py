@@ -23,11 +23,12 @@ def get_locale():
 @main_blueprint.route('/lemma', methods=['GET', 'POST'], endpoint='lemma')
 def info_views():
     """
-    Contains outer pages which don't require authorization and have auth popups: landing page, about us...
+    Contains outer pages which don't require authorization and have auth popups: landing page, lemmatization, about us...
     """
     forms = None
     redirect_next = request.args.get('next')
     submitted_form = 'login' if redirect_next else None
+    max_character_count = Config.DEMO_LEMMATIZATION_LIMIT
     if redirect_next and request.method == 'GET':
         flash('გთხოვთ გაიაროთ ავტორიზაცია', 'danger')
     elif request.endpoint == 'main.home-login':
@@ -56,4 +57,4 @@ def info_views():
     elif request.endpoint == 'main.about':
         return render_template('main/about.html', forms=forms, submitted_form=submitted_form, people=people)
     elif request.endpoint == 'main.lemma':
-        return render_template('main/lemma.html', forms=forms, submitted_form=submitted_form)
+        return render_template('main/lemma.html', forms=forms, submitted_form=submitted_form, max_character_count=max_character_count)

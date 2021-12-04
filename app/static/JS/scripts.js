@@ -8,10 +8,10 @@ if (btn) {
     if (clearText.innerText === 'გაანალიზე') {
       if (grammarText.value.trim().length === 0) {
         alert('გთხოვთ, შეიყვანეთ ტექსტი.')
+      } else if (grammarText.value.trim().length > maxCharacterCount) {
+        alert(`გთხოვთ, გამოიყენეთ ${maxCharacterCount} სიმბოლოზე ნაკლები`)
       } else {
-
         displayLemmatizedData(grammarText.value.trim())
-
 
         grammarSection.classList.toggle('display-flex')
         clearText.innerText = 'გაასუფთავე'

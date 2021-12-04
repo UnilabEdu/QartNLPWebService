@@ -46,3 +46,6 @@ class Config(object):
 
     # Antiword
     os.environ['ANTIWORDHOME'] = basedir
+
+    # Constants
+    DEMO_LEMMATIZATION_LIMIT = 250

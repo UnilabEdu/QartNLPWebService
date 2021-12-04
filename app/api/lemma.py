@@ -1,5 +1,9 @@
 from flask_restful import Resource, reqparse
+
 from app.file_processing.nlp import lemmatize, tokenize, remove_punctuation
+from app.settings import Config
+
+max_symbols_count = Config.DEMO_LEMMATIZATION_LIMIT
 
 
 class Lemmatization(Resource):
@@ -13,8 +17,9 @@ class Lemmatization(Resource):
 
     def post(self):
         received_text = Lemmatization.parser.parse_args()['text']
-        print('lemma api reached')
-        print(received_text)
+
+        if len(received_text) > max_symbols_count:
+            return {'error': f'received more than {max_symbols_count} symbols.'}, 400
 
         lemmatized_text = lemmatize(tokenize(remove_punctuation(received_text)))
 

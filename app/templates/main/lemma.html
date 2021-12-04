@@ -28,6 +28,9 @@
       </div>
     </section>
 
+    <script>
+        let maxCharacterCount = {{ max_character_count | safe }};
+    </script>
     <script src="{{ url_for('static', filename='JS/scripts.js') }}"></script>
 
 {% endblock %}
