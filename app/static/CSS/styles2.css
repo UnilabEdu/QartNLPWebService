@@ -260,10 +260,10 @@ footer {
 
 .grammar-blocks {
     display: flex;
-    justify-content: space-around;
+    justify-content: space-between;
     flex-wrap: wrap;
     border-top: none;
-    font-family: "Sandro", sans-serif;
+    font-family: "firaGo", sans-serif;
 }
 
 .grammar-block {
@@ -275,6 +275,10 @@ footer {
     border-radius: 18px;
 }
 
+.lemma-title {
+    font-size: 22px;
+}
+
 .grammar-block-header {
     font-size: 22px;
     padding: 3px 22px 5px;
@@ -284,9 +288,11 @@ footer {
 
 .gram-textarea {
     flex: 1;
-    font-size: 18px;
+    font-size: 16px;
     padding-left: 5px;
-    background-color: white;
+    margin: 30px;
+    overflow-wrap: break-word;
+    line-height: 25px;
 }
 
 .hidden {

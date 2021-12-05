@@ -18,6 +18,7 @@ if (btn) {
         btn.style.background = '#707070'
       }
     } else {
+      console.log('deleting divs')
       grammarSection.classList.toggle('display-flex')
       clearText.innerText = 'გაანალიზე'
       btn.style.background = '#496AC1'
@@ -25,14 +26,12 @@ if (btn) {
       grammarText.value = ''
       let allResultDivs = document.querySelectorAll('.grammar-block')
       let allResultTexts = document.querySelectorAll('.gram-textarea')
+      console.log(allResultDivs)
 
-      for (let elem in allResultDivs) {
+      allResultDivs.forEach(elem => {
+          console.log(elem)
           elem.remove()
-      }
-      for (let elem in allResultTexts) {
-          elem.remove()
-      }
-
+      })
     }
   })
 }
@@ -58,9 +57,8 @@ async function displayLemmatizedData(text) {
     const parentDiv = document.querySelectorAll('.grammar-blocks')[0]
 
     let counter = 0
-    for (const [key, value] of Object.entries(lemmatizedData)) {
-        console.log(key)
-        console.log(value)
+    for (const word_obj of lemmatizedData) {
+        console.log(word_obj)
         counter++
         let block_to_insert = document.createElement('div')
         block_to_insert.classList.add('grammar-block')
@@ -70,8 +68,7 @@ async function displayLemmatizedData(text) {
         let child_block_to_insert = document.createElement('div')
         child_block_to_insert.classList.add('gram-textarea')
         block_to_insert.appendChild(child_block_to_insert)
-        child_block_to_insert.innerHTML = `<h2> ${key} </h2> <br> ლემმა: ${value.lemma} <br> თეგები: ${value.pos_tags}`
-
+        child_block_to_insert.innerHTML = `<p class="lemma-title"> ${word_obj.raw} </p> <br> ლემმა: ${word_obj.lemma} <br> თეგები: ${word_obj.pos_tags}`
     }
     console.log(lemmatizedData)
 }

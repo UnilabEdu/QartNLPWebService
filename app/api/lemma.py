@@ -23,11 +23,12 @@ class Lemmatization(Resource):
 
         lemmatized_text = lemmatize(tokenize(remove_punctuation(received_text)))
 
-        formatted_result = {
-            word[0]: {
+        formatted_result = [
+            {
+                "raw": word[0],
                 "lemma": word[1],
                 "pos_tags": word[2]
             } for word in lemmatized_text
-        }
+        ]
 
         return formatted_result
