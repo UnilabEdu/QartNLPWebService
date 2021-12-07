@@ -6,19 +6,24 @@ class Config(object):
 
     # Flask settings
     CSRF_ENABLED = True
-    DEBUG = True  # TODO: disable debug mode
     JSON_AS_ASCII = False
 
     # Flask-SQLAlchemy settings
-    SECRET_KEY = os.environ.get('SECRET_KEY', 'appsecretkey')  # TODO: set secret_key
+    SECRET_KEY = os.environ.get('SECRET_KEY', 'appsecretkey')
     SQLALCHEMY_DATABASE_URI = os.environ.get('SQLALCHEMY_DATABASE_URI',
                                              f'sqlite:///{os.path.join(basedir, "database/data.db")}')
     SQLALCHEMY_TRACK_MODIFICATIONS = False
 
+    # Print production database and secret key confirmation
+    if SQLALCHEMY_DATABASE_URI != f'sqlite:///{os.path.join(basedir, "database/data.db")}':
+        print('Production database.')
+    if SECRET_KEY != 'appsecretkey':
+        print('Safe secret key set up.')
+
     # Celery settings
     UPLOAD_FOLDER = "app/uploads/"
-    CELERY_BROKER_URL = "redis://redis"  # TODO: update redis URLs
-    CELERY_RESULT_BACKEND = "redis://redis"
+    CELERY_BROKER_URL = "redis://localhost"
+    CELERY_RESULT_BACKEND = "redis://localhost"
 
     # File processing library location
     NLP_LIBS_FOLDER = basedir + "/file_processing/libs"
