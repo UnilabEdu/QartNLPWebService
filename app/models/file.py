@@ -248,6 +248,29 @@ class Sentences(db.Model):
                 raw_text = raw_text[1:]
         return raw_text.replace('\n', ' ')
 
+    def get_word_objects(self):
+        return Words.query.filter_by(sentence_id=self.id).all()
+
+    def get_words_raw_formatted(self, bold_words=None, italics_words=None):
+        print('P1', bold_words, '\n', italics_words)
+        if bold_words is None:
+            bold_words = []
+        if italics_words is None:
+            italics_words = []
+
+        sentence_words = Words.query.filter_by(sentence_id=self.id).all()
+        result_sentence = []
+        for word in sentence_words:
+            if word in bold_words:
+                raw_word = '<b>' + word.raw + '</b>'
+            elif word in italics_words:
+                raw_word = '<i>' + word.raw + '</i>'
+            else:
+                raw_word = word.raw
+            result_sentence.append(raw_word)
+        return ' '.join(result_sentence)
+
+
 
 class Words(db.Model):
     __tablename__ = "words"

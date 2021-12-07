@@ -12,9 +12,10 @@ from werkzeug.utils import secure_filename
 from app.auth.forms import ChangeProfileDataForm, ProfilePictureForm
 from app.auth.views import confirm_user_mail
 from app.database import db
+from app.file_processing.nlp import lemmatize
 from app.file_processing.tasks import process_file
 from app.files.forms import UploadForm, SearchForm
-from app.files.utils import image_crop_and_resize
+from app.files.utils import image_crop_and_resize, get_search_form, get_search_query_results
 from app.models.file import File, Sentences, Words, Statistics, Status, Pages
 from app.models.grammatical_cases import GrammaticalCase
 from app.settings import Config
@@ -35,9 +36,14 @@ def all_files(page_num):
     profile_form = ChangeProfileDataForm()
     picture_form = ProfilePictureForm()
 
+    print(upload_form.processes)
+    print(upload_form.processes.choices)
+    print(upload_form.processes.label)
+
     # File upload handling
     if upload_form.validate_on_submit() and upload_form.submit_upload.data:
         if upload_form.file.data:
+
             print('file detected')
             file = upload_form.file.data
             filename = secure_filename(file.filename)
@@ -222,102 +228,51 @@ def download_file(file_id):
     return redirect(url_for('files.all_files'))
 
 
-# @file_views_blueprint.route('/files/<int:file_id>/search/<string:search_word>/<int:search_type>/<int:page_num>',
-#                             methods=['GET', 'POST'])
-# @login_required
-# def search(file_id, search_word, search_type, page_num):
-#     if search_type == 0:
-#         search_results = Words.search_by_raw(file_id, search_word).group_by(Words.sentence_id).paginate(per_page=8,
-#                                                                                                         page=page_num)
-#     elif search_type == 1:
-#         search_word = lemmatize([search_word])[0][1]
-#         search_results = Words.search_by_lemma(file_id, search_word).group_by(Words.sentence_id).paginate(per_page=8,
-#                                                                                                           page=page_num)
-#     sentences = []
-#
-#     file = File.file_by_id(file_id)
-#
-#     for word in search_results.items:
-#         sentence_object = Sentences.query.get(word[1].id)
-#         sentence = {
-#             "raw_text": sentence_object.get_text(),
-#             "highlight": word[2].raw,
-#             "page_id": file.relative_page_by_id(sentence_object.page_id),
-#         }
-#
-#         sentences.append(sentence)
-#
-#     return render_template('files/details.html', file_id=file_id, sentences=sentences, paginate=search_results,
-#                            search_word=search_word, page_num=page_num, search_type=search_type)
+@file_views_blueprint.route('/files/<int:file_id>/search/<string:search_word>/<int:search_type>/<int:page_num>',
+                            methods=['GET', 'POST'])
+@login_required
+def search(file_id, search_word, search_type, page_num):
+    if search_type == 0:
+        search_results = Words.search_by_raw(file_id, search_word).group_by(Words.sentence_id).paginate(per_page=8,
+                                                                                                        page=page_num)
+    elif search_type == 1:
+        search_word = lemmatize([search_word])[0][1]
+        search_results = Words.search_by_lemma(file_id, search_word).group_by(Words.sentence_id).paginate(per_page=8,
+                                                                                                          page=page_num)
+    sentences = []
 
-@file_views_blueprint.route('/files/<int:file_id>/search/<int:results_page_id>')
-def search(file_id, results_page_id):
+    file = File.file_by_id(file_id)
+
+    for word in search_results.items:
+        sentence_object = Sentences.query.get(word[1].id)
+        sentence = {
+            "raw_text": sentence_object.get_text(),
+            "highlight": word[2].raw,
+            "page_id": file.relative_page_by_id(sentence_object.page_id),
+        }
+
+        sentences.append(sentence)
+
+    return render_template('files/details.html', file_id=file_id, sentences=sentences, paginate=search_results,
+                           search_word=search_word, page_num=page_num, search_type=search_type)
+
+
+@file_views_blueprint.route('/files/<int:file_id>/search_form/<int:results_page_id>')
+@file_views_blueprint.route('/files/<int:file_id>/search_form')
+def search_with_form(file_id, results_page_id=None):
     # Search form
-    parts_of_speech = GrammaticalCase.query.filter_by(part_of_speech=None).all()
-    grammatical_cases = GrammaticalCase.query.filter(GrammaticalCase.part_of_speech != None).all()
+    search_form = get_search_form()
 
-    search_form = {
-        part_of_speech.full_name_ge: part_of_speech.to_json(part_of_speech=True)
-        for part_of_speech in parts_of_speech}
-
-    print(grammatical_cases)
-    for tag in grammatical_cases:
-        search_form[tag.part_of_speech]['tags'].append(tag.to_json())
-
-    search_form = json.dumps(search_form, ensure_ascii=False)
-
-    # Search results
-    query = request.args.get('query')
-    session['search_results'] = {}
-    if query not in session['search_results'].keys():
-        # time.sleep(5)
-        all_words = (db.session.query(Words)
-                     .join(Pages.sentences)
-                     .join(Sentences.words)
-                     .filter(Pages.file_id == file_id)).all()
-
-        # all_queries = query.split('_')
-        # all_queries = [q.split(',') for q in all_queries]
-        # print('all_queries', all_queries)
-        query = query.split(',')  # TODO: replace with %2c
-
-        found_words = []
-        for word in all_words:
-            tags = word.pos_tags.split(',')
-            for tag in query:
-                if tag not in tags:
-                    break
-            else:
-                found_words.append(word)
-
-        result = []
-        current_result_page_data = []
-        count = 0
-        for word in found_words:
-            print(found_words)
-            if len(current_result_page_data) and current_result_page_data[-1][0] == word.sentences.get_text():
-                print('activated!')
-                current_result_page_data[-1][1].append(word.raw)
-            else:
-                count += 1
-                current_result_page_data.append((word.sentences.get_text(), [word.raw]))
-
-            if count == 10:
-                result.append(current_result_page_data)
-                current_result_page_data = []
-                count = 0
-        if len(current_result_page_data):
-            result.append(current_result_page_data)
-
-        query = ','.join(query)
-
-        session['search_results'] = {query: result}
-        print(session.items())
-    print(query)
-    print(len(session['search_results'][query]))
-    if results_page_id > len(session['search_results'][query]):
-        return {'resp': 'ნაპოვნია 0 შედეგი'}
-    print(session['search_results'][query][results_page_id-1])
-
-    return render_template('files/search.html', grammar_search_form=search_form,
-                           search_results=session['search_results'][query][results_page_id-1])
+    if results_page_id:
+        # Search results
+        search_attempt = True
+        query = request.args.get('query')
+        search_results, search_stats = get_search_query_results(query, file_id, results_page_id)
+    else:
+        search_attempt = False
+        search_results = []
+        search_stats = {}
+        query = None
+    return render_template('files/search.html', grammar_search_form=search_form, search_attempt=search_attempt,
+                           search_results=search_results, search_stats=search_stats, query=query,
+                           file_id=file_id, results_page_id=results_page_id)

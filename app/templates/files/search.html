@@ -98,16 +98,43 @@
           </div>
         </div>
 
-        <div class="search-results">
-          <div class="search-form-titles">
-            <h2>ძიების შედეგები</h2>
-            <h4>სულ ნაპოვნია 16 შედეგი</h4>
-          </div>
-          <div class="result-content">
-            <p>ხშირადაა შემთხვევა, როდესაც დიზაინის შესრულებისას საჩვენებელია, თუ როგორი იქნება ტექსტის ბლოკი სწორედ ასეთ დროს არის მოსახერხებელი ამ გენერატორით შექმნილი ტექსტის გამოყენება</p>
-            <div>მონაკვეთზე გადასვლა <img src="{{ url_for('static', filename='assets/fullarrow.svg') }}" alt=""/></div>
-          </div>
-        </div>
+        {% if search_attempt %}
+
+            <div class="search-results">
+                <div class="search-form-titles">
+                    <h2>ძიების შედეგები</h2>
+                    {% if 'words' in search_stats.keys() %}
+                        <h4>სულ ნაპოვნია {{ search_stats['words'] }} სიტყვა, {{ search_stats['sentences'] }} წინადადებაში</h4>
+                    {% else %}
+                        <h4>ფაილში მოთხოვნილი მონაცემები არ მოიძებნა</h4>
+                    {% endif %}
+                </div>
+
+            {% for sentence in search_results %}
+                <div class="result-content">
+                    <p>{{ sentence['sentence_text'] | safe }}</p>
+                    <a href="{{ url_for('files.view_file',
+                        file_id=sentence['file_page_id'][0],
+                        page_id=sentence['file_page_id'][1]) }}">
+                    <div>მონაკვეთზე გადასვლა <img src="{{ url_for('static', filename='assets/fullarrow.svg') }}" alt=""/></div>
+                    </a>
+                </div>
+                <br>
+            {% endfor %}
+
+            <div style="margin-top: 120px; display: flex; justify-content: center;">
+                {% for i in range(1, 1 + search_stats['pages']) %}
+                    <a class="pagination-number {% if results_page_id == i %} active {% endif %}"
+                       href="{{ url_for('files.search_with_form',
+                                        file_id=file_id,
+                                        results_page_id=i) }}?query={{ query }}">{{ i }}
+                    </a>
+                {% endfor %}
+            </div>
+
+            </div>
+        {% endif %}
+
     </div>
     <script>
 
