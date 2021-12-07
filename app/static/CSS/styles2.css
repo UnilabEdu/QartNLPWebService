@@ -34,7 +34,6 @@ header {
 .list-item a {
     position: relative;
     padding: 7px 13px;
-    margin: 0 10px;
     background-color: transparent;
     font-size: 16px;
     font-family: "firaGo", sans-serif;
@@ -347,42 +346,6 @@ footer {
     margin-bottom: 32px;
 }
 
-.block-1 > .grammar-block-header {
-    background-color: #3bc18e;
-}
-
-.block-2 > .grammar-block-header {
-    background-color: #d1bf33;
-}
-
-.block-3 > .grammar-block-header {
-    background-color: #3b83c1;
-}
-
-.block-4 > .grammar-block-header {
-    background-color: #e68989;
-}
-
-.block-5 > .grammar-block-header {
-    background-color: #238463;
-}
-
-.block-6 > .grammar-block-header {
-    background-color: #d69822;
-}
-
-.block-7 > .grammar-block-header {
-    background-color: #bc1e9e;
-}
-
-.block-8 > .grammar-block-header {
-    background-color: #4db44d;
-}
-
-.block-9 > .grammar-block-header {
-    background-color: #9dc13b;
-}
-
 .login-bg {
     position: fixed;
     width: 100%;
@@ -582,8 +545,8 @@ footer {
     padding: 64px 76px;
     max-width: 1470px;
     width: 80%;
-    margin-top: 2px;
-    margin-right:46px;
+    margin-top: 0px;
+    margin-right:0px;
     margin-left: 38px;
 }
 
@@ -630,7 +593,6 @@ footer {
 }
 
 .file-content {
-    margin-right: 32px;
     background-color: #ffffff;
     border-radius: 18px;
     padding: 36px 32px;
@@ -643,6 +605,7 @@ footer {
     font-size: 24px;
     font-family: firaGoSemibold, sans-serif;
     color: #151528;
+    width:72%;
 }
 
 .file-content p {
@@ -695,7 +658,23 @@ footer {
     position: relative;
     height: 42px;
     margin-bottom: 20px;
-    margin-left: 20px;
+    margin-left: 50px;
+    display: flex;
+    align-items: center;
+    padding-top:10px;
+}
+
+.login span {
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    overflow: hidden;
+    width: 72px;
+    margin-right: 17px;
+    margin-top: 8px;
+    font-family: 'firaGo', sans-serif;
+    font-size: 14px;
+    color: #0E0E1A;
+    font-weight: bold;
 }
 
 .my-files {
@@ -1354,6 +1333,8 @@ i.fab.fa-facebook-square {
     font-family: "firaGo", sans-serif;
     color: #fff;
     text-decoration: none;
+    position: absolute;
+    margin-top: 10px;
 }
 
 .slider-item-content p {
@@ -1553,7 +1534,7 @@ i.fab.fa-facebook-square {
 
 .slider-item-content a span {
     position: absolute;
-    margin-top: 16px;
+    margin-top: 0px;
     margin-left: 10px;
 }
 
@@ -1600,8 +1581,8 @@ i.fab.fa-facebook-square {
     width: 314px;
     height: 365px;
     flex-shrink: 0;
-    margin-top: 96px;
-    margin-left: 56px;
+    margin-top: 0px;
+    margin-left: 20px;
     padding-top: 38px;
     border-radius: 18px;
     background-color: #f9f9f9;
@@ -1666,12 +1647,6 @@ i.fab.fa-facebook-square {
     background-color: #ecf0f9;
     border-radius: 50%;
     cursor: pointer;
-}
-
-.slider-item-content a span {
-    position: absolute;
-    margin-top: 16px;
-    margin-left: 10px;
 }
 
 .content-login {
@@ -2582,4 +2557,82 @@ i.fab.fa-facebook-square {
     border: none;
     outline: none;
     cursor: pointer;
+}
+
+.checkbox-i {
+    display: block;
+    position: relative;
+    padding-left: 35px;
+    margin-bottom: 12px;
+    height:30px;
+    cursor: pointer;
+    font-size: 22px;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+}
+
+.checkbox-i input {
+    position: absolute;
+    opacity: 0;
+    cursor: pointer;
+    height: 0;
+    width: 0;
+}
+
+/* Create a custom checkbox */
+.checkmark {
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 25px;
+    width: 25px;
+    background-color: transparent;
+    border:1px solid#496AC1;
+    border-radius:50%;
+}
+
+/* On mouse-over, add a grey background color */
+.checkbox-i:hover input ~ .checkmark {
+    background-color: #ccc;
+}
+
+/* When the checkbox is checked, add a blue background */
+.checkbox-i input:checked ~ .checkmark {
+    background-color: #496AC1;
+}
+
+/* Create the checkmark/indicator (hidden when not checked) */
+.checkmark:after {
+    content: "";
+    position: absolute;
+    display: none;
+}
+
+/* Show the checkmark when checked */
+.checkbox-i input:checked ~ .checkmark:after {
+    display: block;
+}
+
+/* Style the checkmark/indicator */
+.checkbox-i .checkmark:after {
+    left: 9px;
+    top: 5px;
+    width: 3px;
+    height: 7px;
+    border: solid white;
+    border-width: 0 3px 3px 0;
+    -webkit-transform: rotate(45deg);
+    -ms-transform: rotate(45deg);
+    transform: rotate(45deg);
+}
+
+.lb {
+    position: absolute;
+    margin-left:39px;
+    font-family: 'firaGo', sans-serif;
+    width:435px;
+    font-size:16px;
+    margin-top:2px;
 }

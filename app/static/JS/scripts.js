@@ -79,11 +79,6 @@ async function displayLemmatizedData(text) {
 const filterBtn = document.querySelector('#filter-form');
 
 if(filterBtn){
-  console.log('ძიების შედეგები')
-  console.log(searchResults)
-
-
-
   filterBtn.addEventListener('click', ()=>{
     document.querySelector('.filter-form').classList.toggle('active-block');
   })

@@ -278,14 +278,7 @@
     scrollbar-arrow-color: transparent;
     /*justify-content: center;*/
 }
-::-webkit-scrollbar {
-    width: 0;  /* Remove scrollbar space */
-    background: transparent;  /* Optional: just make scrollbar invisible */
-}
-/* Optional: show position indicator in red */
-::-webkit-scrollbar-thumb {
-    background: #FF0000;
-}
+
 #ner-tag-selected:hover #ner-dropdown {
     height: 300px;
     transition-delay: 0.001s;

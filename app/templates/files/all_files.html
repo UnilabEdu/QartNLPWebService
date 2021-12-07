@@ -48,7 +48,7 @@
                         {{ picture_form.hidden_tag() }}
                         {{ picture_form.picture(accept='image/*', style='display: none') }}
                         <label for="picture"><img style="height: 55%; width: 55%; padding: 0 5% 0 15%" src="{{ url_for('static', filename='assets/imgupload.png') }}" alt="upload_image">
-                            {{ picture_form.submit_picture(class='changesBtn', style='height: 100%; width: 100%; position: relative') }}
+                            {{ picture_form.submit_picture(class='changesBtn', style='padding: 15px; height: 100%; width: 100%; position: relative; cursor:pointer;' ) }}
                         </label>
                       </form>
                     </div>

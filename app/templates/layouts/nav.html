@@ -24,6 +24,7 @@
                     </a>
                 {% else %}
                     <a class="icon login" href="{{ url_for('files.all_files') }}">
+                        <span>{{ current_user.first_name }}</span>
                         <div class="user-place">
                             <img src="
                                     {{ url_for('static', filename='uploads/' + (current_user.picture or 'default_avatar.png')) }}"
