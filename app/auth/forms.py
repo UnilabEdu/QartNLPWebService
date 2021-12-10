@@ -1,8 +1,9 @@
+from flask import flash
 from flask_wtf import FlaskForm
 from flask_wtf.file import FileField, FileRequired, FileAllowed
 from wtforms import ValidationError, HiddenField, BooleanField, StringField, PasswordField, SubmitField
-from wtforms.validators import DataRequired, Length, Email, EqualTo
 from wtforms.fields.html5 import EmailField
+from wtforms.validators import DataRequired, Length, Email, EqualTo
 
 from app.models.user import User
 
@@ -88,10 +89,6 @@ class ChangeProfileDataForm(FlaskForm):
     password = PasswordField('პაროლი')
     submit_profile_changes = SubmitField('მონაცემების შეცვლა')
 
-    def validate_new_email(self, field):
-        if User.select(email=field.data) is not None:
-            raise ValidationError('შეყვანილი ელ-ფოსტა უკვე დაკავშირებულია სხვა ანგარიშთან')
-
 
 class ProfilePictureForm(FlaskForm):
     picture = FileField('პროფილის სურათი', validators=[
@@ -100,3 +97,10 @@ class ProfilePictureForm(FlaskForm):
                     message='პროფილის სურათი არ განახლდა. გთხოვთ აირჩიოთ .jpg, .jpe, .jpeg ან .png ფორმატის სურათი')
     ])
     submit_picture = SubmitField('სურათის განახლება')
+
+
+def validate_new_email(email):
+    if User.select(email=email) is not None:
+        flash('შეყვანილი ელ-ფოსტა უკვე დაკავშირებულია სხვა ანგარიშთან')
+        return False
+    return True

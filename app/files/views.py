@@ -4,20 +4,19 @@ from random import randint
 from zipfile import ZipFile
 
 from flask import Blueprint, render_template, redirect, url_for, request, \
-    send_from_directory, current_app, flash, session
+    send_from_directory, current_app, flash
 from flask_login import current_user, login_required
 from werkzeug.security import generate_password_hash
 from werkzeug.utils import secure_filename
 
-from app.auth.forms import ChangeProfileDataForm, ProfilePictureForm
+from app.auth.forms import ChangeProfileDataForm, ProfilePictureForm, validate_new_email
 from app.auth.views import confirm_user_mail
 from app.database import db
 from app.file_processing.nlp import lemmatize
 from app.file_processing.tasks import process_file
 from app.files.forms import UploadForm, SearchForm
 from app.files.utils import image_crop_and_resize, get_search_form, get_search_query_results
-from app.models.file import File, Sentences, Words, Statistics, Status, Pages
-from app.models.grammatical_cases import GrammaticalCase
+from app.models.file import File, Sentences, Words, Statistics, Status
 from app.settings import Config
 
 file_views_blueprint = Blueprint('files',
@@ -117,15 +116,17 @@ def all_files(page_num):
             # name change
             current_user.first_name = profile_form.first_name.data
             current_user.last_name = profile_form.last_name.data
-            db.session.commit()
 
             # email change
             if current_user.email != profile_form.new_email.data:
-                current_user.email = profile_form.new_email.data
-                current_user.confirmed_at = None
-                confirm_user_mail(profile_form.new_email.data)
-                flash('თქვენი ელ-ფოსტა განახლდა. '
-                      f'ელ-ფოსტის ვერიფიკაციის შეტყობინება გაგზავნილია {profile_form.new_email.data} მისამართზე.')
+                if validate_new_email(profile_form.new_email.data):
+                    current_user.email = profile_form.new_email.data
+                    current_user.confirmed_at = None
+                    confirm_user_mail(profile_form.new_email.data)
+                    flash('თქვენი ელ-ფოსტა განახლდა. '
+                          f'ელ-ფოსტის ვერიფიკაციის შეტყობინება გაგზავნილია {profile_form.new_email.data} მისამართზე.')
+                else:
+                    return redirect(url_for('files.all_files'))
 
             db.session.commit()
             flash('თქვენი მონაცემები განახლდა')
