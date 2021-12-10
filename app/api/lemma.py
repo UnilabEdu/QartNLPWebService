@@ -27,7 +27,7 @@ class Lemmatization(Resource):
             {
                 "raw": word[0],
                 "lemma": word[1],
-                "pos_tags": word[2]
+                "pos_tags": ', '.join(word[2].split(','))
             } for word in lemmatized_text
         ]
 

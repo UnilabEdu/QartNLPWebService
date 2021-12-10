@@ -68,7 +68,9 @@ async function displayLemmatizedData(text) {
         let child_block_to_insert = document.createElement('div')
         child_block_to_insert.classList.add('gram-textarea')
         block_to_insert.appendChild(child_block_to_insert)
-        child_block_to_insert.innerHTML = `<p class="lemma-title"> ${word_obj.raw} </p> <br> ლემმა: ${word_obj.lemma} <br> თეგები: ${word_obj.pos_tags}`
+        child_block_to_insert.innerHTML = `<p class="lemma-title"> ${escapeHtml(word_obj.raw)} </p> <br> 
+                                                                    ლემმა: ${escapeHtml(word_obj.lemma)} <br> 
+                                                                    თეგები: ${escapeHtml(word_obj.pos_tags)}`
     }
     console.log(lemmatizedData)
 }
@@ -186,3 +188,15 @@ if(members){
     })
   })
 }
+
+
+// utils
+function escapeHtml(string)
+{
+    return string
+         .replace(/&/g, "&amp;")
+         .replace(/</g, "&lt;")
+         .replace(/>/g, "&gt;")
+         .replace(/"/g, "&quot;")
+         .replace(/'/g, "&#039;");
+ }
