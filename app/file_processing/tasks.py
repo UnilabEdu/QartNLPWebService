@@ -100,9 +100,9 @@ def process_file(id, user, filename, processes, extension):
                 db.session.commit()
 
             file = File.file_by_id(id)
-            # statistics = Statistics(id, file.get_word_count(), file.get_unique_word_count(), file.get_sentence_count(),
-            #                         None, None)
-            # statistics.save()  # TODO: fix bug in file.unique_word_count and uncomment
+            statistics = Statistics(id, file.get_word_count(), file.get_unique_word_count(), file.get_sentence_count(),
+                                    None, None)
+            statistics.save()
 
             file.status[0].completed = True
             db.session.commit()

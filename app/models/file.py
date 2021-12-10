@@ -71,7 +71,7 @@ class File(db.Model):
                 return i+1
 
     def get_unique_word_count(self):
-        unique_word_count = (db.session.query(Words)
+        unique_word_count = (Words.query.with_entities(Words.raw)
                              .join(Pages.sentences)
                              .join(Sentences.words)
                              .filter(Pages.file_id == self.id)
