@@ -259,15 +259,17 @@ def search(file_id, search_word, search_type, page_num):
 
 @file_views_blueprint.route('/files/<int:file_id>/search_form/<int:results_page_id>')
 @file_views_blueprint.route('/files/<int:file_id>/search_form')
+@login_required
 def search_with_form(file_id, results_page_id=None):
     # Search form
     search_form = get_search_form()
+    file_object = File.query.get(file_id)
 
     if results_page_id:
         # Search results
         search_attempt = True
         query = request.args.get('query')
-        search_results, search_stats = get_search_query_results(query, file_id, results_page_id)
+        search_results, search_stats = get_search_query_results(query, file_id, results_page_id, file_object)
     else:
         search_attempt = False
         search_results = []

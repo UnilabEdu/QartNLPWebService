@@ -48,7 +48,7 @@ def get_search_form():
     return json.dumps(search_form, ensure_ascii=False)
 
 
-def get_search_query_results(all_queries, file_id, results_page_id):
+def get_search_query_results(all_queries, file_id, results_page_id, file_object):
     from app.models.file import Sentences, Words, Pages
 
     file_id = str(file_id)
@@ -114,13 +114,15 @@ def get_search_query_results(all_queries, file_id, results_page_id):
                     # current_result_page_data[-1]['word_index_tuples'].append((word.start_index, word.end_index))
                 else:
                     count += 1
+                    current_page_number = file_object.pages.index(word.sentences.pages) + 1
+                    print(current_page_number)
                     current_result_page_data.append({
                         "sentence_text": word.sentences,
                         # "sentence_text": remove_punctuation(word.sentences.get_text().strip()),
                         "words": [word],
                         "secondary_words": secondary_words,
                         # "word_index_tuples": [(word.start_index, word.end_index)],
-                        "file_page_id": (word.sentences.pages.file_id, word.sentences.page_id),
+                        "file_page_id": (word.sentences.pages.file_id, current_page_number),
                         "sentence_id": word.sentence_id
                     })
 
