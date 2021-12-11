@@ -18,9 +18,9 @@ class File(db.Model):
     file_name = db.Column(db.String)
     upload_date = db.Column(db.DateTime, default=datetime.datetime.utcnow)
     date_modified = db.Column(db.DateTime, default=datetime.datetime.utcnow)
-    pages = db.relationship('Pages', backref='file')
-    status = db.relationship('Status', backref='file')
-    statistics = db.relationship('Statistics', backref='file', uselist=False)
+    pages = db.relationship('Pages', backref='file', order_by='Pages.id')
+    status = db.relationship('Status', backref='file', order_by='Status.id')
+    statistics = db.relationship('Statistics', backref='file', uselist=False, order_by='Statistics.id')
 
     def __init__(self, title, user_id, file_name):
         self.title = title
@@ -176,7 +176,7 @@ class Pages(db.Model):
     file_id = db.Column(db.Integer, db.ForeignKey("files.id"))
     start_index = db.Column(db.Integer)
     end_index = db.Column(db.Integer)
-    sentences = db.relationship("Sentences", backref="pages")
+    sentences = db.relationship("Sentences", backref="pages", order_by='Sentences.id')
 
     def __init__(self, file_id, start_index, end_index):
         self.file_id = file_id
@@ -226,7 +226,7 @@ class Sentences(db.Model):
     page_id = db.Column(db.Integer, db.ForeignKey("pages.id"))
     start_index = db.Column(db.Integer)
     end_index = db.Column(db.Integer)
-    words = db.relationship('Words', backref="sentences")
+    words = db.relationship('Words', backref="sentences", order_by="Words.id")
 
     def __init__(self, page_id, start_index, end_index):
         self.page_id = page_id

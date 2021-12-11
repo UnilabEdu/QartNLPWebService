@@ -25,7 +25,7 @@ class User(db.Model, UserMixin):
     active = db.Column('is_active', db.Boolean(), nullable=False, server_default='1')
     roles = db.relationship('Role', secondary='user_to_role',
                             backref=db.backref('user', lazy='dynamic'))
-    file = db.relationship('File', backref='user')
+    file = db.relationship('File', backref='user', order_by='File.id')
 
     def _get_password(self):
         return self._password

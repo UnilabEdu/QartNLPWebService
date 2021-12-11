@@ -10,7 +10,7 @@ class NerTagType(db.Model):
     title = db.Column(db.String)
     description = db.Column(db.String)
     short_name = db.Column(db.String)
-    ner_tags = db.relationship('NerTags', backref='ner_tag_type', lazy=True)
+    ner_tags = db.relationship('NerTags', backref='ner_tag_type', lazy=True, order_by='NerTags.id')
 
     @classmethod
     def get_all_nertags(cls):
@@ -60,7 +60,7 @@ class NerTags(db.Model):
     id = db.Column(db.Integer, primary_key=True)
     page_id = db.Column(db.Integer, db.ForeignKey("pages.id"))
     ner_tag_type_id = db.Column(db.Integer, db.ForeignKey("ner_tag_type.id"))
-    words = db.relationship('Words', backref='ner_tags', lazy=True)
+    words = db.relationship('Words', backref='ner_tags', lazy=True, order_by='Words.id')
 
     def __init__(self, ner_tag_type_id, page_id):
         self.page_id = page_id
