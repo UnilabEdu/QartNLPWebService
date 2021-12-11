@@ -37,7 +37,7 @@ def tagging(page_id=0, file_id=0):
     tags = NerTags.connected_words(page.id)
 
     return render_template('tagging/tagging.html',
-                           file=file, file_id=file_id, page_id=str(page_id),
+                           file=file, file_id=file_id, page_id=page_id,
                            text=current_page_text, form=form,
                            tags=tags, tags_json=json.dumps(tags, indent=4),
-                           all_types=all_types)
+                           all_types=all_types, page_id_str=str(page_id))

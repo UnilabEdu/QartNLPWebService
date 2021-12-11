@@ -41,21 +41,20 @@
         </div>
     </div>
     {% if file.pages|count > 1 %}
+        <div style="margin-top: 120px; display: flex; justify-content: center;">
         {% for i in range(1, 1 + file.pages|count) %}
-            <a href="{{ url_for('tagging.test', file_id=file.id, page_id=i) }}">{{ i }}</a>
+            <a class="pagination-number {% if page_id == i %} active {% endif %}"
+               href="{{ url_for('tagging.tagging', file_id=file.id, page_id=i) }}">{{ i }}</a>
         {% endfor %}
+        </div>
     {% endif %}
     <script>
         let allTypes = {{ all_types | safe }};
         const fileID = {{ file_id }};
-        const pageID = {{ page_id }};
+        const pageID = {{ page_id_str }};
         const backendTags = {{ tags_json | safe }};
         console.log('backendTags:');
         console.log(backendTags);
     </script>
     <script src="{{ url_for("static", filename="JS/tagging-script.js") }}"></script>
 {% endblock %}
-
-{# sites main color - #172420 #}
-{# bootstrap red - #dc3545 #}
-{# bootstrap green - #28a745 #}

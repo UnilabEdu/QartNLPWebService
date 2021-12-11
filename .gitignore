@@ -145,6 +145,7 @@ hints.md
 
 # Uploads
 app/uploads
+app/static/uploads
 
 # Database
 data.db
