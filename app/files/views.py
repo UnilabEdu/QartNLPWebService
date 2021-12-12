@@ -200,8 +200,8 @@ def download_file(file_id):
     absolute_path = os.path.join(current_app.root_path, "uploads", str(current_user.id))
 
     if current_user.id == file.user_id:
-        with ZipFile(f"{file_path}.zip", 'w') as zipobj:
-            zipobj.write(f"{file_path}", f"{file.file_name}")
+        with ZipFile(f"{file_path.replace('.txt', '')}.zip", 'w') as zipobj:
+            zipobj.write(f"{file_path}", f"{file.file_name.replace('.txt', '')}")
 
             if file.status[0].lemmatized:
                 file.create_json()
@@ -214,7 +214,7 @@ def download_file(file_id):
                 except FileNotFoundError:
                     zipobj.write(f"{file_path.replace('.txt', '')}-freq_dist.json", f"{file.file_name.replace('.txt', '')}-freq_dist.json")
 
-        return send_from_directory(absolute_path, f"{file.file_name}.zip", as_attachment=True)
+        return send_from_directory(absolute_path, f"{file.file_name.replace('.txt', '')}.zip", as_attachment=True)
 
     return redirect(url_for('files.all_files'))
 
