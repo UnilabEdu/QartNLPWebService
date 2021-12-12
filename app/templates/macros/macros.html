@@ -30,14 +30,16 @@
     </div>
 {% endmacro %}
 
-{% macro file_block(id, title, description, m_date, c_date) %}
+{% macro file_block(id, title, description, m_date, c_date, convert_time) %}
     <div class="file-block">
-        <div class="file-data">
-            <span>შექმნის თარიღი: {{ c_date }}</span>
-            <span>ბოლო მოდიფიცირების თარიღი: {{ m_date }}</span>
-        </div>
         <div class="files-flex-content">
             <div class="file-content">
+                <div class="file-data">
+                    <span>შექმნის თარიღი: {{ convert_time(c_date) }}</span>
+                    <br>
+                    <span>ბოლო მოდიფიცირების თარიღი: {{ convert_time(m_date) }}</span>
+                </div>
+
                 <h2><a style="color: inherit; text-decoration: none" ,
                        href="{{ url_for('files.view_file', file_id=id, page_id=1) }}">{{ title }}</a>
                 </h2>

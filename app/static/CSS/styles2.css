@@ -572,24 +572,10 @@ footer {
 
 .file-data span {
     position: relative;
-    color: #172224;
-    font-size: 16px;
+    color: #5d5d5d;
+    font-size: 12px;
     font-family: firaGo, sans-serif;
-}
-
-.file-data span:first-child {
-    padding-right: 60px;
-}
-
-.file-data span:first-child:after {
-    content: "";
-    position: absolute;
-    top: 50%;
-    transform: translateY(-50%);
-    width: 1px;
-    height: 65%;
-    margin-left: 30px;
-    background-color: #172224;
+    margin-left: 15px;
 }
 
 .file-content {

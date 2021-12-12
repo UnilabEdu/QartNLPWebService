@@ -8,14 +8,13 @@ from flask import Blueprint, render_template, redirect, url_for, request, \
 from flask_login import current_user, login_required
 from werkzeug.security import generate_password_hash
 from werkzeug.utils import secure_filename
-
 from app.auth.forms import ChangeProfileDataForm, ProfilePictureForm, validate_new_email
 from app.auth.views import confirm_user_mail
 from app.database import db
 from app.file_processing.nlp import lemmatize
 from app.file_processing.tasks import process_file
 from app.files.forms import UploadForm, SearchForm
-from app.files.utils import image_crop_and_resize, get_search_form, get_search_query_results
+from app.files.utils import image_crop_and_resize, get_search_form, get_search_query_results, convert_time
 from app.models.file import File, Sentences, Words, Statistics, Status
 from app.settings import Config
 
@@ -30,33 +29,23 @@ file_views_blueprint = Blueprint('files',
 @file_views_blueprint.route('/files/<int:page_num>', methods=['GET', 'POST'])
 @login_required
 def all_files(page_num):
-    files = File.get_active_files(current_user.id).paginate(per_page=4, page=page_num)
+    files = File.get_active_files(current_user.id).paginate(per_page=7, page=page_num)
     upload_form = UploadForm()
     profile_form = ChangeProfileDataForm()
     picture_form = ProfilePictureForm()
 
-    print(upload_form.processes)
-    print(upload_form.processes.choices)
-    print(upload_form.processes.label)
-
     # File upload handling
     if upload_form.validate_on_submit() and upload_form.submit_upload.data:
         if upload_form.file.data:
-
-            print('file detected')
             file = upload_form.file.data
             filename = secure_filename(file.filename)
             title = filename.split(".")[0]
-            print('file:', file)
-            print('filename:', filename)
-            print('title:', title)
 
         elif upload_form.text.data and upload_form.name.data:
             filename = secure_filename(upload_form.name.data + ".txt")
             title = upload_form.name.data
 
         path = os.path.join(Config.UPLOAD_FOLDER, str(current_user.id), filename)
-        print('path:', path)
         duplicate_count = 0
 
         extension = filename.split('.')[1]
@@ -78,15 +67,13 @@ def all_files(page_num):
                 f.write(upload_form.text.data)
 
         file_model = File(title, current_user.id, filename)
-        print(file_model)
         file_model.save()
 
         file_status = Status(file_model.id, frequency_distribution_calculated="freq_dist" in upload_form.processes.data,
                              lemmatized="lemat" in upload_form.processes.data, completed=False)
-        print(file_status)
         file_status.save()
 
-        process_file.delay(file_model.id, current_user.id, filename, upload_form.processes.data, extension)
+        process_file(file_model.id, current_user.id, filename, upload_form.processes.data, extension)
         flash('მიმდინარეობს ფაილის დამუშავება')
         return redirect(url_for('files.all_files'))
 
@@ -159,7 +146,7 @@ def all_files(page_num):
                     flash(error)
 
     return render_template('files/all_files.html', page_num=page_num, block_files=files, upload_form=upload_form,
-                           profile_form=profile_form, picture_form=picture_form)
+                           profile_form=profile_form, picture_form=picture_form, convert_time=convert_time)
 
 
 @file_views_blueprint.route('/files/<int:file_id>/<int:page_id>', methods=['GET', 'POST'])

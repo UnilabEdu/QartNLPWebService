@@ -34,6 +34,10 @@ def escape_for_xml(string_to_format):
     return string_to_format.translate(table)
 
 
+def convert_time(timestamp):
+    return timestamp.strftime("%Y-%m-%d %H:%M:%S")
+
+
 def get_search_form():
     parts_of_speech = GrammaticalCase.query.filter_by(part_of_speech=None).all()
     grammatical_cases = GrammaticalCase.query.filter(GrammaticalCase.part_of_speech != None).all()
