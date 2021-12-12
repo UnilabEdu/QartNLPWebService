@@ -205,11 +205,14 @@ def download_file(file_id):
 
             if file.status[0].lemmatized:
                 file.create_json()
-                zipobj.write(f"{file_path}-lemmatized.json", f"{file.file_name}-lemmatized.json")
-                zipobj.write(f"{file_path}-lemmatized.xml", f"{file.file_name}-lemmatized.xml")
+                zipobj.write(f"{file_path}-lemmatized.json", f"{file.file_name.replace('.txt', '')}-lemmatized.json")
+                zipobj.write(f"{file_path}-lemmatized.xml", f"{file.file_name.replace('.txt', '')}-lemmatized.xml")
 
             if file.status[0].frequency_distribution_calculated:
-                zipobj.write(f"{file_path}-freq_dist.json", f"{file.file_name}-freq_dist.json")
+                try:
+                    zipobj.write(f"{file_path}-freq_dist.json", f"{file.file_name.replace('.txt', '')}-freq_dist.json")
+                except FileNotFoundError:
+                    zipobj.write(f"{file_path.replace('.txt', '')}-freq_dist.json", f"{file.file_name.replace('.txt', '')}-freq_dist.json")
 
         return send_from_directory(absolute_path, f"{file.file_name}.zip", as_attachment=True)
 
