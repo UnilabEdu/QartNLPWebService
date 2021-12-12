@@ -1,18 +1,19 @@
+import os
+
 from flask import Flask
 
+from app.admin.admin import admin
 from app.api import api
+from app.auth.google import google_blueprint
+from app.auth.views import auth_blueprint
 from app.commands import reset_db_command, populate_db_command, clear_file_tables_command
 from app.database import db
 from app.extensions import migrate, mail, babel, celery, login_manager, session
-from app.settings import Config
-from app.admin.admin import admin
-from app.models.user import User
-
 from app.files.views import file_views_blueprint
 from app.main.views import main_blueprint
+from app.models.user import User
+from app.settings import Config
 from app.tagging.views import tagging_blueprint
-from app.auth.views import auth_blueprint
-from app.auth.google import google_blueprint
 
 BLUEPRINTS = [
     main_blueprint,
@@ -48,14 +49,15 @@ def create_app():
     # Setup Flask-Admin
     admin.init_app(app)
     # Setup Flask-Session
-    session.init_app(app)
-    @app.route('/set/')
-    def set():
-        session['key'] = 'value'
-        return 'ok'
-    @app.route('/get/')
-    def get():
-        return session.get('key', 'not set')
+    if os.environ.get('FLASK_DEPLOYMENT') != 'local':
+        session.init_app(app)
+        @app.route('/set/')
+        def set():
+            session['key'] = 'value'
+            return 'ok'
+        @app.route('/get/')
+        def get():
+            return session.get('key', 'not set')
     # Initialize Flask-RESTful
     api.init_app(app)
 
