@@ -209,7 +209,7 @@ def disable_file(file_id):
 @login_required
 def download_file(file_id):
     file = File.file_by_id(file_id)
-    file_path = os.path.join(Config.UPLOAD_FOLDER, str(current_user.id), file.title)
+    file_path = os.path.join(Config.UPLOAD_FOLDER, str(current_user.id), file.file_name)
     absolute_path = os.path.join(current_app.root_path, "uploads", str(current_user.id))
 
     if current_user.id == file.user_id:
