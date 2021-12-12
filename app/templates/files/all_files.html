@@ -136,7 +136,8 @@
                     description= desc_data,
                     c_date= file.upload_date,
                     m_date= file.date_modified,
-                    convert_time= convert_time
+                    convert_time= convert_time,
+                    status= file.status[0]
              ) }}
                 {% endfor %}
 

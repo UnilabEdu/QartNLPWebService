@@ -603,6 +603,10 @@ footer {
     color: #151528;
 }
 
+.file-description {
+    overflow-wrap: anywhere;
+}
+
 .file-btn-container {
     margin: 32px auto auto;
     justify-content: center;

@@ -102,6 +102,7 @@ def process_file(id, user, filename, processes, extension):
             statistics = Statistics(id, file.get_word_count(), file.get_unique_word_count(), file.get_sentence_count(),
                                     None, None)
             statistics.save()
-
-            file.status[0].completed = True
             db.session.commit()
+
+        File.file_by_id(id).status[0].completed = True
+        db.session.commit()

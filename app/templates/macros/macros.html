@@ -30,7 +30,7 @@
     </div>
 {% endmacro %}
 
-{% macro file_block(id, title, description, m_date, c_date, convert_time) %}
+{% macro file_block(id, title, description, m_date, c_date, convert_time, status) %}
     <div class="file-block">
         <div class="files-flex-content">
             <div class="file-content">
@@ -40,27 +40,31 @@
                     <span>ბოლო მოდიფიცირების თარიღი: {{ convert_time(m_date) }}</span>
                 </div>
 
-                <h2><a style="color: inherit; text-decoration: none" ,
-                       href="{{ url_for('files.view_file', file_id=id, page_id=1) }}">{{ title }}</a>
+                <h2><a style="color: inherit; text-decoration: none"
+                       {% if status.lemmatized %}
+                            href="{{ url_for('files.view_file', file_id=id, page_id=1) }}
+                       {% endif %}">{{ title }}</a>
                 </h2>
-                <p>
+                <p class="file-description">
                     {{ description }}
                 </p>
                 <div style="height: 100%; display: flex; align-items: flex-end" class="file-tools">
+                    {% if status.lemmatized %}
+                        <div class="tool-container display-flex">
+                            <a style="color: inherit; text-decoration: none"
+                               href="{{ url_for('tagging.tagging', file_id=id, page_id=1) }}"><img style="vertical-align: middle"
+                                    src="{{ url_for('static', filename="assets/ic-contact-edit.svg") }}" alt=""></a>
+                        </div>
+                    {% endif %}
                     <div class="tool-container display-flex">
-                        <a style="color: inherit; text-decoration: none" ,
-                           href="{{ url_for('tagging.tagging', file_id=id, page_id=1) }}"><img style="vertical-align: middle"
-                                src="{{ url_for('static', filename="assets/ic-contact-edit.svg") }}"></a>
-                    </div>
-                    <div class="tool-container display-flex">
-                        <a style="color: inherit; text-decoration: none" ,
+                        <a style="color: inherit; text-decoration: none"
                            href="{{ url_for('files.download_file', file_id=id) }}"><img style="vertical-align: middle"
-                                src="{{ url_for('static', filename="assets/ic-actions-download.svg") }}"></a>
+                                src="{{ url_for('static', filename="assets/ic-actions-download.svg") }}" alt=""></a>
                     </div>
                     <div class="tool-container display-flex">
-                        <a style="color: inherit; text-decoration: none" ,
+                        <a style="color: inherit; text-decoration: none"
                            href="{{ url_for('files.disable_file', file_id=id) }}"><img style="vertical-align: middle"
-                                src="{{ url_for('static', filename="assets/ic-actions-trash.svg") }}"></a>
+                                src="{{ url_for('static', filename="assets/ic-actions-trash.svg") }}" alt=""></a>
                     </div>
                 </div>
             </div>
