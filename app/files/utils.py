@@ -63,16 +63,20 @@ def get_search_query_results(all_queries, file_id, results_page_id, file_object)
         all_words = (db.session.query(Words)
                      .join(Pages.sentences)
                      .join(Sentences.words)
-                     .filter(Pages.file_id == file_id)).all()
+                     .filter(Pages.file_id == file_id))
 
         all_queries = all_queries.split('_')
-        all_queries = [q.split(',') for q in all_queries]  # TODO: replace with %2c
+        all_queries = [q.split(',') for q in all_queries]
         query = all_queries[0]
 
         found_words = []
-        for word in all_words:
-            if check_word_tags(word, query):
-                found_words.append(word)
+        if query[0][0] == '"' and query[-1][0] == '"':
+            all_words = all_words.filter(Words.raw.ilike("%" + query[0][1:-1] + "%")).all()
+            found_words.extend(all_words)
+        else:
+            for word in all_words.all():
+                if check_word_tags(word, query):
+                    found_words.append(word)
 
         result = []
         current_result_page_data = []
@@ -115,7 +119,6 @@ def get_search_query_results(all_queries, file_id, results_page_id, file_object)
                 else:
                     count += 1
                     current_page_number = file_object.pages.index(word.sentences.pages) + 1
-                    print(current_page_number)
                     current_result_page_data.append({
                         "sentence_text": word.sentences,
                         # "sentence_text": remove_punctuation(word.sentences.get_text().strip()),
@@ -137,7 +140,6 @@ def get_search_query_results(all_queries, file_id, results_page_id, file_object)
             result.append(current_result_page_data)
 
         # Mark found words as bold and secondary words as italics
-
         for page in result:
             for sentence in page:
                 sentence['sentence_text'] = sentence['sentence_text'].get_words_raw_formatted(bold_words=sentence['words'],
