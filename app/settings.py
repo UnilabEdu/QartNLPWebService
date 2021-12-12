@@ -49,6 +49,9 @@ class Config(object):
     OAUTHLIB_RELAX_TOKEN_SCOPE = 1
     os.environ["OAUTHLIB_INSECURE_TRANSPORT"] = "True"
 
+    # Flask-Session
+    SESSION_TYPE = 'redis'
+
     # Antiword
     os.environ['ANTIWORDHOME'] = basedir
 
