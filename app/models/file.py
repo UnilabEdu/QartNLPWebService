@@ -85,8 +85,8 @@ class File(db.Model):
         return sentence_count
 
     def create_json(self):
-        file_path_json = os.path.join(Config.UPLOAD_FOLDER, str(current_user.id), f"{self.title}-lemmatized.json")
-        file_path_xml = os.path.join(Config.UPLOAD_FOLDER, str(current_user.id), f"{self.title}-lemmatized.xml")
+        file_path_json = os.path.join(Config.UPLOAD_FOLDER, str(current_user.id), f"{self.file_name}-lemmatized.json")
+        file_path_xml = os.path.join(Config.UPLOAD_FOLDER, str(current_user.id), f"{self.file_name}-lemmatized.xml")
 
         all_words = (db.session.query(Pages, Sentences, Words)
                        .join(Pages.sentences)

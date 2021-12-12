@@ -65,8 +65,7 @@ def process_file(id, user, filename, processes, extension):
 
             result_json = frequency_distribution(freq_text)
             freq_data = json.dumps(result_json, ensure_ascii=False, indent=1)
-            filetitle = os.path.splitext(filename)[0]
-            newtitle = f"{filetitle}-freq_dist.json"
+            newtitle = f"{filename}-freq_dist.json"
             freq_filepath = os.path.join(Config.UPLOAD_FOLDER, str(user), newtitle)
             with open(freq_filepath, "w", encoding='utf-8') as fp:
                 fp.write(freq_data)
