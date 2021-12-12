@@ -214,7 +214,7 @@ def download_file(file_id):
 
     if current_user.id == file.user_id:
         with ZipFile(f"{file_path}.zip", 'w') as zipobj:
-            zipobj.write(f"{file_path}.txt", f"{file.title}.txt")
+            zipobj.write(f"{file_path}.txt", f"{file.filename}.txt")
 
             if file.status[0].lemmatized:
                 file.create_json()
