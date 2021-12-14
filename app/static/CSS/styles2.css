@@ -885,12 +885,19 @@ footer {
     margin: 0 22px 0 32px;
 }
 
-.info-search ul li {
-    margin: 0 0 35px;
+.word-lemma-info {
+    margin: 32px;
+    padding: 0 20px;
+    background-color: #F5F5F5;
+    border-radius: 10px;
+}
+
+.word-lemma-info p {
+    padding: 5px 0;
+    margin: 0 0 15px;
     font-size: 16px;
     font-family: 'firaGo', sans-serif;
     color: #2c3532;
-    background-color: #F5F5F5;
     border-radius: 8px;
     list-style-type: none;
     overflow-wrap: break-word;

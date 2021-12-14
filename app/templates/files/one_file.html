@@ -1,16 +1,10 @@
 {% extends "layouts/base_for_full_pages.html" %}
 {% block content %}
     <script>
-        function get_word_details(word_id) {
-            let lemma_array = {{ lemma_list | safe}};
-
-            let lemma = document.getElementById('word_lemma');
-            let tag = document.getElementById('word_tag');
-
-            lemma.innerHTML = "ლემმა: " + lemma_array[word_id].lemma;
-            tag.innerHTML = "თეგები: " + lemma_array[word_id].tags;
-        }
+        const lemmaArray = {{ lemma_list | safe }}
     </script>
+    <script src="{{ url_for('static', filename='JS/one-file.js') }}"></script>
+
     <section style="margin-top: 100px">
         <div class="concrete-content">
             <div class="concrete-words">
@@ -74,12 +68,10 @@
                 </div>
                 <br>
                 <div class="search-tool-block">
-                    <div class="info-search">
-                        <br>
-                        <ul>
-                            <li id="word_lemma"> ლემმა:</li>
-                            <li id="word_tag"> თეგები:</li>
-                        </ul>
+                    <br>
+                    <div class="word-lemma-info">
+                        <p id="word_lemma"> ლემატიზაციის შედეგების გამოსაჩენად დააკლიკეთ სიტყვას</p>
+                        <p id="word_tag"> </p>
                     </div>
                 </div>
                 <a href="{{ url_for('files.search_with_form', file_id=file.id) }}">
