@@ -1606,6 +1606,10 @@ i.fab.fa-facebook-square {
     color: #E98940;
 }
 
+.word-highlight-secondary {
+    color: #e743b9;
+}
+
 .flashed-messages {
     background-color: #ECF0F9;
     color: #496AC1;

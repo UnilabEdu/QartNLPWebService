@@ -262,9 +262,9 @@ class Sentences(db.Model):
         result_sentence = []
         for word in sentence_words:
             if word in bold_words:
-                raw_word = '<b>' + word.raw + '</b>'
+                raw_word = '<span class="word-highlight">' + word.raw + '</span>'
             elif word in italics_words:
-                raw_word = '<i>' + word.raw + '</i>'
+                raw_word = '<span class="word-highlight-secondary">' + word.raw + '</span>'
             else:
                 raw_word = word.raw
             result_sentence.append(raw_word)
