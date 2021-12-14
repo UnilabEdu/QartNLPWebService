@@ -6,7 +6,7 @@ Name,სახელი/გვარი,Name
 Geographical,გეოგრაფიული სახელი,Geog
 Common,საზოგადო,Com
 Singular,მხოლობითი რიცხვი,Sg
-Plural,მრავლობითი რიცხვი ,Pl
+Plural,მრავლობითი რიცხვი,Pl
 Nominative,სახელობითი ბრუნვა,Nom
 Ergative,მოთხრობითი ბრუნვა,Erg
 Dative,მიცემითი ბრუნვა,Dat
@@ -24,7 +24,7 @@ Positive Degree,დადებითი ხარისხი,Pos
 Comparative Degree,ოდნაობითი ხარისხი,Com
 Superlative Degree,უფროობითი ხარისხი,Sup
 Singular,მხოლობითი რიცხვი,Sg
-Plural,მრავლობითი რიცხვი ,Pl
+Plural,მრავლობითი რიცხვი,Pl
 Nominative,სახელობითი ბრუნვა,Nom
 Ergative,მოთხრობითი ბრუნვა,Erg
 Dative,მიცემითი ბრუნვა,Dat
@@ -46,7 +46,7 @@ Letter,ანბანურად,Letter
 Roman,რომაული რიცხვი,Rom
 Fractal,წილობითი ,Fn
 Singular,მხოლობითი რიცხვი,Sg
-Plural,მრავლობითი რიცხვი ,Pl
+Plural,მრავლობითი რიცხვი,Pl
 Nominative,სახელობითი ბრუნვა,Nom
 Ergative,მოთხრობითი ბრუნვა,Erg
 Dative,მიცემითი ბრუნვა,Dat
@@ -152,7 +152,7 @@ Subjunctive,კავშირებითი კილო,Subj
 Imperative,ბრძანებითი კილო,Imp
 Transitive,გარდამავალი,Trans
 Unaccusative,ვნებითი,Unacc
-Unergative,საშუალი ,Unerg
+Unergative,საშუალი,Unerg
 Inverse,ინვერსიული,Inv
 Indirect Transitive,ირიბ-გარდამავალი,IndTrans
 Active,აქტივი,Act
