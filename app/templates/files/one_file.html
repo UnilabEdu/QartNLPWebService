@@ -13,7 +13,7 @@
                 {% set index = namespace(value=0) %}
                 {% for word in splitted_words %}
                     {% if word not in '!"#$%&\'()*+,-./:;<=>?@[\\]^_`{|}~' %}
-                        <a onclick=get_word_details({{ index.value }})>{{ word }}</a>
+                        <a id="{{ index.value }}" onclick=get_word_details({{ index.value }})>{{ word }}</a>
                         {% set index.value = index.value + 1 %}
                     {% else %}
                         {{ word }}

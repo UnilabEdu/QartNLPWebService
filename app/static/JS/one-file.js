@@ -1,4 +1,12 @@
 function get_word_details(wordId) {
+    let highlighted_words = document.getElementsByClassName('clicked-word')
+    for (let elem of highlighted_words) {
+        elem.classList.remove('clicked-word')
+    }
+
+    let wordToHighlight = document.getElementById(wordId)
+    wordToHighlight.classList.add('clicked-word')
+
     let lemma = document.getElementById('word_lemma');
     let tag = document.getElementById('word_tag');
 

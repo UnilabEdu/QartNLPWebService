@@ -2847,3 +2847,8 @@ i.fab.fa-facebook-square {
   font-family: "firaGo", sans-serif;
   margin: auto;
 }
+
+.clicked-word {
+    font-weight: bolder;
+    color: #496AC1;
+}
