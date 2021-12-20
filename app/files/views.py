@@ -15,7 +15,7 @@ from app.file_processing.nlp import lemmatize
 from app.file_processing.tasks import process_file
 from app.files.forms import UploadForm, SearchForm
 from app.files.utils import image_crop_and_resize, get_search_form, get_search_query_results, convert_time
-from app.models.file import File, Sentences, Words, Statistics, Status
+from app.models.file import File, Sentences, Words, Statistics, Status, Pages
 from app.settings import Config
 
 file_views_blueprint = Blueprint('files',
@@ -224,12 +224,14 @@ def download_file(file_id):
 @login_required
 def search(file_id, search_word, search_type, page_num):
     if search_type == 0:
-        search_results = Words.search_by_raw(file_id, search_word).group_by(Words.sentence_id).paginate(per_page=8,
-                                                                                                        page=page_num)
+        search_results = (Words.search_by_raw(file_id, search_word).group_by(Pages, Sentences, Words, Words.sentence_id)
+                          .paginate(per_page=8,
+                                    page=page_num))
     elif search_type == 1:
         search_word = lemmatize([search_word])[0][1]
-        search_results = Words.search_by_lemma(file_id, search_word).group_by(Words.sentence_id).paginate(per_page=8,
-                                                                                                          page=page_num)
+        search_results = (Words.search_by_lemma(file_id, search_word).group_by(Pages, Sentences, Words, Words.sentence_id)
+                          .paginate(per_page=8,
+                                    page=page_num))
     sentences = []
 
     file = File.file_by_id(file_id)

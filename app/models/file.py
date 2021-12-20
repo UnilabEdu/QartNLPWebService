@@ -271,7 +271,6 @@ class Sentences(db.Model):
         return ' '.join(result_sentence)
 
 
-
 class Words(db.Model):
     __tablename__ = "words"
     id = db.Column(db.Integer, primary_key=True)
@@ -315,6 +314,8 @@ class Words(db.Model):
 
     @classmethod
     def search_by_lemma(cls, file_id, lemma):
+        if not lemma:
+            lemma = 'Empty'
         search_results = (db.session.query(Pages, Sentences, Words)
                           .join(Sentences, Pages.sentences)
                           .join(Words, Sentences.words)
