@@ -22,7 +22,7 @@ const allAuthNodes = [...individualPopupBlocks, popupButtonSlider, popupButtonNa
 
 // Show popup listeners
 popupButtonNavbar.addEventListener('click', showPopup)
-popupButtonSlider.addEventListener('click', showPopup)
+if (popupButtonSlider) popupButtonSlider.addEventListener('click', showPopup)
 
 // Switch auth view listeners
 loginButton.addEventListener('click', () => toggleAuthForms(loginBlock))
