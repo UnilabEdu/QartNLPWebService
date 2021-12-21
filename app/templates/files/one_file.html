@@ -39,16 +39,16 @@
                 <div class="search-tool-block">
                     <div class="info-search">
                         <div class="statistics-group">
-                            <p>წინადადებები <br> {{ statistics.sentences }} </p>
-                            <p>სიტყვები <br> {{ statistics.words }} </p>
+                            <p>{{ _('წინადადებები') }} <br> {{ statistics.sentences }} </p>
+                            <p>{{ _('სიტყვები') }} <br> {{ statistics.words }} </p>
                         </div>
                         <div class="statistics-group">
-                            <p>უნიკ. სიტყვ. <br> {{ statistics.uniq_words }} </p>
-                            <p>სენტიმენტი <br> - </p>
+                            <p>{{ _('უნიკ. სიტყვ.') }} <br> {{ statistics.uniq_words }} </p>
+                            <p>{{ _('სენტიმენტი') }} <br> - </p>
                         </div>
                         <div class="statistics-group">
-                            <p>ემოცია <br> - </p>
-                            <p>კატეგორია <br> - </p>
+                            <p>{{ _('ემოცია') }} <br> - </p>
+                            <p>{{ _('კატეგორია') }} <br> - </p>
                         </div>
                         <form method="POST">
                             <div class="search-input-block">
@@ -70,12 +70,12 @@
                 <div class="search-tool-block">
                     <br>
                     <div class="word-lemma-info">
-                        <p id="word_lemma"> ლემატიზაციის შედეგების გამოსაჩენად დააკლიკეთ სიტყვას</p>
+                        <p id="word_lemma">{{ _('ლემატიზაციის შედეგების გამოსაჩენად დააკლიკეთ სიტყვას') }}</p>
                         <p id="word_tag"> </p>
                     </div>
                 </div>
                 <a href="{{ url_for('files.search_with_form', file_id=file.id) }}">
-                    <button class="advanced_search_btn">გაფართოებული ძიება</button>
+                    <button class="advanced_search_btn">{{ _('გაფართოებული ძიება') }}</button>
                 </a>
             </div>
         </div>

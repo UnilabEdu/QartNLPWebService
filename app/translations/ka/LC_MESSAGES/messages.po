@@ -7,8 +7,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PROJECT VERSION\n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
-"POT-Creation-Date: 2021-05-26 20:43+0400\n"
-"PO-Revision-Date: 2021-05-26 20:46+0400\n"
+"POT-Creation-Date: 2021-12-22 02:46+0400\n"
+"PO-Revision-Date: 2021-12-22 03:02+0400\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language: ka\n"
 "Language-Team: ka <LL@li.org>\n"
@@ -18,15 +18,598 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Generated-By: Babel 2.9.1\n"
 
-#: app/main/views.py:24
-msgid "შევდივარ თავ-ფურცელზე"
-msgstr "შევდივარ თავ-ფურცელზე"
+#: app/extensions.py:17 app/main/views.py:32
+msgid "გთხოვთ გაიაროთ ავტორიზაცია"
+msgstr ""
 
-#: app/main/templates/home.html:4
+#: app/auth/forms.py:14 app/auth/forms.py:30 app/auth/forms.py:49
+#: app/auth/forms.py:77 app/templates/auth/auth_popup.html:12
+#: app/templates/auth/auth_popup.html:30 app/templates/auth/auth_popup.html:89
+#: app/templates/files/all_files.html:89
+msgid "ელ-ფოსტა"
+msgstr ""
+
+#: app/auth/forms.py:14 app/auth/forms.py:31 app/auth/forms.py:50
+#: app/auth/forms.py:78
+msgid "გთხოვთ შეიყვანოთ თქვენი ელ-ფოსტა"
+msgstr ""
+
+#: app/auth/forms.py:15 app/auth/forms.py:33 app/auth/forms.py:58
+#: app/auth/forms.py:90 app/templates/auth/auth_popup.html:35
+#: app/templates/auth/auth_popup.html:93 app/templates/files/all_files.html:95
+msgid "პაროლი"
+msgstr ""
+
+#: app/auth/forms.py:15
+msgid "გთხოვთ შეიყვანოთ თქვენი პაროლი"
+msgstr ""
+
+#: app/auth/forms.py:16
+msgid "დამიმახსოვრე"
+msgstr ""
+
+#: app/auth/forms.py:17
+msgid "შესვლა"
+msgstr ""
+
+#: app/auth/forms.py:22 app/auth/forms.py:82
+#: app/templates/auth/auth_popup.html:79 app/templates/files/all_files.html:80
+msgid "სახელი"
+msgstr ""
+
+#: app/auth/forms.py:23 app/auth/forms.py:83
+msgid "გთხოვთ შეიყვანოთ თქვენი სახელი"
+msgstr ""
+
+#: app/auth/forms.py:25 app/auth/forms.py:85
+msgid "სახელი არ უნდა შედგებოდეს 40-ზე მეტი სიმბოლოსგან"
+msgstr ""
+
+#: app/auth/forms.py:26 app/auth/forms.py:86
+#: app/templates/auth/auth_popup.html:84 app/templates/files/all_files.html:84
+msgid "გვარი"
+msgstr ""
+
+#: app/auth/forms.py:27 app/auth/forms.py:87
+msgid "გთხოვთ შეიყვანოთ თქვენი გვარი"
+msgstr ""
+
+#: app/auth/forms.py:29 app/auth/forms.py:89
+msgid "გვარი არ უნდა შედგებოდეს 40-ზე მეტი სიმბოლოსგან"
+msgstr ""
+
+#: app/auth/forms.py:32 app/auth/forms.py:51 app/auth/forms.py:79
+msgid "ელ-ფოსტის მისამართი არასწორადაა შეყვანილი"
+msgstr ""
+
+#: app/auth/forms.py:34 app/auth/forms.py:59
+msgid "გთხოვთ შეიყვანოთ პაროლი"
+msgstr ""
+
+#: app/auth/forms.py:37 app/auth/forms.py:62 app/files/views.py:93
+msgid "პაროლი უნდა შედგებოდეს 6-128 სიმბოლოსგან"
+msgstr ""
+
+#: app/auth/forms.py:41 app/templates/auth/auth_popup.html:60
+#: app/templates/auth/auth_popup.html:74
+msgid "რეგისტრაცია"
+msgstr ""
+
+#: app/auth/forms.py:45 app/auth/forms.py:105
+msgid "შეყვანილი ელ-ფოსტა უკვე დაკავშირებულია სხვა ანგარიშთან"
+msgstr ""
+
+#: app/auth/forms.py:52 app/templates/auth/auth_popup.html:8
+#: app/templates/emails/_reset_password.html:7
+msgid "პაროლის აღდგენა"
+msgstr ""
+
+#: app/auth/forms.py:63 app/auth/forms.py:73
+msgid "შეყვანილი პაროლები არ ემთხვევა ერთმანეთს"
+msgstr ""
+
+#: app/auth/forms.py:64 app/auth/forms.py:74
+#: app/templates/auth/reset_password.html:27
+#: app/templates/files/all_files.html:69
+msgid "გაიმეორეთ პაროლი"
+msgstr ""
+
+#: app/auth/forms.py:65
+msgid "გთხოვთ გაიმეოროთ არჩეული პაროლი"
+msgstr ""
+
+#: app/auth/forms.py:66 app/auth/forms.py:75
+#: app/templates/auth/reset_password.html:17
+#: app/templates/files/all_files.html:57
+msgid "პაროლის შეცვლა"
+msgstr ""
+
+#: app/auth/forms.py:71
+msgid "ძველი პაროლი"
+msgstr ""
+
+#: app/auth/forms.py:72 app/templates/auth/reset_password.html:23
+#: app/templates/files/all_files.html:65
+msgid "ახალი პაროლი"
+msgstr ""
+
+#: app/auth/forms.py:80
+msgid "ელ-ფოსტის შეცვლა"
+msgstr ""
+
+#: app/auth/forms.py:91
+msgid "მონაცემების შეცვლა"
+msgstr ""
+
+#: app/auth/forms.py:95 app/templates/files/all_files.html:43
+msgid "პროფილის სურათი"
+msgstr ""
+
+#: app/auth/forms.py:96
+msgid "პროფილის სურათის განახლებისთვის აირჩიეთ სურათი."
+msgstr ""
+
+#: app/auth/forms.py:98
+msgid ""
+"პროფილის სურათი არ განახლდა. გთხოვთ აირჩიოთ .jpg, .jpe, .jpeg ან .png "
+"ფორმატის სურათი"
+msgstr ""
+
+#: app/auth/forms.py:100
+msgid "სურათის განახლება"
+msgstr ""
+
+#: app/auth/functions.py:34
+msgid "თქვენ გაიარეთ ავტორიზაცია"
+msgstr ""
+
+#: app/auth/functions.py:38
+msgid "პაროლი არასწორია"
+msgstr ""
+
+#: app/auth/functions.py:41
+msgid "მომხმარებელი ამ ელ-ფოსტით ვერ მოიძებნა"
+msgstr ""
+
+#: app/auth/functions.py:69
+msgid "რეგისტრაცია წარმატებით დასრულდა. "
+msgstr ""
+
+#: app/auth/functions.py:92
+msgid "QartNLP - პაროლის აღდგენა"
+msgstr ""
+
+#: app/auth/functions.py:99
+msgid "პაროლის აღდგენის ინსტრუქცია გამოგზავნილია!"
+msgstr ""
+
+#: app/auth/google.py:27
+msgid "Google-ით ავტორიზაციის დროს დაფიქსირდა შეცდომა"
+msgstr ""
+
+#: app/auth/google.py:32
+msgid "Google ანგარიშიდან მონაცემების მიღების დროს დაფიქსირდა შეცდომა"
+msgstr ""
+
+#: app/auth/google.py:58 app/auth/google.py:77
+msgid "Google-ით ავტორიზაცია წარმატებით დასრულდა"
+msgstr ""
+
+#: app/auth/views.py:31 app/auth/views.py:63
+msgid "თქვენი ელ-ფოსტა უკვე ვერიფიცირებული იყო"
+msgstr ""
+
+#: app/auth/views.py:45
+msgid "QartNLP - ელ-ფოსტის ვერიფიკაცია"
+msgstr ""
+
+#: app/auth/views.py:61
+msgid "ელ-ფოსტის ვერიფიკაცია წარმატებით დასრულდა!"
+msgstr ""
+
+#: app/auth/views.py:73
+msgid "თქვენ გამოხვედით სისტემიდან"
+msgstr ""
+
+#: app/auth/views.py:88
+msgid "თქვენი პაროლი შეიცვალა"
+msgstr ""
+
+#: app/auth/views.py:90
+msgid "პაროლის აღდგენის ბმული მცდარია"
+msgstr ""
+
+#: app/files/forms.py:30
+msgid "ფაილი არ დამუშავდა. გთხოვთ ატვირთოთ .txt, .pdf, .docx ან .html ფაილი"
+msgstr ""
+
+#: app/files/forms.py:31
+msgid "ტექსტის ლემატიზაცია"
+msgstr ""
+
+#: app/files/forms.py:33
+msgid "სიტყვების სიხშირის განაწილება"
+msgstr ""
+
+#: app/files/forms.py:34
+msgid "HTML თეგებისგან გასუფთავება"
+msgstr ""
+
+#: app/files/forms.py:35
+msgid "ცარიელი სივრცეების გასუფთავება"
+msgstr ""
+
+#: app/files/forms.py:36
+msgid "სიმბოლოებისგან გასუფთავება"
+msgstr ""
+
+#: app/files/forms.py:39
+msgid "დამუშავება"
+msgstr ""
+
+#: app/files/forms.py:44
+msgid "ზუსტი ძიება"
+msgstr ""
+
+#: app/files/forms.py:44 app/files/views.py:175
+msgid "თავისუფალი ძიება"
+msgstr ""
+
+#: app/files/views.py:79
+msgid "მიმდინარეობს ფაილის დამუშავება"
+msgstr ""
+
+#: app/files/views.py:96
+msgid "პაროლები არ ემთხვევა ერთმანეთს; მონაცემები არ განახლდა."
+msgstr ""
+
+#: app/files/views.py:99
+msgid "ძველი პაროლი არასწორია; მონაცემები არ განახლდა."
+msgstr ""
+
+#: app/files/views.py:102
+msgid ""
+"მონაცემები არ განახლდა. პაროლის შესაცვლელად შეიყვანეთ ძველი პაროლი, ახალი"
+" პაროლი და გაიმეორეთ."
+msgstr ""
+
+#: app/files/views.py:115
+msgid "თქვენი ელ-ფოსტა განახლდა. "
+msgstr ""
+
+#: app/files/views.py:121
+msgid "თქვენი მონაცემები განახლდა"
+msgstr ""
+
+#: app/files/views.py:123
+msgid "შეყვანილი პაროლი არასწორია. თქვენი მონაცემები არ განახლდა."
+msgstr ""
+
+#: app/files/views.py:137
+msgid "თქვენი პროფილის სურათი განახლდა"
+msgstr ""
+
+#: app/tagging/views.py:27
+msgid "ამ ფაილზე წვდომა არ გაქვთ"
+msgstr ""
+
+#: app/templates/auth/auth_popup.html:20 app/templates/auth/auth_popup.html:26
+#: app/templates/auth/auth_popup.html:70 app/templates/main/main.html:21
+msgid "ავტორიზაცია"
+msgstr ""
+
+#: app/templates/auth/auth_popup.html:42
+msgid "დაგავიწყდათ პაროლი?"
+msgstr ""
+
+#: app/templates/auth/auth_popup.html:45 app/templates/auth/auth_popup.html:102
+msgid "გარე ავტორიზაცია"
+msgstr ""
+
+#: app/templates/auth/auth_popup.html:58
+msgid "გამარჯობა, მეგობარო!"
+msgstr ""
+
+#: app/templates/auth/auth_popup.html:59
+msgid "შეიყვანეთ თქვენი პირადი მონაცემები და დაიწყეთ მოგზაურობა ჩვენთან"
+msgstr ""
+
+#: app/templates/auth/auth_popup.html:68
+msgid "კეთილი იყოს თქვენი დაბრუნება"
+msgstr ""
+
+#: app/templates/auth/auth_popup.html:69
+msgid ""
+"ჩვენთან კავშირის გასაგრძელებლად გთხოვთ შეხვიდეთ თქვენს პერსონალურ "
+"ინფორმაციასთან"
+msgstr ""
+
+#: app/templates/auth/reset_password.html:5
+msgid "QartNLP - პაროლის შეცვლა"
+msgstr ""
+
+#: app/templates/auth/reset_password.html:37
+msgid "მთავარი გვერდი"
+msgstr ""
+
+#: app/templates/emails/_confirm_account.html:1
+msgid "თქვენ დარეგისტრირდით QartNLP-ზე."
+msgstr ""
+
+#: app/templates/emails/_confirm_account.html:3
+msgid "დააკლიკეთ ლინკს, რათა გაააქტიუროთ თქვენი ანგარიში"
+msgstr ""
+
+#: app/templates/emails/_confirm_account.html:5
+msgid "გააქტიურება"
+msgstr ""
+
+#: app/templates/emails/_confirm_account.html:7
+#: app/templates/emails/_reset_password.html:9
+msgid "საუკეთესო სურვილებით,"
+msgstr ""
+
+#: app/templates/emails/_confirm_account.html:8
+#: app/templates/emails/_reset_password.html:10
+msgid "QartNLP-ის გუნდი"
+msgstr ""
+
+#: app/templates/emails/_reset_password.html:1
+msgid "პაროლი დაგავიწყდათ?"
+msgstr ""
+
+#: app/templates/emails/_reset_password.html:3
+msgid "ჩვენ მოგვივიდა თქვენი QartNLP-ის ანგარიშის პაროლის აღდგენის მოთხოვნა."
+msgstr ""
+
+#: app/templates/emails/_reset_password.html:5
+msgid "დააკლიკეთ ლინკს, თუ გსურთ პაროლის აღდგენა:"
+msgstr ""
+
+#: app/templates/files/all_files.html:33
+msgid "პარამეტრები"
+msgstr ""
+
+#: app/templates/files/all_files.html:34
+msgid "გამოსვლა"
+msgstr ""
+
+#: app/templates/files/all_files.html:61
+msgid "ახლანდელი პაროლი"
+msgstr ""
+
+#: app/templates/files/all_files.html:77
+msgid "პირადი მონაცემები"
+msgstr ""
+
+#: app/templates/files/all_files.html:94
+msgid "პაროლის დადასტურება"
+msgstr ""
+
+#: app/templates/files/all_files.html:96
+msgid "მონაცემების შესაცვლელად უნდა დაადასტუროთ პაროლი"
+msgstr ""
+
+#: app/templates/files/all_files.html:119
+msgid "დამატება"
+msgstr ""
+
+#: app/templates/files/all_files.html:131
+msgid "ფაილი მუშავდება..."
+msgstr ""
+
+#: app/templates/files/all_files.html:174
+msgid "შეიყვანეთ ფაილის დასახელება"
+msgstr ""
+
+#: app/templates/files/all_files.html:176
+msgid "შეიყვანეთ დასამუშავებელი ტექსტი"
+msgstr ""
+
+#: app/templates/files/all_files.html:178
+msgid "ჩააკოპირე ტექსტი"
+msgstr ""
+
+#: app/templates/files/all_files.html:186
+msgid "ატვირთე ფაილი"
+msgstr ""
+
+#: app/templates/files/all_files.html:192
+msgid "მონიშნეთ ხელსაწყოები, რომლითაც გსურთ ტექსტის/დოკუმენტის დამუშავება:"
+msgstr ""
+
+#: app/templates/files/details.html:4 app/templates/files/search.html:28
+msgid "ძიების შედეგები"
+msgstr ""
+
+#: app/templates/files/details.html:5 app/templates/files/search.html:30
+msgid "სულ ნაპოვნია"
+msgstr ""
+
+#: app/templates/files/details.html:5
+msgid "შედეგი"
+msgstr ""
+
+#: app/templates/files/details.html:19 app/templates/files/search.html:42
+msgid "მონაკვეთზე გადასვლა"
+msgstr ""
+
+#: app/templates/files/one_file.html:42
+msgid "წინადადებები"
+msgstr ""
+
+#: app/templates/files/one_file.html:43
+msgid "სიტყვები"
+msgstr ""
+
+#: app/templates/files/one_file.html:46
+msgid "უნიკ. სიტყვ."
+msgstr ""
+
+#: app/templates/files/one_file.html:47
+msgid "სენტიმენტი"
+msgstr ""
+
+#: app/templates/files/one_file.html:50
+msgid "ემოცია"
+msgstr ""
+
+#: app/templates/files/one_file.html:51
+msgid "კატეგორია"
+msgstr ""
+
+#: app/templates/files/one_file.html:73
+msgid "ლემატიზაციის შედეგების გამოსაჩენად დააკლიკეთ სიტყვას"
+msgstr ""
+
+#: app/templates/files/one_file.html:78
+msgid "გაფართოებული ძიება"
+msgstr ""
+
+#: app/templates/files/search.html:7
+msgid "\"საძიებო სიტყვა\""
+msgstr ""
+
+#: app/templates/files/search.html:11
+msgid "ძიება"
+msgstr ""
+
+#: app/templates/files/search.html:15
+msgid "საძიებო ფორმის დამატება"
+msgstr ""
+
+#: app/templates/files/search.html:30
+msgid "სიტყვა"
+msgstr ""
+
+#: app/templates/files/search.html:30
+msgid "წინადადებაში"
+msgstr ""
+
+#: app/templates/files/search.html:32
+msgid "ფაილში მოთხოვნილი მონაცემები არ მოიძებნა"
+msgstr ""
+
+#: app/templates/layouts/base_for_full_pages.html:6
+#: app/templates/layouts/base_for_popups.html:6
+msgid "QartNLP"
+msgstr ""
+
+#: app/templates/layouts/base_for_full_pages.html:26
+msgid "პორტალის შესახებ"
+msgstr ""
+
+#: app/templates/layouts/base_for_full_pages.html:28
+msgid ""
+"შექმნილია ილიას სახელმწიფო უნივერსიტეტის ქართული ენის\n"
+"                    ლემატიზატორის ბაზაზე UniLab-ის ციფრული ლაბორატორიის "
+"Python\n"
+"                    Development გუნდის მიერ."
+msgstr ""
+
+#: app/templates/layouts/base_for_full_pages.html:35
+msgid "პროექტი ქსელში"
+msgstr ""
+
+#: app/templates/layouts/nav.html:13
+msgid "მთავარი"
+msgstr ""
+
+#: app/templates/layouts/nav.html:14
+msgid "ლემატიზაცია"
+msgstr ""
+
+#: app/templates/layouts/nav.html:15
+msgid "ჩემი ფაილები"
+msgstr ""
+
+#: app/templates/layouts/nav.html:16 app/templates/main/about.html:5
+msgid "ჩვენ შესახებ"
+msgstr ""
+
+#: app/templates/macros/macros.html:38
+msgid "შექმნის თარიღი"
+msgstr ""
+
+#: app/templates/macros/macros.html:40
+msgid "ბოლო მოდიფიცირების თარიღი"
+msgstr ""
+
+#: app/templates/main/about.html:7
+msgid ""
+"შემთხვევითად გენერირებული ტექსტი ეხმარება დიზაინერებს და ტიპოგრაფიული\n"
+"                ნაწარმის შემქმნელებს, რეალურთან მაქსიმალურად მიახლოებული "
+"შაბლონი\n"
+"                წარუდგინონ შემფასებელს. ხშირადაა შემთხვევა, როდესაც "
+"დიზაინის\n"
+"                შემთხვევითად გენერირებული ტექსტი ეხმარება დიზაინერებს და "
+"ტიპოგრაფიული\n"
+"                ნაწარმის შემქმნელებს. შემთხვევითად გენერირებული ტექსტი "
+"ეხმარება\n"
+"                დიზაინერებს და ტიპოგრაფიული ნაწარმის შემქმნელებს, "
+"რეალურთან\n"
+"                მაქსიმალურად მიახლოებული შაბლონი წარუდგინონ შემფასებელს. "
+"ხშირადაა\n"
+"                შემთხვევა, როდესაც დიზაინის შემთხვევითად გენერირებული "
+"ტექსტი ეხმარება\n"
+"                დიზაინერებს და ტიპოგრაფიული ნაწარმის შემქმნელებს."
+msgstr ""
+
+#: app/templates/main/about.html:19
+msgid "ჩვენი გუნდი"
+msgstr ""
+
+#: app/templates/main/about.html:22
+msgid "თემურ ჩიჩუა"
+msgstr ""
+
+#: app/templates/main/about.html:23
+msgid "ინსტრუქტორი"
+msgstr ""
+
+#: app/templates/main/about.html:25
+msgid ""
+"AnimaChatbotics-ის მოქმედი Python დეველოპერი. მუშაობს სხვადასხვა\n"
+"                        კომპიუტერული მეცნიერების მიმართულებაზე. ასწავლის "
+"Python\n"
+"                        Development-ს ილიას სახელმწიფო უნივერსიტეტის "
+"ტექნოლოგიების\n"
+"                        ლაბორატორია “უნილაბსა” და “ექსპლორიუმში”"
+msgstr ""
+
+#: app/templates/main/lemma.html:9
+msgid "ჩააკოპირე ქართული ტექსტი, ნახე როგორ მუშაობს სისტემა."
+msgstr ""
+
+#: app/templates/main/lemma.html:19
+msgid "გააანალიზე"
+msgstr ""
+
+#: app/templates/main/main.html:15
 msgid "ქართული ენის ციფრული დამუშავება"
-msgstr "ქართული ენის ციფრული დამუშავება"
+msgstr ""
 
-#: app/main/templates/home.html:9
-msgid "გაანალიზე"
-msgstr "გაანალიზე"
+#: app/templates/main/main.html:17
+msgid ""
+"გამოცადე ლემატიზატორის შესაძლებლობები რეალურ დროში ან სრუი\n"
+"                                    ფუნქციონალის შესამოწმებლად გაიარე "
+"ავტორიზაცია."
+msgstr ""
+
+#: app/templates/main/main.html:23
+msgid "მეტის გაგება"
+msgstr ""
+
+#: app/templates/main/main.html:33
+msgid "პროექტის შესახებ"
+msgstr ""
+
+#: app/templates/main/main.html:35
+msgid ""
+"პროექტი მოამზადა უნილაბის პითონის კურსის პირველ კურსდამთავრებულთა\n"
+"                სტაჟირების პირველი პროგრამის მონაწილეთა გუნდმა პროექტი "
+"მოამზადა\n"
+"                უნილაბის პითონის კურსის პირველ კურსდამთავრებულთა "
+"სტაჟირების"
+msgstr ""
 

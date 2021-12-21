@@ -1,14 +1,15 @@
 import datetime
 
 from flask import flash, url_for, redirect
-from flask_login import current_user, login_user
-from flask_dance.contrib.google import make_google_blueprint
+from flask_babel import gettext as _
 from flask_dance.consumer import oauth_authorized, oauth_error
 from flask_dance.consumer.storage.sqla import SQLAlchemyStorage
+from flask_dance.contrib.google import make_google_blueprint
+from flask_login import current_user, login_user
 from sqlalchemy.orm.exc import NoResultFound
 
-from app.models.user import User, OAuth, Role
 from app.database import db
+from app.models.user import User, OAuth, Role
 
 google_blueprint = make_google_blueprint(
     scope=["openid",
@@ -23,12 +24,12 @@ def google_logged_in(bp, token):
         return redirect(url_for('auth.login'))
 
     if not token:
-        flash("Google-ით ავტორიზაციის დროს დაფიქსირდა შეცდომა", "danger")
+        flash(_("Google-ით ავტორიზაციის დროს დაფიქსირდა შეცდომა"), "danger")
         return redirect(url_for('auth.login'))
 
     resp = bp.session.get("/oauth2/v2/userinfo")
     if not resp.ok:
-        flash("Google ანგარიშიდან მონაცემების მიღების დროს დაფიქსირდა შეცდომა", "danger")
+        flash(_("Google ანგარიშიდან მონაცემების მიღების დროს დაფიქსირდა შეცდომა"), "danger")
         return redirect(url_for('auth.login'))
 
     google_info = resp.json()
@@ -54,7 +55,7 @@ def google_logged_in(bp, token):
     if current_user.is_anonymous:
         if oauth.user:
             login_user(oauth.user)
-            flash("Google-ით ავტორიზაცია წარმატებით დასრულდა", 'success')
+            flash(_("Google-ით ავტორიზაცია წარმატებით დასრულდა"), 'success')
             return redirect(url_for('files.all_files'))
         else:
             user = User(email=google_info['email'],
@@ -73,12 +74,11 @@ def google_logged_in(bp, token):
             db.session.commit()
             login_user(user)
 
-            flash("Google-ით ავტორიზაცია წარმატებით დასრულდა", 'success')
+            flash(_("Google-ით ავტორიზაცია წარმატებით დასრულდა"), 'success')
             return redirect(url_for('files.all_files'))
 
 
 @oauth_error.connect_via(google_blueprint)
 def google_error(bp, message, response):
-    msg = '{name} OAuth-ის შეცდომა: "message={message} response={response}'.format(name=bp.name, message=message,
-                                                                                   response=response)
+    msg = f'{bp.name} {_("OAuth-ის შეცდომა")}: "message={message} response={response}'
     flash(msg, "danger")

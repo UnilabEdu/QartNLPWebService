@@ -30,8 +30,8 @@
                 <img src="{{ url_for('static', filename='uploads/' + (current_user.picture or 'default_avatar.png')) }}" alt="my-profile-picture">
                 </div>
                 <p>{{ current_user.first_name }} {{ current_user.last_name }}</p>
-                <button class="profile-info">პარამეტრები</button>
-                <a class="logout-btn" href="{{ url_for('auth.logout') }}">გამოსვლა</a>
+                <button class="profile-info">{{ _('პარამეტრები') }}</button>
+                <a class="logout-btn" href="{{ url_for('auth.logout') }}">{{ _('გამოსვლა') }}</a>
             </div>
 
             {# Settings Popup #}
@@ -40,7 +40,7 @@
               <div class="setting-block">
                 <div class="left-setting-block">
                   <div class="profile-picture-block">
-                    <h2>პროფილის სურათი</h2>
+                    <h2>{{ _('პროფილის სურათი') }}</h2>
                     <div class="pic-bl-picture">
                       <form></form>
                       <form id="picture-form" name="picture-form" method="POST" class="pt-upload" enctype="multipart/form-data">
@@ -54,19 +54,19 @@
                     </div>
                   </div>
                   <div class="profile-picture-block">
-                    <h2>პაროლის შეცვლა</h2>
+                    <h2>{{ _('პაროლის შეცვლა') }}</h2>
                     <div class="pic-bl">
                       <div class="in-pt">
                         {{ profile_form.hidden_tag() }}
-                        <h3>ახლანდელი პაროლი</h3>
+                        <h3>{{ _('ახლანდელი პაროლი') }}</h3>
                         {{ profile_form.old_password() }}
                       </div>
                       <div class="in-pt">
-                        <h3>ახალი პაროლი</h3>
+                        <h3>{{ _('ახალი პაროლი') }}</h3>
                         {{ profile_form.new_password() }}
                       </div>
                       <div class="in-pt">
-                        <h3>გაიმეორეთ პაროლი</h3>
+                        <h3>{{ _('გაიმეორეთ პაროლი') }}</h3>
                         {{ profile_form.confirm_password() }}
                       </div>
                     </div>
@@ -74,26 +74,26 @@
                 </div>
                 <div class="right-setting-block">
                   <div class="profile-picture-block">
-                    <h2>პირადი მონაცემები</h2>
+                    <h2>{{ _('პირადი მონაცემები') }}</h2>
                     <div class="pic-bl">
                         <div class="in-pt">
-                            <h3>სახელი</h3>
+                            <h3>{{ _('სახელი') }}</h3>
                             {{ profile_form.first_name(value=current_user.first_name) }}
                         </div>
                         <div class="in-pt">
-                            <h3>გვარი</h3>
+                            <h3>{{ _('გვარი') }}</h3>
                             {{ profile_form.last_name(value=current_user.last_name) }}
                         </div>
                       {% if not current_user.is_oauth %}
                       <div class="in-pt">
-                        <h3>ელ-ფოსტა</h3>
+                        <h3>{{ _('ელ-ფოსტა') }}</h3>
                             {{ profile_form.new_email(value=current_user.email) }}
                       </div>
                       {% endif %}
                       <div class="in-pt">
-                        <h3>პაროლის დადასტურება</h3>
-                        {{ profile_form.password(placeholder="პაროლი") }}
-                        <p>მონაცემების შესაცვლელად უნდა დაადასტუროთ პაროლი</p>
+                        <h3>{{ _('პაროლის დადასტურება') }}</h3>
+                        {{ profile_form.password(placeholder=_('პაროლი')) }}
+                        <p>{{ _('მონაცემების შესაცვლელად უნდა დაადასტუროთ პაროლი') }}</p>
                       </div>
                     </div>
                     {{ profile_form.submit_profile_changes(class="changesBtn") }}
@@ -116,7 +116,7 @@
 
                 <div class="file-btn-container display-flex">
                     <button id="add-file-btn" class="btn-file">
-                        <a style="padding-right: 10px">დამატება</a>
+                        <a style="padding-right: 10px">{{ _('დამატება') }}</a>
                         <img style="vertical-align:middle"
                              src="{{ url_for('static', filename='assets/ic-actions-add-file.svg') }}" alt="">
                     </button>
@@ -128,7 +128,7 @@
                     {% if file.status[0].completed %}
                         {% set desc_data = file.read(310) + "..." %}
                     {% else %}
-                        {% set desc_data = "ფაილი მუშავდება..." %}
+                        {% set desc_data = _('ფაილი მუშავდება...') %}
                     {% endif %}
                     {{ file_block(
                     id= file.id,
@@ -171,26 +171,25 @@
                     <div class="file-add-block display-flex">
                         <div class="create-file-inputs display-flex">
                             <div class="file-info">
-                                <h2>შეიყვანეთ ფაილის დასახელება</h2>
+                                <h2>{{ _('შეიყვანეთ ფაილის დასახელება') }}</h2>
                                 {{ upload_form.name(class="file-name-inp") }}
-                                <h2>შეიყვანეთ დასამუშავებელი ტექსტი</h2>
+                                <h2>{{ _('შეიყვანეთ დასამუშავებელი ტექსტი') }}</h2>
                                 <div class="copy-container">
-                                    {{ upload_form.text(class="copy-inp", placeholder="ჩააკოპირე ტექსტი") }}
+                                    {{ upload_form.text(class="copy-inp", placeholder=_('ჩააკოპირე ტექსტი')) }}
                                 </div>
                             </div>
                             <h2 style="margin-bottom: 32px;">ან</h2>
                             <div class="upload-file">
                                 <div class="cont-up">
                                     <label class="btn-file-upload">
-                                        {{ upload_form.file(style="display:none", accept=".txt, .docx, .html, .pdf", onchange="document.getElementById('text').disabled = true;") }}ატვირთე
-                                        ფაილი<img style="margin-left: 13px; vertical-align: middle"
+                                        {{ upload_form.file(style="display:none", accept=".txt, .docx, .html, .pdf", onchange="document.getElementById('text').disabled = true;") }}
+                                        {{ _('ატვირთე ფაილი') }}<img style="margin-left: 13px; vertical-align: middle"
                                                   src="{{ url_for('static', filename="assets/ic-editor-attachment.svg") }}" alt=""></label>
                                 </div>
                             </div>
                         </div>
                         <div class="create-file-checks display-flex">
-                            <h2 class="checks-header">მონიშნეთ ხელსაწყოები, რომლითაც გსურთ ტექსტის/დოკუმენტის
-                                დამუშავება:</h2>
+                            <h2 class="checks-header">{{ _('მონიშნეთ ხელსაწყოები, რომლითაც გსურთ ტექსტის/დოკუმენტის დამუშავება:') }}</h2>
                             {{ upload_form.processes() }}
                             {{ upload_form.submit_upload(class='btn-file', style='margin-top: auto;') }}
                         </div>

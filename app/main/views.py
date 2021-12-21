@@ -1,9 +1,9 @@
-from flask import Blueprint, render_template, request, flash, redirect, session
+from flask import Blueprint, render_template, request, flash, redirect, session, url_for
 from flask_login import current_user
+from flask_babel import gettext as _
 
 from app.auth.functions import get_auth_forms, login, register, forgot_password
 from app.extensions import babel
-from app.main.temp_data import people
 from app.settings import Config
 
 main_blueprint = Blueprint('main',
@@ -25,12 +25,13 @@ def info_views():
     """
     Contains outer pages which don't require authorization and have auth popups: landing page, lemmatization, about us...
     """
+    print(session['locale'])
     forms = None
     redirect_next = request.args.get('next')
     submitted_form = 'login' if redirect_next else None
     max_character_count = Config.DEMO_LEMMATIZATION_LIMIT
     if redirect_next and request.method == 'GET':
-        flash('გთხოვთ გაიაროთ ავტორიზაცია', 'danger')
+        flash(_('გთხოვთ გაიაროთ ავტორიზაცია'), 'danger')
     elif request.endpoint == 'main.home-login':
         submitted_form = 'login'
 
@@ -55,6 +56,36 @@ def info_views():
     if request.endpoint == 'main.home' or request.endpoint == 'main.home-login':
         return render_template('main/main.html', forms=forms, submitted_form=submitted_form)
     elif request.endpoint == 'main.about':
-        return render_template('main/about.html', forms=forms, submitted_form=submitted_form, people=people)
+        return render_template('main/about.html', forms=forms, submitted_form=submitted_form)
     elif request.endpoint == 'main.lemma':
         return render_template('main/lemma.html', forms=forms, submitted_form=submitted_form, max_character_count=max_character_count)
+
+
+@babel.localeselector
+def get_locale():
+    """
+    returns current language and stores it in session['locale']
+    the default language is 'ka'
+    """
+    if 'locale' not in session.keys():
+        session['locale'] = 'ka'
+    return session['locale']
+
+
+@main_blueprint.route('/language', methods=['GET', 'POST'])
+def toggle_lang():
+    """
+    toggles language: from 'ka' to 'en' or from 'en' to 'ka' and changes it in session['locale']
+    """
+    if 'locale' in session.keys():
+        if session['locale'] == 'en':
+            session['locale'] = 'ka'
+        elif session['locale'] == 'ka':
+            session['locale'] = 'en'
+    else:
+        session['locale'] = 'ka'
+
+    if request.referrer:
+        return redirect(request.referrer)
+    else:
+        return redirect(url_for('main.home'))

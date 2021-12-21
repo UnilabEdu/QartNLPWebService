@@ -42,6 +42,7 @@ class Config(object):
     # Flask-Babel settings
     LANGUAGES = {"en": "English",
                  "ka": "Georgian"}
+    BABEL_DEFAULT_LOCALE = 'ka'
 
     # Flask-Dance
     GOOGLE_OAUTH_CLIENT_ID = '52534920261-icpdfm2ul6mo2bcljm893vgg852ruhvs.apps.googleusercontent.com'

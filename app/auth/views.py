@@ -1,6 +1,7 @@
 import datetime
 
 from flask import Blueprint, render_template, flash, redirect, url_for, request, current_app
+from flask_babel import gettext as _
 from flask_login import login_required, logout_user, current_user
 from flask_mail import Message
 from itsdangerous import URLSafeSerializer
@@ -24,10 +25,10 @@ def resend_email_confirmation(secretstring):
 
     user = User.select(email=user_email)
     if not user.confirmed_at:
-        flash(f'ელ-ფოსტის ვერიფიკაციის შეტყობინება გაგზავნილია {user_email} მისამართზე.', 'success')
+        flash(f'{_("ელ-ფოსტის ვერიფიკაციის შეტყობინება გაგზავნილია")} {user_email} {_("მისამართზე")}.', 'success')
         confirm_user_mail(user_email)
     else:
-        flash('თქვენი ელ-ფოსტა უკვე ვერიფიცირებული იყო', 'warning')
+        flash(_('თქვენი ელ-ფოსტა უკვე ვერიფიცირებული იყო'), 'warning')
 
     return redirect(url_for('main.home-login'))
 
@@ -41,7 +42,7 @@ def confirm_user_mail(email):
         target_user.email_activation_key = key
         db.session.commit()
 
-    subject = 'QartNLP - ელ-ფოსტის ვერიფიკაცია'
+    subject = _('QartNLP - ელ-ფოსტის ვერიფიკაცია')
     url = url_for('auth.confirm_account', secretstring=key, _external=True)
     html = render_template('emails/_confirm_account.html', project='QartNLP', url=url)
 
@@ -57,9 +58,9 @@ def confirm_account(secretstring):
         user.confirmed_at = datetime.datetime.utcnow()
         db.session.add(user)
         db.session.commit()
-        flash('ელ-ფოსტის ვერიფიკაცია წარმატებით დასრულდა!', 'success')
+        flash(_('ელ-ფოსტის ვერიფიკაცია წარმატებით დასრულდა!'), 'success')
     else:
-        flash('თქვენი ელ-ფოსტა უკვე ვერიფიცირებული იყო', 'warning')
+        flash(_('თქვენი ელ-ფოსტა უკვე ვერიფიცირებული იყო'), 'warning')
     if current_user.is_authenticated:
         return redirect(url_for('files.all_files'))
     return redirect(url_for('main.home-login'))
@@ -69,7 +70,7 @@ def confirm_account(secretstring):
 @login_required
 def logout():
     logout_user()
-    flash('თქვენ გამოხვედით სისტემიდან', 'success')
+    flash(_('თქვენ გამოხვედით სისტემიდან'), 'success')
     return redirect(url_for('main.home-login'))
 
 
@@ -84,9 +85,9 @@ def reset_password():
     if form.validate_on_submit():
         result = update_password(form.email.data, form.password_reset_key.data, form.password.data)
         if result:
-            flash('თქვენი პაროლი შეიცვალა', 'success')
+            flash(_('თქვენი პაროლი შეიცვალა'), 'success')
         else:
-            flash('პაროლის აღდგენის ბმული მცდარია', 'danger')
+            flash(_('პაროლის აღდგენის ბმული მცდარია'), 'danger')
 
         if current_user.is_authenticated:
             logout_user()
@@ -111,5 +112,5 @@ def update_password(email, password_reset_key, password):
 
 
 def send_async_email(subject, html, send_to):
-    message = Message(subject=subject, html=html, recipients=[send_to], sender="AnimaCore")
+    message = Message(subject=subject, html=html, recipients=[send_to], sender="QartNLP")
     mail.send(message)

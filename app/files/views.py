@@ -5,9 +5,11 @@ from zipfile import ZipFile
 
 from flask import Blueprint, render_template, redirect, url_for, request, \
     send_from_directory, current_app, flash
+from flask_babel import gettext as _
 from flask_login import current_user, login_required
 from werkzeug.security import generate_password_hash
 from werkzeug.utils import secure_filename
+
 from app.auth.forms import ChangeProfileDataForm, ProfilePictureForm, validate_new_email
 from app.auth.views import confirm_user_mail
 from app.database import db
@@ -74,7 +76,7 @@ def all_files(page_num):
         file_status.save()
 
         process_file.delay(file_model.id, current_user.id, filename, upload_form.processes.data, extension)
-        flash('მიმდინარეობს ფაილის დამუშავება')
+        flash(_('მიმდინარეობს ფაილის დამუშავება'))
         return redirect(url_for('files.all_files'))
 
     # Handling user data changes
@@ -88,16 +90,16 @@ def all_files(page_num):
                             if len(profile_form.new_password.data) > 5 or len(profile_form.new_password.data) < 129:
                                 current_user._password = generate_password_hash(profile_form.new_password.data)
                             else:
-                                flash('პაროლი უნდა შედგებოდეს 6-128 სიმბოლოსგან')
+                                flash(_('პაროლი უნდა შედგებოდეს 6-128 სიმბოლოსგან'))
                                 return redirect(url_for('files.all_files'))
                         else:
-                            flash('პაროლები არ ემთხვევა ერთმანეთს; მონაცემები არ განახლდა.')
+                            flash(_('პაროლები არ ემთხვევა ერთმანეთს; მონაცემები არ განახლდა.'))
                             return redirect(url_for('files.all_files'))
                     else:
-                        flash('ძველი პაროლი არასწორია; მონაცემები არ განახლდა.')
+                        flash(_('ძველი პაროლი არასწორია; მონაცემები არ განახლდა.'))
                         return redirect(url_for('files.all_files'))
                 else:
-                    flash('მონაცემები არ განახლდა. პაროლის შესაცვლელად შეიყვანეთ ძველი პაროლი, ახალი პაროლი და გაიმეორეთ.')
+                    flash(_('მონაცემები არ განახლდა. პაროლის შესაცვლელად შეიყვანეთ ძველი პაროლი, ახალი პაროლი და გაიმეორეთ.'))
                     return redirect(url_for('files.all_files'))
 
             # name change
@@ -110,15 +112,15 @@ def all_files(page_num):
                     current_user.email = profile_form.new_email.data
                     current_user.confirmed_at = None
                     confirm_user_mail(profile_form.new_email.data)
-                    flash('თქვენი ელ-ფოსტა განახლდა. '
-                          f'ელ-ფოსტის ვერიფიკაციის შეტყობინება გაგზავნილია {profile_form.new_email.data} მისამართზე.')
+                    flash(_('თქვენი ელ-ფოსტა განახლდა. ') +
+                          f'{_("ელ-ფოსტის ვერიფიკაციის შეტყობინება გაგზავნილია")} {profile_form.new_email.data} {_("მისამართზე")}.')
                 else:
                     return redirect(url_for('files.all_files'))
 
             db.session.commit()
-            flash('თქვენი მონაცემები განახლდა')
+            flash(_('თქვენი მონაცემები განახლდა'))
         else:
-            flash('შეყვანილი პაროლი არასწორია. თქვენი მონაცემები არ განახლდა.', 'danger')
+            flash(_('შეყვანილი პაროლი არასწორია. თქვენი მონაცემები არ განახლდა.'), 'danger')
 
         return redirect(url_for('files.all_files'))
 
@@ -132,7 +134,7 @@ def all_files(page_num):
 
         current_user.picture = picture_title
         db.session.commit()
-        flash('თქვენი პროფილის სურათი განახლდა')
+        flash(_('თქვენი პროფილის სურათი განახლდა'))
         return redirect(url_for('files.all_files'))
 
     # Flash errors which are defined in forms
@@ -170,7 +172,7 @@ def view_file(file_id, page_id):
     search_form = SearchForm()
     search_type = 0
     if search_form.validate_on_submit() and search_form.search_field.data:
-        if search_form.radio_field.data == 'თავისუფალი ძიება':
+        if search_form.radio_field.data == _('თავისუფალი ძიება'):
             search_type = 1
 
         return redirect(url_for('files.search', file_id=file_id, search_word=search_form.search_field.data, page_num=1,

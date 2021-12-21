@@ -5,7 +5,7 @@ const clearText = document.getElementById('analyze-text')
 const grammarText = document.getElementById('prtext')
 if (btn) {
   btn.addEventListener('click', () => {
-    if (clearText.innerText === 'გაანალიზე') {
+    if (clearText.innerText === 'გააანალიზე') {
       if (grammarText.value.trim().length === 0) {
         alert('გთხოვთ, შეიყვანეთ ტექსტი.')
       } else if (grammarText.value.trim().length > maxCharacterCount) {
@@ -20,7 +20,7 @@ if (btn) {
     } else {
       console.log('deleting divs')
       grammarSection.classList.toggle('display-flex')
-      clearText.innerText = 'გაანალიზე'
+      clearText.innerText = 'გააანალიზე'
       btn.style.background = '#496AC1'
       btn.classList.remove('clear-bt')
       grammarText.value = ''

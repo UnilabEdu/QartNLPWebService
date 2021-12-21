@@ -10,10 +10,10 @@
         </div>
         <div class="nav-right">
             <ul>
-                {{ nav_link("main.home", gettext('მთავარი')) }}
-                {{ nav_link("main.lemma", gettext('ლემატიზაცია')) }}
-                {{ nav_link("files.all_files", gettext('ჩემი ფაილები')) }}
-                {{ nav_link("main.about", gettext('ჩვენ შესახებ')) }}
+                {{ nav_link("main.home", _('მთავარი')) }}
+                {{ nav_link("main.lemma", _('ლემატიზაცია')) }}
+                {{ nav_link("files.all_files", _('ჩემი ფაილები')) }}
+                {{ nav_link("main.about", _('ჩვენ შესახებ')) }}
 
                 {# Show Auth button or My Profile button #}
                 {% if not current_user.is_authenticated %}

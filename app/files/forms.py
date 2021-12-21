@@ -1,9 +1,10 @@
+from flask_babel import gettext as _
 from flask_wtf import FlaskForm
-from flask_wtf.file import FileField, FileRequired, FileAllowed
-from wtforms import StringField, TextAreaField, widgets, SelectMultipleField, RadioField, SubmitField
-from wtforms.widgets import html_params
-from wtforms.validators import Length
+from flask_wtf.file import FileField, FileAllowed
 from markupsafe import Markup
+from wtforms import StringField, TextAreaField, widgets, SelectMultipleField, RadioField, SubmitField
+from wtforms.validators import Length
+from wtforms.widgets import html_params
 
 
 class CheckboxListWidget(object):
@@ -26,18 +27,18 @@ class UploadForm(FlaskForm):
     name = StringField()
     text = TextAreaField(validators=[Length(max=2000)])
     file = FileField(validators=[FileAllowed(['txt', 'docx', 'pdf', 'html'],
-                                 message='ფაილი არ დამუშავდა. გთხოვთ ატვირთოთ .word, .docx ან .html ფაილი')])
-    processes = MultiCheckboxField(choices=[("lemat", "ტექსტის ლემატიზაცია"),
+                                 message=_('ფაილი არ დამუშავდა. გთხოვთ ატვირთოთ .txt, .pdf, .docx ან .html ფაილი'))])
+    processes = MultiCheckboxField(choices=[("lemat", _("ტექსტის ლემატიზაცია")),
                                             # ("token", "ტექსტის ტოკენიზაცია"),
-                                            ("freq_dist", "სიტყვების სიხშირის განაწილება"),
-                                            ("remove_html", "HTML თეგებისგან გასუფთავება "),
-                                            ('clean_whitespaces', 'ცარიელი სივრცეების გასუფთავება'),
-                                            ('clean_special_characters', 'სიმბოლოებისგან გასუფთავება'),
+                                            ("freq_dist", _("სიტყვების სიხშირის განაწილება")),
+                                            ("remove_html", _("HTML თეგებისგან გასუფთავება")),
+                                            ('clean_whitespaces', _('ცარიელი სივრცეების გასუფთავება')),
+                                            ('clean_special_characters', _('სიმბოლოებისგან გასუფთავება')),
                                             # ("stop_word", "Stop word-ებისგან გასუფთავება"),
                                             ])
-    submit_upload = SubmitField('დამუშავება')
+    submit_upload = SubmitField(_('დამუშავება'))
 
 
 class SearchForm(FlaskForm):
     search_field = StringField()
-    radio_field = RadioField(choices=['ზუსტი ძიება', 'თავისუფალი ძიება'], default='ზუსტი ძიება')
+    radio_field = RadioField(choices=[_('ზუსტი ძიება'), _('თავისუფალი ძიება')], default=_('ზუსტი ძიება'))

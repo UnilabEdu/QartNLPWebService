@@ -23,16 +23,16 @@
     <div class="footer-container">
         <div class="footer-l__block">
             <div class="created-by__title">
-                <h2>პორტალის შესახებ</h2>
+                <h2>{{ _('პორტალის შესახებ') }}</h2>
                 <p>
-                    შექმნილია ილიას სახელმწიფო უნივერსიტეტის ქართული ენის
+                    {{ _('შექმნილია ილიას სახელმწიფო უნივერსიტეტის ქართული ენის
                     ლემატიზატორის ბაზაზე UniLab-ის ციფრული ლაბორატორიის Python
-                    Development გუნდის მიერ.
+                    Development გუნდის მიერ.') }}
                 </p>
             </div>
         </div>
         <div class="footer-r__block">
-            <div class="university-name__title"><h2>პროექტი ქსელში</h2></div>
+            <div class="university-name__title"><h2>{{ _('პროექტი ქსელში') }}</h2></div>
             <div class="university-logo">
                 <a href="https://www.facebook.com/" target="_blank">
                     <img src="{{ url_for("static", filename="assets/fb.svg") }}" alt=""/>
@@ -42,7 +42,6 @@
     </div>
     <div class="coprgt">Copyright © QartNLP 2021</div>
 </footer>
-    {#    <script src="{{ url_for("static", filename="JS/scripts.js") }}"></script>#}
     {% if not current_user.is_authenticated %}
         <script>
             const displayThisPopup = {{ submitted_form | tojson }}

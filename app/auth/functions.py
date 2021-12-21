@@ -2,6 +2,7 @@ import datetime
 from uuid import uuid4
 
 from flask import render_template, flash, url_for, Markup
+from flask_babel import gettext as _
 from flask_login import login_user
 from itsdangerous import URLSafeSerializer
 
@@ -30,14 +31,14 @@ def login(form, redirect_next):
             remember = form.remember
 
             if login_user(user, remember=remember):
-                flash('თქვენ გაიარეთ ავტორიზაცია', 'success')
+                flash(_('თქვენ გაიარეთ ავტორიზაცია'), 'success')
             redirect_string = redirect_next or url_for('files.all_files')
 
         elif user:
-            flash('პაროლი არასწორია', 'danger')
+            flash(_('პაროლი არასწორია'), 'danger')
 
         else:
-            flash('მომხმარებელი ამ ელ-ფოსტით ვერ მოიძებნა', 'danger')
+            flash(_('მომხმარებელი ამ ელ-ფოსტით ვერ მოიძებნა'), 'danger')
 
     else:
         for error in [*form.errors.values()]:
@@ -65,9 +66,9 @@ def register(form, redirect_next):
         s = URLSafeSerializer(Config.SECRET_KEY)
         key = s.dumps([form.email.data])
         url = url_for('auth.resend_email_confirmation', secretstring=key)
-        flash('რეგისტრაცია წარმატებით დასრულდა. '
-              f'ელ-ფოსტის ვერიფიკაციის შეტყობინება გაგზავნილია {form.email.data} მისამართზე. \n' +
-              Markup(f'<a href="{url}"> ვერიფიკაციის შეტყობინების ხელახლა გამოგზავნა </a>'), 'success')
+        flash(_('რეგისტრაცია წარმატებით დასრულდა. ') +
+              f'{_("ელ-ფოსტის ვერიფიკაციის შეტყობინება გაგზავნილია")} {form.email.data} {_("მისამართზე")}. \n' +
+              Markup(f'<a href="{url}"> {_("ვერიფიკაციის შეტყობინების ხელახლა გამოგზავნა")} </a>'), 'success')
 
         login_user(User.query.get(registered_user_id), remember=True)
 
@@ -88,16 +89,16 @@ def forgot_password(form):
             user.password_reset_key = str(uuid4())
             db.session.commit()
 
-            subject = 'QartNLP - პაროლის აღდგენა'
+            subject = _('QartNLP - პაროლის აღდგენა')
             url = url_for('auth.reset_password', email=user.email,
                           password_reset_key=user.password_reset_key, _external=True)
             html = render_template('emails/_reset_password.html', project='QartNLP', url=url)
 
             send_async_email(subject, html, user.email)
 
-            flash(f'პაროლის აღდგენის ინსტრუქცია გამოგზავნილია!', 'success')
+            flash(_('პაროლის აღდგენის ინსტრუქცია გამოგზავნილია!'), 'success')
         else:
-            flash(f'{form.email.data} მისამართით მომხმარებელი არ მოიძებნა.', 'danger')
+            flash(f'{form.email.data} {_("მისამართით მომხმარებელი არ მოიძებნა.")}', 'danger')
 
     else:
         for error in [*form.errors.values()]:

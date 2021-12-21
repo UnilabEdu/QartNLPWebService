@@ -4,15 +4,15 @@
     <div class="wall">
         <div class="search-form">
             <label>
-                <input type="text" name="search" id="search-input" class="search-input" placeholder="საძიებო სიტყვა" />
+                <input type="text" name="search" id="search-input" class="search-input" placeholder={{ _('საძიებო სიტყვა') }} />
             </label>
             <button id='submit-search-button' class="search-bl-btn">
               <img src="{{ url_for('static', filename='assets/srchicon.svg') }}" alt=""/>
-              <span>ძიება</span>
+              <span>{{ _('ძიება') }}</span>
             </button>
           <div class="btns-for-filter" id="add-new-search">
             <div class="f-btn">
-              <span id="add-new-form-text">საძიებო ფორმის დამატება</span>
+              <span id="add-new-form-text">{{ _('საძიებო ფორმის დამატება') }}</span>
               <img src="{{ url_for('static', filename='assets/plusbtn.svg') }}" alt=""/>
             </div>
           </div>
@@ -25,11 +25,11 @@
 
             <div class="search-results">
                 <div class="search-form-titles">
-                    <h2>ძიების შედეგები</h2>
+                    <h2>{{ _('ძიების შედეგები') }}</h2>
                     {% if 'words' in search_stats.keys() %}
-                        <h4>სულ ნაპოვნია {{ search_stats['words'] }} სიტყვა, {{ search_stats['sentences'] }} წინადადებაში</h4>
+                        <h4>{{ _('სულ ნაპოვნია') }} {{ search_stats['words'] }} {{ _('სიტყვა') }}, {{ search_stats['sentences'] }} {{ _('წინადადებაში') }}</h4>
                     {% else %}
-                        <h4>ფაილში მოთხოვნილი მონაცემები არ მოიძებნა</h4>
+                        <h4>{{ _('ფაილში მოთხოვნილი მონაცემები არ მოიძებნა') }}</h4>
                     {% endif %}
                 </div>
 
@@ -39,7 +39,7 @@
                     <a href="{{ url_for('files.view_file',
                         file_id=sentence['file_page_id'][0],
                         page_id=sentence['file_page_id'][1]) }}">
-                    <div>მონაკვეთზე გადასვლა <img src="{{ url_for('static', filename='assets/fullarrow.svg') }}" alt=""/></div>
+                    <div>{{ _('მონაკვეთზე გადასვლა') }} <img src="{{ url_for('static', filename='assets/fullarrow.svg') }}" alt=""/></div>
                     </a>
                 </div>
                 <br>

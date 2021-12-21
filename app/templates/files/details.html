@@ -1,10 +1,8 @@
 {% extends "layouts/base_for_full_pages.html" %}
 {% block content %}
     <section style="margin-top: 64px" class="concrete-page">
-        <h2 style="font-family: firaGoSemibold, sans-serif; font-size: 24px; margin-left: 140px; margin-bottom: 12px">ძიების
-            შედეგები</h2>
-        <p style="font-family: firaGoBook, sans-serif; margin-left: 140px; color: #4B4B4B; margin-bottom: 36px">სულ
-            ნაპოვნია {{ paginate.total }} შედეგი</p>
+        <h2 style="font-family: firaGoSemibold, sans-serif; font-size: 24px; margin-left: 140px; margin-bottom: 12px">{{ _('ძიების შედეგები') }}</h2>
+        <p style="font-family: firaGoBook, sans-serif; margin-left: 140px; color: #4B4B4B; margin-bottom: 36px">{{ _('სულ ნაპოვნია') }} {{ paginate.total }} {{ _('შედეგი') }}</p>
         {% for sentence in sentences %}
             <div class="concrete-content" style="margin-left: 140px; margin-bottom: 24px">
                 <div class="concrete-words" style="font-family: firaGo, sans-serif; font-size: 18px">
@@ -18,7 +16,7 @@
                         {% endfor %}
                     <br><br><br>
                     <a style="font-family: firaGo, sans-serif; color: #496AC1; padding-left: 82%; text-decoration: none;"
-                       href="{{ url_for('files.view_file', file_id=file_id, page_id=sentence.page_id) }}">მონაკვეთზე გადასვლა</a>
+                       href="{{ url_for('files.view_file', file_id=file_id, page_id=sentence.page_id) }}">{{ _('მონაკვეთზე გადასვლა') }}</a>
                 </div>
             </div>
         {% endfor %}

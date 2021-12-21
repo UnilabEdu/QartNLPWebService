@@ -1,6 +1,7 @@
 import json
 
 from flask import Blueprint, render_template, flash, redirect, url_for
+from flask_babel import gettext as _
 from flask_login import current_user, login_required
 
 from app.models.file import File
@@ -23,7 +24,7 @@ def tagging(page_id=0, file_id=0):
 
     file = File.file_by_id(file_id)
     if file.user_id != current_user.id:
-        flash('ამ ფაილზე წვდომა არ გაქვთ')
+        flash(_('ამ ფაილზე წვდომა არ გაქვთ'))
         return redirect(url_for('files.all_files'))
 
     page = file.pages[page_id - 1]

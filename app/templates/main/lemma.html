@@ -6,7 +6,7 @@
         class="prtext"
         name="text"
         id="prtext"
-        placeholder="ჩააკოპირე ქართული ტექსტი, ნახე როგორ მუშაობს სისტემა."
+        placeholder="{{ _('ჩააკოპირე ქართული ტექსტი, ნახე როგორ მუშაობს სისტემა.') }}"
       ></textarea>
       <div class="btn-block">
         <button id="analyze-button" class="btn-analyze">
@@ -16,7 +16,7 @@
             id="clear-icon"
             class="clear-icon"
           />
-          <span id="analyze-text">გაანალიზე</span>
+          <span id="analyze-text">{{ _('გააანალიზე') }}</span>
         </button>
       </div>
     </section>
