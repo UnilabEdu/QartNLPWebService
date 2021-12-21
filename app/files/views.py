@@ -159,7 +159,7 @@ def view_file(file_id, page_id):
 
     lemma_list = []
 
-    for word in page.get_all_words().all():
+    for word in page.get_all_words().order_by(Words.id.asc()).all():
         dict = {
             'lemma': word.lemma,
             'tags': word.pos_tags
