@@ -223,6 +223,7 @@ def download_file(file_id):
                             methods=['GET', 'POST'])
 @login_required
 def search(file_id, search_word, search_type, page_num):
+    query = search_word
     if search_type == 0:
         search_results = (Words.search_by_raw(file_id, search_word).group_by(Pages, Sentences, Words, Words.sentence_id)
                           .paginate(per_page=8,
@@ -247,7 +248,7 @@ def search(file_id, search_word, search_type, page_num):
         sentences.append(sentence)
 
     return render_template('files/details.html', file_id=file_id, sentences=sentences, paginate=search_results,
-                           search_word=search_word, page_num=page_num, search_type=search_type)
+                           search_word=query, page_num=page_num, search_type=search_type)
 
 
 @file_views_blueprint.route('/files/<int:file_id>/search_form/<int:results_page_id>')
