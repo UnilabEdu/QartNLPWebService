@@ -16,7 +16,8 @@ from app.database import db
 from app.file_processing.nlp import lemmatize
 from app.file_processing.tasks import process_file
 from app.files.forms import UploadForm, SearchForm
-from app.files.utils import image_crop_and_resize, get_search_form, get_search_query_results, convert_time
+from app.files.utils import image_crop_and_resize, get_search_form, get_search_query_results, \
+    convert_time, translate_georgian_filename
 from app.models.file import File, Sentences, Words, Statistics, Status, Pages
 from app.settings import Config
 
@@ -40,17 +41,24 @@ def all_files(page_num):
     if upload_form.validate_on_submit() and upload_form.submit_upload.data:
         if upload_form.file.data:
             file = upload_form.file.data
-            filename = secure_filename(file.filename)
+            filename = translate_georgian_filename(file.filename)
+            filename = secure_filename(filename)
             title = filename.split(".")[0]
 
         elif upload_form.text.data and upload_form.name.data:
-            filename = secure_filename(upload_form.name.data + ".txt")
+            filename = translate_georgian_filename(upload_form.name.data)
+            filename = secure_filename(filename + ".txt")
             title = upload_form.name.data
+
+        split_filename = filename.split('.')
+        if len(split_filename) == 0:
+            split_filename = ['Uploaded_File'] + split_filename
+            filename = 'Uploaded_File'
 
         path = os.path.join(Config.UPLOAD_FOLDER, str(current_user.id), filename)
         duplicate_count = 0
 
-        extension = filename.split('.')[1]
+        extension = split_filename[1]
         while os.path.exists(path):
             duplicate_count += 1
             new_title = f"{title}-{duplicate_count}"

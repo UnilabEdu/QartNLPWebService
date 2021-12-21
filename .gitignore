@@ -148,5 +148,6 @@ app/uploads
 app/static/uploads
 
 # Database
-data.db
+app/database
+*.db
 data.db-journal

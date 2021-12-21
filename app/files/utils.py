@@ -191,3 +191,12 @@ def check_word_tags(word, query):
             break
     else:
         return True
+
+
+def translate_georgian_filename(filename):
+    table = filename.maketrans(
+        'აბგდევზთიკლმნოპჟრსტუფქღყშჩცძწჭხჯჰ',
+        'abgdevztiklmnopjrstufqgyscczwcxjh'
+    )
+
+    return filename.translate(table)
