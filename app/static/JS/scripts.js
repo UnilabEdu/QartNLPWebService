@@ -69,7 +69,7 @@ async function displayLemmatizedData(text) {
         child_block_to_insert.classList.add('gram-textarea')
         block_to_insert.appendChild(child_block_to_insert)
         child_block_to_insert.innerHTML = `<p class="lemma-title"> ${escapeHtml(word_obj.raw)} </p> <br> 
-                                                                    ლემმა: ${escapeHtml(word_obj.lemma)} <br> 
+                                                                    ლემა: ${escapeHtml(word_obj.lemma)} <br> 
                                                                     თეგები: ${escapeHtml(word_obj.pos_tags)}`
     }
     console.log(lemmatizedData)

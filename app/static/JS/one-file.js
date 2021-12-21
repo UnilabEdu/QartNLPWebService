@@ -18,7 +18,7 @@ function get_word_details(wordId) {
     } else {
         currentWordTags = currentWordTags.split(',').join(', ');
         currentWordTags = escapeHtml(currentWordTags);
-        lemma.innerHTML = `<b>ლემმა</b>: ${currentLemma}`;
+        lemma.innerHTML = `<b>ლემა</b>: ${currentLemma}`;
         tag.innerHTML = `<b>თეგები</b>: ${currentWordTags}`;
     }
 }
