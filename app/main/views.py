@@ -25,7 +25,6 @@ def info_views():
     """
     Contains outer pages which don't require authorization and have auth popups: landing page, lemmatization, about us...
     """
-    print(session['locale'])
     forms = None
     redirect_next = request.args.get('next')
     submitted_form = 'login' if redirect_next else None
