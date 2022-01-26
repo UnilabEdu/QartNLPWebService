@@ -1,14 +1,14 @@
 # English translations for PROJECT.
-# Copyright (C) 2021 ORGANIZATION
+# Copyright (C) 2022 ORGANIZATION
 # This file is distributed under the same license as the PROJECT project.
-# FIRST AUTHOR <EMAIL@ADDRESS>, 2021.
+# FIRST AUTHOR <EMAIL@ADDRESS>, 2022.
 #
 msgid ""
 msgstr ""
 "Project-Id-Version: PROJECT VERSION\n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
-"POT-Creation-Date: 2021-12-22 02:46+0400\n"
-"PO-Revision-Date: 2021-12-22 03:02+0400\n"
+"POT-Creation-Date: 2022-01-26 15:18+0400\n"
+"PO-Revision-Date: 2022-01-26 14:35+0400\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language: en\n"
 "Language-Team: en <LL@li.org>\n"
@@ -18,7 +18,7 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Generated-By: Babel 2.9.1\n"
 
-#: app/extensions.py:17 app/main/views.py:32
+#: app/extensions.py:17 app/main/views.py:33
 msgid "გთხოვთ გაიაროთ ავტორიზაცია"
 msgstr "Please log in to continue"
 
@@ -48,7 +48,7 @@ msgstr "Please enter your password"
 msgid "დამიმახსოვრე"
 msgstr "Remember me"
 
-#: app/auth/forms.py:17
+#: app/auth/forms.py:17 app/templates/auth/auth_popup.html:43
 msgid "შესვლა"
 msgstr "Sign in"
 
@@ -86,12 +86,12 @@ msgstr "Your Email address is invalid"
 msgid "გთხოვთ შეიყვანოთ პაროლი"
 msgstr "Please enter your password"
 
-#: app/auth/forms.py:37 app/auth/forms.py:62 app/files/views.py:93
+#: app/auth/forms.py:37 app/auth/forms.py:62 app/files/views.py:101
 msgid "პაროლი უნდა შედგებოდეს 6-128 სიმბოლოსგან"
 msgstr "Your password should contain 6-128 symbols"
 
 #: app/auth/forms.py:41 app/templates/auth/auth_popup.html:60
-#: app/templates/auth/auth_popup.html:74
+#: app/templates/auth/auth_popup.html:74 app/templates/auth/auth_popup.html:100
 msgid "რეგისტრაცია"
 msgstr "Register"
 
@@ -100,6 +100,7 @@ msgid "შეყვანილი ელ-ფოსტა უკვე დაკ
 msgstr "This Email address is already used"
 
 #: app/auth/forms.py:52 app/templates/auth/auth_popup.html:8
+#: app/templates/auth/auth_popup.html:21
 #: app/templates/emails/_reset_password.html:7
 msgid "პაროლის აღდგენა"
 msgstr "Reset password"
@@ -120,6 +121,7 @@ msgstr "Please repeat your password"
 
 #: app/auth/forms.py:66 app/auth/forms.py:75
 #: app/templates/auth/reset_password.html:17
+#: app/templates/auth/reset_password.html:34
 #: app/templates/files/all_files.html:57
 msgid "პაროლის შეცვლა"
 msgstr "Change password"
@@ -137,7 +139,7 @@ msgstr "New password"
 msgid "ელ-ფოსტის შეცვლა"
 msgstr "Change Email"
 
-#: app/auth/forms.py:91
+#: app/auth/forms.py:91 app/templates/files/all_files.html:99
 msgid "მონაცემების შეცვლა"
 msgstr "Save changes"
 
@@ -153,10 +155,11 @@ msgstr "Choose an image to change your profile picture"
 msgid ""
 "პროფილის სურათი არ განახლდა. გთხოვთ აირჩიოთ .jpg, .jpe, .jpeg ან .png "
 "ფორმატის სურათი"
-msgstr "Your profile picture wasn't updated."
-"Please choose an image from the following extensions: .jpg, .jpe, .jpeg, or .png"
+msgstr ""
+"Your profile picture wasn't updated. Please choose an image with one of "
+"the following extensions: .jpg, .jpe, .jpeg, or .png"
 
-#: app/auth/forms.py:100
+#: app/auth/forms.py:100 app/templates/files/all_files.html:51
 msgid "სურათის განახლება"
 msgstr "Update profile picture"
 
@@ -222,7 +225,9 @@ msgstr "Your password reset URL is invalid"
 
 #: app/files/forms.py:30
 msgid "ფაილი არ დამუშავდა. გთხოვთ ატვირთოთ .txt, .pdf, .docx ან .html ფაილი"
-msgstr "Your file won't be processed. Please upload a .txt, .pdf, .docx, or .html file"
+msgstr ""
+"Your file won't be processed. Please upload a .txt, .pdf, .docx, or .html"
+" file"
 
 #: app/files/forms.py:31
 msgid "ტექსტის ლემატიზაცია"
@@ -244,7 +249,7 @@ msgstr "Remove extra whitespace"
 msgid "სიმბოლოებისგან გასუფთავება"
 msgstr "Remove extra characters"
 
-#: app/files/forms.py:39
+#: app/files/forms.py:39 app/templates/files/all_files.html:194
 msgid "დამუშავება"
 msgstr "Process file"
 
@@ -252,47 +257,49 @@ msgstr "Process file"
 msgid "ზუსტი ძიება"
 msgstr "Exact search"
 
-#: app/files/forms.py:44 app/files/views.py:175
+#: app/files/forms.py:44 app/files/views.py:183
 msgid "თავისუფალი ძიება"
 msgstr "Lemma search"
 
-#: app/files/views.py:79
+#: app/files/views.py:87
 msgid "მიმდინარეობს ფაილის დამუშავება"
 msgstr "Your file is being processed"
 
-#: app/files/views.py:96
+#: app/files/views.py:104
 msgid "პაროლები არ ემთხვევა ერთმანეთს; მონაცემები არ განახლდა."
-msgstr ""
+msgstr "Passwords do not match. Your data wasn't updated."
 
-#: app/files/views.py:99
+#: app/files/views.py:107
 msgid "ძველი პაროლი არასწორია; მონაცემები არ განახლდა."
-msgstr ""
+msgstr "Wrong old password. Your data wasn't updated."
 
-#: app/files/views.py:102
+#: app/files/views.py:110
 msgid ""
 "მონაცემები არ განახლდა. პაროლის შესაცვლელად შეიყვანეთ ძველი პაროლი, ახალი"
 " პაროლი და გაიმეორეთ."
 msgstr ""
-
-#: app/files/views.py:115
-msgid "თქვენი ელ-ფოსტა განახლდა. "
-msgstr ""
-
-#: app/files/views.py:121
-msgid "თქვენი მონაცემები განახლდა"
-msgstr ""
+"Your data wasn't updated. Please enter your old password, new password "
+"and the new password again."
 
 #: app/files/views.py:123
-msgid "შეყვანილი პაროლი არასწორია. თქვენი მონაცემები არ განახლდა."
-msgstr ""
+msgid "თქვენი ელ-ფოსტა განახლდა. "
+msgstr "Your Email has been updated"
 
-#: app/files/views.py:137
+#: app/files/views.py:129
+msgid "თქვენი მონაცემები განახლდა"
+msgstr "Your data has been updated"
+
+#: app/files/views.py:131
+msgid "შეყვანილი პაროლი არასწორია. თქვენი მონაცემები არ განახლდა."
+msgstr "Wrong password. Your data wasn't updated."
+
+#: app/files/views.py:145
 msgid "თქვენი პროფილის სურათი განახლდა"
-msgstr ""
+msgstr "Your profile picture has been updated"
 
 #: app/tagging/views.py:27
 msgid "ამ ფაილზე წვდომა არ გაქვთ"
-msgstr ""
+msgstr "You don't have access to this file"
 
 #: app/templates/auth/auth_popup.html:20 app/templates/auth/auth_popup.html:26
 #: app/templates/auth/auth_popup.html:70 app/templates/main/main.html:21
@@ -309,91 +316,89 @@ msgstr "Third-party authorization"
 
 #: app/templates/auth/auth_popup.html:58
 msgid "გამარჯობა, მეგობარო!"
-msgstr ""
+msgstr "Hello, friend!"
 
 #: app/templates/auth/auth_popup.html:59
 msgid "შეიყვანეთ თქვენი პირადი მონაცემები და დაიწყეთ მოგზაურობა ჩვენთან"
-msgstr ""
+msgstr "Enter your personal details"
 
 #: app/templates/auth/auth_popup.html:68
 msgid "კეთილი იყოს თქვენი დაბრუნება"
-msgstr ""
+msgstr "Welcome back!"
 
 #: app/templates/auth/auth_popup.html:69
-msgid ""
-"ჩვენთან კავშირის გასაგრძელებლად გთხოვთ შეხვიდეთ თქვენს პერსონალურ "
-"ინფორმაციასთან"
-msgstr ""
+msgid "ჩვენთან კავშირის გასაგრძელებლად გთხოვთ შეხვიდეთ სისტემაში"
+msgstr "Log in to continue"
 
 #: app/templates/auth/reset_password.html:5
 msgid "QartNLP - პაროლის შეცვლა"
-msgstr ""
+msgstr "QartNLP - change password"
 
-#: app/templates/auth/reset_password.html:37
+#: app/templates/auth/reset_password.html:38
 msgid "მთავარი გვერდი"
-msgstr ""
+msgstr "Home"
 
 #: app/templates/emails/_confirm_account.html:1
 msgid "თქვენ დარეგისტრირდით QartNLP-ზე."
-msgstr ""
+msgstr "You've successfully signed up to QartNLP"
 
 #: app/templates/emails/_confirm_account.html:3
 msgid "დააკლიკეთ ლინკს, რათა გაააქტიუროთ თქვენი ანგარიში"
-msgstr ""
+msgstr "Click this link to confirm your account"
 
 #: app/templates/emails/_confirm_account.html:5
 msgid "გააქტიურება"
-msgstr ""
+msgstr "Activate"
 
 #: app/templates/emails/_confirm_account.html:7
 #: app/templates/emails/_reset_password.html:9
 msgid "საუკეთესო სურვილებით,"
-msgstr ""
+msgstr "Best wishes,"
 
 #: app/templates/emails/_confirm_account.html:8
 #: app/templates/emails/_reset_password.html:10
 msgid "QartNLP-ის გუნდი"
-msgstr ""
+msgstr "QartNLP team"
 
 #: app/templates/emails/_reset_password.html:1
 msgid "პაროლი დაგავიწყდათ?"
-msgstr ""
+msgstr "Forgot your password?"
 
 #: app/templates/emails/_reset_password.html:3
 msgid "ჩვენ მოგვივიდა თქვენი QartNLP-ის ანგარიშის პაროლის აღდგენის მოთხოვნა."
-msgstr ""
+msgstr "We've received a request to reset your password on QartNLP"
 
 #: app/templates/emails/_reset_password.html:5
 msgid "დააკლიკეთ ლინკს, თუ გსურთ პაროლის აღდგენა:"
-msgstr ""
+msgstr "Click this link if you wish to reset your password"
 
 #: app/templates/files/all_files.html:33
 msgid "პარამეტრები"
-msgstr ""
+msgstr "Settings"
 
 #: app/templates/files/all_files.html:34
 msgid "გამოსვლა"
-msgstr "Logout"
+msgstr "Log out"
 
 #: app/templates/files/all_files.html:61
 msgid "ახლანდელი პაროლი"
-msgstr ""
+msgstr "Current password"
 
 #: app/templates/files/all_files.html:77
 msgid "პირადი მონაცემები"
-msgstr ""
+msgstr "Personal information"
 
 #: app/templates/files/all_files.html:94
 msgid "პაროლის დადასტურება"
-msgstr ""
+msgstr "Confirm password"
 
 #: app/templates/files/all_files.html:96
 msgid "მონაცემების შესაცვლელად უნდა დაადასტუროთ პაროლი"
-msgstr ""
+msgstr "Confirm your password to update your data"
 
 #: app/templates/files/all_files.html:119
 msgid "დამატება"
-msgstr ""
+msgstr "Upload file"
 
 #: app/templates/files/all_files.html:131
 msgid "ფაილი მუშავდება..."
@@ -401,27 +406,27 @@ msgstr "Your file is being processed..."
 
 #: app/templates/files/all_files.html:174
 msgid "შეიყვანეთ ფაილის დასახელება"
-msgstr ""
+msgstr "Filename"
 
 #: app/templates/files/all_files.html:176
 msgid "შეიყვანეთ დასამუშავებელი ტექსტი"
-msgstr ""
+msgstr "Text to process"
 
 #: app/templates/files/all_files.html:178
 msgid "ჩააკოპირე ტექსტი"
-msgstr ""
+msgstr "Copy text here"
 
 #: app/templates/files/all_files.html:186
 msgid "ატვირთე ფაილი"
-msgstr ""
+msgstr "Upload file"
 
 #: app/templates/files/all_files.html:192
 msgid "მონიშნეთ ხელსაწყოები, რომლითაც გსურთ ტექსტის/დოკუმენტის დამუშავება:"
-msgstr ""
+msgstr "Choose tools to process the text/file with:"
 
 #: app/templates/files/details.html:4 app/templates/files/search.html:28
 msgid "ძიების შედეგები"
-msgstr ""
+msgstr "Search results"
 
 #: app/templates/files/details.html:5 app/templates/files/search.html:30
 msgid "სულ ნაპოვნია"
@@ -429,76 +434,76 @@ msgstr "Found"
 
 #: app/templates/files/details.html:5
 msgid "შედეგი"
-msgstr ""
+msgstr "match(es)"
 
 #: app/templates/files/details.html:19 app/templates/files/search.html:42
 msgid "მონაკვეთზე გადასვლა"
-msgstr ""
+msgstr "Go to this page"
 
 #: app/templates/files/one_file.html:42
 msgid "წინადადებები"
-msgstr ""
+msgstr "Sentences"
 
 #: app/templates/files/one_file.html:43
 msgid "სიტყვები"
-msgstr ""
+msgstr "Words"
 
 #: app/templates/files/one_file.html:46
 msgid "უნიკ. სიტყვ."
-msgstr ""
+msgstr "Unique Words"
 
 #: app/templates/files/one_file.html:47
 msgid "სენტიმენტი"
-msgstr ""
+msgstr "Sentiment"
 
 #: app/templates/files/one_file.html:50
 msgid "ემოცია"
-msgstr ""
+msgstr "Emotion"
 
 #: app/templates/files/one_file.html:51
 msgid "კატეგორია"
-msgstr ""
+msgstr "Category"
 
 #: app/templates/files/one_file.html:73
 msgid "ლემატიზაციის შედეგების გამოსაჩენად დააკლიკეთ სიტყვას"
-msgstr ""
+msgstr "Click any word to see lemmatization results"
 
 #: app/templates/files/one_file.html:78
 msgid "გაფართოებული ძიება"
-msgstr ""
+msgstr "Advanced search"
 
 #: app/templates/files/search.html:7
 msgid "საძიებო სიტყვა"
-msgstr ""
+msgstr "Search query"
 
 #: app/templates/files/search.html:11
 msgid "ძიება"
-msgstr ""
+msgstr "Search"
 
 #: app/templates/files/search.html:15
 msgid "საძიებო ფორმის დამატება"
-msgstr ""
+msgstr "Add a search form"
 
 #: app/templates/files/search.html:30
 msgid "სიტყვა"
-msgstr "words in"
+msgstr "word(s) in"
 
 #: app/templates/files/search.html:30
 msgid "წინადადებაში"
-msgstr "sentences"
+msgstr "sentence(s)"
 
 #: app/templates/files/search.html:32
 msgid "ფაილში მოთხოვნილი მონაცემები არ მოიძებნა"
-msgstr ""
+msgstr "No matches found in this file"
 
 #: app/templates/layouts/base_for_full_pages.html:6
 #: app/templates/layouts/base_for_popups.html:6
 msgid "QartNLP"
-msgstr ""
+msgstr "QartNLP"
 
 #: app/templates/layouts/base_for_full_pages.html:26
 msgid "პორტალის შესახებ"
-msgstr ""
+msgstr "About Us"
 
 #: app/templates/layouts/base_for_full_pages.html:28
 msgid ""
@@ -507,10 +512,12 @@ msgid ""
 "Python\n"
 "                    Development გუნდის მიერ."
 msgstr ""
+"Created by UniLab, based on Ilia State University Georgian Lemmatization "
+"software"
 
 #: app/templates/layouts/base_for_full_pages.html:35
 msgid "პროექტი ქსელში"
-msgstr ""
+msgstr "Project in social media"
 
 #: app/templates/layouts/nav.html:13
 msgid "მთავარი"
@@ -530,45 +537,74 @@ msgstr "About Us"
 
 #: app/templates/macros/macros.html:38
 msgid "შექმნის თარიღი"
-msgstr ""
+msgstr "Upload date"
 
 #: app/templates/macros/macros.html:40
 msgid "ბოლო მოდიფიცირების თარიღი"
-msgstr ""
+msgstr "Last edit date"
 
 #: app/templates/main/about.html:7
 msgid ""
-"შემთხვევითად გენერირებული ტექსტი ეხმარება დიზაინერებს და ტიპოგრაფიული\n"
-"                ნაწარმის შემქმნელებს, რეალურთან მაქსიმალურად მიახლოებული "
-"შაბლონი\n"
-"                წარუდგინონ შემფასებელს. ხშირადაა შემთხვევა, როდესაც "
-"დიზაინის\n"
-"                შემთხვევითად გენერირებული ტექსტი ეხმარება დიზაინერებს და "
-"ტიპოგრაფიული\n"
-"                ნაწარმის შემქმნელებს. შემთხვევითად გენერირებული ტექსტი "
-"ეხმარება\n"
-"                დიზაინერებს და ტიპოგრაფიული ნაწარმის შემქმნელებს, "
-"რეალურთან\n"
-"                მაქსიმალურად მიახლოებული შაბლონი წარუდგინონ შემფასებელს. "
-"ხშირადაა\n"
-"                შემთხვევა, როდესაც დიზაინის შემთხვევითად გენერირებული "
-"ტექსტი ეხმარება\n"
-"                დიზაინერებს და ტიპოგრაფიული ნაწარმის შემქმნელებს."
-msgstr ""
+"ქართული ენის მორფოლოგიური ანალიზატორი შეიქმნა ილიას სახელმწიფო\n"
+"                უნივერსიტეტისა და შოთა რუსთაველის საქართველოს ეროვნული "
+"სამეცნიერო ფონდის სხვადასხვა დროს ერთობლივი კვლევითი\n"
+"                პროექტების ფარგლებში: No. AR/320/4-105/11, თანამედროვე "
+"ქართული ენის საანალიზო და საანოტაციო პროგრამების შექმნა\n"
+"                და  No. DP2016_23, ციფრული ჰუმანიტარია (ციფრული "
+"ეპიგრაფიკა, კომპიუტერული ენათმეცნიერება, ციფრული\n"
+"                პროსოპოგრაფია)."
+msgstr "The present work is the result of eight years of research \n"
+"projects financed by the Shota Rustaveli National "
+"Science Foundation (SRNSF): Projects No. AR/320/4-105/11,\n"
+"Corpus Annotation and Analysis Software for the "
+" Modern Georgian Language, and No. DP2016_23, Digital\n"
+" Humanities: Digital Epigraphy, Computational Linguistics,"
+" Digital Prosopography. Additional funding was provided by Ilia State University."
+
+#: app/templates/main/about.html:13
+msgid ""
+"პროექტის საერთო ხელმძღვანელი: ნ. დობორჯგინიძე, პროფესორი, ლინგვისტურ "
+"კვლევათა ინსტიტუტის დირექტორი"
+msgstr "Project Director: N. Doborjginidze, Professor, Director of the Institute of Linguistic Studies"
+
+#: app/templates/main/about.html:16
+msgid ""
+"პროექტის ლინგვისტური კოორდინატორი და მორფოლოგიურ ანალიზატორზე მომუშავე "
+"ჯგუფის ხელმძღვანელი: ი. ლობჟანიძე, პროფესორი"
+msgstr "Linguistic Coordinator: I. Lobzhanidze, Professor "
 
 #: app/templates/main/about.html:19
+msgid ""
+"კვლევითი ასისტენტები: თ. გეთიაშვილი, ა. ტყებუჩავა, მ. იშხანოვა, თ. "
+"დამენია, თ. ქაროსანიძე, ლ. ვაშაყმაძე,\n"
+"                მ. დამენია, ქ. გილაშვილი, ნ. ლათიბაშვილი, მ. რუხაძე, თ. "
+"გავაშელიშვილი, ნ. ჭიჭიკოშვილი, თ. ქიტოშვილი,\n"
+"                თ. კალხიტაშვილი, ივლ. ლობჟანიძე, თ. ხუბაშვილი, ლ. "
+"კიწმარიშვილი, ე. მდინარაძე, ნ. გოგიჩაიშვილი, ლ. თეთრაშვილი,\n"
+"                ა. სტურუა, ს. აბრალავა, ზ. მაჭავარიანი, ლ. კუპრეიშვილი, "
+"მ. კვასხვაძე, მ. კვინიკაძე, შ. თუმანიშვილი, ნ. დათაშვილი,\n"
+"                ნ. დონაძე, ლ. სერგია, ს. მარგველაშვილი, შ. ნოზაძე, მ. "
+"დადუნაშვილი, ქ. მარიდაშვილი."
+msgstr "Research Assistants: T. Getiashvili, A. Tkebuchava, M. Ishkhanova, T. Damenia, T. Karosanidze,\n "
+"L. Vashakmadze, M. Damenia, K. Gilashvili, N. Latibashvili, M. Rukhadze, T. Gavashelishvili,\n "
+"N. Chichikoshvili, T. Kitoshvili, T. Kalkhitashvili, Ivl. Lobzhanidze, T. Khubashvili,\n "
+"L. Kitsmarishvili, E. Mdinaradze, N. Gogichaishvili, L. Tetrashvili, A. Sturua, S. Abralava,\n "
+"Z. Machavariani, L. Kupreishvili, M. Kvaskhvadze, M. Kvinikadze, Sh. Tumanishvili, N. Datashvili,\n "
+"N. Donadze, L. Sergia, S. Margvelashvili, Sh. Nozadze, M. Dadunashvili, K. Maridashvili"
+
+#: app/templates/main/about.html:27
 msgid "ჩვენი გუნდი"
-msgstr ""
+msgstr "Our Team"
 
-#: app/templates/main/about.html:22
+#: app/templates/main/about.html:30
 msgid "თემურ ჩიჩუა"
-msgstr ""
+msgstr "Temur Chichua"
 
-#: app/templates/main/about.html:23
+#: app/templates/main/about.html:31
 msgid "ინსტრუქტორი"
-msgstr ""
+msgstr "Instructor"
 
-#: app/templates/main/about.html:25
+#: app/templates/main/about.html:33
 msgid ""
 "AnimaChatbotics-ის მოქმედი Python დეველოპერი. მუშაობს სხვადასხვა\n"
 "                        კომპიუტერული მეცნიერების მიმართულებაზე. ასწავლის "
@@ -580,15 +616,15 @@ msgstr ""
 
 #: app/templates/main/lemma.html:9
 msgid "ჩააკოპირე ქართული ტექსტი, ნახე როგორ მუშაობს სისტემა."
-msgstr ""
+msgstr "Input some Georgian text here to see how it works..."
 
 #: app/templates/main/lemma.html:19
 msgid "გააანალიზე"
-msgstr ""
+msgstr "Analyze"
 
 #: app/templates/main/main.html:15
 msgid "ქართული ენის ციფრული დამუშავება"
-msgstr ""
+msgstr "Georgian text lemmatization"
 
 #: app/templates/main/main.html:17
 msgid ""
@@ -596,14 +632,16 @@ msgid ""
 "                                    ფუნქციონალის შესამოწმებლად გაიარე "
 "ავტორიზაცია."
 msgstr ""
+"Try a demo of how the lemmatization works or \n"
+"sign in to get the full experience"
 
 #: app/templates/main/main.html:23
 msgid "მეტის გაგება"
-msgstr ""
+msgstr "Learn more"
 
 #: app/templates/main/main.html:33
 msgid "პროექტის შესახებ"
-msgstr ""
+msgstr "About QartNLP"
 
 #: app/templates/main/main.html:35
 msgid ""
@@ -613,4 +651,43 @@ msgid ""
 "                უნილაბის პითონის კურსის პირველ კურსდამთავრებულთა "
 "სტაჟირების"
 msgstr ""
+"Created by UniLab, based on Ilia State University Georgian Lemmatization "
+"software"
+
+#~ msgid ""
+#~ "შემთხვევითად გენერირებული ტექსტი ეხმარება დიზაინერებს და ტიპოგრაფიული\n"
+#~ "                ნაწარმის შემქმნელებს, რეალურთან "
+#~ "მაქსიმალურად მიახლოებული შაბლონი\n"
+#~ "                წარუდგინონ შემფასებელს. ხშირადაა "
+#~ "შემთხვევა, როდესაც დიზაინის\n"
+#~ "                შემთხვევითად გენერირებული ტექსტი "
+#~ "ეხმარება დიზაინერებს და ტიპოგრაფიული\n"
+#~ "                ნაწარმის შემქმნელებს. შემთხვევითად"
+#~ " გენერირებული ტექსტი ეხმარება\n"
+#~ "                დიზაინერებს და ტიპოგრაფიული "
+#~ "ნაწარმის შემქმნელებს, რეალურთან\n"
+#~ "                მაქსიმალურად მიახლოებული შაბლონი "
+#~ "წარუდგინონ შემფასებელს. ხშირადაა\n"
+#~ "                შემთხვევა, როდესაც დიზაინის "
+#~ "შემთხვევითად გენერირებული ტექსტი ეხმარება\n"
+#~ "                დიზაინერებს და ტიპოგრაფიული ნაწარმის შემქმნელებს."
+#~ msgstr ""
+
+#~ msgid ""
+#~ "მორფოლოგიური ანალიზატორის შესახებ ქართული ენის"
+#~ " მორფოლოგიური ანალიზატორი შეიქმნა ილიას "
+#~ "სახელმწიფო\n"
+#~ "                უნივერსიტეტისა და შოთა "
+#~ "რუსთაველის საქართველოს ეროვნული სამეცნიერო "
+#~ "ფონდის სხვადასხვა დროს ერთობლივი კვლევითი\n"
+#~ ""
+#~ "                პროექტების ფარგლებში: No. "
+#~ "AR/320/4-105/11, თანამედროვე ქართული ენის "
+#~ "საანალიზო და საანოტაციო პროგრამების შექმნა"
+#~ "\n"
+#~ "                და  No. DP2016_23, ციფრული "
+#~ "ჰუმანიტარია (ციფრული ეპიგრაფიკა, კომპიუტერული "
+#~ "ენათმეცნიერება, ციფრული\n"
+#~ "                პროსოპოგრაფია)."
+#~ msgstr ""
 
