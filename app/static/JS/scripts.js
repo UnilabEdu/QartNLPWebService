@@ -5,22 +5,22 @@ const clearText = document.getElementById('analyze-text')
 const grammarText = document.getElementById('prtext')
 if (btn) {
   btn.addEventListener('click', () => {
-    if (clearText.innerText === 'გააანალიზე') {
+    if (clearText.innerText === t.analyze) {
       if (grammarText.value.trim().length === 0) {
-        alert('გთხოვთ, შეიყვანეთ ტექსტი.')
+        alert(t.pleaseInputTextToAnalyze)
       } else if (grammarText.value.trim().length > maxCharacterCount) {
-        alert(`გთხოვთ, გამოიყენეთ ${maxCharacterCount} სიმბოლოზე ნაკლები`)
+        alert(`${t.pleaseUseLessThan} ${maxCharacterCount} ${t.characters}`)
       } else {
         displayLemmatizedData(grammarText.value.trim())
 
         grammarSection.classList.toggle('display-flex')
-        clearText.innerText = 'გაასუფთავე'
+        clearText.innerText = t.clear
         btn.style.background = '#707070'
       }
     } else {
       console.log('deleting divs')
       grammarSection.classList.toggle('display-flex')
-      clearText.innerText = 'გააანალიზე'
+      clearText.innerText = t.analyze
       btn.style.background = '#496AC1'
       btn.classList.remove('clear-bt')
       grammarText.value = ''
@@ -69,8 +69,8 @@ async function displayLemmatizedData(text) {
         child_block_to_insert.classList.add('gram-textarea')
         block_to_insert.appendChild(child_block_to_insert)
         child_block_to_insert.innerHTML = `<p class="lemma-title"> ${escapeHtml(word_obj.raw)} </p> <br> 
-                                                                    ლემა: ${escapeHtml(word_obj.lemma)} <br> 
-                                                                    თეგები: ${escapeHtml(word_obj.pos_tags)}`
+                                                                    ${t.lemma}: ${escapeHtml(word_obj.lemma)} <br> 
+                                                                    ${t.tags}: ${escapeHtml(word_obj.pos_tags)}`
     }
     console.log(lemmatizedData)
 }

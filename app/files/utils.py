@@ -42,12 +42,24 @@ def get_search_form():
     parts_of_speech = GrammaticalCase.query.filter_by(part_of_speech=None).all()
     grammatical_cases = GrammaticalCase.query.filter(GrammaticalCase.part_of_speech != None).all()
 
-    search_form = {
-        part_of_speech.full_name_ge: part_of_speech.to_json(part_of_speech=True)
-        for part_of_speech in parts_of_speech}
+    if 'locale' in session.keys() and session['locale'] == 'en':
+        search_form = {
+            part_of_speech.full_name_en: part_of_speech.to_json(part_of_speech=True)
+            for part_of_speech in parts_of_speech}
+    else:
+        search_form = {
+            part_of_speech.full_name_ge: part_of_speech.to_json(part_of_speech=True)
+            for part_of_speech in parts_of_speech}
 
     for tag in grammatical_cases:
-        search_form[tag.part_of_speech]['tags'].append(tag.to_json())
+        if 'locale' in session.keys() and session['locale'] == 'en':
+            part_of_speech_dict = {part_of_speech.full_name_ge: part_of_speech.full_name_en
+                                   for part_of_speech in parts_of_speech}
+            tag_part_of_speech = part_of_speech_dict[tag.part_of_speech]
+        else:
+            tag_part_of_speech = tag.part_of_speech
+
+        search_form[tag_part_of_speech]['tags'].append(tag.to_json())
 
     return json.dumps(search_form, ensure_ascii=False)
 

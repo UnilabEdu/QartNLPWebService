@@ -54,7 +54,7 @@ function selectWord(word) {
     } else {
         console.log('incorrect word selected')
         Toastify({
-                text: "შემდეგი სიტყვა უნდა იყოს ან მარჯვენა ან მარხენა მეზობელი",
+                text: t.theNextWordShouldBeNextToTheSelectedOne,
                 duration: 5000,
                 close: true,
                 gravity: "left",

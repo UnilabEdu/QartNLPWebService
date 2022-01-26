@@ -15,6 +15,11 @@
 
     {% include "layouts/nav.html" %}
 
+    <script>
+    const current_lang = {{ session['locale'] | tojson }}
+    </script>
+    <script src="{{ url_for('static', filename="JS/translations.js") }}"></script>
+
 
 {% block content %}
 {% endblock %}

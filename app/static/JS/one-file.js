@@ -13,13 +13,13 @@ function get_word_details(wordId) {
     let currentLemma = lemmaArray[wordId].lemma;
     let currentWordTags = lemmaArray[wordId].tags;
     if (!currentWordTags && !currentLemma) {
-        lemma.innerHTML = 'სიტყვის ლემატიზაცია ვერ შესრულდა';
+        lemma.innerHTML = t.theLemmatizatorFailedToProcessThisWord;
         tag.innerHTML = '';
     } else {
         currentWordTags = currentWordTags.split(',').join(', ');
         currentWordTags = escapeHtml(currentWordTags);
-        lemma.innerHTML = `<b>ლემა</b>: ${currentLemma}`;
-        tag.innerHTML = `<b>თეგები</b>: ${currentWordTags}`;
+        lemma.innerHTML = `<b>${t.lemma}</b>: ${currentLemma}`;
+        tag.innerHTML = `<b>${t.tags}</b>: ${currentWordTags}`;
     }
 }
 

@@ -13,7 +13,7 @@ searchInput.addEventListener('input', toggleFirstFormRadius);
 
 const saveButton = createElem('button', {
     className : 'btn-save',
-    innerText : 'დამახსოვრება',
+    innerText : t.save,
     eventListener : ['click', saveForm]
 })
 
@@ -41,7 +41,7 @@ function displayNewSearchForm(editButton = false) {
         className : 'filter-form active-block',
     });
     let partOfSpeechDiv = createElem('div', {
-        innerHTML : '<h2>აირჩიეთ მეტყველების ნაწილი</h2>'
+        innerHTML : `<h2>${t.choosePartOfSpeech}</h2>`
     });
 
     for (const [key, value] of Object.entries(grammarSearchForm)) {
@@ -62,7 +62,7 @@ function displayNewSearchForm(editButton = false) {
         formDiv.appendChild(saveButton);
         newSearchFormDiv.appendChild(formDiv);
     }
-    addNewFormText.innerText = 'საძიებო ფორმის გაუქმება';
+    addNewFormText.innerText = t.disableSearchForm;
     return formDiv;
 }
 
@@ -72,7 +72,7 @@ function hideNewSearchForm() {
     currentPOS = null;
     currentGrammarTags = [];
     searchFormActive = false;
-    addNewFormText.innerText = 'საძიებო ფორმის დამატება';
+    addNewFormText.innerText = t.addSearchForm;
 }
 
 function displayGrammarTags(partOfSpeech, partOfSpeechElement, formDivElement, tagsToPreselect = null) {
@@ -90,12 +90,12 @@ function displayGrammarTags(partOfSpeech, partOfSpeechElement, formDivElement, t
         let grammarTagsDiv = createElem('div', {
             id : 'current-grammar-tags'
         });
-        if (grammarSearchForm[partOfSpeech].tags.length) grammarTagsDiv.innerHTML = '<h2>აირჩიეთ თეგები</h2>';
+        if (grammarSearchForm[partOfSpeech].tags.length) grammarTagsDiv.innerHTML = `<h2>${t.chooseTags}</h2>`;
 
         for (let item of grammarSearchForm[partOfSpeech].tags) {
             let listElem = createElem('li', {
                 className : item.short_name,
-                innerText : item.full_name_ge
+                innerText : current_lang === 'ka' ? item.full_name_ge : item.full_name_en
             });
             if (tagsToPreselect && tagsToPreselect.includes(item.short_name)) {
                 listElem.classList.add('active-li');
@@ -124,7 +124,10 @@ function toggleGrammarTag(tag) {
         currentGrammarTags.splice(selectedTags.indexOf(tag.short_name), 1);
     } else {
         tagElem.classList.add('active-li');
-        currentGrammarTags.push({tag: tag.short_name, name: tag.full_name_ge});
+        currentGrammarTags.push({
+                                 tag: tag.short_name,
+                                 name: current_lang === 'ka' ? tag.full_name_ge : tag.full_name_en
+        });
     }
 }
 
@@ -132,7 +135,7 @@ function toggleGrammarTag(tag) {
 // saving a form with chosen data and displaying it
 function saveForm() {
     if (!currentPOS) {
-        alert('ფორმის შესაქმნელად აირჩიეთ მეტყველების ნაწილი')
+        alert(t.choosePartOfSpeechToAddForm)
     } else {
         let tags = currentGrammarTags.slice()
         let partOfSpeech = { tag: currentPOS.short_name, name: currentPOS.name }
@@ -149,7 +152,7 @@ function displayForm(form, update = false) {
     let textContentDiv = createElem('div',    { className : 'block-txt-content' });
     let text =           createElem('p',      { innerHTML : tagsString });
     let editFormDiv =    createElem('div',    { id : `form-edit-${id}`,  className: 'f-btn'});
-    let editFormText =   createElem('span',   { innerText: 'ფორმის განსაზღვრა'});
+    let editFormText =   createElem('span',   { innerText: t.editForm});
     let editFormImage =  createElem('img',    { className: 'filter', src: filterSvgUrl});
     let numsDiv =        createElem('div',    { id : `nums-div-${id}`,   className : 'nums' });
     let numMinusButton = createElem('button', { id : `btn-minus-${id}`,  className : 'minus-btn' });
@@ -229,7 +232,7 @@ class Form {
         let savedFormDiv = document.getElementById(`saved-form-${this.id}`);
         savedFormDiv.remove();
         createdForms = createdForms.filter( form => form !== this );
-        alert('ცარიელი ფორმა წაიშალა');
+        alert(t.emptyFormHasBeenRemoved);
         if (createdForms && !searchInput.value) {
             let firstFormNumDiv = document.getElementsByClassName('nums')[0];
             let firstFormRadius = document.getElementsByClassName('num')[0];
@@ -259,7 +262,7 @@ class Form {
 // executing search
 function submitSearch() {
     if (!createdForms) {
-        alert('შედეგების მოსაძებნად გამოიყენეთ საძიებო ფორმები');
+        alert(t.useSearchFormsToInitiateSearch);
     } else {
         let query = '';
         if (searchInput.value) {
@@ -302,7 +305,10 @@ function recoverForms(query) {
         let partOfSpeech = { tag: foundPartOfSpeech[1].short_name, name: foundPartOfSpeech[0] };
 
         let tags = foundPartOfSpeech[1].tags.filter( item => allTags.includes(item.short_name) );
-        tags = tags.map( item => ({ tag: item.short_name, name: item.full_name_ge }) );
+        tags = tags.map( item => ({
+            tag: item.short_name,
+            name: current_lang === 'ka' ? item.full_name_ge : item.full_name_en
+        }) );
 
         new Form(createdForms.length + 1, tags, partOfSpeech, parseInt(radius));
     }
@@ -334,7 +340,7 @@ function toggleFirstFormRadius() {
 function createEditButton(index) {
     let button = createElem('button', {
         className : 'btn-save',
-        innerText : 'განახლება'
+        innerText : t.update
     })
     let targetForm = createdForms[index];
     button.addEventListener('click', () => targetForm.update(currentPOS, currentGrammarTags));
