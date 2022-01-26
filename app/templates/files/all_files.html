@@ -48,7 +48,7 @@
                         {{ picture_form.hidden_tag() }}
                         {{ picture_form.picture(accept='image/*', style='display: none') }}
                         <label for="picture"><img style="height: 55%; width: 55%; padding: 0 5% 0 15%" src="{{ url_for('static', filename='assets/imgupload.png') }}" alt="upload_image">
-                            {{ picture_form.submit_picture(class='changesBtn', style='padding: 15px; height: 100%; width: 100%; position: relative; cursor:pointer;' ) }}
+                            {{ picture_form.submit_picture(value=_('სურათის განახლება'), class='changesBtn', style='padding: 15px; height: 100%; width: 100%; position: relative; cursor:pointer;' ) }}
                         </label>
                       </form>
                     </div>
@@ -96,7 +96,7 @@
                         <p>{{ _('მონაცემების შესაცვლელად უნდა დაადასტუროთ პაროლი') }}</p>
                       </div>
                     </div>
-                    {{ profile_form.submit_profile_changes(class="changesBtn") }}
+                    {{ profile_form.submit_profile_changes(value=_('მონაცემების შეცვლა'), class="changesBtn") }}
                   </div>
                 </div>
               </div>
@@ -191,7 +191,7 @@
                         <div class="create-file-checks display-flex">
                             <h2 class="checks-header">{{ _('მონიშნეთ ხელსაწყოები, რომლითაც გსურთ ტექსტის/დოკუმენტის დამუშავება:') }}</h2>
                             {{ upload_form.processes() }}
-                            {{ upload_form.submit_upload(class='btn-file', style='margin-top: auto;') }}
+                            {{ upload_form.submit_upload(value=_('დამუშავება'), class='btn-file', style='margin-top: auto;') }}
                         </div>
                     </div>
                 </form>

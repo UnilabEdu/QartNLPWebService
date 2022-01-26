@@ -18,7 +18,7 @@
                         {{ flash_auth_popup() }}
                   {% endif %}
                 <div style="overflow:hidden"><span class="autoriz">{{ _('ავტორიზაცია') }}</span></div>
-                {{ forms['forgot'].submit_password_forgot(class='login-btn') }}
+                {{ forms['forgot'].submit_password_forgot(class='login-btn', value=_('პაროლის აღდგენა')) }}
               </form>
             </div>
           </div>
@@ -40,7 +40,7 @@
                         {{ flash_auth_popup() }}
                   {% endif %}
                 <div style="overflow:hidden"><button type="button" class="forgot-password">{{ _('დაგავიწყდათ პაროლი?') }}</button></div>
-                {{ forms['login'].submit_login(class='login-btn') }}
+                {{ forms['login'].submit_login(value=_('შესვლა'), class='login-btn') }}
                 <div class="gare-avtorizacia">
                   <h4>{{ _('გარე ავტორიზაცია') }}</h4>
                   <div class="o-auth">
@@ -66,7 +66,7 @@
           <div class="registration-butt">
             <div class="cont">
               <h1>{{ _('კეთილი იყოს თქვენი დაბრუნება') }}</h1>
-              <p>{{ _('ჩვენთან კავშირის გასაგრძელებლად გთხოვთ შეხვიდეთ თქვენს პერსონალურ ინფორმაციასთან') }}</p>
+              <p>{{ _('ჩვენთან კავშირის გასაგრძელებლად გთხოვთ შეხვიდეთ სისტემაში') }}</p>
               <button class="avtorization-button">{{ _('ავტორიზაცია') }}</button>
             </div>
           </div>
@@ -97,7 +97,7 @@
                         {{ flash_auth_popup() }}
                   {% endif %}
                   <br>
-                  {{ forms['signup'].submit_signup(class='login-btn') }}
+                  {{ forms['signup'].submit_signup(class='login-btn', value=_('რეგისტრაცია')) }}
                 <div class="gare-avtorizacia">
                   <h4>{{ _('გარე ავტორიზაცია') }}</h4>
                   <div class="o-auth">
