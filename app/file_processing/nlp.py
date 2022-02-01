@@ -72,7 +72,7 @@ def remove_trailing_spaces(text):
 
 
 def remove_special_characters(text):
-    return re.sub('\W', '', text)
+    return re.sub('\W ', '', text)
 
 
 def lemmatize(text):
