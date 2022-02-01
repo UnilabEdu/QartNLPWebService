@@ -1,6 +1,7 @@
 import json
 import os
 from random import randint
+from string import ascii_letters
 from zipfile import ZipFile
 
 from flask import Blueprint, render_template, redirect, url_for, request, \
@@ -43,12 +44,27 @@ def all_files(page_num):
             file = upload_form.file.data
             filename = translate_georgian_filename(file.filename)
             filename = secure_filename(filename)
-            title = filename.split(".")[0]
 
-        elif upload_form.text.data and upload_form.name.data:
-            filename = translate_georgian_filename(upload_form.name.data)
-            filename = secure_filename(filename + ".txt")
-            title = upload_form.name.data
+        if upload_form.name.data:
+            filename = translate_georgian_filename(upload_form.name.data).split('.')[0]
+            filename = secure_filename(filename)
+            if upload_form.file.data:
+                filename = filename + '.' + upload_form.file.data.filename.split('.')[-1]
+            else:
+                filename = filename + '.txt'
+
+            if not len(filename) or filename[0] not in ascii_letters:
+                print('heeeere', filename)
+                filename = 'unnamed_file' + '.' + filename.split('.')[-1]
+                print(filename)
+
+        if upload_form.text.data:
+            if not upload_form.name.data:
+                filename = 'unnamed_file.txt'
+
+            filename = secure_filename(filename)
+
+        title = filename.split(".")[0]
 
         split_filename = filename.split('.')
         if len(split_filename) == 0:
