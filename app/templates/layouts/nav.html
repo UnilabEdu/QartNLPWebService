@@ -23,20 +23,30 @@
                         </div>
                     </a>
                 {% else %}
-                    <a class="icon login" href="{{ url_for('files.all_files') }}">
+                    <div style="background-color: #f9f9f9; border-radius: 16px; padding-right: 16px">
+                    <a class="icon login" href="{{ url_for('files.all_files') }}" style="margin-left: 24px">
                         <span>{{ current_user.first_name }}</span>
                         <div class="user-place">
-                            <img src="
-                                    {{ url_for('static', filename='uploads/' + (current_user.picture or 'default_avatar.png')) }}"
+                            <img src="{{ url_for('static', filename='uploads/' + (current_user.picture or 'default_avatar.png')) }}"
                                  alt="my-profile-picture"
                                  height="100%"
                                  width="100%"
-                                 style="border-radius: 100%;"
-                            />
+                                 style="border-radius: 100%;"/>
                         </div>
                     </a>
+                    </div>
                 {% endif %}
+                <a style="display: flex; align-items: center; font-family: firaGo; color: black; padding-left: 24px;"
+                   href="{{ url_for('main.toggle_lang') }}">
 
+                    {% if session['locale'] == 'ka' %}
+                    EN
+                    <img src="{{ url_for('static', filename='assets/ena_en.png') }}" style="width: 28px; padding-left: 4px">
+                    {% else %}
+                    GE
+                    <img src="{{ url_for('static', filename='assets/ena_ge.png') }}" style="width: 28px; padding-left: 4px">
+                    {% endif %}
+                </a>
             </ul>
         </div>
     </nav>
