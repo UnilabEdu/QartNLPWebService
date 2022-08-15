@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>QartNLP - Upload Excel File</title>
+</head>
+<body>
+
+<form method="POST" enctype="multipart/form-data">
+
+    {{ upload_form.hidden_tag() }}
+    {{ upload_form.file }}
+    </br>
+    Sheet Name:
+    {{ upload_form.sheet_name }}
+    </br>
+    Start Row:
+    {{ upload_form.start_row }}
+    </br>
+    Word Column:
+    {{ upload_form.word_column }}
+    </br>
+    Lemma Column:
+    {{ upload_form.lemma_column }}
+    </br>
+    {{ upload_form.submit }}
+
+</form>
+
+<h3> Finished Files:</h3>
+{% for file in files%}
+</br>
+<a href="{{ url_for('files.download_xls', filename=file) }}"> {{ file }}</a>
+{% endfor %}
+
+</body>
+</html>

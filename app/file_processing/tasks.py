@@ -3,13 +3,35 @@ import os
 from itertools import islice
 
 import textract
+from openpyxl import load_workbook
 from ftfy import fix_encoding
+from werkzeug.utils import secure_filename
 
 from app.database import db
 from app.extensions import celery
 from app.file_processing.nlp import *
 from app.models.file import File, Pages, Sentences, Words, Statistics
 from app.settings import basedir
+
+from flask_login import current_user
+
+
+@celery.task()
+def process_excel_file(filename, user_id, sheet_name, start_row, word_column, lemma_column):
+    from app import create_app
+    with create_app().app_context():
+        path = os.path.join(Config.UPLOAD_FOLDER, user_id, filename)
+        excel_file = load_workbook(path)
+        sheet = excel_file[sheet_name]
+
+        for index in range(start_row, sheet.max_row + 1):
+            word = sheet[word_column + str(index)].value
+            lemma = lemmatize([word])[0][1]
+            sheet[lemma_column + str(index)] = lemma
+        
+        name, extension = filename.split('.')
+        path = os.path.join(Config.UPLOAD_FOLDER, user_id, name + "-COMPLETED." + extension)
+        excel_file.save(path)
 
 
 @celery.task()

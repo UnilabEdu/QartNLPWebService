@@ -15,19 +15,46 @@ from app.auth.forms import ChangeProfileDataForm, ProfilePictureForm, validate_n
 from app.auth.views import confirm_user_mail
 from app.database import db
 from app.file_processing.nlp import lemmatize
-from app.file_processing.tasks import process_file
-from app.files.forms import UploadForm, SearchForm
+from app.file_processing.tasks import process_file, process_excel_file
+from app.files.forms import UploadForm, SearchForm, ExcelForm
 from app.files.utils import image_crop_and_resize, get_search_form, get_search_query_results, \
     convert_time, translate_georgian_filename
 from app.models.file import File, Sentences, Words, Statistics, Status, Pages
 from app.settings import Config
 
-file_views_blueprint = Blueprint('files',
-                                 __name__,
-                                 template_folder='templates',
-                                 url_prefix='/'
-                                 )
+file_views_blueprint = Blueprint('files', __name__, template_folder='templates', url_prefix='/')
 
+@file_views_blueprint.route('/upload-xls', methods=['GET', 'POST'])
+@login_required
+def upload_xls():
+
+    upload_form = ExcelForm()
+    upload_folder = os.path.join(Config.UPLOAD_FOLDER, str(current_user.id))
+
+    if upload_form.validate_on_submit() and upload_form.submit.data:
+        file = upload_form.file.data
+        filename = secure_filename(file.filename)
+        filepath = os.path.join(upload_folder, filename)
+        
+        os.makedirs(os.path.dirname(filepath), exist_ok=True)
+        file.save(filepath)
+
+        process_excel_file.delay(filename, str(current_user.id), upload_form.sheet_name.data, 
+        upload_form.start_row.data, upload_form.word_column.data, upload_form.lemma_column.data)
+        return redirect(url_for('files.upload_xls'))
+    
+    processed_files = []
+    if os.path.exists(upload_folder):
+        processed_files = [file for file in os.listdir(upload_folder) if '-COMPLETED' in file]
+
+    return render_template('files/excel_file.html', upload_form=upload_form, files=processed_files)
+
+@file_views_blueprint.route('/download-xls/<string:filename>', methods=['GET', 'POST'])
+@login_required
+def download_xls(filename):
+    absolute_path = os.path.join(current_app.root_path, "uploads", str(current_user.id))
+    return send_from_directory(absolute_path, filename, as_attachment=True)
+    
 
 @file_views_blueprint.route('/files', defaults={'page_num': 1}, methods=['GET', 'POST'])
 @file_views_blueprint.route('/files/<int:page_num>', methods=['GET', 'POST'])
